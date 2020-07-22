@@ -19,6 +19,6 @@ class UserSeeder extends Seeder
             'referral_code' => substr(md5(time()), 0, 16),
         ]);
 
-        $admin->role()->attach($role);
+        $admin->role()->attach($role, ['created_at' => now(), 'updated_at' => now()]);
     }
 }
