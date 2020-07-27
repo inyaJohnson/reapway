@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- favicon & bookmark -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144"  href="images/bookmark.html" type="image/x-icon" />
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.html')}}" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/bookmark.html" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.html')}}" type="image/x-icon"/>
     <!-- Font Family -->
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+          rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
     <!-- Website Title -->
     <title>Register - Coinpool</title>
@@ -44,13 +45,16 @@
             </div>
             <div class="cp-heading">
                 <h5>Welcome to Coinpool</h5>
-                <p>Too keep connected with us please Sign up with your personal information by email address and password.</p>
+                <p>Too keep connected with us please Sign up with your personal information by email address and
+                    password.</p>
             </div>
             <div class="cp-body">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="form-group">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Enter Name">
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                               name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
+                               placeholder="Enter Name">
 
                         @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -59,7 +63,9 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter Email">
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                               name="email" value="{{ old('email') }}" required autocomplete="email"
+                               placeholder="Enter Email">
 
                         @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -69,7 +75,9 @@
                     </div>
                     <div class="form-row">
                         <div class="col form-group">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+                            <input id="password" type="password"
+                                   class="form-control @error('password') is-invalid @enderror" name="password" required
+                                   autocomplete="new-password" placeholder="Password">
 
                             @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -78,12 +86,16 @@
                             @enderror
                         </div>
                         <div class="col form-group">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
+                            <input id="password-confirm" type="password" class="form-control"
+                                   name="password_confirmation" required autocomplete="new-password"
+                                   placeholder="Confirm Password">
                         </div>
 
                     </div>
                     <div class="form-group">
-                        <p class="text-left remember-me-checkbox"><label><input type="checkbox" name="remember" value="0">I agree with the website's <a href="#">Terms and conditions</a></label></p>
+                        <p class="text-left remember-me-checkbox"><label><input type="checkbox" name="remember"
+                                                                                value="0">I agree with the website's <a
+                                    href="#">Terms and conditions</a></label></p>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">
@@ -95,12 +107,12 @@
                     </div>
                 </form>
             </div>
-{{--            <div class="social-login">--}}
-{{--                <span>Or Sign Up With</span>--}}
-{{--                <div class="clearfix"></div>--}}
-{{--                <a href="#" class="facebook-login"><i class="icon fab fa-facebook-f"></i>Facebook</a>--}}
-{{--                <a href="#" class="google-login"><i class="icon fab fa-google"></i>Google</a>--}}
-{{--            </div>--}}
+            {{--            <div class="social-login">--}}
+            {{--                <span>Or Sign Up With</span>--}}
+            {{--                <div class="clearfix"></div>--}}
+            {{--                <a href="#" class="facebook-login"><i class="icon fab fa-facebook-f"></i>Facebook</a>--}}
+            {{--                <a href="#" class="google-login"><i class="icon fab fa-google"></i>Google</a>--}}
+            {{--            </div>--}}
         </div>
     </div>
 </div>

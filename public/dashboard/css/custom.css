@@ -1,0 +1,18 @@
+.user-initials{
+    text-align: center;
+    padding: 40px 0px;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+#initials {
+    border-radius: 50%;
+    width: auto;
+    height: auto;
+    padding: 10%;
+    display: inline-block;
+    background: #6610f2;
+    font-weight: bold;
+    font-size: 250%;
+    color: #fff;
+    text-align: center;
+}
