@@ -83,4 +83,5 @@ class SettingsController extends Controller
     public function password(){
         return view('settings.password');
     }
+
 }

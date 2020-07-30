@@ -245,10 +245,7 @@
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link" href="{{route('settings.index')}}">Profile</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="{{route('settings.create')}}">Account</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="{{route('settings.password')}}">Password</a>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('settings.create')}}">Update Profile</a>
                         </ul>
                     </div>
                 </li>
@@ -305,10 +302,13 @@
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="{{asset('dashboard/js/dashboard.js')}}"></script>
+<script src="{{asset('dashboard/js/jquery.validator.js')}}"></script>
 <script src="{{asset('dashboard/js/data-table.js')}}"></script>
 <script src="{{asset('dashboard/js/jquery.dataTables.js')}}"></script>
 <script src="{{asset('dashboard/js/dataTables.bootstrap4.js')}}"></script>
 <!-- End custom js for this page-->
+
+@yield('script')
 </body>
 
 </html>
