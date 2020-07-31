@@ -18,13 +18,17 @@ Route::get('/setup', 'HomeController@setup');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('investment/packages', 'InvestmentController@package')->name('investment.package');
-    Route::get('investment/invest', 'InvestmentController@index')->name('investment.invest');
+    Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest');
     Route::resource('investment', 'InvestmentController');
     Route::get('withdrawal/request', 'WithdrawalController@request')->name('withdrawal.request');
     Route::resource('withdrawal', 'WithdrawalController');
     Route::get('settings/password', 'SettingsController@password')->name('settings.password');
     Route::resource('settings', 'SettingsController');
+});
+
+Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'admin', 'namespace'=> 'Admin'], function (){
+    Route::get('/create-package', 'PackageController@create')->name('packages.create');
+    Route::post('/store-package', 'PackageController@store')->name('packages.store');
 });
 
 Auth::routes();

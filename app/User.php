@@ -49,4 +49,9 @@ class User extends Authenticatable
         return null !== $this->role()->whereIn('name', $roles)->first();
     }
 
+    public function investment(){
+        return $this->hasMany(Investment::class);
+    }
+
+
 }

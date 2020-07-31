@@ -18,6 +18,8 @@ class CreatePackagesTable extends Migration
             $table->string('name');
             $table->integer('price');
             $table->string('description');
+            $table->integer('percentage')->default(50);
+            $table->integer('duration')->default(2);
             $table->timestamps();
         });
     }

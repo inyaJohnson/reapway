@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{asset('dashboard/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/css/custom.css')}}">
     <!-- endinject -->
+    <link rel="stylesheet" href="{{asset('dashboard/js/sweetalert2/dist/sweetalert2.min.css')}}">
     <link rel="shortcut icon" href="{{asset('dashboard/images/favicon.png')}}"/>
 </head>
 <body>
@@ -168,7 +169,6 @@
                             <i class="mdi mdi-logout text-primary"></i>
                             Logout
                         </a>
-
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
@@ -209,12 +209,12 @@
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="{{route('investment.index')}}">History</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{route('investment.invest')}}">Invest
                                     Now</a></li>
                             <li class="nav-item"><a class="nav-link"
-                                                    href="{{route('investment.index')}}">History</a></li>
-                            <li class="nav-item"><a class="nav-link"
-                                                    href="{{route('investment.package')}}">Package</a></li>
+                                                    href="{{route('packages.create')}}">Create Package</a></li>
                         </ul>
                     </div>
                 </li>
@@ -306,6 +306,7 @@
 <script src="{{asset('dashboard/js/data-table.js')}}"></script>
 <script src="{{asset('dashboard/js/jquery.dataTables.js')}}"></script>
 <script src="{{asset('dashboard/js/dataTables.bootstrap4.js')}}"></script>
+<script src="{{asset('dashboard/js/sweetalert2/dist/sweetalert2.min.js')}}"></script>
 <!-- End custom js for this page-->
 
 @yield('script')

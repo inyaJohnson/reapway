@@ -20,3 +20,71 @@
 .settings-form{
     margin-top: 30px;
 }
+
+/* line 12, ../../Arafath/CL/December/234. Finance/HTML/scss/_service.scss */
+.package {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0a8cff+0,054680+100 */
+    background: #0a8cff;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #0a8cff 0%, #054680 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #0a8cff 0%, #054680 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #0a8cff 0%, #054680 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a8cff', endColorstr='#054680',GradientType=0 );
+    /* IE6-9 */
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+/* line 21, ../../Arafath/CL/December/234. Finance/HTML/scss/_service.scss */
+.package_icon {
+    margin: 30px auto 30px auto;
+    display: inline-block;
+    color: white;
+    font-size: 50px;
+}
+
+/* line 26, ../../Arafath/CL/December/234. Finance/HTML/scss/_service.scss */
+.package_info span {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* line 33, ../../Arafath/CL/December/234. Finance/HTML/scss/_service.scss */
+.package_info h3 {
+    color: #33D4D6;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.package_service_content {
+    padding: 30px 40px 40px 40px;
+    margin-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
+}
+
+.package_service_content  p {
+   color: #ffffff;
+    font-size: 1em;
+}
+
+.invest_btn button{
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    background-color: white;
+    border:none;
+    margin-top: 10px;
+}
+
+
+
+

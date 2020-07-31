@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Investment;
+use App\Package;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\In;
 
 class InvestmentController extends Controller
 {
@@ -11,7 +14,11 @@ class InvestmentController extends Controller
      */
     public function index()
     {
-        return view('investment.index');
+        $investments = Investment::all();
+        if(!auth()->user()->hasRole('Admin')){
+            $investments = auth()->user()->investment();
+        }
+        return view('investment.index', compact('investments'));
     }
 
     /**
@@ -23,14 +30,18 @@ class InvestmentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $package = Package::where('id', $request->package_id)->firstOrFail();
+        auth()->user()->investment()->create([
+            'package_id' => $package->id,
+            'percentage' => $package->percentage,
+            'duration' => $package->duration
+        ]);
+        return redirect()->route('investment.index');
     }
 
     /**
@@ -80,13 +91,10 @@ class InvestmentController extends Controller
 
     public function invest()
     {
-        return view('investment.invest');
+        $packages = Package::all();
+        return view('investment.invest', compact('packages'));
     }
 
-    public function package()
-    {
-        return view('investment.package');
-    }
 
 
 
