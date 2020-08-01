@@ -213,8 +213,10 @@
                                                     href="{{route('investment.index')}}">History</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{route('investment.invest')}}">Invest
                                     Now</a></li>
-                            <li class="nav-item"><a class="nav-link"
-                                                    href="{{route('packages.create')}}">Create Package</a></li>
+                            @can('admin-actions')
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="{{route('packages.create')}}">Create Package</a></li>
+                            @endcan
                         </ul>
                     </div>
                 </li>
@@ -227,10 +229,10 @@
                     </a>
                     <div class="collapse" id="auth">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="{{route('withdrawal.request')}}">Withdraw</a>
+                            <li class="nav-item"><a class="nav-link" href="{{route('withdrawal.index')}}">Withdraw</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="{{route('withdrawal.index')}}">History</a>
-                            </li>
+{{--                            <li class="nav-item"><a class="nav-link" href="{{route('withdrawal.index')}}">History</a>--}}
+{{--                            </li>--}}
                         </ul>
                     </div>
                 </li>
@@ -245,7 +247,8 @@
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link" href="{{route('settings.index')}}">Profile</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="{{route('settings.create')}}">Update Profile</a>
+                            <li class="nav-item"><a class="nav-link" href="{{route('settings.create')}}">Update
+                                    Profile</a>
                         </ul>
                     </div>
                 </li>

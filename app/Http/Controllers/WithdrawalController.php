@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Investment;
 use Illuminate\Http\Request;
 
 class WithdrawalController extends Controller
@@ -11,7 +12,11 @@ class WithdrawalController extends Controller
      */
     public function index()
     {
-        return view('withdrawal.index');
+        $investments = Investment::where('withdrawn', 0)->get();
+        if(!auth()->user()->hasRole('Admin')){
+            $investments = auth()->user()->investment->where('withdrawn', 0);
+        }
+        return view('withdrawal.index', compact('investments'));
     }
 
     /**

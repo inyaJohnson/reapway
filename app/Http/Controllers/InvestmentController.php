@@ -16,17 +16,9 @@ class InvestmentController extends Controller
     {
         $investments = Investment::all();
         if(!auth()->user()->hasRole('Admin')){
-            $investments = auth()->user()->investment();
+            $investments = auth()->user()->investment;
         }
         return view('investment.index', compact('investments'));
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function create()
-    {
-//        return view('investment.create');
     }
 
     /**
@@ -39,54 +31,10 @@ class InvestmentController extends Controller
         auth()->user()->investment()->create([
             'package_id' => $package->id,
             'percentage' => $package->percentage,
-            'duration' => $package->duration
+            'duration' => $package->duration,
+            'profit' => round($package->price * ($package->percentage/100))
         ]);
         return redirect()->route('investment.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     public function invest()
@@ -95,7 +43,30 @@ class InvestmentController extends Controller
         return view('investment.invest', compact('packages'));
     }
 
+    public function reinvest($id)
+    {
+        $investment = Investment::findorFail($id);
+        auth()->user()->investment()->create([
+            'package_id' => $investment->package_id,
+            'percentage' => $investment->percentage,
+            'duration' => $investment->duration,
+            'profit' => round($investment->package->price * ($investment->percentage/100))
+        ]);
+        $investment->update(['reinvest' => 1]);
+        return redirect()->route('investment.index');
+    }
 
-
+    public function withdraw($id)
+    {
+        $investment = Investment::findorFail($id);
+//        auth()->user()->investment()->create([
+//            'package_id' => $investment->package_id,
+//            'percentage' => $investment->percentage,
+//            'duration' => $investment->duration,
+//            'profit' => round($investment->package->price * ($investment->percentage/100))
+//        ]);
+        $investment->update(['reinvest' => 2]);
+        return redirect()->route('investment.index');
+    }
 
 }

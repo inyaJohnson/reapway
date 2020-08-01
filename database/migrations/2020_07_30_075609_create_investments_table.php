@@ -19,8 +19,10 @@ class CreateInvestmentsTable extends Migration
             $table->unsignedInteger('package_id');
             $table->integer('percentage');
             $table->integer('duration');
+            $table->integer('profit');
             $table->integer('maturity')->default(0);
             $table->integer('withdrawn')->default(0);
+            $table->integer('reinvest')->default(0);
             $table->timestamps();
         });
     }

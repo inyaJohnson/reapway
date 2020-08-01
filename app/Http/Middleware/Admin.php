@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Gate;
 
 class Admin
 {
@@ -15,7 +16,11 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(!auth()->user()->hasRole('admin')){
+//        if(!auth()->user()->hasRole('admin')){
+//            return redirect()->route('home');
+//        }
+//        return $next($request);
+        if(Gate::denies('admin-actions')){
             return redirect()->route('home');
         }
         return $next($request);

@@ -19,7 +19,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest');
-    Route::resource('investment', 'InvestmentController');
+    Route::get('investment', 'InvestmentController@index')->name('investment.index');
+    Route::post('investment/store', 'InvestmentController@store')->name('investment.store');
+    Route::get('investment/reinvest/{id}', 'InvestmentController@reinvest')->name('investment.reinvest');
+    Route::get('investment/withdraw/{id}', 'InvestmentController@withdraw')->name('investment.withdraw');
     Route::get('withdrawal/request', 'WithdrawalController@request')->name('withdrawal.request');
     Route::resource('withdrawal', 'WithdrawalController');
     Route::get('settings/password', 'SettingsController@password')->name('settings.password');
