@@ -85,6 +85,30 @@
     margin-top: 10px;
 }
 
+.profile-panel{
+    border: thin solid #dddddd;
+    height: 200px;
+    margin-bottom: 30px;
+}
+
+.profile-panel-heading{
+    border-bottom: thin solid #dddddd;
+    padding: 12px 12px 12px 12px;
+    margin: 0px;
+    color: white;
+    background: #6610f2;
+}
+
+.profile-panel-body{
+    padding-top: 0px;
+    padding-left: 12px;
+    margin: 0px;
+}
+
+.profile-panel-body a {
+   font-size: small;
+}
+
 
 
 

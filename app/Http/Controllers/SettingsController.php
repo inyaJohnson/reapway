@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
+use App\Http\Requests\AccountRequest;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class SettingsController extends Controller
 {
@@ -14,74 +18,41 @@ class SettingsController extends Controller
         return view('settings.index');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('settings.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    public function destroy($id)
-    {
-        //
-    }
-
-
     public function password(){
         return view('settings.password');
+    }
+
+    public function createAccount(){
+        return view('settings.account');
+    }
+
+    public function edit($id){
+        $user = User::findOrFail($id);
+        return view('settings.edit', compact('user'));
+    }
+
+    public function storeAccount(AccountRequest $request){
+        $input = $request->validated();
+        $input['user_id'] =  auth()->user()->id;
+        Account::create($input);
+        return redirect()->route('settings.index')->with('success', 'Account successfully created');
+    }
+
+    public function updateContactInfo(Request $request){
+        $input = $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => Rule::unique('users')->ignore(auth()->user()->id, 'id'),
+            'phone' => ['required', 'digits:11'],
+            ]);
+        auth()->user()->update($input);
+        return redirect()->route('settings.index')->with('success', 'Contact successfully updated');
+
+    }
+
+    public function updateAccountInfo(AccountRequest $request){
+        $input = $request->validated();
+        auth()->user()->account()->update($input);
+        return redirect()->route('settings.index')->with('success', 'Account successfully updated');
     }
 
 }

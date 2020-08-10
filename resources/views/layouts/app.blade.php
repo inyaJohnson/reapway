@@ -222,7 +222,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('withdrawal.index')}}" aria-expanded="false" >
+                    <a class="nav-link" href="{{route('withdrawal.index')}}" aria-expanded="false">
                         <i class="mdi mdi-cash-multiple menu-icon"></i>
                         <span class="menu-title">Withdrawal</span>
                     </a>
@@ -238,22 +238,29 @@
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link" href="{{route('settings.index')}}">Profile</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="{{route('settings.create')}}">Update
-                                    Profile</a>
+{{--                            <li class="nav-item"><a class="nav-link" href="{{route('settings.create')}}">Update--}}
+{{--                                    Profile</a>--}}
+{{--                            </li>--}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('settings.account')}}">Account</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#transaction" aria-expanded="false" aria-controls="transaction">
+                    <a class="nav-link" data-toggle="collapse" href="#transaction" aria-expanded="false"
+                       aria-controls="transaction">
                         <i class="mdi mdi-cash-multiple menu-icon"></i>
                         <span class="menu-title">Transaction</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="transaction">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="{{route('transaction.deposit')}}">Deposit Match</a>
+                            <li class="nav-item"><a class="nav-link" href="{{route('transaction.deposit')}}">Deposit
+                                    Match</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="{{route('transaction.withdraw')}}">Withdrawal Match</a>
+                            <li class="nav-item"><a class="nav-link" href="{{route('transaction.withdraw')}}">Withdrawal
+                                    Match</a>
                             </li>
                         </ul>
                     </div>
@@ -266,12 +273,7 @@
                         </a>
                     </li>
                 @endcan
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="{{route('account.index')}}">--}}
-{{--                        <i class="mdi mdi-cash-multiple menu-icon"></i>--}}
-{{--                        <span class="menu-title">Account</span>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+
                 <li class="nav-item">
                     <a class="nav-link" href="pages/icons/mdi.html">
                         <i class="mdi mdi-emoticon menu-icon"></i>

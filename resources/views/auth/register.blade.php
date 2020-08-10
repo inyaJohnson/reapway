@@ -45,8 +45,8 @@
             </div>
             <div class="cp-heading">
                 <h5>Welcome to Coinpool</h5>
-                <p>Too keep connected with us please Sign up with your personal information by email address and
-                    password.</p>
+{{--                <p>Too keep connected with us please Sign up with your personal information by email address and--}}
+{{--                    password.</p>--}}
             </div>
             <div class="cp-body">
                 <form method="POST" action="{{ route('register') }}">
@@ -68,6 +68,17 @@
                                placeholder="Enter Email">
 
                         @error('email')
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
+                               name="phone" value="{{ old('phone') }}" required autocomplete="phone"
+                               placeholder="Enter Phone">
+
+                        @error('phone')
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -107,12 +118,6 @@
                     </div>
                 </form>
             </div>
-            {{--            <div class="social-login">--}}
-            {{--                <span>Or Sign Up With</span>--}}
-            {{--                <div class="clearfix"></div>--}}
-            {{--                <a href="#" class="facebook-login"><i class="icon fab fa-facebook-f"></i>Facebook</a>--}}
-            {{--                <a href="#" class="google-login"><i class="icon fab fa-google"></i>Google</a>--}}
-            {{--            </div>--}}
         </div>
     </div>
 </div>

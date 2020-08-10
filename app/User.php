@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'referral_code',
+        'name', 'email', 'password', 'referral_code', 'phone'
     ];
 
     /**
@@ -61,5 +61,7 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class);
     }
 
-
+    public function account(){
+        return $this->hasOne(Account::class);
+    }
 }

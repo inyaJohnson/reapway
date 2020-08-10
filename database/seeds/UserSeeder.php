@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
             'name' => 'Rocket Pay',
             'email' => 'admin@rocketpay.cc',
             'password' => bcrypt('Rocking_hard_067'),
+            'phone' => '07037555691',
             'referral_code' => substr(md5(time()), 0, 16),
         ]);
 

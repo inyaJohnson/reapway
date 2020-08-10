@@ -26,7 +26,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('withdrawal/request', 'WithdrawalController@request')->name('withdrawal.request');
     Route::resource('withdrawal', 'WithdrawalController');
     Route::get('settings/password', 'SettingsController@password')->name('settings.password');
-    Route::resource('settings', 'SettingsController');
+    Route::get('settings/account', 'SettingsController@createAccount')->name('settings.account');
+    Route::post('settings/store-account', 'SettingsController@storeAccount')->name('settings.store-account');
+    Route::get('settings', 'SettingsController@index')->name('settings.index');
+    Route::get('settings/edit/{id}', 'SettingsController@edit')->name('settings.edit');
+    Route::post('settings/update-contact-info', 'SettingsController@updateContactInfo')->name('settings.update-contact-info');
+    Route::post('settings/update-account-info', 'SettingsController@updateAccountInfo')->name('settings.update-account-info');
     Route::get('transactions/deposit', 'TransactionController@deposit')->name('transaction.deposit');
     Route::get('transactions/withdrawal-request', 'TransactionController@withdrawal')->name('transaction.withdraw');
     Route::get('transactions/depositor/{id}', 'TransactionController@showDepositor')->name('depositor-info');
