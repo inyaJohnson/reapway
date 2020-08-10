@@ -32,7 +32,7 @@
         </div>
         @include('layouts.message')
         <div class="row">
-            @foreach($packages as $package)
+            @foreach($availablePackages as $package)
                 <div class="col-lg-4 grid-margin stretch-card">
                     <div class="package card-body">
                         <div class="package_icon_wrap text-center">

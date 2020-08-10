@@ -6,8 +6,8 @@
                 <div class="d-flex justify-content-between flex-wrap">
                     <div class="d-flex align-items-end flex-wrap">
                         <div class="mr-md-3 mr-xl-5">
-                            <h2>Withdrawal</h2>
-                            <p class="mb-md-0">Reinvest your previous capital to withdraw your profit.</p>
+                            <h2>Investments</h2>
+                            <p class="mb-md-0">Your analytics dashboard template.</p>
                         </div>
                         <div class="d-flex">
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
@@ -35,41 +35,38 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Withdrawal Request</h4>
+                        <h4 class="card-title">Investment History</h4>
                         <div class="table-responsive">
                             <table class="table table-striped table-hover investment-history">
                                 <thead>
                                 <tr>
                                     <th>Package</th>
+                                    <th>Created At</th>
                                     <th>Price</th>
                                     <th>Percentage</th>
-                                    <th>Profit</th>
-                                    <th>Actions</th>
+                                    <th>Duration</th>
+                                    <th>Maturity</th>
+                                    <th>Withdrawn</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach( $investments as $investment)
                                     <tr>
                                         <td>{{$investment->package->name}}</td>
+                                        <td>{{$investment->created_at}}</td>
                                         <td>{{$investment->package->price}}</td>
                                         <td>{{$investment->percentage}}</td>
-                                        <td>{{$investment->profit}}</td>
-                                        <td>
-                                            @if($investment->reinvest !== 0 && $investment->reinvest !== 1)
-                                                Completed
+                                        <td>{{$investment->duration}}</td>
+                                        <td>@if($investment->maturity)
+                                                <label class="badge badge-success">Matured</label>
                                             @else
-                                                <button
-                                                    class="btn btn-primary reinvest @php echo (isset($investment) && $investment->reinvest != 0)? 'disabled':'';  @endphp"
-                                                    style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
-                                                    data-id={{$investment->id}}>Reinvest
-                                                </button>
-                                                <button
-                                                    class="btn btn-success withdraw @php echo (isset($investment) && $investment->reinvest != 1)? 'disabled':'';  @endphp"
-                                                    style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
-                                                    data-id={{$investment->id}}>Withdraw
-                                                </button>
+                                                <label class="badge badge-danger">Not Due</label>
+                                            @endif</td>
+                                        <td>@if($investment->withdrawn)
+                                                Yes
+                                            @else
+                                                No
                                             @endif
-
                                         </td>
                                     </tr>
                                 @endforeach
@@ -86,56 +83,6 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.investment-history').dataTable();
-        })
-
-        var failed = '/withdrawal';
-        function sweetAlert(response, failed, redirectTo){
-                if (response.success) {
-                    Swal.fire(
-                        'Successful!',
-                        response.success,
-                        'success'
-                    ).then(function (result) {
-                        if (result.value) {
-                            window.location = redirectTo
-                        }
-                    })
-                } else {
-                    Swal.fire(
-                        'Failed!',
-                        response.error,
-                        'error'
-                    ).then(function (result) {
-                        if (result.value) {
-                            window.location = failed;
-                        }
-                    })
-                }
-
-        }
-        $('.reinvest').on('click', function () {
-            $.ajax({
-                type: 'GET',
-                url: 'investment/reinvest',
-                data: {id: $(this).attr('data-id')},
-                success: function (response) {
-                    var redirectTo = 'transactions/deposit';
-                    sweetAlert(response, failed, redirectTo)
-                }
-
-            })
-        })
-
-        $('.withdraw').on('click', function () {
-            $.ajax({
-                type: 'GET',
-                url: 'investment/withdraw',
-                data: {id: $(this).attr('data-id')},
-                success: function (response) {
-                    var redirectTo = 'transactions/withdrawal-request';
-                    sweetAlert(response, failed, redirectTo)
-                }
-            })
         })
     </script>
 @endsection

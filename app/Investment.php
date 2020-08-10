@@ -11,4 +11,12 @@ class Investment extends Model
     public function package(){
         return $this->belongsTo(Package::class);
     }
+
+    public function withdrawal(){
+        return $this->hasOne(Withdrawal::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
