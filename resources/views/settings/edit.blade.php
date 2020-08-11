@@ -19,7 +19,8 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="contact" role="tabpanel"
                                  aria-labelledby="contact-tab">
-                                <form  action="{{route('settings.update-contact-info')}}" method="POST" class="settings-form" id="contact-form">
+                                <form action="{{route('settings.update-contact-info')}}" method="POST"
+                                      class="settings-form" id="contact-form">
                                     @csrf
                                     {{--                                    <h4 class="card-title">Contact Information</h4>--}}
                                     <div class="form-group">
@@ -44,27 +45,34 @@
 
                             <div class="tab-pane fade show" id="account" role="tabpanel"
                                  aria-labelledby="account-tab">
-                                <form action="{{route('settings.update-account-info')}}" method="POST" class="settings-form" id="account-form">
-                                    @csrf
-                                    {{--                                    <h4 class="card-title">Account Information</h4>--}}
-                                    <div class="form-group">
-                                        <label for="name">Account Name</label>
-                                        <input type="text" class="form-control" name="name" required
-                                               value="{{$user->account->name}}" placeholder="Account Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="number">Account Number</label>
-                                        <input type="text" class="form-control" name="number" required
-                                               value="{{$user->account->number}}" placeholder="Account Number">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="bank">Bank Name</label>
-                                        <input type="text" class="form-control" name="bank" required
-                                               value="{{$user->account->bank}}" placeholder="Bank Name">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                    <button class="btn btn-light reset">Cancel</button>
-                                </form>
+                                @if(auth()->user()->account !== null)
+                                    <form action="{{route('settings.update-account-info')}}" method="POST"
+                                          class="settings-form" id="account-form">
+                                        @csrf
+                                        {{--                                    <h4 class="card-title">Account Information</h4>--}}
+                                        <div class="form-group">
+                                            <label for="name">Account Name</label>
+                                            <input type="text" class="form-control" name="name" required
+                                                   value="{{$user->account->name}}" placeholder="Account Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="number">Account Number</label>
+                                            <input type="text" class="form-control" name="number" required
+                                                   value="{{$user->account->number}}" placeholder="Account Number">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bank">Bank Name</label>
+                                            <input type="text" class="form-control" name="bank" required
+                                                   value="{{$user->account->bank}}" placeholder="Bank Name">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                        <button class="btn btn-light reset">Cancel</button>
+                                    </form>
+                                @else
+                                    <a href="{{route('settings.account', auth()->user()->id)}}">Click to Add your
+                                        Payment Account
+                                        Information</a>
+                                @endif
                             </div>
                         </div>
                     </div>

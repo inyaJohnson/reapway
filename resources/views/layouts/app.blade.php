@@ -238,9 +238,6 @@
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link" href="{{route('settings.index')}}">Profile</a>
                             </li>
-{{--                            <li class="nav-item"><a class="nav-link" href="{{route('settings.create')}}">Update--}}
-{{--                                    Profile</a>--}}
-{{--                            </li>--}}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('settings.account')}}">Account</a>
                             </li>

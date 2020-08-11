@@ -37,7 +37,9 @@
                     <div class="card-body">
                         <div class="profile-panel">
                             <div>
-                            <div class="profile-panel-heading card-title" style="color:#ffffff;">Contact Information</div>
+                                <div class="profile-panel-heading card-title" style="color:#ffffff;">Contact
+                                    Information
+                                </div>
                             </div>
                             <div class="profile-panel-body">
                                 <p>Name - {{auth()->user()->name}} </p>
@@ -48,12 +50,19 @@
 
                         </div>
                         <div class="profile-panel">
-                            <div class="profile-panel-heading card-title" style="color:#ffffff;">Account Information</div>
+                            <div class="profile-panel-heading card-title" style="color:#ffffff;">Account Information
+                            </div>
                             <div class="profile-panel-body">
-                                <p>Account Name - {{auth()->user()->account->name}} </p>
-                                <p>Account Number - {{auth()->user()->account->number}} </p>
-                                <p>Bank - {{auth()->user()->account->bank}} </p>
-                                <a href="{{route('settings.edit', auth()->user()->id)}}">Edit Account Information</a>
+                                @if(auth()->user()->account !== null)
+                                    <p>Account Name - {{auth()->user()->account->name}} </p>
+                                    <p>Account Number - {{auth()->user()->account->number}} </p>
+                                    <p>Bank - {{auth()->user()->account->bank}} </p>
+                                    <a href="{{route('settings.edit', auth()->user()->id)}}">Edit Account
+                                        Information</a>
+                                @else
+                                    <a href="{{route('settings.account', auth()->user()->id)}}">Click to Add your Payment Account
+                                        Information</a>
+                                @endif
                             </div>
                         </div>
                     </div>

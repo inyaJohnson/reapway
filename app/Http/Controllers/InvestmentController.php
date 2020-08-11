@@ -43,8 +43,15 @@ class InvestmentController extends Controller
 
     public function invest()
     {
+        if(auth()->user()->account === null){
+            return redirect()->route('settings.account')->with('success', 'Enter Your Bank Account Information for payment before investing');
+        }
+
         $totalWithdrawable  = Withdrawal::where([['status', 0], ['match', 0]])->pluck('amount')->sum();
-        $availablePackages = Package::where('price', '<=', $totalWithdrawable)->get();
+        $availablePackages = Package::where([
+            ['price', '<=', $totalWithdrawable],
+            ['id', '!=', 1]
+            ])->get();
         return view('investment.invest', compact('availablePackages'));
     }
 
@@ -99,6 +106,7 @@ class InvestmentController extends Controller
         $mismatch = [];
         $mtbp = $price;
         $withdrawals = Withdrawal::where([
+            ['user_id', '!=', auth()->user()->id],
             ['status', 0],
             ['match', 0]
         ])->get();

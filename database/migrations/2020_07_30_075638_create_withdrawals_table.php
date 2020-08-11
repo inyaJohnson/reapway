@@ -19,7 +19,7 @@ class CreateWithdrawalsTable extends Migration
             $table->unsignedInteger('investment_id');
             $table->integer('amount');
             $table->integer('status')->default(0);
-            $table->integer('matched')->default(0);
+            $table->integer('match')->default(0);
             $table->timestamps();
         });
     }
