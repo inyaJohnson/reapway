@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Account extends Model
 {
     protected $fillable = ['name', 'number', 'bank', 'user_id'];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

@@ -52,7 +52,8 @@
                                         <td>{{$transaction->package->name}}</td>
                                         <td>{{$transaction->created_at}}</td>
                                         <td>{{$transaction->amount}}</td>
-                                        <td><a class="btn btn-primary" style="padding: 10px;" href="{{route('depositor-info', $transaction->depositor_id)}}">View Depositor</a></td>
+                                        <td><a class="btn btn-primary view-depositor" style="padding: 10px;" href="#" data-id={{$transaction->depositor_id}} data='{{$transaction->id}}'>View Depositor</a></td>
+                                        <input value="{{$transaction->amount}}" id="amount{{$transaction->id}}" type="hidden">
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -63,11 +64,31 @@
             </div>
         </div>
     </div>
+    @include('transaction.depositor-info')
 @endsection
 @section('script')
     <script type="text/javascript">
         $(document).ready(function () {
             $('.investment-history').dataTable();
+            $('.view-depositor').on('click', function(){
+                var id = $(this).attr('data-id');
+                var transactionId = $(this).attr('data');
+                var amount = $('#amount'+transactionId).val();
+                $.ajax({
+                    type: 'GET',
+                    url: "show-depositor",
+                    data: {id:id},
+                    success : function (response) {
+                        $('.user-account .user-account-bank').text(response.bank)
+                        $('.user-account .user-account-name').text(response.name)
+                        $('.user-account .user-account-number').text(response.number)
+                        $('.user-account .user-account-phone').text(response.phone)
+                        $('.user-account .user-account-amount').text(amount)
+                    }
+                })
+                $('#depositor-modal').modal();
+            })
         })
     </script>
+
 @endsection

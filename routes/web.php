@@ -34,8 +34,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('settings/update-account-info', 'SettingsController@updateAccountInfo')->name('settings.update-account-info');
     Route::get('transactions/deposit', 'TransactionController@deposit')->name('transaction.deposit');
     Route::get('transactions/withdrawal-request', 'TransactionController@withdrawal')->name('transaction.withdraw');
-    Route::get('transactions/depositor/{id}', 'TransactionController@showDepositor')->name('depositor-info');
-    Route::get('transactions/recipient/{id}', 'TransactionController@showRecipient')->name('recipient-info');
+    Route::get('transactions/show-depositor', 'TransactionController@showDepositor')->name('depositor-info');
+    Route::get('transactions/show-recipient', 'TransactionController@showRecipient')->name('recipient-info');
 
 });
 

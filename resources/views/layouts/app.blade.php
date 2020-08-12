@@ -9,6 +9,7 @@
 
     <title>{{ config('app.name', 'RocketPay') }}</title>
     <!-- plugins:css -->
+    <link rel="stylesheet" href="{{asset('dashboard/js/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/vendors/base/vendor.bundle.base.css')}}">
     <!-- endinject -->
@@ -302,7 +303,7 @@
     <!-- page-body-wrapper ends -->
 </div>
 <!-- container-scroller -->
-
+<script src="{{asset('dashboard/js/jquery-3.5.1.min.js')}}"></script>
 <!-- plugins:js -->
 <script src="{{asset('dashboard/vendors/base/vendor.bundle.base.js')}}"></script>
 <!-- endinject -->
@@ -323,6 +324,7 @@
 <script src="{{asset('dashboard/js/jquery.dataTables.js')}}"></script>
 <script src="{{asset('dashboard/js/dataTables.bootstrap4.js')}}"></script>
 <script src="{{asset('dashboard/js/sweetalert2/dist/sweetalert2.min.js')}}"></script>
+<script src="{{asset('dashboard/js/bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- End custom js for this page-->
 
 @yield('script')

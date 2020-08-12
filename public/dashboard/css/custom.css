@@ -109,6 +109,13 @@
    font-size: small;
 }
 
+.user-account .account{
+    padding: 5px;
+}
+
+.user-account .account .mdi {
+    padding-right: 7px;
+}
 
 
 

@@ -38,20 +38,20 @@ class InvestmentController extends Controller
         //        Matches investor to matured withdrawers
         $this->matchMaker($investment->id, $package->id, $package->price);
 
-        return redirect()->route('investment.index');
+        return redirect()->route('transaction.deposit');
     }
 
     public function invest()
     {
-        if(auth()->user()->account === null){
+        if (auth()->user()->account === null) {
             return redirect()->route('settings.account')->with('success', 'Enter Your Bank Account Information for payment before investing');
         }
 
-        $totalWithdrawable  = Withdrawal::where([['status', 0], ['match', 0]])->pluck('amount')->sum();
+        $totalWithdrawable = Withdrawal::where([['status', 0], ['match', 0], ['user_id', '!=', auth()->user()->id]])->pluck('amount')->sum();
         $availablePackages = Package::where([
             ['price', '<=', $totalWithdrawable],
             ['id', '!=', 1]
-            ])->get();
+        ])->get();
         return view('investment.invest', compact('availablePackages'));
     }
 
