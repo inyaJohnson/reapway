@@ -35,7 +35,7 @@ class InvestmentController extends Controller
             'duration' => $package->duration,
             'profit' => round($package->price * ($package->percentage / 100))
         ]);
-        //        Matches investor to matured withdrawers
+        //Matches investor to matured withdrawers
         $this->matchMaker($investment->id, $package->id, $package->price);
 
         return redirect()->route('transaction.deposit');
@@ -86,7 +86,6 @@ class InvestmentController extends Controller
             'amount' => $investment->profit,
         ]);
         $result = $investment->update([
-            'maturity' => $investment->package_id,
             'reinvest' => 2
         ]);
         if (!$result) {

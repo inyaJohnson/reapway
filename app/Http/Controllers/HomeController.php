@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 
@@ -24,7 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $totalWithdrawn = auth()->user()->withdrawal()->where('status', 1)->count();
+        $pendingWithdrawal = auth()->user()->withdrawal()->where('status', 0)->count();
+        $totalNumberInvestment = auth()->user()->investment->count();
+        $investmentPriceList = [];
+        foreach (auth()->user()->investment as $investment){
+            $investmentPriceList[] = $investment->package->price;
+        }
+        $totalInvestment = number_format(array_sum($investmentPriceList));
+        return view('home', compact('totalWithdrawn', 'pendingWithdrawal', 'totalNumberInvestment', 'totalInvestment'));
     }
 
     public function welcome(){

@@ -59,12 +59,12 @@
                                                 Completed
                                             @else
                                                 <button
-                                                    class="btn btn-primary reinvest @php echo (isset($investment) && $investment->reinvest != 0)? 'disabled':'';  @endphp"
+                                                    class="btn btn-danger reinvest @php echo (isset($investment) && $investment->reinvest != 0)? 'disabled':'';  @endphp"
                                                     style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
                                                     data-id={{$investment->id}}>Reinvest
                                                 </button>
                                                 <button
-                                                    class="btn btn-success withdraw @php echo (isset($investment) && $investment->reinvest != 1)? 'disabled':'';  @endphp"
+                                                    class="btn btn-warning withdraw @php echo (isset($investment) && $investment->reinvest != 1)? 'disabled':'';  @endphp"
                                                     style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
                                                     data-id={{$investment->id}}>Withdraw
                                                 </button>

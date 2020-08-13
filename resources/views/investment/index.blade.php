@@ -57,12 +57,12 @@
                                         <td>{{$investment->package->price}}</td>
                                         <td>{{$investment->percentage}}</td>
                                         <td>{{$investment->duration}}</td>
-                                        <td>@if($investment->maturity)
+                                        <td>@if($investment->maturity == 1)
                                                 <label class="badge badge-success">Matured</label>
                                             @else
                                                 <label class="badge badge-danger">Not Due</label>
                                             @endif</td>
-                                        <td>@if($investment->withdrawn)
+                                        <td>@if($investment->withdrawn == 1)
                                                 Yes
                                             @else
                                                 No

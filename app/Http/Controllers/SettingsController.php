@@ -16,7 +16,12 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        return view('settings.index');
+        $investmentPriceList = [];
+        foreach (auth()->user()->investment as $investment){
+            $investmentPriceList[] = $investment->package->price;
+        }
+        $totalInvestment = number_format(array_sum($investmentPriceList));
+        return view('settings.index', compact('totalInvestment'));
     }
 
     public function password()
