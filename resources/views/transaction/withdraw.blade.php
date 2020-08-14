@@ -51,7 +51,7 @@
                                     <tr>
                                         <td>{{$transaction->package->name}}</td>
                                         <td>{{$transaction->created_at}}</td>
-                                        <td>{{$transaction->amount}}</td>
+                                        <td>{{number_format($transaction->amount)}}</td>
                                         <td><a class="btn btn-primary view-depositor" style="padding: 10px;" href="#" data-id={{$transaction->depositor_id}} data='{{$transaction->id}}'>View Depositor</a></td>
                                         <input value="{{$transaction->amount}}" id="amount{{$transaction->id}}" type="hidden">
                                     </tr>
@@ -70,10 +70,15 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.investment-history').dataTable();
+
+            function formatNumber(num) {
+                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            }
+
             $('.view-depositor').on('click', function(){
                 var id = $(this).attr('data-id');
                 var transactionId = $(this).attr('data');
-                var amount = $('#amount'+transactionId).val();
+                var amount = parseInt($('#amount'+transactionId).val());
                 $.ajax({
                     type: 'GET',
                     url: "show-depositor",
@@ -83,7 +88,7 @@
                         $('.user-account .user-account-name').text(response.name)
                         $('.user-account .user-account-number').text(response.number)
                         $('.user-account .user-account-phone').text(response.phone)
-                        $('.user-account .user-account-amount').text(amount)
+                        $('.user-account .user-account-amount').text(formatNumber(amount))
                     }
                 })
                 $('#depositor-modal').modal();

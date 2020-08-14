@@ -42,7 +42,7 @@
                         </div>
                         <div class="package_info text-center">
                             <span>{{$package->name}}</span>
-                            <h3>#{{$package->price}}</h3>
+                            <h3>#{{number_format($package->price)}}</h3>
                         </div>
                         <div class="package_service_content">
                             <p> Get return {{$package->percentage}}% in {{$package->duration}} Days</p>

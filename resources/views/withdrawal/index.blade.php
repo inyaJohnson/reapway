@@ -51,11 +51,13 @@
                                 @foreach( $investments as $investment)
                                     <tr>
                                         <td>{{$investment->package->name}}</td>
-                                        <td>{{$investment->package->price}}</td>
+                                        <td>{{number_format($investment->package->price)}}</td>
                                         <td>{{$investment->percentage}}</td>
-                                        <td>{{$investment->profit}}</td>
+                                        <td>{{number_format($investment->profit)}}</td>
                                         <td>
-                                            @if($investment->reinvest !== 0 && $investment->reinvest !== 1)
+                                            @if($investment->maturity == 0)
+                                                Not Matured
+                                            @elseif($investment->reinvest !== 0 && $investment->reinvest !== 1 && $investment->maturity == 1)
                                                 Completed
                                             @else
                                                 <button

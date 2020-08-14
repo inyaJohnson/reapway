@@ -54,7 +54,7 @@
                                     <tr>
                                         <td>{{$investment->package->name}}</td>
                                         <td>{{$investment->created_at}}</td>
-                                        <td>{{$investment->package->price}}</td>
+                                        <td>{{number_format($investment->package->price)}}</td>
                                         <td>{{$investment->percentage}}</td>
                                         <td>{{$investment->duration}}</td>
                                         <td>@if($investment->maturity)

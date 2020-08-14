@@ -36,13 +36,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('transactions/withdrawal-request', 'TransactionController@withdrawal')->name('transaction.withdraw');
     Route::get('transactions/show-depositor', 'TransactionController@showDepositor')->name('depositor-info');
     Route::get('transactions/show-recipient', 'TransactionController@showRecipient')->name('recipient-info');
-
+    Route::resource('help', 'HelpController');
 });
 
 Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'admin', 'namespace'=> 'Admin'], function (){
     Route::get('/create-package', 'PackageController@create')->name('packages.create');
     Route::post('/store-package', 'PackageController@store')->name('packages.store');
-    Route::resource('payments', 'PaymentController');
 });
 
 Auth::routes();

@@ -278,12 +278,22 @@
                         <span class="menu-title">Referral</span>
                     </a>
                 </li>
+                @can('client-actions')
                 <li class="nav-item">
-                    <a class="nav-link" href="documentation/documentation.html">
+                    <a class="nav-link" href="{{route('help.create')}}">
                         <i class="mdi mdi-help-circle-outline menu-icon"></i>
                         <span class="menu-title">Help</span>
                     </a>
                 </li>
+                @endcan
+                @can('admin-actions')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('help.index')}}">
+                            <i class="mdi mdi-history menu-icon"></i>
+                            <span class="menu-title">Response To Request</span>
+                        </a>
+                    </li>
+                @endcan
             </ul>
         </nav>
         <!-- partial -->

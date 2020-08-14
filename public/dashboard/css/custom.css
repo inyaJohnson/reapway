@@ -117,5 +117,27 @@
     padding-right: 7px;
 }
 
+.help-form-div{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.help-form-group{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.help-form-group input, .help-form-group textarea{
+    margin: 0px 5px 10px 0px;
+}
+
+.help-form-bottom{
+    display: flex;
+}
+
+.spacer{
+    flex-grow: 1;
+}
 
 

@@ -11,7 +11,7 @@
         <div class="account"><span class="mdi mdi-account-card-details"></span>Number: <span class="user-account-number"></span></div>
         <div class="account"><span class="mdi mdi-bank"></span>Bank: <span class="user-account-bank"></span></div>
         <div class="account"><span class="mdi mdi-phone"></span>Phone: <span class="user-account-phone"></span></div>
-        <div class="account"><span class="mdi mdi-cash-multiple"></span>Phone: <span class="user-account-amount"></span></div>
+        <div class="account"><span class="mdi mdi-cash-multiple"></span>Amount: <span class="user-account-amount"></span></div>
     </div>
 @overwrite
 @section('modal-footer')
