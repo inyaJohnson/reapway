@@ -11,22 +11,11 @@
                         </div>
                         <div class="d-flex">
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
-                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</p>
-                            <p class="text-primary mb-0 hover-cursor">Analytics</p>
+                            <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a></p>
+                            <p class="text-primary mb-0 hover-cursor">Withdraw</p>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between align-items-end flex-wrap">
-                        <button type="button" class="btn btn-light bg-white btn-icon mr-3 d-none d-md-block ">
-                            <i class="mdi mdi-download text-muted"></i>
-                        </button>
-                        <button type="button" class="btn btn-light bg-white btn-icon mr-3 mt-2 mt-xl-0">
-                            <i class="mdi mdi-clock-outline text-muted"></i>
-                        </button>
-                        <button type="button" class="btn btn-light bg-white btn-icon mr-3 mt-2 mt-xl-0">
-                            <i class="mdi mdi-plus text-muted"></i>
-                        </button>
-                        <button class="btn btn-primary mt-2 mt-xl-0">Generate report</button>
-                    </div>
+                    @include('layouts.quick-links')
                 </div>
             </div>
         </div>
@@ -88,10 +77,10 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.investment-history').dataTable();
-        })
 
-        var failed = '/withdrawal';
-        function sweetAlert(response, failed, redirectTo){
+            var failed = '/withdrawal';
+
+            function sweetAlert(response, failed, redirectTo) {
                 if (response.success) {
                     Swal.fire(
                         'Successful!',
@@ -114,29 +103,31 @@
                     })
                 }
 
-        }
-        $('.reinvest').on('click', function () {
-            $.ajax({
-                type: 'GET',
-                url: 'investment/reinvest',
-                data: {id: $(this).attr('data-id')},
-                success: function (response) {
-                    var redirectTo = 'transactions/deposit';
-                    sweetAlert(response, failed, redirectTo)
-                }
+            }
 
+            $('.reinvest').on('click', function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'investment/reinvest',
+                    data: {id: $(this).attr('data-id')},
+                    success: function (response) {
+                        var redirectTo = 'transactions/deposit';
+                        sweetAlert(response, failed, redirectTo)
+                    }
+
+                })
             })
-        })
 
-        $('.withdraw').on('click', function () {
-            $.ajax({
-                type: 'GET',
-                url: 'investment/withdraw',
-                data: {id: $(this).attr('data-id')},
-                success: function (response) {
-                    var redirectTo = 'transactions/withdrawal-request';
-                    sweetAlert(response, failed, redirectTo)
-                }
+            $('.withdraw').on('click', function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'investment/withdraw',
+                    data: {id: $(this).attr('data-id')},
+                    success: function (response) {
+                        var redirectTo = 'transactions/withdrawal-request';
+                        sweetAlert(response, failed, redirectTo)
+                    }
+                })
             })
         })
     </script>

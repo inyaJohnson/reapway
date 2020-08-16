@@ -6,13 +6,13 @@
                 <div class="d-flex justify-content-between flex-wrap">
                     <div class="d-flex align-items-end flex-wrap">
                         <div class="mr-md-3 mr-xl-5">
-                            <h2>Ask for Help</h2>
-                            <p class="mb-md-0">State issues if any and Advise on investment.</p>
+                            <h2>Admin Response</h2>
+                            <p class="mb-md-0">Response to clients issue.</p>
                         </div>
                         <div class="d-flex">
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
                             <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a></p>
-                            <p class="text-primary mb-0 hover-cursor">Help</p>
+                            <p class="text-primary mb-0 hover-cursor">Responses</p>
                         </div>
                     </div>
                     @include('layouts.quick-links')
@@ -33,12 +33,12 @@
                                     <input class="form-control" type="text" placeholder="Enter your name *"
                                            name="name" readonly
                                            required
-                                           value="{{auth()->user()->name}}">
+                                           value="{{$help->user->name}}">
 
                                     <input class="form-control" type="email" placeholder="Enter E-mail *"
                                            name="email" readonly
                                            required
-                                           value="{{auth()->user()->email}}">
+                                           value="{{$help->user->email}}">
                                 </div>
                                 <div class="help-form-group">
                                     <input class="form-control" type="text" placeholder="Enter Message Subject *"
@@ -57,13 +57,9 @@
                                     fields.</p>
                                 <div class="help-form-group">
                                     <input type="file" class="form-control" name="attachment">
-                                    <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                                    <input type="hidden" name="help_id" value="{{$help->id}}">
                                 </div>
                                 <div class="help-form-bottom">
-                                    <div>
-                                        <input type="checkbox" name="copy">
-                                        <span>Send copy to yourself</span>
-                                    </div>
                                     <div class="spacer"></div>
                                     <div class="help-form-submit">
                                         <button type="submit" class="form-control btn btn-success">Send Email
@@ -86,7 +82,7 @@
                 var formData = new FormData(this);
                 $.ajax({
                     type: 'POST',
-                    url: '/help',
+                    url: '/response/send',
                     data: formData,
                     contentType : false,
                     processData : false,
@@ -102,7 +98,7 @@
                                 'success'
                             ).then(function (result) {
                                 if (result.value) {
-                                    window.location = '/home'
+                                    window.location = '/help'
                                 }
                             })
                         } else {
@@ -112,7 +108,7 @@
                                 'error'
                             ).then(function (result) {
                                 if (result.value) {
-                                    window.location = '/home'
+                                    window.location = '/help'
                                 }
                             })
                         }

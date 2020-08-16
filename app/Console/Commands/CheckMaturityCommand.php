@@ -39,14 +39,16 @@ class CheckMaturityCommand extends Command
      */
     public function handle()
     {
-        $investments = Investment::where('maturity', 0)->get();
+        $investments = Investment::where([
+            ['maturity', 0],
+            ['commitment', 1]
+        ])->get();
         foreach ($investments as $investment){
-            if(Carbon::now()->dayOfYear() - Carbon::parse($investment->created_at)->dayOfYear > $investment->duration) {
+            if(Carbon::now()->dayOfYear() - Carbon::parse($investment->updated_at)->dayOfYear >= $investment->duration) {
                 $investment->update([
                     'maturity' => 1,
                 ]);
             }
         }
-
     }
 }

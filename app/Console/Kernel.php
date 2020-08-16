@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\CheckMaturityCommand'
+        'App\Console\Commands\CheckMaturityCommand',
+        'App\Console\Commands\CheckCommitmentCommand'
     ];
 
     /**
@@ -27,6 +28,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
 //        $schedule->command('check:maturity')->everyTwoHours();
         $schedule->command('check:maturity')->everyMinute();
+        $schedule->command('check:commitment')->everyMinute();
     }
 
     /**

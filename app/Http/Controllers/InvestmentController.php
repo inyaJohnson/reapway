@@ -36,7 +36,7 @@ class InvestmentController extends Controller
             'profit' => round($package->price * ($package->percentage / 100))
         ]);
         //Matches investor to matured withdrawers
-        $this->matchMaker($investment->id, $package->id, $package->price);
+        $this->matchMaker($package->id, $package->price);
 
         return redirect()->route('transaction.deposit');
     }
@@ -70,7 +70,7 @@ class InvestmentController extends Controller
         $result = $investment->update(['reinvest' => 1]);
 
         //        Matches investor to matured withdrawers
-        $this->matchMaker($reinvestment->id, $reinvestment->package->id, $reinvestment->package->price);
+        $this->matchMaker($reinvestment->package->id, $reinvestment->package->price);
         if (!$result) {
             $message = ['error' => 'Reinvestment failed'];
         }
@@ -94,7 +94,7 @@ class InvestmentController extends Controller
         return response()->json($message);
     }
 
-    protected function matchMaker($investmentId, $packageId, $price)
+    protected function matchMaker($packageId, $price)
     {
         /**
          * ptbp => people to be paid
@@ -111,26 +111,47 @@ class InvestmentController extends Controller
         ])->get();
         $recipients = [];
         foreach ($withdrawals as $withdrawal) {
-            $recipients[] = ['id' => $withdrawal->id, 'recipient_id' => $withdrawal->user_id, 'maturityAge' => Carbon::now()->dayOfYear() - Carbon::parse($withdrawal->created_at)->dayOfYear, 'amount' => $withdrawal->amount];
+            $recipients[] = [
+                'id' => $withdrawal->id,
+                'investment_id' => $withdrawal->investment_id,
+                'recipient_id' => $withdrawal->user_id,
+                'maturityAge' => Carbon::now()->dayOfYear() - Carbon::parse($withdrawal->created_at)->dayOfYear,
+                'amount' => $withdrawal->amount
+            ];
         }
         $maturityAgeArray = array_column($recipients, 'maturityAge');
         array_multisort($maturityAgeArray, SORT_DESC, $recipients);
         foreach ($recipients as $recipient) {
             $temp = $mtbp - $recipient['amount'];
             if ($temp < 0) {
-                array_push($mismatch, ['id' => $recipient['id'], 'amount' => $recipient['amount'], 'recipient_id' => $recipient['recipient_id']]);
+                array_push($mismatch, [
+                    'id' => $recipient['id'],
+                    'amount' => $recipient['amount'],
+                    'recipient_id' => $recipient['recipient_id'],
+                    'investment_id' => $recipient['investment_id']
+                ]);
                 continue;
             }
             $mtbp = $mtbp - $recipient['amount'];
-            array_push($pdfp, ['id' => $recipient['id'], 'amount' => $recipient['amount'], 'recipient_id' => $recipient['recipient_id']]);
+            array_push($pdfp, [
+                'id' => $recipient['id'],
+                'amount' => $recipient['amount'],
+                'recipient_id' => $recipient['recipient_id'],
+                'investment_id' => $recipient['investment_id']
+            ]);
         }
 
         if ($mtbp !== 0) {
-            array_push($pdfp, ['id' => $mismatch[0]['id'], 'amount' => $mtbp, 'recipient_id' => $mismatch[0]['recipient_id']]);
-            $createBalanceWithdrawal = Withdrawal::findOrFail($mismatch[0]['recipient_id']);
-            $createBalanceWithdrawal->create([
+            array_push($pdfp, [
+                'id' => $mismatch[0]['id'],
+                'amount' => $mtbp,
+                'recipient_id' => $mismatch[0]['recipient_id'],
+                'investment_id' => $mismatch[0]['investment_id']
+            ]);
+//            $createBalanceWithdrawal = Withdrawal::findOrFail($mismatch[0]['recipient_id']);
+            Withdrawal::create([
                 'user_id' => $mismatch[0]['recipient_id'],
-                'investment_id' => $investmentId,
+                'investment_id' => $mismatch[0]['investment_id'],
                 'amount' => $mismatch[0]['amount'] - $mtbp,
             ]);
         }
@@ -140,7 +161,7 @@ class InvestmentController extends Controller
         foreach ($pdfp as $transaction) {
             auth()->user()->transaction()->create([
                 'package_id' => $packageId,
-                'investment_id' => $investmentId,
+                'investment_id' => $transaction['investment_id'],
                 'depositor_id' => auth()->user()->id,
                 'recipient_id' => $transaction['recipient_id'],
                 'withdrawal_id' => $transaction['id'],

@@ -17,6 +17,20 @@
     text-align: center;
 }
 
+#initials-small {
+    border-radius: 50%;
+    width: auto;
+    height: auto;
+    padding: 5%;
+    display: inline-block;
+    background: #6610f2;
+    font-weight: bold;
+    font-size: 100%;
+    color: #fff;
+    text-align: center;
+}
+
+
 .settings-form{
     margin-top: 30px;
 }
@@ -140,4 +154,17 @@
     flex-grow: 1;
 }
 
+.investment-history button, .investment-history a{
+    padding: 10px !important;
+}
 
+#confirm-deposit-form span{
+    color: #888888;
+    font-size: small;
+}
+
+
+.crumbs a{
+    color: grey;
+    text-decoration: none;
+}

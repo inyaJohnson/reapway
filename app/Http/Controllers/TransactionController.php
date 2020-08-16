@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\Investment;
 use App\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -31,9 +33,23 @@ class TransactionController extends Controller
         return view('transaction.withdraw', compact('transactions'));
     }
 
+    public function history(){
+
+        $deposits = Transaction::where([
+            ['depositor_id', auth()->user()->id],
+            ['depositor_status', 1],
+        ])->latest()->get();
+
+        $withdrawals = Transaction::where([
+            ['recipient_id', auth()->user()->id],
+            ['recipient_status', 1]
+        ])->latest()->get();
+        return view('transaction.history', compact('deposits', 'withdrawals'));
+    }
+
     public function showRecipient(Request $request)
     {
-        $account = Account::find($request->id);
+        $account = Account::where('user_id', $request->recepientId)->first();
         $message = [
             'name' => $account->name,
             'number' => $account->number,
@@ -46,13 +62,39 @@ class TransactionController extends Controller
 
     public function showDepositor(Request $request)
     {
-        $account = Account::find($request->id);
+        $account = Account::where('user_id', $request->recepientId)->first();
         $message = [
             'name' => $account->name,
             'number' => $account->number,
             'bank' => $account->bank,
             'phone' => $account->user->phone
         ];
+        return response()->json($message);
+    }
+
+    public function confirmWithdrawal(Request $request){
+        $transaction = Transaction::find(9);
+        $message = ['success' => 'Payment confirmed'];
+        $result = $transaction->update(['recipient_status' => 1]);
+        if(!$result){
+            $message = ['success' => 'Unable to confirmed Payment' ];
+        }
+        return response()->json($message);
+    }
+
+    public function confirmDeposit(Request $request){
+        $input = $this->validate($request, [
+           'attachment' => 'mimes:png,jpg,jpeg,svg,mp3,mp4,docs,odt,xlx,xls,csv,ods,pdf|max:2048',
+            'transaction_id' => 'required'
+        ]);
+        $attachmentName = $input['transaction_id'].'.'.$input['attachment']->extension();
+        $input['attachment']->move(public_path('store'), $attachmentName);
+        $transaction = Transaction::find($input['transaction_id']);
+        $message = ['success' => 'Payment confirmed'];
+        $result = $transaction->update(['depositor_status' => 1, 'proof_of_payment' => $attachmentName]);
+        if(!$result){
+            $message = ['success' => 'Unable to confirmed Payment' ];
+        }
         return response()->json($message);
     }
 }

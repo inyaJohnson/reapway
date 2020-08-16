@@ -6,27 +6,16 @@
                 <div class="d-flex justify-content-between flex-wrap">
                     <div class="d-flex align-items-end flex-wrap">
                         <div class="mr-md-3 mr-xl-5">
-                            <h2>Packages</h2>
-                            <p class="mb-md-0">Your analytics dashboard template.</p>
+                            <h2>Investment Packages</h2>
+                            <p class="mb-md-0">List of available investment packages.</p>
                         </div>
                         <div class="d-flex">
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
-                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</p>
-                            <p class="text-primary mb-0 hover-cursor">Analytics</p>
+                            <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a></p>
+                            <p class="text-primary mb-0 hover-cursor">Invest</p>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between align-items-end flex-wrap">
-                        <button type="button" class="btn btn-light bg-white btn-icon mr-3 d-none d-md-block ">
-                            <i class="mdi mdi-download text-muted"></i>
-                        </button>
-                        <button type="button" class="btn btn-light bg-white btn-icon mr-3 mt-2 mt-xl-0">
-                            <i class="mdi mdi-clock-outline text-muted"></i>
-                        </button>
-                        <button type="button" class="btn btn-light bg-white btn-icon mr-3 mt-2 mt-xl-0">
-                            <i class="mdi mdi-plus text-muted"></i>
-                        </button>
-                        <button class="btn btn-primary mt-2 mt-xl-0">Generate report</button>
-                    </div>
+                    @include('layouts.quick-links')
                 </div>
             </div>
         </div>
@@ -66,12 +55,17 @@
 @endsection
 @section('script')
     <script type="text/javascript">
+
         $(document).ready(function () {
+            function formatNumber(num) {
+                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            }
+
             $('.invest_submit').on('click', function () {
                 // window.alert("hello")
                 Swal.fire({
                     title: 'Are you sure?',
-                    text: "You want to invest #" + $(this).parents('form').children('.package_price').val() + "!",
+                    text: "You want to invest #" + formatNumber($(this).parents('form').children('.package_price').val()) + "!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',

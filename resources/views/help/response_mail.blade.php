@@ -132,7 +132,8 @@
                             font-weight: normal;
                             margin: 0; margin-bottom: 15px;"
                                         >
-                                            This message was sent by {{$data['name']}}  with email <a href="{{$data['email']}}">{{$data['email']}}</a>
+                                            Best Regard, <br />
+                                            Team RocketPay
                                         </p>
                                     </td>
                                 </tr>
@@ -194,12 +195,7 @@
                     font-size: 12px;
                     color: #aaaaaa;
                     text-align: center;">
-                                Please read more on the
-                                <a href="https://globalplusonline.com/"
-                                   style="color: #65d5f7;
-                    font-size: 12px;
-                    text-align: center;
-                    text-decoration: none;">Home Page</a>.
+
                             </td>
                         </tr>
                         <tr>
@@ -211,26 +207,6 @@
                     padding-top: 20px;
                     padding-bottom: 10px;
                     font-size: 12px; ">
-
-{{--                                <a href="https://web.facebook.com/globalpluspub"--}}
-{{--                                   style="--}}
-{{--                    font-size: 12px;--}}
-{{--                    text-decoration: none;"><img src="{{asset('template/images/mail/facebook.svg')}}" class="facebook"--}}
-{{--                                                 style=" width: 24px;"--}}
-{{--                                    ></a>--}}
-{{--                                <a href="https://twitter.com/GlobalPlusPub/"--}}
-{{--                                   style="--}}
-{{--                    font-size: 12px;--}}
-{{--                    text-decoration: none;"><img src="{{asset('template/images/mail/twitter.svg')}}" class="twitter"--}}
-{{--                                                 style=" width: 24px;"--}}
-{{--                                    ></a>--}}
-
-{{--                                <a href="https://www.instagram.com/globalpluspub/"--}}
-{{--                                   style="--}}
-{{--                    font-size: 12px;text-decoration: none;"><img src="{{asset('template/images/mail/instagram.svg')}}"--}}
-{{--                                                                 class="instagram"--}}
-{{--                                                                 style=" width: 24px; "--}}
-{{--                                    ></a>--}}
 
                             </td>
                         </tr>

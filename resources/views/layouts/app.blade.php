@@ -30,10 +30,10 @@
         <div class="navbar-brand-wrapper d-flex justify-content-center">
             <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
                 <a class="navbar-brand brand-logo" href="{{route('welcome')}}"><img
-                        src="{{asset('dashboard/images/logo.svg')}}"
+                        src="{{asset('dashboard/images/logo.jpg')}}"
                         alt="logo"/></a>
                 <a class="navbar-brand brand-logo-mini" href="{{route('welcome')}}"><img
-                        src="{{asset('dashboard/images/logo-mini.svg')}}" alt="logo"/></a>
+                        src="{{asset('dashboard/images/logo-mini.jpg')}}" alt="logo"/></a>
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-sort-variant"></span>
                 </button>
@@ -54,109 +54,15 @@
                 </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
-                <li class="nav-item dropdown mr-1">
-                    <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center"
-                       id="messageDropdown" href="#" data-toggle="dropdown">
-                        <i class="mdi mdi-message-text mx-0"></i>
-                        <span class="count"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
-                        <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-                        <a class="dropdown-item">
-                            <div class="item-thumbnail">
-                                <img src="{{asset('dashboard/images/faces/face4.jpg')}}" alt="image"
-                                     class="profile-pic">
-                            </div>
-                            <div class="item-content flex-grow">
-                                <h6 class="ellipsis font-weight-normal">David Grey
-                                </h6>
-                                <p class="font-weight-light small-text text-muted mb-0">
-                                    The meeting is cancelled
-                                </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item">
-                            <div class="item-thumbnail">
-                                <img src="{{asset('dashboard/images/faces/face2.jpg')}}" alt="image"
-                                     class="profile-pic">
-                            </div>
-                            <div class="item-content flex-grow">
-                                <h6 class="ellipsis font-weight-normal">Tim Cook
-                                </h6>
-                                <p class="font-weight-light small-text text-muted mb-0">
-                                    New product launch
-                                </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item">
-                            <div class="item-thumbnail">
-                                <img src="{{asset('dashboard/images/faces/face3.jpg')}}" alt="image"
-                                     class="profile-pic">
-                            </div>
-                            <div class="item-content flex-grow">
-                                <h6 class="ellipsis font-weight-normal"> Johnson
-                                </h6>
-                                <p class="font-weight-light small-text text-muted mb-0">
-                                    Upcoming board meeting
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown mr-4">
-                    <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center notification-dropdown"
-                       id="notificationDropdown" href="#" data-toggle="dropdown">
-                        <i class="mdi mdi-bell mx-0"></i>
-                        <span class="count"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
-                         aria-labelledby="notificationDropdown">
-                        <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-                        <a class="dropdown-item">
-                            <div class="item-thumbnail">
-                                <div class="item-icon bg-success">
-                                    <i class="mdi mdi-information mx-0"></i>
-                                </div>
-                            </div>
-                            <div class="item-content">
-                                <h6 class="font-weight-normal">Application Error</h6>
-                                <p class="font-weight-light small-text mb-0 text-muted">
-                                    Just now
-                                </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item">
-                            <div class="item-thumbnail">
-                                <div class="item-icon bg-warning">
-                                    <i class="mdi mdi-settings mx-0"></i>
-                                </div>
-                            </div>
-                            <div class="item-content">
-                                <h6 class="font-weight-normal">Settings</h6>
-                                <p class="font-weight-light small-text mb-0 text-muted">
-                                    Private message
-                                </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item">
-                            <div class="item-thumbnail">
-                                <div class="item-icon bg-info">
-                                    <i class="mdi mdi-account-box mx-0"></i>
-                                </div>
-                            </div>
-                            <div class="item-content">
-                                <h6 class="font-weight-normal">New user registration</h6>
-                                <p class="font-weight-light small-text mb-0 text-muted">
-                                    2 days ago
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                        <img src="{{asset('dashboard/images/faces/face5.jpg')}}" alt="profile"/>
+                        <span id="initials-small">
+                            @php
+                                foreach (explode(' ', auth()->user()->name) as $name){
+                                    echo strtoupper(substr($name, 0, 1));
+                                }
+                            @endphp
+                        </span>
                         <span class="nav-profile-name">{{ Auth::user()->name }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -212,11 +118,17 @@
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link"
                                                     href="{{route('investment.index')}}">History</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{route('investment.invest')}}">Invest
-                                    Now</a></li>
+                            @can('client-actions')
+                                <li class="nav-item"><a class="nav-link" href="{{route('investment.invest')}}">Invest
+                                        Now</a></li>
+                            @endcan
                             @can('admin-actions')
                                 <li class="nav-item"><a class="nav-link"
+                                                        href="#">Package List</a></li>
+                                <li class="nav-item"><a class="nav-link"
                                                         href="{{route('packages.create')}}">Create Package</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="#">Inject Investment</a></li>
                             @endcan
                         </ul>
                     </div>
@@ -225,7 +137,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('withdrawal.index')}}" aria-expanded="false">
                         <i class="mdi mdi-cash-multiple menu-icon"></i>
-                        <span class="menu-title">Withdrawal</span>
+                        <span class="menu-title">Withdraw</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -260,17 +172,11 @@
                             <li class="nav-item"><a class="nav-link" href="{{route('transaction.withdraw')}}">Withdrawal
                                     Match</a>
                             </li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('transaction.history')}}">History</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
-                @can('admin-actions')
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{'payments.index'}}">
-                            <i class="mdi mdi-history menu-icon"></i>
-                            <span class="menu-title">Payment Matching</span>
-                        </a>
-                    </li>
-                @endcan
 
                 <li class="nav-item">
                     <a class="nav-link" href="pages/icons/mdi.html">
@@ -279,12 +185,12 @@
                     </a>
                 </li>
                 @can('client-actions')
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('help.create')}}">
-                        <i class="mdi mdi-help-circle-outline menu-icon"></i>
-                        <span class="menu-title">Help</span>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('help.create')}}">
+                            <i class="mdi mdi-help-circle-outline menu-icon"></i>
+                            <span class="menu-title">Help</span>
+                        </a>
+                    </li>
                 @endcan
                 @can('admin-actions')
                     <li class="nav-item">
@@ -302,7 +208,7 @@
         <!-- partial:partials/_footer.html -->
             <footer class="footer">
                 <div class="d-sm-flex justify-content-center">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © {{\Carbon\Carbon::now()->year}} <a
                             href="https://www.rocketpay.cc/" target="_blank">RocketPay</a>. All rights reserved.</span>
                 </div>
             </footer>
@@ -335,6 +241,7 @@
 <script src="{{asset('dashboard/js/dataTables.bootstrap4.js')}}"></script>
 <script src="{{asset('dashboard/js/sweetalert2/dist/sweetalert2.min.js')}}"></script>
 <script src="{{asset('dashboard/js/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('dashboard/js/custom.js')}}"></script>
 <!-- End custom js for this page-->
 
 @yield('script')

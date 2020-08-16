@@ -7,26 +7,15 @@
                     <div class="d-flex align-items-end flex-wrap">
                         <div class="mr-md-3 mr-xl-5">
                             <h2>Deposit To Make</h2>
-                            <p class="mb-md-0">Your analytics dashboard template.</p>
+                            <p class="mb-md-0">List of people to pay to.</p>
                         </div>
                         <div class="d-flex">
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
-                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</p>
-                            <p class="text-primary mb-0 hover-cursor">Analytics</p>
+                            <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a></p>
+                            <p class="text-primary mb-0 hover-cursor">Deposit To</p>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between align-items-end flex-wrap">
-                        <button type="button" class="btn btn-light bg-white btn-icon mr-3 d-none d-md-block ">
-                            <i class="mdi mdi-download text-muted"></i>
-                        </button>
-                        <button type="button" class="btn btn-light bg-white btn-icon mr-3 mt-2 mt-xl-0">
-                            <i class="mdi mdi-clock-outline text-muted"></i>
-                        </button>
-                        <button type="button" class="btn btn-light bg-white btn-icon mr-3 mt-2 mt-xl-0">
-                            <i class="mdi mdi-plus text-muted"></i>
-                        </button>
-                        <button class="btn btn-primary mt-2 mt-xl-0">Generate report</button>
-                    </div>
+                    @include('layouts.quick-links')
                 </div>
             </div>
         </div>
@@ -43,7 +32,9 @@
                                     <th>Package</th>
                                     <th>Date Matched</th>
                                     <th>Amount</th>
-                                    <th>Depositor's Info</th>
+                                    <th>Recipient's Info</th>
+                                    <th>Action</th>
+                                    <th>Proof of Payment</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -52,8 +43,25 @@
                                         <td>{{$transaction->package->name}}</td>
                                         <td>{{$transaction->created_at}}</td>
                                         <td>{{number_format($transaction->amount)}}</td>
-                                        <td><a class="btn btn-primary view-recipient" style="padding: 10px;" href="#" data-id={{$transaction->recipient_id}} data='{{$transaction->id}}'>View Recipient</a></td>
-                                        <input value="{{$transaction->amount}}" id="amount{{$transaction->id}}" type="hidden">
+                                        <td><a class="btn btn-primary view-recipient" href="javascript:void(0)"
+                                               data-id={{$transaction->recipient_id}} data='{{$transaction->id}}'>View
+                                                Recipient</a></td>
+                                        <input value="{{$transaction->amount}}" id="amount{{$transaction->id}}"
+                                               type="hidden">
+                                        <td>
+                                            <button class="btn btn-primary confirm-deposit-btn"
+                                                    data-id="{{$transaction->id}}">Confirm Payment
+                                            </button>
+                                        </td>
+                                        <td>
+                                            @if($transaction->proof_of_payment == null)
+                                                No Proof Yet
+                                            @else
+                                                <a class="btn btn-primary"
+                                                   href="/store/{{$transaction->proof_of_payment}}" download>Download
+                                                    File</a>
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -65,34 +73,6 @@
         </div>
     </div>
     @include('transaction.recipient-info')
+    @include('transaction.confirm-depositor')
 @endsection
-@section('script')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.investment-history').dataTable();
 
-            function formatNumber(num) {
-                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-            }
-
-            $('.view-recipient').on('click', function(){
-                var id = $(this).attr('data-id');
-                var transactionId = $(this).attr('data');
-                var amount = parseInt($('#amount'+transactionId).val());
-                $.ajax({
-                    type: 'GET',
-                    url: "show-recipient",
-                    data: {id:id},
-                    success : function (response) {
-                        $('.user-account .user-account-bank').text(response.bank)
-                        $('.user-account .user-account-name').text(response.name)
-                        $('.user-account .user-account-number').text(response.number)
-                        $('.user-account .user-account-phone').text(response.phone)
-                        $('.user-account .user-account-amount').text(formatNumber(amount))
-                    }
-                })
-                $('#recipient-modal').modal();
-            })
-        })
-    </script>
-@endsection

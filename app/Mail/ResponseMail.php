@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class HelpMail extends Mailable
+class ResponseMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,7 +29,7 @@ class HelpMail extends Mailable
      */
     public function build()
     {
-        $email = $this->from('info@intoajohnson.com')->view('help.mail');
+        $email = $this->from('info@intoajohnson.com')->view('help.response_mail');
         if (isset($this->data['attachment']) && !is_string($this->data['attachment'])) {
             $email->attach($this->data['attachment']->getRealPath(),
                 [

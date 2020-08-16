@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Gate;
 
-class Admin
+class Client
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(Gate::denies('admin-actions')){
+        if(Gate::denies('client-actions')){
             return redirect()->route('home');
         }
         return $next($request);

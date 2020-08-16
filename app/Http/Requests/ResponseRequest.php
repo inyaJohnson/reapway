@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HelpRequest extends FormRequest
+class ResponseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +30,7 @@ class HelpRequest extends FormRequest
             'message' => 'required',
             'copy' => 'string',
             'attachment' => 'mimes:png,jpg,jpeg,svg,mp3,mp4,docs,odt,xlx,xls,csv,ods,pdf|max:2048',
-            'user_id' => 'required'
+            'help_id' => 'required'
         ];
     }
 }
