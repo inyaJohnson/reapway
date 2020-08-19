@@ -38,9 +38,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('transactions/show-recipient', 'TransactionController@showRecipient')->name('recipient-info');
     Route::get('transactions/confirm-withdrawal', 'TransactionController@confirmWithdrawal')->name('confirm-withdrawal');
     Route::post('transactions/confirm-deposit', 'TransactionController@confirmDeposit')->name('confirm-deposit');
-    Route::get('/response/create/{id}', 'HelpController@response')->name('response.create');
-    Route::post('/response/send', 'HelpController@sendResponse')->name('response.store');
     Route::resource('help', 'HelpController');
+    Route::get('referral', 'ReferralController@index')->name('referral.index');
+    Route::post('referral/store', 'ReferralController@storeReferral')->name('referral.storeReferral');
+    Route::get('referral/withdraw-bonus/{id}', 'ReferralController@withdrawReferralBonus')->name('referral.withdraw');
 });
 
 //Route::group(['middleware' => ['auth', 'client'], function(){
@@ -50,6 +51,16 @@ Route::group(['middleware' => 'auth'], function(){
 Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'admin', 'namespace'=> 'Admin'], function (){
     Route::get('/create-package', 'PackageController@create')->name('packages.create');
     Route::post('/store-package', 'PackageController@store')->name('packages.store');
+    Route::get('show-recipient/{id}', 'GeneralReportController@showRecipient')->name('general-report.show-recipient');
+    Route::resource('general-report', 'GeneralReportController');
+});
+
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('/response/create/{id}', 'HelpController@response')->name('response.create');
+    Route::post('/response/send', 'HelpController@sendResponse')->name('response.store');
+    Route::get('referral/payment', 'ReferralController@payment')->name('referral.payment');
+    Route::get('referral/show-referrer','ReferralController@showReferrerInfo');
+    Route::get('referral/confirm-withdrawal','ReferralController@confirmWithdrawal');
 });
 
 Auth::routes();

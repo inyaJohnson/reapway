@@ -28,7 +28,13 @@ class TransactionController extends Controller
             ['recipient_id', auth()->user()->id],
             ['depositor_status', 0],
             ['recipient_status', 0]
-        ])->get();
+        ])->orWhere(function ($query){
+            $query->where([
+                ['recipient_id', auth()->user()->id],
+                ['depositor_status', 1],
+                ['recipient_status', 0]
+            ]);
+        })->get();
 
         return view('transaction.withdraw', compact('transactions'));
     }
@@ -73,7 +79,7 @@ class TransactionController extends Controller
     }
 
     public function confirmWithdrawal(Request $request){
-        $transaction = Transaction::find(9);
+        $transaction = Transaction::find($request->id);
         $message = ['success' => 'Payment confirmed'];
         $result = $transaction->update(['recipient_status' => 1]);
         if(!$result){
@@ -84,16 +90,16 @@ class TransactionController extends Controller
 
     public function confirmDeposit(Request $request){
         $input = $this->validate($request, [
-           'attachment' => 'mimes:png,jpg,jpeg,svg,mp3,mp4,docs,odt,xlx,xls,csv,ods,pdf|max:2048',
+           'attachment' => 'max:2048',
             'transaction_id' => 'required'
         ]);
-        $attachmentName = $input['transaction_id'].'.'.$input['attachment']->extension();
-        $input['attachment']->move(public_path('store'), $attachmentName);
-        $transaction = Transaction::find($input['transaction_id']);
-        $message = ['success' => 'Payment confirmed'];
-        $result = $transaction->update(['depositor_status' => 1, 'proof_of_payment' => $attachmentName]);
-        if(!$result){
-            $message = ['success' => 'Unable to confirmed Payment' ];
+        $message = ['error' => 'No file uploaded'];
+        if(isset($input['attachment'])) {
+            $attachmentName = $input['transaction_id'] . '.' . $input['attachment']->extension();
+            $input['attachment']->move(public_path('store'), $attachmentName);
+            $transaction = Transaction::find($input['transaction_id']);
+            $message = ['success' => 'Payment confirmed'];
+            $transaction->update(['depositor_status' => 1, 'proof_of_payment' => $attachmentName]);
         }
         return response()->json($message);
     }

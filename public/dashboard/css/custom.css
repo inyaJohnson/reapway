@@ -158,7 +158,7 @@
     padding: 10px !important;
 }
 
-#confirm-deposit-form span{
+#confirm-deposit-form span, #referrer-form span{
     color: #888888;
     font-size: small;
 }
@@ -167,4 +167,8 @@
 .crumbs a{
     color: grey;
     text-decoration: none;
+}
+
+.error{
+    color: red !important;
 }

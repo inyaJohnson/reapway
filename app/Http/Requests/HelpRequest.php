@@ -29,7 +29,7 @@ class HelpRequest extends FormRequest
             'subject' => 'required|string|max:255',
             'message' => 'required',
             'copy' => 'string',
-            'attachment' => 'mimes:png,jpg,jpeg,svg,mp3,mp4,docs,odt,xlx,xls,csv,ods,pdf|max:2048',
+            'attachment' => 'max:2048',
             'user_id' => 'required'
         ];
     }

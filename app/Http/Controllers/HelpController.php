@@ -39,17 +39,11 @@ class HelpController extends Controller
         }
         $email->send( new HelpMail($input));
 
-        if(!isset($input['attachment'])){
-            $result = Help::create($request->validated());
-            if (!$result){
-                $message = ['error' => 'Email sending failed'];
-            }
-            return response()->json($message);
+        if(isset($input['attachment'])){
+            $attachmentName = time(). '.' .$input['attachment']->extension();
+            $input['attachment']->move(public_path('store'), $attachmentName);
+            $input['attachment'] = $attachmentName;
         }
-
-        $attachmentName = time(). '.' .$input['attachment']->extension();
-        $input['attachment']->move(public_path('store'), $attachmentName);
-        $input['attachment'] = $attachmentName;
         $result = Help::create($input);
         if (!$result){
             $message = ['error' => 'Email sending failed'];
