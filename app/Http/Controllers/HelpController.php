@@ -33,7 +33,7 @@ class HelpController extends Controller
     public function store(HelpRequest $request){
         $input = $request->validated();
         $message = ['success' => 'Email sent successfully'];
-        $email = Mail::to('intoajohnson@gmail.com');
+        $email = Mail::to('info@rocketpay.cc');
         if(isset($request->copy)){
             $email->bcc($input['email']);
         }

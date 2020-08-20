@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function(){
     ->middleware(['auth', 'client']);
 //});
 Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'admin', 'namespace'=> 'Admin'], function (){
+    Route::get('/package', 'PackageController@index')->name('packages.index');
     Route::get('/create-package', 'PackageController@create')->name('packages.create');
     Route::post('/store-package', 'PackageController@store')->name('packages.store');
     Route::get('show-recipient/{id}', 'GeneralReportController@showRecipient')->name('general-report.show-recipient');
@@ -65,3 +66,4 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 
 Auth::routes();
 
+Route::get('/setup', 'SetUpController@index')->name('setup');

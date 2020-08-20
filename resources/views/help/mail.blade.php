@@ -59,7 +59,7 @@
                 mso-hide: all;
                 visibility: hidden;
                 width: 0;">
-                <!-- Sales Ruby Header Text  -->
+                <!--Header Text  -->
             </span>
 
                 <table
@@ -108,13 +108,13 @@
                             margin: 0;
                             margin-bottom: 50px;
                             "
-                                        ><img src="{{asset('template/images/mail/logo.png')}}" class="logo"
+                                        ><img src="{{url('https://rocketpay.cc/images/logo.jpg')}}" class="logo"
                                               style=" width: 150px;
                                             margin-left: auto;
                                             margin-right: auto;
                                             padding: 0 0 10px;
                                             display: block;"
-                                            >Your search for quality stops right here
+                                            >Your search for reliable investment stops right here
                                         </p>
                                         <h4 style="font-family: Verdana;
                             font-size: 14px;

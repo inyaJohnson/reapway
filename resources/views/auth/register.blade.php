@@ -40,11 +40,11 @@
         <div class="form-part">
             <div class="cp-header">
                 <div class="logo">
-                    <a href="#"><img class="light" src="{{asset('assets/images/dark-logo.png')}}" alt="Coinpool"></a>
+                    <a href="{{route('welcome')}}"><img class="light" src="{{asset('assets/images/dark-logo1.jpg')}}" alt="RocketPay"></a>
                 </div>
             </div>
             <div class="cp-heading">
-                <h5>Welcome to Coinpool</h5>
+                <h5>Welcome to RocketPay</h5>
 {{--                <p>Too keep connected with us please Sign up with your personal information by email address and--}}
 {{--                    password.</p>--}}
             </div>

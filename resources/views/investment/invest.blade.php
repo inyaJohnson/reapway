@@ -22,33 +22,32 @@
         @include('layouts.message')
         <div class="row">
             @foreach($availablePackages as $package)
-                <div class="col-lg-4 grid-margin stretch-card">
-                    <div class="package card-body">
-                        <div class="package_icon_wrap text-center">
-                            <div class="package_icon">
-                                <span class="mdi mdi-cash-multiple "></span>
+                <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                    <div class="sale-box-inner">
+                        <div class="sale-box-head">
+                            <h4>{{$package->name}}</h4>
+                        </div>
+                        <ul class="sale-box-desc">
+                            <li>
+                                <strong>#{{number_format($package->price)}}</strong>
+                                <span>up to {{$package->percentage}}% ROI - #{{number_format(($package->price*$package->percentage)/100)}}</span>
+                            </li>
+                            <li>
+                                <strong>100% Recommitment</strong>
+                                <span>(You get 5% referral bonus)</span>
+                            </li>
+                        </ul>
+                        <form method="POST" action="{{route('investment.store')}}">
+                            @csrf
+                            <input type="hidden" name="package_id" value={{$package->id}} />
+                            <input type="hidden" name="package_price" value={{$package->price}} class="package_price" />
+                            <div class="invest_btn text-center">
+                                <button class="invest_submit" type="button">Invest Now</button>
                             </div>
-                        </div>
-                        <div class="package_info text-center">
-                            <span>{{$package->name}}</span>
-                            <h3>#{{number_format($package->price)}}</h3>
-                        </div>
-                        <div class="package_service_content">
-                            <p> Get return {{$package->percentage}}% in {{$package->duration}} Days</p>
-                            <form method="POST" action="{{route('investment.store')}}">
-                                @csrf
-                                <input type="hidden" name="package_id" value={{$package->id}} />
-                                <input type="hidden" name="package_price" value={{$package->price}} class="package_price" />
-                                <div class="invest_btn text-center">
-                                    <button class="invest_submit" type="button">Invest Now</button>
-                                </div>
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
             @endforeach
-
-
         </div>
     </div>
     <!-- content-wrapper ends -->

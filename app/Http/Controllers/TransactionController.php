@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Account;
-use App\Investment;
 use App\Transaction;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller

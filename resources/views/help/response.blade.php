@@ -62,7 +62,7 @@
                                 <div class="help-form-bottom">
                                     <div class="spacer"></div>
                                     <div class="help-form-submit">
-                                        <button type="submit" class="form-control btn btn-success">Send Email
+                                        <button type="submit" class="form-control btn btn-primary">Send Email
                                         </button>
                                     </div>
                                 </div>

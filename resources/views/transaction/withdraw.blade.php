@@ -46,7 +46,7 @@
                                         <td><a class="btn btn-primary view-depositor" href="#" data-id={{$transaction->depositor_id}} data='{{$transaction->id}}'>View Depositor</a></td>
                                         <input value="{{$transaction->amount}}"  id="amount{{$transaction->id}}" type="hidden">
                                         <td><button class="btn btn-primary confirm-withrawal" data-id="{{$transaction->id}}">Confirm Payment</button></td>
-                                        <td><a class="btn btn-primary" href="/store/{{$transaction->proof_of_payment}}" download>Download File</a></td>
+                                        <td><a class="btn btn-primary" href="/rocket_pay/public/store/{{$transaction->proof_of_payment}}" download>Download File</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

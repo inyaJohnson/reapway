@@ -107,7 +107,7 @@
                             store useful information. Therefore, it is important </p>
                         <div id="total-sales-chart-legend"></div>
                     </div>
-                    <canvas id="total-sales-chart"></canvas>
+                    <img src="{{asset('assets/images/banner-2.jpg')}}"  alt="banner" height="200px"/>
                 </div>
             </div>
         </div>

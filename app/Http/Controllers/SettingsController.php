@@ -42,12 +42,6 @@ class SettingsController extends Controller
 
     public function storeAccount(AccountRequest $request)
     {
-//        if(URL::previous() === URL::route('investment.invest')) {
-//            redirect()->back()->with('success', 'Account successfully created, You can now Invest');
-//        } else {
-//            return redirect()->route('settings.index')->with('success', 'Account successfully created');
-//        }
-
         $input = $request->validated();
         $input['user_id'] = auth()->user()->id;
         Account::create($input);

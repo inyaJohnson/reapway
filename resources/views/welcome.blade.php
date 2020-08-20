@@ -18,7 +18,7 @@
         rel="stylesheet">
     <link href="{{url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800')}}" rel="stylesheet">
     <!-- Website Title -->
-    <title>Platinum - Coinpool</title>
+    <title>RocketPay - Welcome</title>
     <!-- Stylesheets Start -->
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}" type="text/css"/>
@@ -41,8 +41,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-4 logo">
-                    <a href="{{url('assets/cp-platinum.html')}}" title="Cp Platinum">
-                        <img class="light" src="{{asset('assets/images/logo.png')}}" alt="Cp Platinum">
+                    <a href="{{route('welcome')}}" title="Cp Platinum">
+                        <img class="light" src="{{asset('assets/images/logo2.png')}}" alt="Cp Platinum">
                         <img class="dark" src="{{asset('assets/images/dark-logo.png')}}" alt="Cp Platinum">
                     </a>
                 </div>
@@ -69,7 +69,7 @@
     <!-- Content Section Start -->
     <div class="midd-container">
         <!-- Hero Section Start -->
-        <div class="hero-main platinum-layout white-sec" style="background-image:url(assets/images/banner-5.jpg);">
+        <div class="hero-main platinum-layout white-sec" style="background-image:url('assets/images/banner-5.jpg')">
             <div class="container">
                 <div class="row row-reverse align-items-center">
                     <div class="col-sm-12 col-md-6" data-wow-delay="0.5s">
@@ -97,11 +97,10 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 mobile-center">
-                        <h1>Trading platform of the <span>future!</span></h1>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mauris
-                            bibendum, tincidunt mauris at, tempor nunc.</p>
+                        <h1>Sustainable Peer 2 Peer <span>Platform!</span></h1>
+                        <p class="lead">With the experience we've gathered over the years, we've decided to build a very sustainable  P2P system where referring, testimonial videos, and upgrade is not mandatory. </p>
                         <div class="hero-btns">
-                            <a href="{{route('register')}}" class="btn">SIGN UP TO JOIN</a>
+                            <a href="{{route('register')}}" class="btn">ROCK IN</a>
 
                         </div>
                     </div>
@@ -121,23 +120,18 @@
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-12">
-                        <h2 class="section-heading">About ICO</h2>
-                        <h4>Why to choose Coinpool Diamond?</h4>
-                        <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at dictum risus, non suscipit
-                            arcu. Quisque aliquam posuere tortor, sit amet convallis nunc scelerisque in.</h5>
+                        <h2 class="section-heading">About RocketPay</h2>
+                        <!-- <h4>Why to choose RocketPay?</h4> -->
+                        <h5>Rocketpay is a P2P system with 72hours enabled payment gateway that offers its participants 50% ROI in 3 days with a 100% recommitment policy And no guilder</h5>
 
                         <div class="tab-section">
                             <!-- Nav tabs -->
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div class="tab-pane active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum ab repellat
-                                        repudiandae accusamus eligendi incidunt beatae rerum quibusdam ducimus dolore
-                                        neque, magni aut perferendis fuga tempore reprehenderit libero, ab repellat
-                                        repudiandae accusamus eligendi incidunt beatae rerum temporibus minus! Lorem
-                                        ipsum dolor sit amet.</p>
-                                </div>
+                                <!-- <div class="tab-pane active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum ab repellat repudiandae accusamus eligendi incidunt beatae rerum quibusdam ducimus dolore neque, magni aut perferendis fuga tempore reprehenderit libero, ab repellat repudiandae accusamus eligendi incidunt beatae rerum temporibus minus! Lorem ipsum dolor sit amet.</p>
+                                </div> -->
 
                             </div>
                         </div>
@@ -161,75 +155,169 @@
             <div class="container">
                 <div class="sec-title text-center"><h3>Packages</h3></div>
                 <div class="sub-txt text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt ultrices. Ut
-                        quis blandit dolor. Ut laoreet sagittis arcu eu tristique.</p>
+                    <p>Make hug funds today by investing with Rocketpay</p>
                 </div>
+                <div class="row sale-boxes">
+                    <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                        <div class="sale-box-inner">
+                            <div class="sale-box-head">
+                                <h4>Beginner</h4>
+                            </div>
+                            <ul class="sale-box-desc">
+                                <li>
+                                    <strong style="color: white !important">5,000</strong>
+                                    <span>up to 50% ROI - 7,500</span>
+                                </li>
+                                <li>
+                                    <strong>50% Recommitment</strong>
+                                    <span>(You get 5% referral bonus)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                        <div class="sale-box-inner">
+                            <div class="sale-box-head">
+                                <h4>Amateur</h4>
+                            </div>
+                            <ul class="sale-box-desc">
+                                <li>
+                                    <strong style="color: white !important">10,000</strong>
+                                    <span>up to 50% ROI - 15,000</span>
+                                </li>
+                                <li>
+                                    <strong>50% Recommitment</strong>
+                                    <span>(You get 5% referral bonus)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                        <div class="sale-box-inner">
+                            <div class="sale-box-head">
+                                <h4>Enthusiast</h4>
+                            </div>
+                            <ul class="sale-box-desc">
+                                <li>
+                                    <strong style="color: white !important">20,000</strong>
+                                    <span>up to 50% ROI - 25,000</span>
+                                </li>
+                                <li>
+                                    <strong>50% Recommitment</strong>
+                                    <span>(You get 5% referral bonus)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                        <div class="sale-box-inner">
+                            <div class="sale-box-head">
+                                <h4>Pro</h4>
+                            </div>
+                            <ul class="sale-box-desc">
+                                <li>
+                                    <strong style="color: white !important">30,000</strong>
+                                    <span>up to 50% ROI - 45,000</span>
+                                </li>
+                                <li>
+                                    <strong>50% Recommitment</strong>
+                                    <span>(You get 5% referral bonus)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <br>
                 <div class="row sale-boxes">
                     <div class="col-md-4 sale-box wow fadeInUp" data-wow-iteration="1">
                         <div class="sale-box-inner">
                             <div class="sale-box-head">
-                                <h4>Private Pre-Sale</h4>
-                                <span>December 20, 2020</span>
+                                <h4>Expert</h4>
+                                <!-- <span>December 20, 2020</span> -->
                             </div>
                             <ul class="sale-box-desc">
                                 <li>
-                                    <strong>1 ETH = up to 41,000 STMX</strong>
-                                    <span>up to 42% bonus</span>
+                                    <strong style="color: white !important">50,000</strong>
+                                    <span>up to 50% ROI - 65,000</span>
                                 </li>
                                 <li>
-                                    <strong>21,000,000 STMX</strong>
-                                    <span>(up to $0.75 million)</span>
+                                    <strong>50% Recommitment</strong>
+                                    <span>(You get 5% referral bonus)</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-4 sale-box wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="col-md-4 sale-box wow fadeInUp" data-wow-iteration="1">
                         <div class="sale-box-inner">
                             <div class="sale-box-head">
-                                <h4>Private Pre-Sale</h4>
-                                <span>December 20, 2020</span>
+                                <h4>Super</h4>
+                                <!-- <span>December 20, 2020</span> -->
                             </div>
                             <ul class="sale-box-desc">
                                 <li>
-                                    <strong>1 ETH = up to 41,000 STMX</strong>
-                                    <span>up to 42% bonus</span>
+                                    <strong style="color: white !important">100,000</strong>
+                                    <span>up to 50% ROI - 150,000</span>
                                 </li>
                                 <li>
-                                    <strong>21,000,000 STMX</strong>
-                                    <span>(up to $0.75 million)</span>
+                                    <strong>50% Recommitment</strong>
+                                    <span>(You get 5% referral bonus)</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-4 sale-box wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="col-md-4 sale-box wow fadeInUp" data-wow-iteration="1">
                         <div class="sale-box-inner">
                             <div class="sale-box-head">
-                                <h4>Private Pre-Sale</h4>
-                                <span>December 20, 2020</span>
+                                <h4>Ultimate</h4>
+                                <!-- <span>December 20, 2020</span> -->
                             </div>
                             <ul class="sale-box-desc">
                                 <li>
-                                    <strong>1 ETH = up to 41,000 STMX</strong>
-                                    <span>up to 42% bonus</span>
+                                    <strong style="color: white !important">200,000</strong>
+                                    <span>up to 50% ROI - 300,000</span>
                                 </li>
                                 <li>
-                                    <strong>21,000,000 STMX</strong>
-                                    <span>(up to $0.75 million)</span>
+                                    <strong>50% Recommitment</strong>
+                                    <span>(You get 5% referral bonus)</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
+
+
+                <!-- <br> -->
+                <!--  <div class="row sale-boxes">
+                     <div class="col-md-12 sale-box wow fadeInUp" data-wow-iteration="1">
+                         <div class="sale-box-inner">
+                             <div class="sale-box-head">
+                                 <h4>Private Pre-Sale</h4>
+                                 <span>December 20, 2020</span>
+                             </div>
+                             <ul class="sale-box-desc">
+                                 <li>
+                                     <strong>1 ETH = up to 41,000 STMX</strong>
+                                     <span>up to 42% bonus</span>
+                                 </li>
+                                 <li>
+                                     <strong>21,000,000 STMX</strong>
+                                     <span>(up to $0.75 million)</span>
+                                 </li>
+                             </ul>
+                         </div>
+                     </div>
+
+                 </div> -->
             </div>
         </div>
         <!-- Benefits Start -->
-        <div class="benefit-section platinum-layout white-bg p-t">
+        <div class="benefit-section platinum-layout white-bg p-t" id="features">
             <div class="container">
-                <div class="text-center"><h2 class="section-heading">Benefits of Using Our Solution</h2></div>
+                <div class="text-center"><h2 class="section-heading">Benefits of investing with rocketpay</h2></div>
                 <div class="sub-txt mw-850 text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt ultrices. Ut
-                        quis blandit dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus
-                        tincidunt ultrices. Ut quis blandit dolor.</p>
+                    <p>We have 72hours payment hate way that starts counting from the moment you invested.
+                        You investment generates 50% ROI in 3 days.
+                        24/7 active support with</p>
                 </div>
                 <div class="banafits-list-items">
                     <div class="banafits-item">
@@ -238,8 +326,10 @@
                                 <img src="{{asset('assets/images/benefit-icon-1.png')}}" alt="Safe and Secure">
                             </div>
                             <div class="text">
-                                <h4>Safe and Secure</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h4>Strong Support system</h4>
+                                <p>
+
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -249,8 +339,8 @@
                                 <img src="{{asset('assets/images/benefit-icon-2.png')}}" alt="Instant Exchange">
                             </div>
                             <div class="text">
-                                <h4>Instant Exchange</h4>
-                                <p>Aenean cursus tincidunt ultrices. Ut quis blandit dolor.</p>
+                                <h4>Instant Peering</h4>
+                                <p>You're being peered as at when due without any additional time.</p>
                             </div>
                         </div>
                     </div>
@@ -260,8 +350,8 @@
                                 <img src="{{asset('assets/images/benefit-icon-5.png')}}" alt="Strong Network">
                             </div>
                             <div class="text">
-                                <h4>Strong Network</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h4>Strong Community</h4>
+                                <p>A large and geometrically growing community where each helps the other grow</p>
                             </div>
                         </div>
                     </div>
@@ -271,8 +361,8 @@
                                 <img src="{{asset('assets/images/benefit-icon-4.png')}}" alt="Mobile Apps">
                             </div>
                             <div class="text">
-                                <h4>Mobile Apps</h4>
-                                <p>Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.</p>
+                                <h4>Strong Support system</h4>
+                                <p>Our admins are always available to attend to your needs.</p>
                             </div>
                         </div>
                     </div>
@@ -283,8 +373,8 @@
                                 <img src="{{asset('assets/images/benefit-icon-6.png')}}" alt="Margin Trading">
                             </div>
                             <div class="text">
-                                <h4>Margin Trading</h4>
-                                <p>Consectetur adipiscing elit. Aenean cursus tincidunt ultrices.</p>
+                                <h4>Sustainable</h4>
+                                <p>Our algorithm is set to last and be in the sands of time.</p>
                             </div>
                         </div>
                     </div>
@@ -310,21 +400,16 @@
                             <div class="card">
                                 <!-- Card header -->
                                 <div class="card-header" role="tab" id="headingOne1">
-                                    <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1"
-                                       aria-expanded="true" aria-controls="collapseOne1">
+                                    <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
                                         <h5 class="mb-0">
-                                            When would I be able to see my token balance? <i
-                                                class="fas fa-caret-down rotate-icon"></i>
+                                            Must I recommit before withdrawal? <i class="fas fa-caret-down rotate-icon"></i>
                                         </h5>
                                     </a>
                                 </div>
                                 <!-- Card body -->
-                                <div id="collapseOne1" class="collapse show" role="tabpanel"
-                                     aria-labelledby="headingOne1" data-parent="#accordionEx">
+                                <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
                                     <div class="card-body">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt
-                                        ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis
-                                        blandit dolor. Ut laoreet sagittis arcu eu tristique.
+                                        Yes, for the sustainability of the system, 100% recommitment is required before withdrawal.
                                     </div>
                                 </div>
                             </div>
@@ -333,26 +418,16 @@
                             <div class="card">
                                 <!-- Card header -->
                                 <div class="card-header" role="tab" id="headingTwo2">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx"
-                                       href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
                                         <h5 class="mb-0">
-                                            Is it possible for the citizens or residents of the US to participate in the
-                                            Token Sale? <i class="fas fa-caret-down rotate-icon"></i>
+                                            Can I upgrade if I want to? <i class="fas fa-caret-down rotate-icon"></i>
                                         </h5>
                                     </a>
                                 </div>
                                 <!-- Card body -->
-                                <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
-                                     data-parent="#accordionEx">
+                                <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#accordionEx">
                                     <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                        you probably haven't heard of them accusamus labore sustainable VHS.
+                                        Yes, But before upgrading to any package, an activation fee of #1,000 is required.
                                     </div>
                                 </div>
                             </div>
@@ -361,122 +436,90 @@
                             <div class="card">
                                 <!-- Card header -->
                                 <div class="card-header" role="tab" id="headingThree3">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx"
-                                       href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
                                         <h5 class="mb-0">
-                                            Is there a KYC process involved? <i
-                                                class="fas fa-caret-down rotate-icon"></i>
+                                            Is there a KYC process involved? <i class="fas fa-caret-down rotate-icon"></i>
                                         </h5>
                                     </a>
                                 </div>
                                 <!-- Card body -->
-                                <div id="collapseThree3" class="collapse" role="tabpanel"
-                                     aria-labelledby="headingThree3" data-parent="#accordionEx">
+                                <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3" data-parent="#accordionEx">
                                     <div class="card-body">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt
-                                        ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis
-                                        blandit dolor. Ut laoreet sagittis arcu eu tristique.
+                                        There is validation of email in other to proof you are human, asides that you are free to rock with further ado
                                     </div>
                                 </div>
                             </div>
-                            <!-- Accordion card -->
-                            <!-- Accordion card -->
-                            <div class="card">
-                                <!-- Card header -->
+
+                            <!-- <div class="card">
+
                                 <div class="card-header" role="tab" id="headingFour4">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx"
-                                       href="#collapseFour4" aria-expanded="false" aria-controls="collapseFour4">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseFour4" aria-expanded="false" aria-controls="collapseFour4">
                                         <h5 class="mb-0">
-                                            What will happen to the unsold tokens? <i
-                                                class="fas fa-caret-down rotate-icon"></i>
+                                            What will happen to the unsold tokens? <i class="fas fa-caret-down rotate-icon"></i>
                                         </h5>
                                     </a>
                                 </div>
-                                <!-- Card body -->
-                                <div id="collapseFour4" class="collapse" role="tabpanel" aria-labelledby="headingFour4"
-                                     data-parent="#accordionEx">
+
+                                <div id="collapseFour4" class="collapse" role="tabpanel" aria-labelledby="headingFour4" data-parent="#accordionEx">
                                     <div class="card-body">
-                                        Aenean cursus tincidunt ultrices. Ut quis blandit dolor. Ut laoreet sagittis
-                                        arcu eu tristique. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.
-                                        Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis blandit
-                                        dolor. Ut laoreet sagittis arcu eu tristique.
+                                        Aenean cursus tincidunt ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.
                                     </div>
                                 </div>
                             </div>
-                            <!-- Accordion card -->
-                            <!-- Accordion card -->
+
                             <div class="card">
-                                <!-- Card header -->
+
                                 <div class="card-header" role="tab" id="headingFive5">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx"
-                                       href="#collapseFive5" aria-expanded="false" aria-controls="collapseFive5">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseFive5" aria-expanded="false" aria-controls="collapseFive5">
                                         <h5 class="mb-0">
-                                            Which cryptocurrencies can I use to participate in the Token Sale? <i
-                                                class="fas fa-caret-down rotate-icon"></i>
+                                            Which cryptocurrencies can I use to participate in the Token Sale? <i class="fas fa-caret-down rotate-icon"></i>
                                         </h5>
                                     </a>
                                 </div>
-                                <!-- Card body -->
-                                <div id="collapseFive5" class="collapse" role="tabpanel" aria-labelledby="headingFive5"
-                                     data-parent="#accordionEx">
+
+                                <div id="collapseFive5" class="collapse" role="tabpanel" aria-labelledby="headingFive5" data-parent="#accordionEx">
                                     <div class="card-body">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt
-                                        ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis
-                                        blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis blandit dolor. Ut
-                                        laoreet sagittis arcu eu tristique. Ut quis blandit dolor. Ut laoreet sagittis
-                                        arcu eu tristique.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Accordion card -->
-                            <!-- Accordion card -->
+                            </div> -->
+
+
                             <div class="card">
-                                <!-- Card header -->
+
                                 <div class="card-header" role="tab" id="headingSix6">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx"
-                                       href="#collapseSix6" aria-expanded="false" aria-controls="collapseSix6">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseSix6" aria-expanded="false" aria-controls="collapseSix6">
                                         <h5 class="mb-0">
-                                            Are there any restrictions that involve a minimum or a maximum transaction
-                                            limit? <i class="fas fa-caret-down rotate-icon"></i>
+                                            Are there any restrictions that involve some countries not participating? <i class="fas fa-caret-down rotate-icon"></i>
                                         </h5>
                                     </a>
                                 </div>
-                                <!-- Card body -->
-                                <div id="collapseSix6" class="collapse" role="tabpanel" aria-labelledby="headingSix6"
-                                     data-parent="#accordionEx">
+
+                                <div id="collapseSix6" class="collapse" role="tabpanel" aria-labelledby="headingSix6" data-parent="#accordionEx">
                                     <div class="card-body">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt
-                                        ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis
-                                        blandit dolor. Ut laoreet sagittis arcu eu tristique. Lorem ipsum dolor sit
-                                        amet, consectetur adipiscing elit. Aenean cursus tincidunt ultrices.
+                                        For now, only Nigerians are made provision for, however, structures have been put in place to allow foreigners to participate through digital currencies as bitcoin and ethereum... see you soon!
                                     </div>
                                 </div>
                             </div>
-                            <!-- Accordion card -->
-                            <!-- Accordion card -->
+
+                            <!--
                             <div class="card">
-                                <!-- Card header -->
+
                                 <div class="card-header" role="tab" id="headingSeven7">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx"
-                                       href="#collapseSeven7" aria-expanded="false" aria-controls="collapseSeven7">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseSeven7" aria-expanded="false" aria-controls="collapseSeven7">
                                         <h5 class="mb-0">
-                                            Where is the company registered? Where is the Coinpool office located? <i
-                                                class="fas fa-caret-down rotate-icon"></i>
+                                            Where is the company registered? Where is the Coinpool office located? <i class="fas fa-caret-down rotate-icon"></i>
                                         </h5>
                                     </a>
                                 </div>
-                                <!-- Card body -->
-                                <div id="collapseSeven7" class="collapse" role="tabpanel"
-                                     aria-labelledby="headingSeven7" data-parent="#accordionEx">
+
+                                <div id="collapseSeven7" class="collapse" role="tabpanel" aria-labelledby="headingSeven7" data-parent="#accordionEx">
                                     <div class="card-body">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt
-                                        ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Ut quis
-                                        blandit dolor. Ut laoreet sagittis arcu eu tristique. Lorem ipsum dolor sit
-                                        amet, consectetur adipiscing elit. Aenean cursus tincidunt ultrices.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt ultrices. Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique.  Ut quis blandit dolor. Ut laoreet sagittis arcu eu tristique. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus tincidunt ultrices.
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Accordion card -->
+                            </div> -->
+
 
                         </div>
                         <!-- Accordion wrapper -->
@@ -484,14 +527,7 @@
                 </div>
             </div>
         </div>
-        <!-- FAQ Section end-->
 
-        <!-- blog section -->
-
-        <!-- blog section End -->
-        <!-- Brand logo slider -->
-
-        <!-- Brand logo end -->
     </div>
     <!-- Content Section End -->
     <div class="clear"></div>
@@ -504,24 +540,22 @@
                         <div class="widget-area">
                             <div class="widget widget-html">
                                 <div class="footer-logo">
-                                    <a href="#" title=""><img src="{{asset('assets/images/logo.png')}}"
-                                                              alt="Cp Platinum"></a>
+                                    <a href="#" title=""><img src="{{asset('assets/images/logo2.png')}}" alt="Cp Platinum"></a>
                                 </div>
                                 <div class="text">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                    <p>Rocket Pay is the true vision of peer 2 peer ecosystem, structured to satisfy the people and for the people.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="widget-area">
                             <div class="widget">
                                 <ul class="footer-menu horizontal-menu onepage">
-                                    <li><a href="#about">About ICO</a></li>
-                                    <li><a href="#convertor">Currency Convertor</a></li>
-                                    <li><a href="#token">Token</a></li>
-                                    <li><a href="#roadmap">Roadmap</a></li>
-                                    <li><a href="#team">Team</a></li>
-                                    <li><a href="#press">Media</a></li>
+                                    <li><a href="#about">About Rocketpay</a></li>
+                                    <li><a href="#socialmedia">Social Media</a></li>
+                                    <li><a href="#featured-product">Packages</a></li>
+                                    <li><a href="#features">Features</a></li>
+                                    <!--  <li><a href="#team">Team</a></li>
+                                     <li><a href="#press">Media</a></li> -->
                                 </ul>
                             </div>
                         </div>
@@ -540,13 +574,12 @@
                             </div>
                         </div>
                         <div class="widget-area">
-                            <div class="widget widget-html text-center">
+                            <div class="widget widget-html text-center" id="socialmedia">
                                 <div class="socials">
                                     <ul>
                                         <li><a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
                                         <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="https://telegram.org/"><i class="fab fa-telegram-plane"></i></a>
-                                        </li>
+                                        <li><a href="https://telegram.org/"><i class="fab fa-telegram-plane"></i></a></li>
                                         <li><a href="https://bitcoin.com/"><i class="fab fa-btc"></i></a></li>
                                         <li><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
                                     </ul>
@@ -561,7 +594,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="copy-text">© 2020 <a href="#">RocketPay</a></div>
+                        <div class="copy-text">© {{\Carbon\Carbon::now()->year}}<a href="#">RocketPay.</a></div>
                     </div>
                 </div>
             </div>

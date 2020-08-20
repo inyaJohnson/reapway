@@ -9,9 +9,14 @@ use Illuminate\Http\Request;
 class PackageController extends Controller
 {
 
+    public function index(){
+        $packages = Package::all();
+        return view('package.index', compact('packages'));
+    }
+
     public function create()
     {
-        return view('admin.investment.create');
+        return view('package.create');
     }
 
     /**

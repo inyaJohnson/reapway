@@ -37,7 +37,7 @@ return [
         'smtp' => [
             'transport' => 'smtp',
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
+            'port' => env('MAIL_PORT', 465),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@intoajohnson.com'),
-        'name' => env('MAIL_FROM_NAME', 'Inya Johnson'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@rocketpay.cc'),
+        'name' => env('MAIL_FROM_NAME', 'RocketPay'),
     ],
 
     /*

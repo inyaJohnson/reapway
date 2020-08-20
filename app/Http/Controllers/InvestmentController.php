@@ -29,7 +29,7 @@ class InvestmentController extends Controller
     public function store(Request $request)
     {
         $package = Package::where('id', $request->package_id)->firstOrFail();
-        $investment = auth()->user()->investment()->create([
+        auth()->user()->investment()->create([
             'package_id' => $package->id,
             'percentage' => $package->percentage,
             'duration' => $package->duration,

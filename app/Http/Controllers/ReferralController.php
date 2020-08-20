@@ -29,7 +29,7 @@ class ReferralController extends Controller
             Referral::create([
                 'user_id' => $user->id,
                 'referral_code' => $user->referral_code,
-                'amount' => (auth()->user()->investment()->first()->package->price * 10) / 100,
+                'amount' => (auth()->user()->investment()->first()->package->price * 5) / 100,
                 'referred_id' => auth()->user()->id
             ]);
             $message = ['success' => 'Congrats Your Referrer ' . $user->name . ' will receive the bonus'];

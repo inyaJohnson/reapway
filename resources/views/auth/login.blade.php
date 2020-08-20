@@ -16,7 +16,7 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
     <!-- Website Title -->
-    <title>Login - Coinpool</title>
+    <title>Login - RocketPay</title>
     <!-- Stylesheets Start -->
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}" type="text/css"/>
@@ -41,7 +41,7 @@
         <div class="form-part">
             <div class="cp-header">
                 <div class="logo">
-                    <a href="#"><img class="light" src="{{asset('assets/images/dark-logo.png')}}" alt="Coinpool"></a>
+                    <a href="{{route('welcome')}}"><img class="light" src="{{asset('assets/images/dark-logo1.jpg')}}" alt="RocketPay"></a>
                 </div>
             </div>
             <div class="cp-heading">

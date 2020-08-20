@@ -45,7 +45,7 @@
                                         <input type="text" class="form-control" name="bank" required value="{{old('bank')}}"
                                                placeholder="Bank Name">
                                     </div>
-                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                    <button type="submit" class="btn btn-primary mr-2" {{(auth()->user()->account !== null)?'disabled':''}}>Submit</button>
                                     <button class="btn btn-light reset">Cancel</button>
                                 </form>
                             </div>

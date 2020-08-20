@@ -67,13 +67,13 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                         <a class="dropdown-item">
-                            <i class="mdi mdi-settings text-primary"></i>
+                            <i class="mdi mdi-settings text-secondary"></i>
                             Settings
                         </a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            <i class="mdi mdi-logout text-primary"></i>
+                            <i class="mdi mdi-logout text-secondary"></i>
                             Logout
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -124,7 +124,7 @@
                             @endcan
                             @can('admin-actions')
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="#">Package List</a></li>
+                                                        href="{{route('packages.index')}}">Package List</a></li>
                                 <li class="nav-item"><a class="nav-link"
                                                         href="{{route('packages.create')}}">Create Package</a></li>
                                 <li class="nav-item"><a class="nav-link"

@@ -63,13 +63,17 @@
                     <div class="card-body">
                         <p class="card-title">Total Referral Bonus</p>
                         <h1># {{number_format($referrals->pluck('amount')->sum())}}</h1>
+
+                        <p class="card-title">Number of Referrals</p>
+                        <h1>{{$referrals->count()}}</h1>
+
                         {{--                        <h4>Gross sales over the years</h4>--}}
                         <p class="text-muted">Earn more today at RocketPay by Referring Investors.
-                            10% of the startup Investment of the referred investor will be assigned to you upon
+                            5% of the startup Investment of the referred investor will be assigned to you upon
                             application for withdrawal</p>
                         {{--                        <div>Total number of referred Investors is {{$referrals->count()}}</div>--}}
                     </div>
-                    <canvas id="total-sales-chart" style="border: thin red solid;"></canvas>
+                    <img src="{{asset('assets/images/banner-2.jpg')}}"  alt="banner" height="200px"/>
                 </div>
             </div>
         </div>
