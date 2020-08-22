@@ -21,7 +21,7 @@
             </div>
         </div>
         @include('layouts.message')
-        <div class="row">
+        <div class="row big-screen">
             <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 grid-margin stretch-card">
+            <div class="col-md-4 grid-margin stretch-card big-screen">
                 <div class="card">
                     <div class="card-body">
                         <p class="card-title">Total Referral Bonus</p>
@@ -73,11 +73,48 @@
                             application for withdrawal</p>
                         {{--                        <div>Total number of referred Investors is {{$referrals->count()}}</div>--}}
                     </div>
-                    <img src="{{asset('assets/images/banner-2.jpg')}}"  alt="banner" height="200px"/>
+                    <img src="{{asset('assets/images/banner-2.jpg')}}" alt="banner" height="200px"/>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- content-wrapper ends -->
+
+
+            <div class="row small-screen">
+                <div class="col-md-8 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-title">Referred List</p>
+                            <div>
+                                @foreach($referrals as $referred)
+                                    <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                        <div class="sale-box-inner">
+                                            <div class="sale-box-head">
+                                                <h4>{{$referred->user->name}}</h4>
+                                            </div>
+                                            <ul class="sale-box-desc">
+                                                <li>
+                                                    <strong>Amount - #{{number_format($referred->amount)}}</strong>
+                                                    <span>Created on {{$referred->created_at->format('M d Y H:i')}}</span>
+                                                </li>
+                                                <li>
+                                                    @if($referred->apply_for_withdrawal == 0)
+                                                        <a href="{{route('referral.withdraw', $referred->id)}}"
+                                                           class="btn btn-primary">Withdraw</a>
+                                                    @elseif($referred->apply_for_withdrawal == 1)
+                                                        <span class="text-warning">Processing</span>
+                                                    @endif
+                                                    {!! ($referred->withrawn == 1)? "<span class='text-success'>Withdrawn</span>": '' !!}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
     @include('referral.add-referral')
 @endsection

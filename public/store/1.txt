@@ -1,7 +1,0 @@
-user_id for admin and mysql db => capinve1_root
-password for admin and mysql db => pa$$w0rd
-
-//webmail
-users - info@capinvestmentfund.com and payment@capinvestmentfund.com passwordreset@capinvestmentfund.com
-
-password is same ffor all -  pa$$w0rd

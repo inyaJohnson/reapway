@@ -577,10 +577,9 @@
                             <div class="widget widget-html text-center" id="socialmedia">
                                 <div class="socials">
                                     <ul>
-                                        <li><a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="https://telegram.org/"><i class="fab fa-telegram-plane"></i></a></li>
-                                        <li><a href="https://bitcoin.com/"><i class="fab fa-btc"></i></a></li>
+                                        <li><a href="https://www.facebook.com/Rocketpays"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="https://www.instagram.com/Rocketpay"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="t.me/Payrocket"><i class="fab fa-telegram-plane"></i></a></li>
                                         <li><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
                                     </ul>
                                 </div>
@@ -628,6 +627,21 @@
         }, 2000);
     });
 </script>
-</body>
 
+<!-- GetButton.io widget -->
+<script type="text/javascript">
+    (function () {
+        var options = {
+            whatsapp: "+2347017334924", // WhatsApp number
+            call_to_action: "Message us", // Call to action
+            position: "right", // Position may be 'right' or 'left'
+        };
+        var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+</script>
+<!-- /GetButton.io widget -->
+</body>
 </html>

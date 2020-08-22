@@ -11,7 +11,8 @@
                         </div>
                         <div class="d-flex">
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
-                            <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a></p>
+                            <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a>
+                            </p>
                             <p class="text-primary mb-0 hover-cursor">Transactions</p>
                         </div>
                     </div>
@@ -20,7 +21,7 @@
             </div>
         </div>
         @include('layouts.message')
-        <div class="row">
+        <div class="row big-screen">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -78,7 +79,7 @@
                                                         @endif
                                                     </td>
                                                     <td><a class="btn btn-primary"
-                                                           href="/rocket_pay/public/store/{{$deposit->proof_of_payment}}" download>Download
+                                                           href="/store/{{$deposit->proof_of_payment}}" download>Download
                                                             File</a></td>
                                                 </tr>
                                             @endforeach
@@ -122,7 +123,7 @@
                                                         </button>
                                                     </td>
                                                     <td><a class="btn btn-primary"
-                                                           href="/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}" download>Download
+                                                           href="/store/{{$withdrawal->proof_of_payment}}" download>Download
                                                             File</a></td>
                                                 </tr>
                                             @endforeach
@@ -136,6 +137,101 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+
+        {{--        SMALL SCREEN --}}
+
+        <div class="row small-screen">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <h4 style="margin-bottom: 30px;">Deposit History</h4>
+                            @foreach($deposits as $deposit)
+                                <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                    <div class="sale-box-inner">
+                                        <div class="sale-box-head">
+                                            <h4>{{$deposit->package->name}}</h4>
+                                        </div>
+                                        <ul class="sale-box-desc">
+                                            <li>
+                                                <strong>Amount
+                                                    - {{number_format($deposit->amount)}}</strong>
+                                                <span>Matched on - {{$deposit->created_at->format('M d Y H:i')}}</span>
+                                            </li>
+                                            <li>
+                                                <strong><a class="btn btn-primary view-recipient"
+                                                           href="javascript:void(0)"
+                                                           data-id={{$deposit->recipient_id}} data='{{$deposit->id}}'>View
+                                                        Recipient</a></strong>
+                                            </li>
+                                            <li>
+                                                <button class="btn btn-primary confirm-deposit-btn"
+                                                        data-id="{{$deposit->id}}">Confirm Payment
+                                                </button>
+                                            </li>
+                                            <li><a class="btn btn-link"
+                                                   href="/store/{{$deposit->proof_of_payment}}" download>Download
+                                                    File</a>
+                                            </li>
+                                            <li>
+                                                            <span> @if($deposit->recipient_status == 0)
+                                                                    <span class="text-danger">Pending</span>
+                                                                @else
+                                                                    <span class="text-success">Completed</span>
+                                                                @endif</span>
+                                            </li>
+                                            <input value="{{$deposit->amount}}" id="amount{{$deposit->id}}"
+                                                   type="hidden">
+                                        </ul>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+
+                        {{--                            Recipeint--}}
+
+                        <div>
+                            <h4 style="margin-bottom: 30px;">Withdrawal History</h4>
+                            @foreach($withdrawals as $withdrawal)
+                                <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                    <div class="sale-box-inner">
+                                        <div class="sale-box-head">
+                                            <h4>{{$withdrawal->package->name}}</h4>
+                                        </div>
+                                        <ul class="sale-box-desc">
+                                            <li>
+                                                <strong>Amount -
+                                                    #{{number_format($withdrawal->amount)}}</strong>
+                                                <span>{{$withdrawal->created_at->format('M d Y H:i')}}</span>
+                                            </li>
+                                            <li>
+                                                <strong><a class="btn btn-primary view-depositor" href="#"
+                                                           data-id={{$withdrawal->depositor_id}} data='{{$withdrawal->id}}'>View
+                                                        Depositor</a></strong>
+                                                {{--                                                            <span>{{$investment->created_at}}</span>--}}
+                                            </li>
+                                            <li>
+                                                <button class="btn btn-primary confirm-withrawal"
+                                                        data-id="{{$withdrawal->id}}">Confirm Payment
+                                                </button>
+                                            </li>
+                                            <li><a class="btn btn-link"
+                                                   href="/store/{{$withdrawal->proof_of_payment}}" download>Download
+                                                    File</a>
+                                            </li>
+                                            <input value="{{$withdrawal->amount}}"
+                                                   id="amount{{$withdrawal->id}}" type="hidden">
+                                        </ul>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

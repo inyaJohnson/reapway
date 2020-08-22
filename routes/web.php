@@ -54,6 +54,8 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'admin', 'namespace'=
     Route::post('/store-package', 'PackageController@store')->name('packages.store');
     Route::get('show-recipient/{id}', 'GeneralReportController@showRecipient')->name('general-report.show-recipient');
     Route::resource('general-report', 'GeneralReportController');
+    Route::get('/inject-invest/create', 'InjectInvestmentController@create')->name('inject-create');
+    Route::post('/inject-invest/store', 'InjectInvestmentController@store')->name('inject-store');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
@@ -64,6 +66,6 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('referral/confirm-withdrawal','ReferralController@confirmWithdrawal');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/setup', 'SetUpController@index')->name('setup');

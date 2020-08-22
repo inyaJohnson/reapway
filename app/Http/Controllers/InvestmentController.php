@@ -29,14 +29,14 @@ class InvestmentController extends Controller
     public function store(Request $request)
     {
         $package = Package::where('id', $request->package_id)->firstOrFail();
-        auth()->user()->investment()->create([
+        $investment = auth()->user()->investment()->create([
             'package_id' => $package->id,
             'percentage' => $package->percentage,
             'duration' => $package->duration,
             'profit' => round($package->price * ($package->percentage / 100))
         ]);
         //Matches investor to matured withdrawers
-        $this->matchMaker($package->id, $package->price);
+        $this->matchMaker($package->id, $package->price, $investment->id);
 
         return redirect()->route('transaction.deposit');
     }
@@ -59,18 +59,18 @@ class InvestmentController extends Controller
     {
         $message = ['success' => 'Reinvestment Successful'];
         $investment = Investment::findorFail($request->id);
-
 //        Create a new investment cycle
         $reinvestment = auth()->user()->investment()->create([
             'package_id' => $investment->package_id,
             'percentage' => $investment->percentage,
             'duration' => $investment->duration,
-            'profit' => round($investment->package->price * ($investment->percentage / 100))
+            'profit' => round($investment->package->price * ($investment->percentage / 100)),
+            'previous_investment_id' => $investment->id
         ]);
-        $result = $investment->update(['reinvest' => 1]);
-
         //        Matches investor to matured withdrawers
-        $this->matchMaker($reinvestment->package->id, $reinvestment->package->price);
+        $this->matchMaker($reinvestment->package->id, $reinvestment->package->price, $reinvestment->id);
+
+        $result = $investment->update(['reinvest_btn' => 1]);
         if (!$result) {
             $message = ['error' => 'Reinvestment failed'];
         }
@@ -94,7 +94,7 @@ class InvestmentController extends Controller
         return response()->json($message);
     }
 
-    protected function matchMaker($packageId, $price)
+    protected function matchMaker($packageId, $price, $depositorInvestmentId)
     {
         /**
          * ptbp => people to be paid
@@ -161,7 +161,8 @@ class InvestmentController extends Controller
         foreach ($pdfp as $transaction) {
             auth()->user()->transaction()->create([
                 'package_id' => $packageId,
-                'investment_id' => $transaction['investment_id'],
+                'recipient_investment_id' => $transaction['investment_id'],
+                'depositor_investment_id' => $depositorInvestmentId,
                 'depositor_id' => auth()->user()->id,
                 'recipient_id' => $transaction['recipient_id'],
                 'withdrawal_id' => $transaction['id'],

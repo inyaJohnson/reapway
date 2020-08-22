@@ -30,6 +30,7 @@ class FirstInvestmentSeeder extends Seeder
                 'profit' => 500000,
                 'maturity' => 1,
                 'withdrawn' => 0,
+                'commitment' => 1,
                 'reinvest' => 2
             ]);
 

@@ -56,9 +56,11 @@
                                 <p>Thanks. Items marked with an asterisk (<span class="star">*</span>) are required
                                     fields.</p>
                                 <div class="help-form-group">
-                                    <input type="file" class="form-control" name="attachment">
+                                    <input type="file" class="form-control" name="attachment"> <br />
                                     <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                                 </div>
+                                <p class="warning">*Note: Document should not be more than 2Mb</p>
+
                                 <div class="help-form-bottom">
                                     <div>
                                         <input type="checkbox" name="copy">
@@ -115,6 +117,11 @@
                                     window.location = '/home'
                                 }
                             })
+                        }
+                    },
+                    error: function (error) {
+                        if (error.responseJSON.errors.hasOwnProperty('attachment')) {
+                            $('p.warning').addClass('error').text('The File is required and the size must not be more than 2Mb');
                         }
                     }
                 })

@@ -23,7 +23,9 @@ class CreateInvestmentsTable extends Migration
             $table->integer('maturity')->default(0);
             $table->integer('withdrawn')->default(0);
             $table->integer('reinvest')->default(0);
+            $table->integer('reinvest_btn')->default(0);
             $table->integer('commitment')->default(0);
+            $table->integer('previous_investment_id')->default(0);
             $table->timestamps();
         });
     }

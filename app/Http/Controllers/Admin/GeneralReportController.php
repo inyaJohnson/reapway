@@ -25,7 +25,7 @@ class GeneralReportController extends Controller
         $totalWithdrawal = number_format(Transaction::where('recipient_status', 1)->sum('amount'));
         $referralBonus = '';
         $totalNumberOfInvestment = Investment::all()->count();
-        $investments = Investment::with('transaction', 'withdrawal', 'user', 'package')->latest()->get();
+        $investments = Investment::with('withdrawal', 'user', 'package')->latest()->get();
         return view('general-report.index', compact('investments', 'totalInvestment',
             'totalWithdrawal', 'availableWithdrawal', 'totalNumberOfInvestment'));
     }

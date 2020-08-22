@@ -17,10 +17,11 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('package_id');
-            $table->unsignedInteger('investment_id');
+            $table->unsignedInteger('depositor_investment_id');
+            $table->unsignedInteger('recipient_investment_id');
             $table->unsignedInteger('depositor_id');
-            $table->unsignedInteger('withdrawal_id');
             $table->integer('recipient_id');
+            $table->unsignedInteger('withdrawal_id');
             $table->integer('amount');
             $table->string('proof_of_payment')->nullable();
             $table->integer('depositor_status')->default(0);

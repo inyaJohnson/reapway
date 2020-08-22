@@ -81,7 +81,7 @@
     justify-content: space-evenly;
 }
 
-.help-form-group input, .help-form-group textarea{
+.help-form-group input, .help-form-group textarea, .help-form-group select{
     margin: 0px 5px 10px 0px;
 }
 
@@ -97,7 +97,7 @@
     padding: 10px !important;
 }
 
-#confirm-deposit-form span, #referrer-form span{
+#confirm-deposit-form span, #referrer-form span, p.warning {
     color: #888888;
     font-size: small;
 }
@@ -142,6 +142,7 @@
     border-radius: 7px;
     overflow: hidden;
     cursor:pointer;
+    margin-bottom: 30px;
 }
 .sale-box-head {
     background: #fbbd18;
@@ -180,4 +181,26 @@
 
 .invest_btn button:hover{
     color: black;
+}
+
+.inject-investment{
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+@media screen and (max-width: 480px) {
+    .big-screen {
+         display : none;
+     }
+}
+
+
+@media screen and (min-width: 480px){
+    .small-screen {
+        display : none;
+    }
 }

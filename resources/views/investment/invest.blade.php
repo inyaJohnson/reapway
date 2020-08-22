@@ -30,7 +30,7 @@
                         <ul class="sale-box-desc">
                             <li>
                                 <strong>#{{number_format($package->price)}}</strong>
-                                <span>up to {{$package->percentage}}% ROI - #{{number_format(($package->price*$package->percentage)/100)}}</span>
+                                <span>up to {{$package->percentage}}% ROI - #{{number_format((($package->price*$package->percentage)/100) + $package->price)}}</span>
                             </li>
                             <li>
                                 <strong>100% Recommitment</strong>

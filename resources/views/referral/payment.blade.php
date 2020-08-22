@@ -26,42 +26,40 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Referrer To be Paid</h4>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover investment-history">
-                                <thead>
-                                <tr>
-                                    <th>Referrer</th>
-                                    <th>Referred</th>
-                                    <th>Referred Date</th>
-                                    <th>Amount</th>
-                                    <th>Referrer's Info</th>
-                                    <th>Status</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($referrerToPay as $referrer)
-                                    <tr>
-                                        <td>{{$referrer->user->name}}</td>
-                                        <td>{{$referrer->referred->name}}</td>
-                                        <td>{{$referrer->created_at->format('M d Y')}}</td>
-                                        <td id="amount{{$referrer->id}}">{{number_format($referrer->amount)}}</td>
-                                        <td><a class="btn btn-primary view-referrer" href="javascript:void(0)"
-                                               data-id={{$referrer->user->id}}>View
-                                                Referrer</a></td>
-                                        <td>
-                                            @if($referrer->withdrawn == 0)
-                                                <button class="btn btn-primary confirm-referral-withrawal" href="javascript:void(0)"
-                                                        data-id={{$referrer->id}}>Confirm Payment
-                                                </button>
-                                            @else
-                                                <span class="text-success">Paid</span>
-                                            @endif
-                                        </td>
-                                        <input type="hidden" id="referral_id" value="{{$referrer->id}}">
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                        <div>
+                            @foreach($referrerToPay as $referrer)
+                                <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                    <div class="sale-box-inner">
+                                        <div class="sale-box-head">
+                                            <h4>{{$referrer->user->name}}</h4>
+                                        </div>
+                                        <ul class="sale-box-desc">
+                                            <li>
+                                                <strong>{{$referrer->referred->name}}</strong>
+                                                <span>{{$referrer->created_at->format('M d Y H:i')}}</span>
+                                            </li>
+                                            <li>
+                                                <strong id="amount{{$referrer->id}}">{{number_format($referrer->amount)}}</strong>
+{{--                                                <span>{{$investment->created_at}}</span>--}}
+                                            </li>
+                                            <li><a class="btn btn-primary view-referrer" href="javascript:void(0)"
+                                                   data-id={{$referrer->user->id}}>View
+                                                    Referrer</a>
+                                            </li>
+                                            <li>@if($referrer->withdrawn == 0)
+                                                    <button class="btn btn-primary confirm-referral-withrawal"
+                                                            href="javascript:void(0)"
+                                                            data-id={{$referrer->id}}>Confirm Payment
+                                                    </button>
+                                                @else
+                                                    <span class="text-success">Paid</span>
+                                                @endif
+                                            </li>
+                                            <input type="hidden" id="referral_id" value="{{$referrer->id}}">
+                                        </ul>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

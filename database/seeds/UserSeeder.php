@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('Rocking_hard_067'),
             'phone' => '07037555691',
             'referral_code' => substr(md5(time()), 0, 16),
+            'email_verified_at' => now(),
         ]);
 
         $admin->role()->attach($role, ['created_at' => now(), 'updated_at' => now()]);

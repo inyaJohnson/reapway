@@ -34,6 +34,6 @@ class PackageController extends Controller
             'duration' => ['required', 'integer']
         ]);
         Package::create($input);
-        return redirect()->route('investment.invest')->with('success', 'Package Created Successfully');
+        return redirect()->route('packages.index')->with('success', 'Package Created Successfully');
     }
 }

@@ -88,12 +88,13 @@ class TransactionController extends Controller
 
     public function confirmDeposit(Request $request){
         $input = $this->validate($request, [
-           'attachment' => 'max:2048',
+           'attachment' => 'file|max:2048',
             'transaction_id' => 'required'
         ]);
+
         $message = ['error' => 'No file uploaded'];
         if(isset($input['attachment'])) {
-            $attachmentName = $input['transaction_id'] . '.' . $input['attachment']->extension();
+            $attachmentName = time(). '.' . $input['attachment']->extension();
             $input['attachment']->move(public_path('store'), $attachmentName);
             $transaction = Transaction::find($input['transaction_id']);
             $message = ['success' => 'Payment confirmed'];

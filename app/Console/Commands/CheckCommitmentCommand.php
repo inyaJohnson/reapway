@@ -38,21 +38,9 @@ class CheckCommitmentCommand extends Command
      */
     public function handle()
     {
-//        $investments = Investment::where([
-//            ['commitment', 0]
-//        ])->get();
-//
-//        foreach ($investments as $investment){
-//            $status = $investment->transaction->pluck('recipient_status');
-//            if(!$status->isEmpty() && in_array(0, $status->toArray())){
-//                continue;
-//            }
-//            $investment->update(['commitment' => 1]);
-//        }
-
         $investments = Investment::where('commitment', 0)->get();
         foreach ($investments as $investment){
-            $status = $investment->transaction->pluck('recipient_status');
+            $status = $investment->depositorTransaction->pluck('recipient_status');
             if(!$status->isEmpty() && !in_array(0, $status->toArray())){
                 $investment->update(['commitment' => 1]);
             }

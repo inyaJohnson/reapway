@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
-//        $schedule->command('check:maturity')->everyTwoHours();
+//        $schedule->command('check:maturity')->hourly();
+//        $schedule->command('check:commitment')->hourly();
         $schedule->command('check:maturity')->everyMinute();
         $schedule->command('check:commitment')->everyMinute();
     }

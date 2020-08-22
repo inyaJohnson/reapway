@@ -11,7 +11,8 @@
                         </div>
                         <div class="d-flex">
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
-                            <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a></p>
+                            <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a>
+                            </p>
                             <p class="text-primary mb-0 hover-cursor">Complaints</p>
                         </div>
                     </div>
@@ -19,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row big-screen">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -43,7 +44,9 @@
                                         <td>{{$request->email}}</td>
                                         <td>{{$request->subject}}</td>
                                         <td>{{$request->created_at}}</td>
-                                        <td><a  class="btn btn-primary request-message-btn" href="#" data-toggle="modal" data-target="#request-message-modal" data-id="{{$request->id}}" style="padding: 10px;">View</a></td>
+                                        <td><a class="btn btn-primary request-message-btn" href="#" data-toggle="modal"
+                                               data-target="#request-message-modal" data-id="{{$request->id}}"
+                                               style="padding: 10px;">View</a></td>
                                         <td>@if($request->response_status == 1)
                                                 Yes
                                             @else
@@ -59,7 +62,54 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="row small-screen">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Client Request</h4>
+                        <div>
+                            @foreach( $requests as $request)
+                                <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                    <div class="sale-box-inner">
+                                        <div class="sale-box-head">
+                                            <h4>{{$request->name}}</h4>
+                                        </div>
+                                        <ul class="sale-box-desc">
+                                            <li>
+                                                <strong>{{$request->email}}</strong>
+                                                <span>{{$request->subject}}</span>
+                                            </li>
+                                            <li>
+                                                <strong>{{$investment->percentage}}% Recommitment</strong>
+                                                <span>{{$request->created_at->format('M d Y H:i')}}</span>
+                                            </li>
+                                            <li><a class="btn btn-primary request-message-btn" href="#"
+                                                   data-toggle="modal"
+                                                   data-target="#request-message-modal" data-id="{{$request->id}}"
+                                                   style="padding: 10px;">View</a>
+                                            </li>
+                                            <li>@if($request->response_status == 1)
+                                                    Yes
+                                                @else
+                                                    No
+                                                @endif
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
 @endsection
 @include('help.message-modal')
 @section('script')
@@ -69,13 +119,13 @@
             $('.request-message-btn').on('click', function () {
                 var id = $(this).attr('data-id')
                 $.ajax({
-                    type:'GET',
-                    url:'/help/'+id,
-                    success:function (response) {
+                    type: 'GET',
+                    url: '/help/' + id,
+                    success: function (response) {
                         $('.modal-title span').text(response.name)
                         $('.modal-body h5').text(response.subject)
                         $('.modal-body p').text(response.message)
-                        $('.modal-footer a').attr('href','/response/create/' +response.id)
+                        $('.modal-footer a').attr('href', '/response/create/' + response.id)
                     }
                 })
                 $('#request-message-modal').modal();

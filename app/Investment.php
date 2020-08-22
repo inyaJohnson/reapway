@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Investment extends Model
 {
     protected $fillable = ['package_id', 'percentage', 'duration', 'maturity', 'withdrawn', 'profit',
-        'reinvest', 'commitment'];
+        'reinvest', 'commitment', 'user_id', 'previous_investment_id', 'reinvest_btn'];
 
     public function package()
     {
@@ -24,9 +24,14 @@ class Investment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function transaction()
+    public function depositorTransaction()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class, 'depositor_investment_id');
+    }
+
+    public function recipientTransaction()
+    {
+        return $this->hasMany(Transaction::class, 'recipient_investment_id');
     }
 
 

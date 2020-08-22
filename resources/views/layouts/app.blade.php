@@ -128,7 +128,7 @@
                                 <li class="nav-item"><a class="nav-link"
                                                         href="{{route('packages.create')}}">Create Package</a></li>
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="#">Inject Investment</a></li>
+                                                        href="{{route('inject-create')}}">Inject Investment</a></li>
                             @endcan
                         </ul>
                     </div>
@@ -263,6 +263,21 @@
 <script src="{{asset('dashboard/js/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('dashboard/js/custom.js')}}"></script>
 <!-- End custom js for this page-->
+<!-- GetButton.io widget -->
+<script type="text/javascript">
+    (function () {
+        var options = {
+            whatsapp: "+2347017334924", // WhatsApp number
+            call_to_action: "Message us", // Call to action
+            position: "right", // Position may be 'right' or 'left'
+        };
+        var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+</script>
+<!-- /GetButton.io widget -->
 
 @yield('script')
 </body>

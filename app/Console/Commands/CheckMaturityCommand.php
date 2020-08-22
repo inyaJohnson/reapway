@@ -49,6 +49,11 @@ class CheckMaturityCommand extends Command
                     'maturity' => 1,
                 ]);
             }
+
+            if($investment->previous_investment_id != 0){
+                $previousInvestment = Investment::find($investment->previous_investment_id);
+                $previousInvestment->update(['reinvest' => 1]);
+            }
         }
     }
 }
