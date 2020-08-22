@@ -45,7 +45,7 @@ class SettingsController extends Controller
         $input = $request->validated();
         $input['user_id'] = auth()->user()->id;
         Account::create($input);
-        return redirect()->route('settings.index')->with('success', 'Account successfully created');
+        return redirect()->route('investment.invest')->with('success', 'Account successfully created, Invest now!');
     }
 
     public function updateContactInfo(Request $request)

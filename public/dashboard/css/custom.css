@@ -191,6 +191,37 @@
 }
 
 
+.deny-access {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #fbbd18;
+    text-align: center;
+    color: black;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    overflow: hidden;
+    cursor:pointer;
+    min-height: 400px;
+}
+
+.deny-access div span{
+    font-size: 50px;
+    font-weight: bolder;
+    padding: 20px;
+    color: red;
+}
+.deny-access h3{
+    font-size: xx-large;
+    font-weight: bolder;
+    padding: 20px;
+}
+
+
+
+
+/*Media Query*/
 
 @media screen and (max-width: 480px) {
     .big-screen {

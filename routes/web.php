@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('/setup', 'HomeController@setup');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/blocked-user', 'BlockUserController@deny')->name('blocked');
 
-Route::group(['middleware' => 'auth'], function(){
+
+Route::group(['middleware' => ['auth', 'block.user']], function(){
     Route::get('investment', 'InvestmentController@index')->name('investment.index');
     Route::post('investment/store', 'InvestmentController@store')->name('investment.store');
     Route::get('investment/reinvest', 'InvestmentController@reinvest')->name('investment.reinvest');
@@ -38,16 +40,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('transactions/show-recipient', 'TransactionController@showRecipient')->name('recipient-info');
     Route::get('transactions/confirm-withdrawal', 'TransactionController@confirmWithdrawal')->name('confirm-withdrawal');
     Route::post('transactions/confirm-deposit', 'TransactionController@confirmDeposit')->name('confirm-deposit');
-    Route::resource('help', 'HelpController');
     Route::get('referral', 'ReferralController@index')->name('referral.index');
     Route::post('referral/store', 'ReferralController@storeReferral')->name('referral.storeReferral');
     Route::get('referral/withdraw-bonus/{id}', 'ReferralController@withdrawReferralBonus')->name('referral.withdraw');
+    Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest');
 });
 
-//Route::group(['middleware' => ['auth', 'client'], function(){
-    Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest')
-    ->middleware(['auth', 'client']);
-//});
+Route::resource('help', 'HelpController')->middleware('auth');
+
 Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'admin', 'namespace'=> 'Admin'], function (){
     Route::get('/package', 'PackageController@index')->name('packages.index');
     Route::get('/create-package', 'PackageController@create')->name('packages.create');
@@ -64,6 +64,9 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('referral/payment', 'ReferralController@payment')->name('referral.payment');
     Route::get('referral/show-referrer','ReferralController@showReferrerInfo');
     Route::get('referral/confirm-withdrawal','ReferralController@confirmWithdrawal');
+    Route::get('users/all','UserController@index')->name('user.index');
+    Route::get('users/blocked','UserController@blocked')->name('user.blocked');
+    Route::get('users/confirm-user-unblock','UserController@unblock')->name('user.confirm-unblock');
 });
 
 Auth::routes(['verify' => true]);

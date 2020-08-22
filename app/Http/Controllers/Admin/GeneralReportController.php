@@ -14,20 +14,7 @@ use Illuminate\Http\Request;
 class GeneralReportController extends Controller
 {
     public function index(){
-
-        $investments = Investment::with('package')->get();
-        $investmentPriceList = [];
-        foreach ($investments as $investment){
-            $investmentPriceList[] = $investment->package->price;
-        }
-        $totalInvestment = number_format(array_sum($investmentPriceList));
-        $availableWithdrawal = number_format(Withdrawal::where('match', 0)->sum('amount'));
-        $totalWithdrawal = number_format(Transaction::where('recipient_status', 1)->sum('amount'));
-        $referralBonus = '';
-        $totalNumberOfInvestment = Investment::all()->count();
-        $investments = Investment::with('withdrawal', 'user', 'package')->latest()->get();
-        return view('general-report.index', compact('investments', 'totalInvestment',
-            'totalWithdrawal', 'availableWithdrawal', 'totalNumberOfInvestment'));
+        return view('general-report.index');
     }
 
     public function show($id){

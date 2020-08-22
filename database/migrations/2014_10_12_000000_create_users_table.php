@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('phone');
             $table->string('referral_code')->nullable();
+            $table->integer('blocked')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

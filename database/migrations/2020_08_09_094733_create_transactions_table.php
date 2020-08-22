@@ -26,6 +26,8 @@ class CreateTransactionsTable extends Migration
             $table->string('proof_of_payment')->nullable();
             $table->integer('depositor_status')->default(0);
             $table->integer('recipient_status')->default(0);
+            $table->string('deadline');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

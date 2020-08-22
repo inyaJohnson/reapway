@@ -5,11 +5,13 @@
     <button type="button" class="btn btn-light bg-white btn-icon mr-3 mt-2 mt-xl-0">
         <i class="mdi mdi-clock-outline text-muted"></i>
     </button>
+    @can('client-actions')
     <a href="{{route('investment.invest')}}" title="Invest">
         <button type="button" class="btn btn-light bg-white btn-icon mr-3 mt-2 mt-xl-0">
             <i class="mdi mdi-plus text-muted"></i>
         </button>
     </a>
+    @endcan
     @if(request()->is('referral'))
         @can(['referral_actions', 'client-actions'])
             <button type="button" href="" class="btn btn-primary mt-2 mt-xl-0 referrer-form-toggle">Add Your referrer

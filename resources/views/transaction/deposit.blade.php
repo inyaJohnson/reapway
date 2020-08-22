@@ -125,6 +125,12 @@
             </div>
         </div>
     </div>
+    @if($depositDeadline !== null)
+        <input type="hidden" id="deposit-deadline" value="{{\Carbon\Carbon::parse($depositDeadline->deadline)}}">
+    @else
+        <input type="hidden" id="deposit-deadline" value="{{\Carbon\Carbon::parse(0)}}">
+    @endif
+    <div class="defaultCountdown"></div>
     @include('transaction.recipient-info')
     @include('transaction.confirm-depositor')
 @endsection

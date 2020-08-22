@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Account;
 use App\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -16,7 +17,12 @@ class TransactionController extends Controller
             ['recipient_status', 0]
         ])->get();
 
-        return view('transaction.deposit', compact('transactions'));
+        $depositDeadline = Transaction::where([
+            ['depositor_id', auth()->user()->id],
+            ['depositor_status', 0],
+            ['recipient_status', 0]
+        ])->first();
+        return view('transaction.deposit', compact('transactions', 'depositDeadline'));
     }
 
 
@@ -81,7 +87,7 @@ class TransactionController extends Controller
         $message = ['success' => 'Payment confirmed'];
         $result = $transaction->update(['recipient_status' => 1]);
         if(!$result){
-            $message = ['success' => 'Unable to confirmed Payment' ];
+            $message = ['error' => 'Unable to confirmed Payment' ];
         }
         return response()->json($message);
     }

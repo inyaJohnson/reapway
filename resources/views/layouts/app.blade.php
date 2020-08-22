@@ -9,6 +9,7 @@
 
     <title>{{ config('app.name', 'RocketPay') }}</title>
     <!-- plugins:css -->
+    <link rel="stylesheet" href="{{asset('dashboard/countdown/css/jquery.countdown.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/js/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/vendors/base/vendor.bundle.base.css')}}">
@@ -178,12 +179,12 @@
                     </div>
                 </li>
                 @can('client-actions')
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('referral.index')}}">
-                        <i class="mdi mdi-emoticon menu-icon"></i>
-                        <span class="menu-title">Referral</span>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('referral.index')}}">
+                            <i class="mdi mdi-emoticon menu-icon"></i>
+                            <span class="menu-title">Referral</span>
+                        </a>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('help.create')}}">
@@ -207,11 +208,34 @@
                                         <span class="menu-title">Referral</span>
                                     </a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{{route('referral.payment')}}">Payment</a>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="{{route('referral.payment')}}">Payment</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#user" aria-expanded="false"
+                           aria-controls="user">
+                            <i class="mdi mdi-account menu-icon"></i>
+                            <span class="menu-title">Users Management</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="user">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('user.index')}}">
+                                        <span class="menu-title">Users</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="{{route('user.blocked')}}">Blocked Users</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('help.index')}}">
@@ -261,6 +285,8 @@
 <script src="{{asset('dashboard/js/dataTables.bootstrap4.js')}}"></script>
 <script src="{{asset('dashboard/js/sweetalert2/dist/sweetalert2.min.js')}}"></script>
 <script src="{{asset('dashboard/js/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('dashboard/countdown/js/jquery.plugin.min.js')}}"></script>
+<script src="{{asset('dashboard/countdown/js/jquery.countdown.js')}}"></script>
 <script src="{{asset('dashboard/js/custom.js')}}"></script>
 <!-- End custom js for this page-->
 <!-- GetButton.io widget -->
@@ -272,12 +298,19 @@
             position: "right", // Position may be 'right' or 'left'
         };
         var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
-        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () {
+            WhWidgetSendButton.init(host, proto, options);
+        };
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
     })();
 </script>
 <!-- /GetButton.io widget -->
+
 
 @yield('script')
 </body>

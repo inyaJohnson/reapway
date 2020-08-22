@@ -79,7 +79,7 @@ class InvestmentController extends Controller
 
     public function withdraw(Request $request)
     {
-        $message = ['success' => 'Withdrawal request was successful'];
+        $message = ['success' => 'Withdrawal request was successful, You will be Matched soon...'];
         $investment = Investment::findorFail($request->id);
         auth()->user()->withdrawal()->create([
             'investment_id' => $investment->id,
@@ -167,6 +167,7 @@ class InvestmentController extends Controller
                 'recipient_id' => $transaction['recipient_id'],
                 'withdrawal_id' => $transaction['id'],
                 'amount' => $transaction['amount'],
+                'deadline' => Carbon::now()->addDay()->addHour(),
             ]);
 
             $updateWithdrawal = Withdrawal::findOrFail($transaction['id']);

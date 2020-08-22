@@ -11,7 +11,8 @@
                         </div>
                         <div class="d-flex">
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
-                            <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a></p>
+                            <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a>
+                            </p>
                             <p class="text-primary mb-0 hover-cursor">Withdraw</p>
                         </div>
                     </div>
@@ -52,12 +53,14 @@
                                                 Completed
                                             @else
                                                 <button
-                                                    class="btn btn-danger reinvest" @php echo ((isset($investment) && $investment->reinvest != 0) || $investment->reinvest_btn == 1)? 'disabled':'';  @endphp
+                                                    class="btn btn-danger reinvest"
+                                                    @php echo ((isset($investment) && $investment->reinvest != 0) || $investment->reinvest_btn == 1)? 'disabled':'';  @endphp
                                                     style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
                                                     data-id={{$investment->id}}>Reinvest
                                                 </button>
                                                 <button
-                                                    class="btn btn-warning withdraw" @php echo (isset($investment) && $investment->reinvest != 1)? 'disabled':'';  @endphp
+                                                    class="btn btn-warning withdraw"
+                                                    @php echo (isset($investment) && $investment->reinvest != 1)? 'disabled':'';  @endphp
                                                     style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
                                                     data-id={{$investment->id}}>Withdraw
                                                 </button>
@@ -74,48 +77,51 @@
             </div>
         </div>
 
-
-{{--        SMALL SCREEN--}}
+        {{--        SMALL SCREEN--}}
 
         <div class="row small-screen">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Withdrawal Request</h4>
-                        <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
-                            <div class="sale-box-inner">
-                                <div class="sale-box-head">
-                                    <h4>{{$investment->package->name}}</h4>
+                        @foreach( $investments as $investment)
+                            <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                <div class="sale-box-inner">
+                                    <div class="sale-box-head">
+                                        <h4>{{$investment->package->name}}</h4>
+                                    </div>
+                                    <ul class="sale-box-desc">
+                                        <li>
+                                            <strong>Amount - {{number_format($investment->package->price)}}</strong>
+                                            <span>ROI - #{{number_format((($investment->package->price * $investment->percentage)/100) + $investment->package->price) }}</span>
+                                        </li>
+                                        <li>
+                                            <strong>{{$investment->percentage}}% Recommitment</strong>
+                                            <span>Profit #{{number_format($investment->profit)}}</span>
+                                        </li>
+                                        <li>@if($investment->maturity == 0)
+                                                Not Matured
+                                            @elseif($investment->reinvest != 0 && $investment->reinvest != 1 && $investment->maturity == 1)
+                                                Completed
+                                            @else
+                                                <button
+                                                    class="btn btn-danger reinvest"
+                                                    @php echo ((isset($investment) && $investment->reinvest != 0) || $investment->reinvest_btn == 1)? 'disabled':'';  @endphp
+                                                    style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
+                                                    data-id={{$investment->id}}>Reinvest
+                                                </button>
+                                                <button
+                                                    class="btn btn-warning withdraw"
+                                                    @php echo (isset($investment) && $investment->reinvest != 1)? 'disabled':'';  @endphp
+                                                    style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
+                                                    data-id={{$investment->id}}>Withdraw
+                                                </button>
+                                            @endif
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="sale-box-desc">
-                                    <li>
-                                        <strong>Amount - {{number_format($investment->package->price)}}</strong>
-                                        <span>ROI - #{{number_format((($investment->package->price * $investment->percentage)/100) + $investment->package->price) }}</span>
-                                    </li>
-                                    <li>
-                                        <strong>{{$investment->percentage}}% Recommitment</strong>
-                                        <span>Profit #{{number_format($investment->profit)}}</span>
-                                    </li>
-                                    <li>@if($investment->maturity == 0)
-                                            Not Matured
-                                        @elseif($investment->reinvest != 0 && $investment->reinvest != 1 && $investment->maturity == 1)
-                                            Completed
-                                        @else
-                                            <button
-                                                class="btn btn-danger reinvest" @php echo ((isset($investment) && $investment->reinvest != 0) || $investment->reinvest_btn == 1)? 'disabled':'';  @endphp
-                                            style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
-                                                data-id={{$investment->id}}>Reinvest
-                                            </button>
-                                            <button
-                                                class="btn btn-warning withdraw" @php echo (isset($investment) && $investment->reinvest != 1)? 'disabled':'';  @endphp
-                                            style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
-                                                data-id={{$investment->id}}>Withdraw
-                                            </button>
-                                        @endif
-                                    </li>
-                                </ul>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Referral;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -38,6 +39,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('referral_actions', function($user){
             $referred_user = Referral::where('referred_id', $user->id )->first();
             return null === $referred_user;
+        });
+
+        Gate::define('block_user', function ($user){
+           return 0 === $user->blocked;
         });
     }
 }

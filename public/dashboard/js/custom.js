@@ -212,5 +212,34 @@ $(document).ready(function () {
         sweetConfirmation(warningMessage, successMessage, callback)
     })
 
+//    COUNTDOWN
+    var deadline = new Date($('#deposit-deadline').val())
+    $('.defaultCountdown').countdown({until: deadline, format: 'HMS'});
+
+
+//    CONFIRM UNBLOCK
+
+    $('.confirm-unblock').on('click', function () {
+        var warningMessage = 'Are you sure, you want to unblock this user'
+        var successMessage = 'Suspension lifted';
+        var id = $(this).attr('data-id');
+        var callback = function () {
+            $.ajax({
+                type: 'GET',
+                url: 'confirm-user-unblock',
+                data: {id: id},
+                success: function (response) {
+                    if (response.success) {
+                        $('.alert-success').text(response.success).show()
+                    }else {
+                        $('.alert-danger').text(response.error).show()
+                    }
+                    location.reload();
+                }
+            })
+        }
+        sweetConfirmation(warningMessage, successMessage, callback)
+    })
+
 
 })

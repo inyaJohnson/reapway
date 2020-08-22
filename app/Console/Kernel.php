@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'App\Console\Commands\CheckMaturityCommand',
-        'App\Console\Commands\CheckCommitmentCommand'
+        'App\Console\Commands\CheckCommitmentCommand',
+        'App\Console\Commands\BlockUserCommand'
     ];
 
     /**
@@ -27,8 +28,10 @@ class Kernel extends ConsoleKernel
     {
 //        $schedule->command('check:maturity')->hourly();
 //        $schedule->command('check:commitment')->hourly();
+//        $schedule->command('block:user')->everyThirtyMinutes();
         $schedule->command('check:maturity')->everyMinute();
         $schedule->command('check:commitment')->everyMinute();
+        $schedule->command('block:user')->everyMinute();
     }
 
     /**
