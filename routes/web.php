@@ -44,6 +44,8 @@ Route::group(['middleware' => ['auth', 'block.user']], function(){
     Route::post('referral/store', 'ReferralController@storeReferral')->name('referral.storeReferral');
     Route::get('referral/withdraw-bonus/{id}', 'ReferralController@withdrawReferralBonus')->name('referral.withdraw');
     Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest');
+    Route::get('/report/{id}', 'ReportController@create')->name('report.create');
+    Route::post('/report/store', 'ReportController@store')->name('report.store');
 });
 
 Route::resource('help', 'HelpController')->middleware('auth');
@@ -67,6 +69,9 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('users/all','UserController@index')->name('user.index');
     Route::get('users/blocked','UserController@blocked')->name('user.blocked');
     Route::get('users/confirm-user-unblock','UserController@unblock')->name('user.confirm-unblock');
+    Route::get('/report','ReportController@index')->name('report.index');
+    Route::post('/report/block-user','ReportController@block');
+    Route::get('/report/show/{id}','ReportController@show');
 });
 
 Auth::routes(['verify' => true]);

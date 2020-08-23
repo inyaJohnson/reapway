@@ -54,8 +54,10 @@
                                                     data-id="{{$transaction->id}}">Confirm Payment
                                             </button>
                                         </td>
-                                        <td><a class="btn btn-primary" href="/store/{{$transaction->proof_of_payment}}"
-                                               download>Download File</a></td>
+                                        <td>{!! ($transaction->proof_of_payment !== null)?"<a class='btn btn-link'
+                                                   href='/store/{{$transaction->proof_of_payment}}'
+                                                   download>Download File</a>" :"No proof Yet" !!}
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -90,16 +92,18 @@
                                                 <strong><a class="btn btn-primary view-depositor" href="#"
                                                            data-id={{$transaction->depositor_id}} data='{{$transaction->id}}'>View
                                                         Depositor</a></strong>
-                                                <span>{{$investment->created_at}}</span>
+
                                             </li>
                                             <li>
                                                 <button class="btn btn-primary confirm-withrawal"
                                                         data-id="{{$transaction->id}}">Confirm Payment
                                                 </button>
                                             </li>
-                                            <li><a class="btn btn-primary"
-                                                   href="/store/{{$transaction->proof_of_payment}}"
-                                                   download>Download File</a>
+                                            <li>
+                                                {!! ($transaction->proof_of_payment !== null)?"<a class='btn btn-link'
+                                                   href='/store/{{$transaction->proof_of_payment}}'
+                                                   download>Download File</a>" :"No proof Yet" !!}
+
                                             </li>
                                             <input value="{{$transaction->amount}}" id="amount{{$transaction->id}}"
                                                    type="hidden">

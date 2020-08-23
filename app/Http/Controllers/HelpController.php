@@ -8,6 +8,7 @@ use App\Http\Requests\ResponseRequest;
 use App\Mail\HelpMail;
 use App\Mail\ResponseMail;
 use App\Response;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class HelpController extends Controller

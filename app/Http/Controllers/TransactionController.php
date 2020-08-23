@@ -6,6 +6,7 @@ use App\Account;
 use App\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TransactionController extends Controller
 {
@@ -59,8 +60,9 @@ class TransactionController extends Controller
 
     public function showRecipient(Request $request)
     {
-        $account = Account::where('user_id', $request->recepientId)->first();
+        $account = Account::where('user_id', $request->recipientId)->first();
         $message = [
+            'userId' => $request->recipientId,
             'name' => $account->name,
             'number' => $account->number,
             'bank' => $account->bank,
@@ -72,8 +74,10 @@ class TransactionController extends Controller
 
     public function showDepositor(Request $request)
     {
-        $account = Account::where('user_id', $request->recepientId)->first();
+        $account = Account::where('user_id', $request->depositorId)->first();
+
         $message = [
+            'userId' => $request->depositorId,
             'name' => $account->name,
             'number' => $account->number,
             'bank' => $account->bank,
@@ -93,18 +97,25 @@ class TransactionController extends Controller
     }
 
     public function confirmDeposit(Request $request){
-        $input = $this->validate($request, [
+        $rules = array(
            'attachment' => 'file|max:2048',
             'transaction_id' => 'required'
-        ]);
+        );
+        $error = Validator::make($request->all(), $rules);
 
+        if($error->fails()){
+            return response()->json(['error' => $error->errors()->all()]);
+        }
         $message = ['error' => 'No file uploaded'];
-        if(isset($input['attachment'])) {
-            $attachmentName = time(). '.' . $input['attachment']->extension();
-            $input['attachment']->move(public_path('store'), $attachmentName);
-            $transaction = Transaction::find($input['transaction_id']);
-            $message = ['success' => 'Payment confirmed'];
+        if(isset($request->attachment)) {
+            $attachmentName = time(). '.' . $request->attachment->extension();
+            $request->attachment->move(public_path('store'), $attachmentName);
+            $transaction = Transaction::find($request->transaction_id);
             $transaction->update(['depositor_status' => 1, 'proof_of_payment' => $attachmentName]);
+            $message = array(
+                'success' => 'Payment confirmed',
+                'image' => '<embed src="/store/'.$attachmentName.'" class="img-thumbnail" />'
+            );
         }
         return response()->json($message);
     }

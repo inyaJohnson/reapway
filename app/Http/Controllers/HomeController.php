@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Investment;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -25,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $latestInvestment = auth()->user()->investment()->latest()->first();
         $totalWithdrawn = auth()->user()->withdrawal()->where('status', 1)->count();
         $pendingWithdrawal = auth()->user()->withdrawal()->where('status', 0)->count();
         $totalNumberInvestment = auth()->user()->investment->count();
@@ -33,7 +35,8 @@ class HomeController extends Controller
             $investmentPriceList[] = $investment->package->price;
         }
         $totalInvestment = number_format(array_sum($investmentPriceList));
-        return view('home', compact('totalWithdrawn', 'pendingWithdrawal', 'totalNumberInvestment', 'totalInvestment'));
+        return view('home', compact('totalWithdrawn', 'pendingWithdrawal', 'totalNumberInvestment',
+            'totalInvestment', 'latestInvestment'));
     }
 
     public function welcome(){

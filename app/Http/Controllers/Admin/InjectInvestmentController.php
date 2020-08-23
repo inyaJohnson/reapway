@@ -53,7 +53,7 @@ class InjectInvestmentController extends Controller
         $withdrawal->updated_at = '2020-01-16 05:27:02';
         $withdrawal->save(['timestamps' => false]);
 
-        return redirect()->back()->with('success', 'Investment placed successfully');
+        return redirect()->route('home')->with('success', 'Investment placed successfully');
     }
 
     public function edit()

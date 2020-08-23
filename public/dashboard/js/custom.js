@@ -55,19 +55,21 @@ $(document).ready(function () {
 
     // Deposit blade
     $('.view-recipient').on('click', function () {
-        var recepientId = $(this).attr('data-id');
+        var recipientId = $(this).attr('data-id');
         var transactionId = $(this).attr('data');
         var amount = parseInt($('#amount' + transactionId).val());
         $.ajax({
             type: 'GET',
             url: "show-recipient",
-            data: {recepientId: recepientId},
+            data: {recipientId: recipientId},
             success: function (response) {
                 $('.user-account .user-account-bank').text(response.bank)
                 $('.user-account .user-account-name').text(response.name)
                 $('.user-account .user-account-number').text(response.number)
                 $('.user-account .user-account-phone').text(response.phone)
                 $('.user-account .user-account-amount').text(formatNumber(amount))
+                $('#recipient-modal a').attr('href', '/report/'+response.userId);
+
             }
         })
         $('#recipient-modal').modal();
@@ -77,19 +79,20 @@ $(document).ready(function () {
     //Withdrawal Blade
 
     $('.view-depositor').on('click', function () {
-        var recepientId = $(this).attr('data-id');
+        var depositorId = $(this).attr('data-id');
         var transactionId = $(this).attr('data');
         var amount = parseInt($('#amount' + transactionId).val());
         $.ajax({
             type: 'GET',
             url: "show-depositor",
-            data: {recepientId: recepientId},
+            data: {depositorId: depositorId},
             success: function (response) {
                 $('.user-account .user-account-bank').text(response.bank)
                 $('.user-account .user-account-name').text(response.name)
                 $('.user-account .user-account-number').text(response.number)
                 $('.user-account .user-account-phone').text(response.phone)
                 $('.user-account .user-account-amount').text(formatNumber(amount))
+                $('#depositor-modal a').attr('href', '/report/'+response.userId);
             }
         })
         $('#depositor-modal').modal();
@@ -117,35 +120,6 @@ $(document).ready(function () {
         sweetConfirmation(warningMessage, successMessage, callback)
     })
 
-//    CONFIRM DESPOSIT
-
-    $('.confirm-deposit-btn').on('click', function () {
-        $('#confirm-deposit-modal').modal();
-        $("#confirm-deposit-modal #transaction_id").val($(this).attr('data-id'))
-        $('#confirm-deposit-form').on('submit', function (event) {
-            event.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: '/transactions/confirm-deposit',
-                data: new FormData(this),
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    var redirectTo = failed = function () {
-                        $('#confirm-deposit-modal').modal('toggle');
-                        location.reload()
-                    }
-                    sweetAlert(response, redirectTo, failed)
-                },
-                error: function (error) {
-                    if (error.responseJSON.errors.hasOwnProperty('attachment')) {
-                        $('#confirm-deposit-form span').addClass('error').text('The File is required and the size must not be more than 2Mb');
-                    }
-                }
-            })
-        })
-    })
 
 //    Referral form toggle
 
@@ -241,5 +215,67 @@ $(document).ready(function () {
         sweetConfirmation(warningMessage, successMessage, callback)
     })
 
+// CONFIRM DEPOSIT WITH FILE UPLOAD
+    $('.confirm-deposit-btn').on('click', function () {
+        $('#confirm-deposit-modal').modal();
+        $("#confirm-deposit-modal #transaction_id").val($(this).attr('data-id'))
+        $('#confirm-deposit-form').on('submit', function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/transactions/confirm-deposit',
+                data: new FormData(this),
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function(){
+                    $('#success').empty()
+                },
+                onUploadProgress: function(event, position, total, percentageComplete){
+                    $('.progress-bar').text(percentageComplete + '%');
+                    $('.progress-bar').css('width', percentageComplete + '%');
+                },
+                success: function (response) {
+                    if(response.error){
+                        $('.progress-bar').text('0%');
+                        $('.progress-bar').css('width', '0%');
+                        $('#success').html("<span class='text-danger'><b>"+ response.error+"</b></span>");
+                    }
 
+                    if (response.success){
+                        $('.progress-bar').text('Uploaded');
+                        $('.progress-bar').css('width', '100%');
+                        $('#success').html("<span class='text-success'><b>"+ response.success+"</b></span><br /><br />");
+                        $('#success').append(response.image)
+                    }
+                },
+                error: function (error) {
+                    if (error.responseJSON.errors.hasOwnProperty('attachment')) {
+                        $('#confirm-deposit-form span').addClass('error').text('The File is required and the size must not be more than 2Mb');
+                    }
+                }
+            })
+        })
+    })
+
+
+//    Report / Block
+
+    //    CONFIRM UNBLOCK
+    $('.confirm-block').on('click', function () {
+        $('#report-ids').submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/report/block-user',
+                data: $('#report-ids').serialize(),
+                success: function (response) {
+                    var redirectTo = failed = function () {
+                        location.reload()
+                    }
+                    sweetAlert(response, redirectTo, failed)
+                }
+            })
+        })
+    })
 })

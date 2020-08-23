@@ -70,22 +70,22 @@
     padding-right: 7px;
 }
 
-.help-form-div{
+.help-form-div, .report-form-div{
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
 }
 
-.help-form-group{
+.help-form-group, .report-form-group{
     display: flex;
     justify-content: space-evenly;
 }
 
-.help-form-group input, .help-form-group textarea, .help-form-group select{
+.help-form-group input, .help-form-group textarea, .help-form-group select, .report-form-group input, .report-form-group textarea, .report-form-group select{
     margin: 0px 5px 10px 0px;
 }
 
-.help-form-bottom{
+.report-form-bottom{
     display: flex;
 }
 
@@ -217,7 +217,6 @@
     font-weight: bolder;
     padding: 20px;
 }
-
 
 
 

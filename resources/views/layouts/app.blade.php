@@ -232,6 +232,9 @@
                                 <li class="nav-item"><a class="nav-link"
                                                         href="{{route('user.blocked')}}">Blocked Users</a>
                                 </li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="{{route('report.index')}}">Report</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
