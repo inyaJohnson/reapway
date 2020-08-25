@@ -108,7 +108,7 @@
                             margin: 0;
                             margin-bottom: 50px;
                             "
-                                        ><img src="{{url('https://rocketpay.cc/images/logo.jpg')}}" class="logo"
+                                        ><img src="https://rocketpay.cc/images/logo.jpg" class="logo"
                                               style=" width: 150px;
                                             margin-left: auto;
                                             margin-right: auto;
@@ -170,31 +170,15 @@
                     font-family: Verdana;
                     vertical-align: top;
                     padding-bottom: 10px;
-                    padding-top: 10px;
-                    font-size: 12px;
-                    color: #aaaaaa;
-                    text-align: center
-                    ;">
-
-                    <span
-                        style="color: #aaaaaa;
-                        font-size: 12px;
-                        text-align: center;
-                        "
-                    >
-			 Oregun, Ikeja, Lagos State, Nigeria.
-                    </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td
-                                style="
-                    font-family: Verdana;
-                    vertical-align: top;
-                    padding-bottom: 10px;
                     font-size: 12px;
                     color: #aaaaaa;
                     text-align: center;">
+                                Please read more on the
+                                <a href="https://rocketpay.cc/"
+                                   style="color: #65d5f7;
+                    font-size: 12px;
+                    text-align: center;
+                    text-decoration: none;">Home Page</a>.
                             </td>
                         </tr>
                         <tr>
@@ -206,6 +190,26 @@
                     padding-top: 20px;
                     padding-bottom: 10px;
                     font-size: 12px; ">
+
+                                <a href="https://www.facebook.com/Rocketpays"
+                                   style="
+                    font-size: 12px;
+                    text-decoration: none;"><img src="https://rocketpay.cc/assets/images/facebook.svg" class="facebook"
+                                                 style=" width: 24px;"
+                                    ></a>
+                                <a href="#"
+                                   style="
+                    font-size: 12px;
+                    text-decoration: none;"><img src="https://rocketpay.cc/assets/images/twitter.svg" class="twitter"
+                                                 style=" width: 24px;"
+                                    ></a>
+
+                                <a href="https://www.instagram.com/Rocketpay"
+                                   style="
+                    font-size: 12px;text-decoration: none;"><img src="https://rocketpay.cc/assets/images/instagram.svg"
+                                                                 class="instagram"
+                                                                 style=" width: 24px; "
+                                    ></a>
 
                             </td>
                         </tr>

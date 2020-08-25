@@ -17,6 +17,7 @@ class BlockUser
     public function handle($request, Closure $next)
     {
         if(Gate::denies('block_user')){
+//            dd(auth()->user()->blocked);
             return redirect()->route('blocked');;
         }
         return $next($request);

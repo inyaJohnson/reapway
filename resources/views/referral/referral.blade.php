@@ -7,7 +7,7 @@
                     <div class="d-flex align-items-end flex-wrap">
                         <div class="mr-md-3 mr-xl-5">
                             <h2>Referrer record,</h2>
-                            <p class="mb-md-0">Refer and earn 10% on investment.</p>
+                            <p class="mb-md-0">Refer and earn 5% on investment.</p>
                         </div>
                         <div class="d-flex">
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
@@ -21,8 +21,8 @@
             </div>
         </div>
         @include('layouts.message')
-        <div class="row big-screen">
-            <div class="col-md-8 grid-margin stretch-card">
+        <div class="row ">
+            <div class="col-md-8 grid-margin stretch-card big-screen">
                 <div class="card">
                     <div class="card-body">
                         <p class="card-title">Referred List</p>
@@ -33,23 +33,16 @@
                                     <th>Name</th>
                                     <th>Date</th>
                                     <th>Amount</th>
-                                    <th>Action</th>
+                                    <th>withdrawn</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($referrals as $referred)
                                     <tr>
-                                        <td>{{$referred->user->name}}</td>
+                                        <td>{{$referred->referred->name}}</td>
                                         <td>{{$referred->created_at->format('M d Y')}}</td>
                                         <td>{{number_format($referred->amount)}}</td>
-                                        <td>@if($referred->apply_for_withdrawal == 0)
-                                                <a href="{{route('referral.withdraw', $referred->id)}}"
-                                                   class="btn btn-primary">Withdraw</a>
-                                            @elseif($referred->apply_for_withdrawal == 1)
-                                                <span class="text-warning">Processing</span>
-                                            @endif
-                                            {!! ($referred->withrawn == 1)? "<span class='text-success'>Withdrawn</span>": '' !!}
-                                        </td>
+                                        <td>{!! ($referred->withdrawn == 1)?"<span class='text-success'>Yes</span>" : "<span class='text-danger'>No</span>"!!}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -58,63 +51,77 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 grid-margin stretch-card big-screen">
+
+            <div class="col-md-8 grid-margin stretch-card small-screen">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title">Referred List</p>
+                        <div>
+                            @foreach($referrals as $referred)
+                                <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                    <div class="sale-box-inner">
+                                        <div class="sale-box-head">
+                                            <h4>{{$referred->referred->name}}</h4>
+                                        </div>
+                                        <ul class="sale-box-desc">
+                                            <li>
+                                                <strong>Amount - #{{number_format($referred->amount)}}</strong>
+                                                <span>Created on {{$referred->created_at->format('M d Y H:i')}}</span>
+                                            </li>
+                                            <li>
+                                                {!! ($referred->withdrawn == 1)?"<span class='text-success'>Yes</span>" : "<span class='text-danger'>No</span>"!!}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <p class="card-title">Total Referral Bonus</p>
-                        <h1># {{number_format($referrals->pluck('amount')->sum())}}</h1>
-
-                        <p class="card-title">Number of Referrals</p>
-                        <h1>{{$referrals->count()}}</h1>
-
-                        {{--                        <h4>Gross sales over the years</h4>--}}
+                        <h1># {{number_format($referrals->where('withdrawn', 0)->pluck('amount')->sum())}}</h1>
                         <p class="text-muted">Earn more today at RocketPay by Referring Investors.
                             5% of the startup Investment of the referred investor will be assigned to you upon
                             application for withdrawal</p>
-                        {{--                        <div>Total number of referred Investors is {{$referrals->count()}}</div>--}}
+                        @foreach($availablePackages as $package)
+                            <div class="sale-box wow fadeInUp" data-wow-iteration="1">
+                                <div class="sale-box-inner">
+                                    <div class="sale-box-head">
+                                        <h4>{{$package->name}}</h4>
+                                    </div>
+                                    <ul class="sale-box-desc">
+                                        <li>
+                                            <strong>#{{number_format($package->price)}}</strong>
+                                            <span>up to {{$package->percentage}}% ROI - #{{number_format((($package->price*$package->percentage)/100) + $package->price)}}</span>
+                                        </li>
+                                        <li>
+                                            <strong>100% Recommitment</strong>
+                                            <span>(You get 5% referral bonus)</span>
+                                        </li>
+                                    </ul>
+                                    <form method="POST" action="{{route('referral.investment-store')}}">
+                                        @csrf
+                                        <input type="hidden" name="package_id" value={{$package->id}} />
+                                        <input type="hidden" name="package_price"
+                                               value={{$package->price}} class="package_price"/>
+                                        <div class="invest_btn text-center">
+                                            <button class="invest_submit" type="button">Reinvest Your Bonus</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                     <img src="{{asset('assets/images/banner-2.jpg')}}" alt="banner" height="200px"/>
                 </div>
             </div>
         </div>
-
-
-            <div class="row small-screen">
-                <div class="col-md-8 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="card-title">Referred List</p>
-                            <div>
-                                @foreach($referrals as $referred)
-                                    <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
-                                        <div class="sale-box-inner">
-                                            <div class="sale-box-head">
-                                                <h4>{{$referred->user->name}}</h4>
-                                            </div>
-                                            <ul class="sale-box-desc">
-                                                <li>
-                                                    <strong>Amount - #{{number_format($referred->amount)}}</strong>
-                                                    <span>Created on {{$referred->created_at->format('M d Y H:i')}}</span>
-                                                </li>
-                                                <li>
-                                                    @if($referred->apply_for_withdrawal == 0)
-                                                        <a href="{{route('referral.withdraw', $referred->id)}}"
-                                                           class="btn btn-primary">Withdraw</a>
-                                                    @elseif($referred->apply_for_withdrawal == 1)
-                                                        <span class="text-warning">Processing</span>
-                                                    @endif
-                                                    {!! ($referred->withrawn == 1)? "<span class='text-success'>Withdrawn</span>": '' !!}
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- content-wrapper ends -->
+    </div>
+    <!-- content-wrapper ends -->
     @include('referral.add-referral')
 @endsection

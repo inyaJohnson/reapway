@@ -18,7 +18,6 @@ class CreateReferralsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('referral_code');
             $table->integer('amount');
-            $table->integer('apply_for_withdrawal')->default(0);
             $table->integer('withdrawn')->default(0);
             $table->unsignedInteger('referred_id');
             $table->timestamps();

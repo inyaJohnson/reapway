@@ -48,9 +48,9 @@
                                     <p>Bank - {{auth()->user()->account->bank}} </p>
                                     <a href="{{route('settings.edit', auth()->user()->id)}}">Edit Account
                                         Information</a>
-                                @else
-                                    <a href="{{route('settings.account', auth()->user()->id)}}">Click to Add your Payment Account
-                                        Information</a>
+{{--                                @else--}}
+{{--                                    <a href="{{route('settings.account', auth()->user()->id)}}">Click to Add your Payment Account--}}
+{{--                                        Information</a>--}}
                                 @endif
                             </div>
                         </div>

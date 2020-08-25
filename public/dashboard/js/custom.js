@@ -247,6 +247,7 @@ $(document).ready(function () {
                         $('.progress-bar').css('width', '100%');
                         $('#success').html("<span class='text-success'><b>"+ response.success+"</b></span><br /><br />");
                         $('#success').append(response.image)
+                        $("#confirm-deposit-modal button[type='submit']").hide();
                     }
                 },
                 error: function (error) {
@@ -257,7 +258,9 @@ $(document).ready(function () {
             })
         })
     })
-
+    $("#confirm-deposit-modal button[type='button']").on('click', function () {
+        window.location = '/transactions/history'
+    });
 
 //    Report / Block
 
@@ -278,4 +281,33 @@ $(document).ready(function () {
             })
         })
     })
+
+
+//    INVEST NOW
+
+    $('.invest_submit').on('click', function () {
+        // window.alert("hello")
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to invest #" + formatNumber($(this).parents('form').children('.package_price').val()) + "!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Invest Now!'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Congrats',
+                    'Your investment was successful',
+                    'success'
+                ).then(()=>{
+                    var form = $(this).parents('form:first');
+                    form.submit();
+                })
+            }
+        })
+    })
+
+
 })

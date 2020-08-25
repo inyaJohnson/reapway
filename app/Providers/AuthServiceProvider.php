@@ -38,11 +38,11 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('referral_actions', function($user){
             $referred_user = Referral::where('referred_id', $user->id )->first();
-            return null === $referred_user;
+            return null == $referred_user;
         });
 
         Gate::define('block_user', function ($user){
-           return 0 === $user->blocked;
+           return 0 == $user->blocked;
         });
     }
 }

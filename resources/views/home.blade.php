@@ -87,38 +87,102 @@
             </div>
         </div>
         @include('layouts.message')
-        <div class="row big-screen">
-            <div class="col-md-7 grid-margin stretch-card">
+        <div class="row ">
+            <div class="col-md-7 grid-margin stretch-card big-screen">
                 <div class="card">
                     <div class="card-body">
                         <p class="card-title">Latest Investment</p>
-                        <div class=" sale-box wow fadeInUp" data-wow-iteration="1">
+                        <div class="sale-box wow fadeInUp" data-wow-iteration="1">
                             <div class="sale-box-inner">
-                                <div class="sale-box-head">
-                                    <h4>{{$latestInvestment->package->name}}</h4>
-                                </div>
-                                <ul class="sale-box-desc">
-                                    <li>
-                                        <strong>Amount - {{number_format($latestInvestment->package->price)}}</strong>
-                                        <span>ROI - #{{number_format((($latestInvestment->package->price * $latestInvestment->percentage)/100) + $latestInvestment->package->price) }}</span>
-                                    </li>
-                                    <li>
-                                        <strong>{{$latestInvestment->percentage}}% Recommitment</strong>
-                                        <span>{{$latestInvestment->created_at->format('M d Y H:i')}}</span>
-                                    </li>
-                                    <li>@if($latestInvestment->maturity == 1)
-                                            <label class="badge badge-success">Matured</label>
-                                        @else
-                                            <label class="badge badge-danger">Not Due</label>
-                                        @endif
-                                    </li>
-                                    <li>@if($latestInvestment->withdrawn == 1)
-                                            <span style="color:black;">Withdrawn</span>
-                                        @else
-                                            <span style="color:black;">Not Withdrawn</span>
-                                        @endif
-                                    </li>
-                                </ul>
+                                @if($latestInvestment !== null)
+                                    <div class="sale-box-head">
+                                        <h4>{{$latestInvestment->package->name}}</h4>
+                                    </div>
+                                    <ul class="sale-box-desc">
+                                        <li>
+                                            <strong>Amount
+                                                - {{number_format($latestInvestment->package->price)}}</strong>
+                                            <span>ROI - #{{number_format((($latestInvestment->package->price * $latestInvestment->percentage)/100) + $latestInvestment->package->price) }} @ {{$latestInvestment->percentage}}% Profit</span>
+                                        </li>
+                                        <li>
+                                            <strong>100% Recommitment</strong>
+                                            <span>Created Date - {{$latestInvestment->created_at->format('M d Y H:i')}}</span>
+                                        </li>
+                                        <li><strong>@if($latestInvestment->maturity == 1)
+                                                    <label class="badge badge-success">Matured</label>
+                                                @else
+                                                    <label class="badge badge-danger">Not Due</label>
+                                                @endif
+                                            </strong>
+                                            <span>Withdrawal Date- {{\Carbon\Carbon::parse($latestInvestment->created_at)->addDay($latestInvestment->package->duration)->format('M d Y H:i')}}</span>
+                                        </li>
+                                        <li>@if($latestInvestment->withdrawn == 1)
+                                                <span style="color:black;">Withdrawn</span>
+                                            @else
+                                                <span style="color:black;">Not Withdrawn</span>
+                                            @endif
+                                        </li>
+                                    </ul>
+                                @else
+                                    <div class="latest-investment">
+                                        <div>Invest in any of our packages and start earning today...</div>
+                                        <div>
+                                            <a type="button" class="btn btn-primary"
+                                               href="{{route('investment.invest')}}">Invest
+                                                Now</a>
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7 grid-margin stretch-card small-screen">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="sale-box wow fadeInUp" data-wow-iteration="1">
+                            <div class="sale-box-inner">
+                                @if($latestInvestment !== null)
+                                    <div class="sale-box-head">
+                                        <h4>{{$latestInvestment->package->name}}</h4>
+                                    </div>
+                                    <ul class="sale-box-desc">
+                                        <li>
+                                            <strong>Amount
+                                                - {{number_format($latestInvestment->package->price)}}</strong>
+                                            <span>ROI - #{{number_format((($latestInvestment->package->price * $latestInvestment->percentage)/100) + $latestInvestment->package->price) }} @ {{$latestInvestment->percentage}}% Profit</span>
+                                        </li>
+                                        <li>
+                                            <strong>100% Recommitment</strong>
+                                            <span>Created Date - {{$latestInvestment->created_at->format('M d Y H:i')}}</span>
+                                        </li>
+                                        <li><strong>@if($latestInvestment->maturity == 1)
+                                                    <label class="badge badge-success">Matured</label>
+                                                @else
+                                                    <label class="badge badge-danger">Not Due</label>
+                                                @endif
+                                            </strong>
+                                            <span>Withdrawal Date- {{\Carbon\Carbon::parse($latestInvestment->created_at)->addDay($latestInvestment->package->duration)->format('M d Y H:i')}}</span>
+                                        </li>
+                                        <li>@if($latestInvestment->withdrawn == 1)
+                                                <span style="color:black;">Withdrawn</span>
+                                            @else
+                                                <span style="color:black;">Not Withdrawn</span>
+                                            @endif
+                                        </li>
+                                    </ul>
+                                @else
+                                    <div class="latest-investment">
+                                        <div>Invest in any of our packages and start earning today...</div>
+                                        <div>
+                                            <a type="button" class="btn btn-primary"
+                                               href="{{route('investment.invest')}}">Invest
+                                                Now</a>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -137,45 +201,6 @@
                         <div id="total-sales-chart-legend"></div>
                     </div>
                     <img src="{{asset('assets/images/banner-2.jpg')}}" alt="banner" height="200px"/>
-                </div>
-            </div>
-        </div>
-        <div class="row small-screen">
-            <div class="col-md-7 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="sale-box wow fadeInUp" data-wow-iteration="1">
-                            <div class="sale-box-inner">
-                                <div class="sale-box-head">
-                                    <h4>{{$latestInvestment->package->name}}</h4>
-                                </div>
-                                <ul class="sale-box-desc">
-                                    <li>
-                                        <strong>Amount - {{number_format($latestInvestment->package->price)}}</strong>
-                                        <span>ROI - #{{number_format((($latestInvestment->package->price * $latestInvestment->percentage)/100) + $latestInvestment->package->price) }}</span>
-                                    </li>
-                                    <li>
-                                        <strong>{{$latestInvestment->percentage}}% Recommitment</strong>
-                                        <span>Created Date - {{$latestInvestment->created_at->format('M d Y H:i')}}</span>
-                                    </li>
-                                    <li><strong>@if($latestInvestment->maturity == 1)
-                                                <label class="badge badge-success">Matured</label>
-                                            @else
-                                                <label class="badge badge-danger">Not Due</label>
-                                            @endif
-                                        </strong>
-                                        <span>Withdrawal Date- {{\Carbon\Carbon::parse($latestInvestment->created_at)->addDay($latestInvestment->package->duration)->format('M d Y H:i')}}</span>
-                                    </li>
-                                    <li>@if($latestInvestment->withdrawn == 1)
-                                            <span style="color:black;">Withdrawn</span>
-                                        @else
-                                            <span style="color:black;">Not Withdrawn</span>
-                                        @endif
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

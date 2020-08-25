@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth', 'block.user']], function(){
     Route::post('transactions/confirm-deposit', 'TransactionController@confirmDeposit')->name('confirm-deposit');
     Route::get('referral', 'ReferralController@index')->name('referral.index');
     Route::post('referral/store', 'ReferralController@storeReferral')->name('referral.storeReferral');
-    Route::get('referral/withdraw-bonus/{id}', 'ReferralController@withdrawReferralBonus')->name('referral.withdraw');
+    Route::post('referral/investment-store', 'ReferralController@referralInvestmentStore')->name('referral.investment-store');
     Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest');
     Route::get('/report/{id}', 'ReportController@create')->name('report.create');
     Route::post('/report/store', 'ReportController@store')->name('report.store');
@@ -63,9 +63,6 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'admin', 'namespace'=
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/response/create/{id}', 'HelpController@response')->name('response.create');
     Route::post('/response/send', 'HelpController@sendResponse')->name('response.store');
-    Route::get('referral/payment', 'ReferralController@payment')->name('referral.payment');
-    Route::get('referral/show-referrer','ReferralController@showReferrerInfo');
-    Route::get('referral/confirm-withdrawal','ReferralController@confirmWithdrawal');
     Route::get('users/all','UserController@index')->name('user.index');
     Route::get('users/blocked','UserController@blocked')->name('user.blocked');
     Route::get('users/confirm-user-unblock','UserController@unblock')->name('user.confirm-unblock');

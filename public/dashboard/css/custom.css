@@ -169,6 +169,27 @@
     margin-top: 15px;
 }
 
+.latest-investment{
+    min-height: 300px;
+    display: flex;
+    flex-flow: column wrap;
+    color: #4a4a4a;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+}
+
+.latest-investment div{
+    padding: 15px;
+    font-weight: bold;
+}
+
+.latest-investment a{
+    font-weight: bold;
+    background-color: #FBC012;
+    border: none;
+}
+
 .invest_btn button{
     padding: 10px;
     font-size: 1em;

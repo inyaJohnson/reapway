@@ -15,7 +15,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         'App\Console\Commands\CheckMaturityCommand',
         'App\Console\Commands\CheckCommitmentCommand',
-        'App\Console\Commands\BlockUserCommand'
+        'App\Console\Commands\BlockUserCommand',
+        'App\Console\Commands\CheckWithdrawalCommand'
     ];
 
     /**
@@ -29,9 +30,11 @@ class Kernel extends ConsoleKernel
 //        $schedule->command('check:maturity')->hourly();
 //        $schedule->command('check:commitment')->hourly();
 //        $schedule->command('block:user')->everyThirtyMinutes();
-        $schedule->command('check:maturity')->everyMinute();
-        $schedule->command('check:commitment')->everyMinute();
-        $schedule->command('block:user')->everyMinute();
+//        $schedule->command('check:withdrawal')->everyThirtyMinutes();
+        $schedule->command('check:maturity')->everyFiveMinutes();
+        $schedule->command('check:commitment')->everyFiveMinutes();
+        $schedule->command('block:user')->everyFiveMinutes();
+        $schedule->command('check:withdrawal')->everyFiveMinutes();
     }
 
     /**

@@ -20,6 +20,7 @@ class InvestmentController extends Controller
             $investments = auth()->user()->investment;
         }
         return view('investment.index', compact('investments'));
+
     }
 
     /**

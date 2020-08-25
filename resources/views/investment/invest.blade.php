@@ -52,38 +52,4 @@
     </div>
     <!-- content-wrapper ends -->
 @endsection
-@section('script')
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            function formatNumber(num) {
-                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-            }
-
-            $('.invest_submit').on('click', function () {
-                // window.alert("hello")
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You want to invest #" + formatNumber($(this).parents('form').children('.package_price').val()) + "!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, Invest Now!'
-                }).then((result) => {
-                    if (result.value) {
-                        Swal.fire(
-                            'Congrats',
-                            'Your investment was successful',
-                            'success'
-                        ).then(()=>{
-                            var form = $(this).parents('form:first');
-                            form.submit();
-                        })
-                    }
-                })
-            })
-        })
-    </script>
-@endsection
 

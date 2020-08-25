@@ -93,10 +93,10 @@
                                     <ul class="sale-box-desc">
                                         <li>
                                             <strong>Amount - {{number_format($investment->package->price)}}</strong>
-                                            <span>ROI - #{{number_format((($investment->package->price * $investment->percentage)/100) + $investment->package->price) }}</span>
+                                            <span>ROI - #{{number_format((($investment->package->price * $investment->percentage)/100) + $investment->package->price) }}@ {{$investment->percentage}}% Profit</span>
                                         </li>
                                         <li>
-                                            <strong>{{$investment->percentage}}% Recommitment</strong>
+                                            <strong>100% Recommitment</strong>
                                             <span>Profit #{{number_format($investment->profit)}}</span>
                                         </li>
                                         <li>@if($investment->maturity == 0)
