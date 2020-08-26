@@ -144,42 +144,22 @@ $(document).ready(function () {
     })
 
 
-// Referral payment
-    $('.view-referrer').on('click', function () {
-        var referrerId = $(this).attr('data-id');
-        var referralId = $('#referral_id').val();
-        var amount = $('#amount'+referralId).text();
-        $.ajax({
-            type: 'GET',
-            url: "show-referrer",
-            data: {referrerId: referrerId},
-            success: function (response) {
-                $('.user-account .user-account-bank').text(response.bank)
-                $('.user-account .user-account-name').text(response.name)
-                $('.user-account .user-account-number').text(response.number)
-                $('.user-account .user-account-phone').text(response.phone)
-                $('.user-account .user-account-amount').text(formatNumber(amount))
-            }
-        })
-        $('#depositor-modal').modal();
-    })
-
-    $('.confirm-referral-withrawal').on('click', function () {
-        var warningMessage = 'You want to confirm this payment'
-        var successMessage = 'Payment Confirmed';
+    $('.confirm-activation').on('click', function () {
+        var warningMessage = 'You want to Activate this account'
+        var successMessage = 'Activation Confirmed';
         var id = $(this).attr('data-id');
         var callback = function () {
             $.ajax({
                 type: 'GET',
-                url: 'confirm-withdrawal',
-                data: {id: id},
+                url: 'activate/store/'+id,
                 success: function (response) {
                     if (response.success) {
                         $('.alert-success').text(response.success).show()
+                        location.reload();
                     }else {
                         $('.alert-danger').text(response.error).show()
                     }
-                    location.reload();
+
                 }
             })
         }
@@ -309,5 +289,23 @@ $(document).ready(function () {
         })
     })
 
+
+    $('.view-activator').on('click', function () {
+        var activatorId = $(this).attr('data-id');
+        $.ajax({
+            type: 'GET',
+            url: "/activate/show-activator",
+            data: {activatorId: activatorId},
+            success: function (response) {
+                $('.user-account .user-account-bank').text(response.bank)
+                $('.user-account .user-account-name').text(response.name)
+                $('.user-account .user-account-number').text(response.number)
+                $('.user-account .user-account-phone').text(response.phone)
+                $('.user-account .user-account-amount').text(formatNumber(1000))
+
+            }
+        })
+        $('#activator-modal').modal();
+    })
 
 })

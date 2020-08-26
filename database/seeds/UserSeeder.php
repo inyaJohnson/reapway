@@ -19,6 +19,8 @@ class UserSeeder extends Seeder
             'phone' => '07037555691',
             'referral_code' => substr(md5(time()), 0, 16),
             'email_verified_at' => now(),
+            'activation' => 1,
+            'activator_id' => 1
         ]);
 
         $admin->role()->attach($role, ['created_at' => now(), 'updated_at' => now()]);

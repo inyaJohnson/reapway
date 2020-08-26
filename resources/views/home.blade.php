@@ -48,7 +48,7 @@
                                     </div>
                                     <div
                                         class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                                        <i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i>
+                                        <i class="mdi mdi mdi-currency-ngn mr-3 icon-lg text-danger"></i>
                                         <div class="d-flex flex-column justify-content-around">
                                             <small class="mb-1 text-muted">Total Profit</small>
                                             <h5 class="mr-2 mb-0">
@@ -65,7 +65,7 @@
                                     </div>
                                     <div
                                         class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                                        <i class="mdi mdi-flag mr-3 icon-lg text-danger"></i>
+                                        <i class="mdi mdi-cash-multiple mr-3 icon-lg text-danger"></i>
                                         <div class="d-flex flex-column justify-content-around">
                                             <small class="mb-1 text-muted">Total Withdrawn</small>
                                             <h5 class="mr-2 mb-0">{{$totalWithdrawn}}</h5>

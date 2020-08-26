@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Activator;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Role;
@@ -67,12 +68,14 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $role = Role::where('name', 'user')->first();
+        $activator = Activator::inRandomOrder()->first();
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
-            'referral_code' => substr(md5(time()), 0, 16)
+            'referral_code' => substr(md5(time()), 0, 16),
+            'activator_id' => $activator->id
         ]);
         $user->role()->attach($role, ['created_at' => now(), 'updated_at' => now()]);
         return $user;

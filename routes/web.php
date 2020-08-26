@@ -15,11 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('/setup', 'HomeController@setup');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('activation');
 Route::get('/blocked-user', 'BlockUserController@deny')->name('blocked');
+Route::get('/activate/deny-access', 'Admin\ActivationController@deny')->name('activate.now');
+Route::get('/activate/show-activator', 'Admin\ActivationController@showActivator')->name('activate.show-activator');
 
 
-Route::group(['middleware' => ['auth', 'block.user']], function(){
+Route::group(['middleware' => ['auth', 'block.user', 'activation']], function(){
     Route::get('investment', 'InvestmentController@index')->name('investment.index');
     Route::post('investment/store', 'InvestmentController@store')->name('investment.store');
     Route::get('investment/reinvest', 'InvestmentController@reinvest')->name('investment.reinvest');
@@ -48,7 +50,7 @@ Route::group(['middleware' => ['auth', 'block.user']], function(){
     Route::post('/report/store', 'ReportController@store')->name('report.store');
 });
 
-Route::resource('help', 'HelpController')->middleware('auth');
+Route::resource('help', 'HelpController')->middleware(['auth']);
 
 Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'admin', 'namespace'=> 'Admin'], function (){
     Route::get('/package', 'PackageController@index')->name('packages.index');
@@ -58,6 +60,8 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'admin', 'namespace'=
     Route::resource('general-report', 'GeneralReportController');
     Route::get('/inject-invest/create', 'InjectInvestmentController@create')->name('inject-create');
     Route::post('/inject-invest/store', 'InjectInvestmentController@store')->name('inject-store');
+    Route::get('/activate', 'ActivationController@index')->name('activate.index');
+    Route::get('/activate/store/{id}', 'ActivationController@store')->name('activate.store');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
@@ -71,6 +75,6 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/report/show/{id}','ReportController@show');
 });
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 Route::get('/setup', 'SetUpController@index')->name('setup');

@@ -221,6 +221,9 @@
                         </a>
                         <div class="collapse" id="user">
                             <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="{{route('activate.index')}}">Activate User</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('user.index')}}">
                                         <span class="menu-title">Users</span>

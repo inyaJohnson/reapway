@@ -2,12 +2,10 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
-{
+class User extends Authenticatable{
     use Notifiable;
 
     /**
@@ -16,7 +14,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'referral_code', 'phone', 'blocked'
+        'name', 'email', 'password', 'referral_code', 'phone', 'blocked', 'activation', 'activator_id'
     ];
 
     /**
@@ -36,6 +34,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 
     public  function role(){
         return $this->belongsToMany(Role::class);
@@ -68,5 +67,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function referred(){
         return $this->hasMany(Referral::class);
+    }
+
+    public function activator(){
+        return $this->belongsTo(Activator::class);
     }
 }

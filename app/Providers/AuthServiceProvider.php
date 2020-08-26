@@ -44,5 +44,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('block_user', function ($user){
            return 0 == $user->blocked;
         });
+
+        Gate::define('activation', function ($user){
+            return 1 == $user->activation;
+        });
     }
 }
