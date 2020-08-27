@@ -169,7 +169,7 @@
                                     <span>up to 50% ROI - 7,500</span>
                                 </li>
                                 <li>
-                                    <strong>50% Recommitment</strong>
+                                    <strong>100% Recommitment</strong>
                                     <span>(You get 5% referral bonus)</span>
                                 </li>
                             </ul>
@@ -186,7 +186,7 @@
                                     <span>up to 50% ROI - 15,000</span>
                                 </li>
                                 <li>
-                                    <strong>50% Recommitment</strong>
+                                    <strong>100% Recommitment</strong>
                                     <span>(You get 5% referral bonus)</span>
                                 </li>
                             </ul>
@@ -200,10 +200,10 @@
                             <ul class="sale-box-desc">
                                 <li>
                                     <strong style="color: white !important">20,000</strong>
-                                    <span>up to 50% ROI - 25,000</span>
+                                    <span>up to 50% ROI - 30,000</span>
                                 </li>
                                 <li>
-                                    <strong>50% Recommitment</strong>
+                                    <strong>100% Recommitment</strong>
                                     <span>(You get 5% referral bonus)</span>
                                 </li>
                             </ul>
@@ -216,11 +216,11 @@
                             </div>
                             <ul class="sale-box-desc">
                                 <li>
-                                    <strong style="color: white !important">30,000</strong>
-                                    <span>up to 50% ROI - 45,000</span>
+                                    <strong style="color: white !important">50,000</strong>
+                                    <span>up to 50% ROI - 75,000</span>
                                 </li>
                                 <li>
-                                    <strong>50% Recommitment</strong>
+                                    <strong>100% Recommitment</strong>
                                     <span>(You get 5% referral bonus)</span>
                                 </li>
                             </ul>
@@ -237,11 +237,11 @@
                             </div>
                             <ul class="sale-box-desc">
                                 <li>
-                                    <strong style="color: white !important">50,000</strong>
-                                    <span>up to 50% ROI - 65,000</span>
+                                    <strong style="color: white !important">100,000</strong>
+                                    <span>up to 50% ROI - 150,000</span>
                                 </li>
                                 <li>
-                                    <strong>50% Recommitment</strong>
+                                    <strong>100% Recommitment</strong>
                                     <span>(You get 5% referral bonus)</span>
                                 </li>
                             </ul>
@@ -255,11 +255,11 @@
                             </div>
                             <ul class="sale-box-desc">
                                 <li>
-                                    <strong style="color: white !important">100,000</strong>
-                                    <span>up to 50% ROI - 150,000</span>
+                                    <strong style="color: white !important">200,000</strong>
+                                    <span>up to 50% ROI - 300,000</span>
                                 </li>
                                 <li>
-                                    <strong>50% Recommitment</strong>
+                                    <strong>100% Recommitment</strong>
                                     <span>(You get 5% referral bonus)</span>
                                 </li>
                             </ul>
@@ -273,11 +273,11 @@
                             </div>
                             <ul class="sale-box-desc">
                                 <li>
-                                    <strong style="color: white !important">200,000</strong>
-                                    <span>up to 50% ROI - 300,000</span>
+                                    <strong style="color: white !important">500,000</strong>
+                                    <span>up to 50% ROI - 750,000</span>
                                 </li>
                                 <li>
-                                    <strong>50% Recommitment</strong>
+                                    <strong>100% Recommitment</strong>
                                     <span>(You get 5% referral bonus)</span>
                                 </li>
                             </ul>
@@ -557,20 +557,6 @@
                                     <!--  <li><a href="#team">Team</a></li>
                                      <li><a href="#press">Media</a></li> -->
                                 </ul>
-                            </div>
-                        </div>
-                        <div class="widget-area">
-                            <div class="widget widget-html">
-                                <h2 class="widget-title">Newsletter</h2>
-                                <div class="text">
-                                    <p>Keep to date with our progress. Subscribe for e-mail updates.</p>
-                                </div>
-                                <div class="newsletter">
-                                    <form method="post">
-                                        <input type="email" name="Email" placeholder="Your email address">
-                                        <button class="btn" name="subscribe">subscribe</button>
-                                    </form>
-                                </div>
                             </div>
                         </div>
                         <div class="widget-area">

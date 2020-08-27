@@ -13,7 +13,7 @@
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
                             <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a>
                             </p>
-                            <p class="text-primary mb-0 hover-cursor">Referral Code -> {{auth()->user()->referral_code}}</p>
+                            <p class="text-primary mb-0 hover-cursor">Referral Link -> {{'https://rockekpay.com/referral/registration/'.$hashIds->encode(auth()->user()->id)}}</p>
                         </div>
                     </div>
                     @include('layouts.quick-links')
@@ -123,5 +123,5 @@
         </div>
     </div>
     <!-- content-wrapper ends -->
-    @include('referral.add-referral')
+{{--    @include('referral.add-referral')--}}
 @endsection

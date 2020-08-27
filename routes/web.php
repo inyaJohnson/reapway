@@ -19,7 +19,8 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('activatio
 Route::get('/blocked-user', 'BlockUserController@deny')->name('blocked');
 Route::get('/activate/deny-access', 'Admin\ActivationController@deny')->name('activate.now');
 Route::get('/activate/show-activator', 'Admin\ActivationController@showActivator')->name('activate.show-activator');
-
+Route::get('/referral/registration/{id}', 'ReferralController@referralLink')->name('referral.link')->middleware('guest');
+Route::post('/referral/registration/store', 'ReferralController@referredRegistration')->name('referral.store');
 
 Route::group(['middleware' => ['auth', 'block.user', 'activation']], function(){
     Route::get('investment', 'InvestmentController@index')->name('investment.index');
@@ -43,7 +44,6 @@ Route::group(['middleware' => ['auth', 'block.user', 'activation']], function(){
     Route::get('transactions/confirm-withdrawal', 'TransactionController@confirmWithdrawal')->name('confirm-withdrawal');
     Route::post('transactions/confirm-deposit', 'TransactionController@confirmDeposit')->name('confirm-deposit');
     Route::get('referral', 'ReferralController@index')->name('referral.index');
-    Route::post('referral/store', 'ReferralController@storeReferral')->name('referral.storeReferral');
     Route::post('referral/investment-store', 'ReferralController@referralInvestmentStore')->name('referral.investment-store');
     Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest');
     Route::get('/report/{id}', 'ReportController@create')->name('report.create');

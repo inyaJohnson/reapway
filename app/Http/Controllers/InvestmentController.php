@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Investment;
 use App\Package;
+use App\Referral;
 use App\Withdrawal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -30,12 +31,16 @@ class InvestmentController extends Controller
     public function store(Request $request)
     {
         $package = Package::where('id', $request->package_id)->firstOrFail();
+        $referral  = Referral::where('referred_id', auth()->user()->id)->first();
         $investment = auth()->user()->investment()->create([
             'package_id' => $package->id,
             'percentage' => $package->percentage,
             'duration' => $package->duration,
             'profit' => round($package->price * ($package->percentage / 100))
         ]);
+        if(auth()->user()->investment->count() ==1 && $referral !== null){
+           $referral->update(['amount' => ($package->price * 5) / 100, 'investment_id' => $investment->id]);
+        }
         //Matches investor to matured withdrawers
         $this->matchMaker($package->id, $package->price, $investment->id);
 

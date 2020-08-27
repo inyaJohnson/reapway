@@ -20,6 +20,7 @@ class CreateReferralsTable extends Migration
             $table->integer('amount');
             $table->integer('withdrawn')->default(0);
             $table->unsignedInteger('referred_id');
+            $table->unsignedInteger('investment_id')->default(0);
             $table->timestamps();
         });
     }
