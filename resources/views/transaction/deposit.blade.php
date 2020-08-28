@@ -59,7 +59,7 @@
                                                 No Proof Yet
                                             @else
                                                 <a class="btn btn-primary"
-                                                   href="/store/{{$transaction->proof_of_payment}}" download>Download
+                                                   href="/rocket_pay/public/store/{{$transaction->proof_of_payment}}" download>Download
                                                     File</a>
                                             @endif
                                         </td>
@@ -109,7 +109,7 @@
                                                     No Proof Yet
                                                 @else
                                                     <a class="btn btn-primary"
-                                                       href="/store/{{$transaction->proof_of_payment}}" download>Download
+                                                       href="/rocket_pay/public/store/{{$transaction->proof_of_payment}}" download>Download
                                                         File</a>
                                                 @endif
                                             </li>

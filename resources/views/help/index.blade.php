@@ -34,6 +34,7 @@
                                     <th>Subject</th>
                                     <th>Date</th>
                                     <th>Message</th>
+                                    <th>File</th>
                                     <th>Responded</th>
                                 </tr>
                                 </thead>
@@ -47,6 +48,13 @@
                                         <td><a class="btn btn-primary request-message-btn" href="#" data-toggle="modal"
                                                data-target="#request-message-modal" data-id="{{$request->id}}"
                                                style="padding: 10px;">View</a></td>
+                                        <td>@if($request->attachment !== null)
+                                                <a class='btn btn-link' href='/rocket_pay/public/store/{{$request->attachment}}'
+                                                   download>Download File</a>
+                                            @else
+                                                No File
+                                            @endif
+                                        </td>
                                         <td>@if($request->response_status == 1)
                                                 Yes
                                             @else
@@ -78,12 +86,19 @@
                                         </div>
                                         <ul class="sale-box-desc">
                                             <li>
-                                                <strong>{{$request->email}}</strong>
-                                                <span>{{$request->subject}}</span>
+                                                <strong>{{$request->subject}}</strong>
+                                                <span>{{$request->created_at->format('M d Y H:i')}}</span>
                                             </li>
                                             <li>
-                                                <strong>{{$investment->percentage}}% Recommitment</strong>
-                                                <span>{{$request->created_at->format('M d Y H:i')}}</span>
+                                                <strong>{{$request->email}}</strong>
+                                                <span>
+                                                    @if($request->attachment !== null)
+                                                        <a class='btn btn-link' href='/rocket_pay/public/store/{{$request->attachment}}'
+                                                           download>Download File</a>
+                                                    @else
+                                                        No File
+                                                    @endif
+                                                </span>
                                             </li>
                                             <li><a class="btn btn-primary request-message-btn" href="#"
                                                    data-toggle="modal"
@@ -106,8 +121,6 @@
             </div>
         </div>
     </div>
-
-
 
 
 @endsection

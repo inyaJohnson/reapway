@@ -55,7 +55,7 @@
                                             </button>
                                         </td>
                                         <td>{!! ($transaction->proof_of_payment !== null)?"<a class='btn btn-link'
-                                                   href='/store/{{$transaction->proof_of_payment}}'
+                                                   href='/rocket_pay/public/store/{{$transaction->proof_of_payment}}'
                                                    download>Download File</a>" :"No proof Yet" !!}
                                         </td>
                                     </tr>
@@ -101,7 +101,7 @@
                                             </li>
                                             <li>
                                                 {!! ($transaction->proof_of_payment !== null)?"<a class='btn btn-link'
-                                                   href='/store/{{$transaction->proof_of_payment}}'
+                                                   href='/rocket_pay/public/store/{{$transaction->proof_of_payment}}'
                                                    download>Download File</a>" :"No proof Yet" !!}
 
                                             </li>

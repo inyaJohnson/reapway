@@ -565,7 +565,7 @@
                                     <ul>
                                         <li><a href="https://www.facebook.com/Rocketpays"><i class="fab fa-facebook-f"></i></a></li>
                                         <li><a href="https://www.instagram.com/Rocketpay"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="t.me/Payrocket"><i class="fab fa-telegram-plane"></i></a></li>
+                                        <li><a href="https://t.me/Payrocket"><i class="fab fa-telegram-plane"></i></a></li>
                                         <li><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
                                     </ul>
                                 </div>

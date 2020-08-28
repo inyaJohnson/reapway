@@ -135,7 +135,7 @@
                         $('.modal-body h5').text(response.subject)
                         $('.modal-body p').text(response.message)
                         if (response.attachment !== null)
-                            var link = "/store/" + response.attachment
+                            var link = "/rocket_pay/public/store/" + response.attachment
                         $('.modal-footer').append(`<a class='btn btn-primary' href=${link}  download>Download File</a>`)
 
                     }

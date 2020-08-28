@@ -79,7 +79,7 @@
                                                         @endif
                                                     </td>
                                                     <td><a class="btn btn-primary"
-                                                           href="/store/{{$deposit->proof_of_payment}}" download>Download
+                                                           href="/rocket_pay/public/store/{{$deposit->proof_of_payment}}" download>Download
                                                             File</a></td>
                                                 </tr>
                                             @endforeach
@@ -123,7 +123,7 @@
                                                         </button>
                                                     </td>
                                                     <td><a class="btn btn-primary"
-                                                           href="/store/{{$withdrawal->proof_of_payment}}" download>Download
+                                                           href="/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}" download>Download
                                                             File</a></td>
                                                 </tr>
                                             @endforeach
@@ -173,7 +173,7 @@
                                                 </button>
                                             </li>
                                             <li><a class="btn btn-link"
-                                                   href="/store/{{$deposit->proof_of_payment}}" download>Download
+                                                   href="/rocket_pay/public/store/{{$deposit->proof_of_payment}}" download>Download
                                                     File</a>
                                             </li>
                                             <li>
@@ -220,7 +220,7 @@
                                                 </button>
                                             </li>
                                             <li><a class="btn btn-link"
-                                                   href="/store/{{$withdrawal->proof_of_payment}}" download>Download
+                                                   href="/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}" download>Download
                                                     File</a>
                                             </li>
                                             <input value="{{$withdrawal->amount}}"
