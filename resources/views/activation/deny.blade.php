@@ -30,9 +30,8 @@
                         <p style="padding: 10px 30px;">
                             You will be required to pay a one time Activation fee of ₦1,000.00 to another User on the
                             system. (The system will assign you to a user).
-                            Make payment of the exact amount to the User account details, upload payment proof from the
-                            help menu and wait for user to confirm. After confirmation, Your account will be activated
-                            and you can start your investment immediately.
+                            Make payment of the exact amount to the User account details.
+                            After confirmation, Your account will be activated and you can start your investment immediately.
                         </p>
                         <p style="padding: 10px 30px;">
                             Why pay for activation?

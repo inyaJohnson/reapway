@@ -195,9 +195,15 @@
                         <p class="card-title">Total Investment</p>
                         <h1># {{$totalInvestment}}</h1>
                         <h4>Welcome to RocketPay</h4>
-                        <p class="text-muted">Years back, many people rely on banks to keep their money, but in recent
-                            times they are faced with the problem of low returns.
-                            Welcome to RocketPay your best Investment solution.</p>
+                        <p class="text-muted"><strong>Note: There is a 100% Recommitment on
+                                deposit before withdrawal.</strong>
+                        </p>
+                        <p class="text-muted">
+                            We do not tolerate any act of fraud through upload of fake proof of payment and so a severe
+                            penalty is attracted if found guilty. <br>
+
+                            Do not pay to any other account number asides what is given on the platform.
+                        </p>
                         <div id="total-sales-chart-legend"></div>
                     </div>
                     <img src="{{asset('assets/images/banner-2.jpg')}}" alt="banner" height="200px"/>

@@ -126,8 +126,10 @@
                             @can('admin-actions')
                                 <li class="nav-item"><a class="nav-link"
                                                         href="{{route('packages.index')}}">Package List</a></li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="{{route('packages.create')}}">Create Package</a></li>
+                                @can('super-admin')
+                                    <li class="nav-item"><a class="nav-link"
+                                                            href="{{route('packages.create')}}">Create Package</a></li>
+                                @endcan
                                 <li class="nav-item"><a class="nav-link"
                                                         href="{{route('inject-create')}}">Inject Investment</a></li>
                             @endcan
@@ -238,7 +240,14 @@
                             </ul>
                         </div>
                     </li>
-
+                    @can('super-admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.index')}}">
+                                <i class="mdi mdi-pac-man menu-icon"></i>
+                                <span class="menu-title">Admins</span>
+                            </a>
+                        </li>
+                    @endcan
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('help.index')}}">

@@ -55,7 +55,7 @@
                                                 <input type="hidden" name="report_id" value="{{$report->id}}"/>
                                                 <input type="hidden" name="defaulter_id"
                                                        value="{{$report->defaulter_id}}"/>
-                                                <button type="submit" class="btn btn-primary confirm-block"
+                                                <button type="submit" class="btn btn-danger confirm-block"
                                                         {{($report->status)?'disabled':''}} style="padding: 10px; margin-top: 15px;">
                                                     Block
                                                 </button>
@@ -101,7 +101,7 @@
                                                     <input type="hidden" name="report_id" value="{{$report->id}}"/>
                                                     <input type="hidden" name="defaulter_id"
                                                            value="{{$report->defaulter_id}}"/>
-                                                    <button type="submit" class="btn btn-primary confirm-block"
+                                                    <button type="submit" class="btn btn-danger confirm-block"
                                                             {{($report->status)?'disabled':''}} style="padding: 10px; margin-top: 15px;">
                                                         Block
                                                     </button>

@@ -22,6 +22,7 @@ class GeneralReportController extends Controller
         $deposits = Transaction::where([
             ['depositor_id', $investment->user->id],
             ['depositor_status', 1],
+            ['depositor_investment_id', $investment->id]
         ])->latest()->get();
 
         return view('general-report.show', compact('deposits', 'investment'));

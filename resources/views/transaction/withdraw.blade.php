@@ -54,9 +54,14 @@
                                                     data-id="{{$transaction->id}}">Confirm Payment
                                             </button>
                                         </td>
-                                        <td>{!! ($transaction->proof_of_payment !== null)?"<a class='btn btn-link'
+                                        <td>
+                                            @if($transaction->proof_of_payment !== null)
+                                                <a class='btn btn-link'
                                                    href='/rocket_pay/public/store/{{$transaction->proof_of_payment}}'
-                                                   download>Download File</a>" :"No proof Yet" !!}
+                                                   download>Download File</a>
+                                                @else
+                                                "No proof Yet"
+                                                @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -100,10 +105,13 @@
                                                 </button>
                                             </li>
                                             <li>
-                                                {!! ($transaction->proof_of_payment !== null)?"<a class='btn btn-link'
-                                                   href='/rocket_pay/public/store/{{$transaction->proof_of_payment}}'
-                                                   download>Download File</a>" :"No proof Yet" !!}
-
+                                                @if($transaction->proof_of_payment !== null)
+                                                    <a class='btn btn-link'
+                                                       href='/rocket_pay/public/store/{{$transaction->proof_of_payment}}'
+                                                       download>Download File</a>
+                                                @else
+                                                    "No proof Yet"
+                                                @endif
                                             </li>
                                             <input value="{{$transaction->amount}}" id="amount{{$transaction->id}}"
                                                    type="hidden">

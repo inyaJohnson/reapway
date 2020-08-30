@@ -13,7 +13,7 @@
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
                             <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a>
                             </p>
-                            <p class="text-primary mb-0 hover-cursor">Referral Link -> {{'https://rockekpay.cc/referral/registration/'.$hashIds->encode(auth()->user()->id)}}</p>
+                            <p class="text-primary mb-0 hover-cursor">Referral Link -> {{'https://rocketpay.cc/referral/registration/'.$hashIds->encode(auth()->user()->id)}}</p>
                         </div>
                     </div>
                     @include('layouts.quick-links')
@@ -69,7 +69,7 @@
                                                 <span>Created on {{$referred->created_at->format('M d Y H:i')}}</span>
                                             </li>
                                             <li>
-                                                {!! ($referred->withdrawn == 1)?"<span class='text-success'>Yes</span>" : "<span class='text-danger'>No</span>"!!}
+                                                Withdrawn - {!! ($referred->withdrawn == 1)?"<span class='text-success'>Yes</span>" : "<span class='text-danger'>No</span>"!!}
                                             </li>
                                         </ul>
                                     </div>

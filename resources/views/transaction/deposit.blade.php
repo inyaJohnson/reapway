@@ -51,7 +51,7 @@
                                                type="hidden">
                                         <td>
                                             <button class="btn btn-primary confirm-deposit-btn"
-                                                    data-id="{{$transaction->id}}">Confirm Payment
+                                                    data-id="{{$transaction->id}}">Upload Proof
                                             </button>
                                         </td>
                                         <td>
@@ -102,7 +102,7 @@
                                             </li>
                                             <li>
                                                 <button class="btn btn-primary confirm-deposit-btn"
-                                                        data-id="{{$transaction->id}}">Confirm Payment
+                                                        data-id="{{$transaction->id}}">Upload Proof
                                                 </button>
                                             </li>
                                             <li> @if($transaction->proof_of_payment == null)

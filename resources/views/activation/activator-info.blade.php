@@ -15,7 +15,7 @@
     </div>
 @overwrite
 @section('modal-footer')
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+    <a class="btn btn-secondary" >Upload payment</a>
     <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
 @overwrite
 

@@ -6,7 +6,7 @@
                 <div class="d-flex justify-content-between flex-wrap">
                     <div class="d-flex align-items-end flex-wrap">
                         <div class="mr-md-3 mr-xl-5">
-                            <h2>Transaction History</h2>
+                            <h2>Admin Transaction History</h2>
                             <p class="mb-md-0">List of all your transactions (Payment and Withdrawals).</p>
                         </div>
                         <div class="d-flex">
@@ -49,7 +49,6 @@
                                                 <th>Date Matched</th>
                                                 <th>Amount</th>
                                                 <th>Recipient's Info</th>
-                                                <th>Action</th>
                                                 <th>Status</th>
                                                 <th>Proof of Payment</th>
                                             </tr>
@@ -67,13 +66,8 @@
                                                     <input value="{{$deposit->amount}}" id="amount{{$deposit->id}}"
                                                            type="hidden">
                                                     <td>
-                                                        <button class="btn btn-primary confirm-deposit-btn"
-                                                                data-id="{{$deposit->id}}">Upload Proof
-                                                        </button>
-                                                    </td>
-                                                    <td>
                                                         @if($deposit->recipient_status == 0)
-                                                            <span class="text-danger">Awaiting Confirmation</span>
+                                                            <span class="text-danger">Pending</span>
                                                         @else
                                                             <span class="text-success">Completed</span>
                                                         @endif
@@ -89,8 +83,8 @@
                                 </div>
                             </div>
 
-
                             {{--                            Recipeint--}}
+
                             <div class="tab-pane fade show" id="withdrawal-history" role="tabpanel"
                                  aria-labelledby="withdrawal-history-tab">
                                 <div class="card-body">
@@ -102,7 +96,6 @@
                                                 <th>Date Matched</th>
                                                 <th>Amount</th>
                                                 <th>Depositor's Info</th>
-                                                <th>Action</th>
                                                 <th>Proof of Payment</th>
                                             </tr>
                                             </thead>
@@ -117,19 +110,9 @@
                                                             Depositor</a></td>
                                                     <input value="{{$withdrawal->amount}}"
                                                            id="amount{{$withdrawal->id}}" type="hidden">
-                                                    <td>
-                                                        <button class="btn btn-primary confirm-withrawal"
-                                                                data-id="{{$withdrawal->id}}">Confirm Payment
-                                                        </button>
-                                                    </td>
-                                                    <td>@if($withdrawal->proof_of_payment !== null)
-                                                            <a class='btn btn-link'
-                                                               href='/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}'
-                                                               download>Download File</a>
-                                                        @else
-                                                            "No proof Yet"
-                                                        @endif
-                                                    </td>
+                                                    <td><a class="btn btn-primary"
+                                                           href="/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}" download>Download
+                                                            File</a></td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
@@ -144,7 +127,6 @@
 
             </div>
         </div>
-
 
         {{--        SMALL SCREEN --}}
 
@@ -172,18 +154,13 @@
                                                            data-id={{$deposit->recipient_id}} data='{{$deposit->id}}'>View
                                                         Recipient</a></strong>
                                             </li>
-                                            <li>
-                                                <button class="btn btn-primary confirm-deposit-btn"
-                                                        data-id="{{$deposit->id}}">Upload Proof
-                                                </button>
-                                            </li>
                                             <li><a class="btn btn-link"
                                                    href="/rocket_pay/public/store/{{$deposit->proof_of_payment}}" download>Download
                                                     File</a>
                                             </li>
                                             <li>
                                                             <span> @if($deposit->recipient_status == 0)
-                                                                    <span class="text-danger">Awaiting Confirmation</span>
+                                                                    <span class="text-danger">Pending</span>
                                                                 @else
                                                                     <span class="text-success">Completed</span>
                                                                 @endif</span>
@@ -195,7 +172,6 @@
                                 </div>
                             @endforeach
                         </div>
-
 
                         {{--                            Recipeint--}}
 
@@ -219,19 +195,9 @@
                                                         Depositor</a></strong>
                                                 {{--                                                            <span>{{$investment->created_at}}</span>--}}
                                             </li>
-                                            <li>
-                                                <button class="btn btn-primary confirm-withrawal"
-                                                        data-id="{{$withdrawal->id}}">Confirm Payment
-                                                </button>
-                                            </li>
-                                            <li>
-                                                @if($withdrawal->proof_of_payment !== null)
-                                                    <a class='btn btn-link'
-                                                       href='/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}'
-                                                       download>Download File</a>
-                                                @else
-                                                    "No proof Yet"
-                                                @endif
+                                            <li><a class="btn btn-link"
+                                                   href="/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}" download>Download
+                                                    File</a>
                                             </li>
                                             <input value="{{$withdrawal->amount}}"
                                                    id="amount{{$withdrawal->id}}" type="hidden">

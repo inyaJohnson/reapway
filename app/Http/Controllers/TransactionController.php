@@ -114,7 +114,7 @@ class TransactionController extends Controller
             $transaction->update(['depositor_status' => 1, 'proof_of_payment' => $attachmentName]);
             $message = array(
                 'success' => 'Payment confirmed',
-                'image' => '<embed src="/store/'.$attachmentName.'" class="img-thumbnail" />'
+                'image' => '<embed src="/rocket_pay/public/store/'.$attachmentName.'" class="img-thumbnail" />'
             );
         }
         return response()->json($message);

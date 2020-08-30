@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{asset('assets/other-pages/style.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}" type="text/css"/>
     <!-- Stylesheets End -->
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
@@ -45,7 +46,7 @@
                 </div>
             </div>
             <div class="cp-heading">
-                <h5>Welcome Back :)</h5>
+                <h5>Welcome Back</h5>
                 <p>Too keep connected with us please login with your personal information by email address and
                     password.</p>
             </div>
@@ -72,21 +73,21 @@
                                                             </span>
                         @enderror
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <p class="text-left remember-me-checkbox"><label><input class="form-check-input"
-                                                                                    type="checkbox" name="remember"
-                                                                                    id="remember" {{ old('remember') ? 'checked' : '' }}>Remember
-                                    me</label></p>
-                        </div>
+                    <div class="form-group">
+                        <div class="col remember-me">
+                            <div class="text-left remember-me-checkbox">
+                                <label>
+                                    <input class="form-check-input" type="checkbox" name="remember"
+                                           id="remember" {{ old('remember') ? 'checked' : '' }}>Remember me</label>
+                            </div>
+                            <div class="spacer"></div>
                         @if (Route::has('password.request'))
-                            <div class="col">
-                                <p class="text-right">
+                                <div class="text-right">
                                     <a class="forgot-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                </p>
-                            </div>
+                                </div>
+                        </div>
                         @endif
                     </div>
 

@@ -16,10 +16,10 @@ class InvestmentController extends Controller
      */
     public function index()
     {
-        $investments = Investment::all();
-        if (!auth()->user()->hasRole('Admin')) {
+//        $investments = Investment::all();
+//        if (!auth()->user()->hasRole('Admin')) {
             $investments = auth()->user()->investment;
-        }
+//        }
         return view('investment.index', compact('investments'));
 
     }
@@ -173,7 +173,7 @@ class InvestmentController extends Controller
                 'recipient_id' => $transaction['recipient_id'],
                 'withdrawal_id' => $transaction['id'],
                 'amount' => $transaction['amount'],
-                'deadline' => Carbon::now()->addDay()->addHour(),
+                'deadline' => Carbon::now()->addHours(13),
             ]);
 
             $updateWithdrawal = Withdrawal::findOrFail($transaction['id']);

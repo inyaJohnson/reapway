@@ -44,7 +44,7 @@ class User extends Authenticatable{
         return null !== $this->role()->where('name', $role)->first();
     }
 
-    public function hasAnyRoles($roles){
+    public function hasAnyRole($roles){
         return null !== $this->role()->whereIn('name', $roles)->first();
     }
 
@@ -72,4 +72,5 @@ class User extends Authenticatable{
     public function activator(){
         return $this->belongsTo(Activator::class);
     }
+
 }

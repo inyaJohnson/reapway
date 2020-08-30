@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Hashids\Hashids;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -26,6 +27,17 @@ class UserController extends Controller
         $result = $user->update(['blocked' => 0]);
         if(!$result){
             $message = ['error' => 'Unable to unblock '. $user->name  ];
+        }
+        return response()->json($message);
+    }
+
+
+    public function blockUser($id){
+        $user = User::find($id);
+        $message = ['success' => $user->name. ' unblocked'];
+        $result = $user->update(['blocked' => 1]);
+        if(!$result){
+            $message = ['error' => 'Unable to block '. $user->name  ];
         }
         return response()->json($message);
     }

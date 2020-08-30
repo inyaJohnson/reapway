@@ -1,0 +1,10 @@
+/*LOGIN*/
+
+.remember-me{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.spacer{
+    flex-grow: 1;
+}

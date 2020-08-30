@@ -6,14 +6,14 @@
                 <div class="d-flex justify-content-between flex-wrap">
                     <div class="d-flex align-items-end flex-wrap">
                         <div class="mr-md-3 mr-xl-5">
-                            <h2>User,</h2>
-                            <p class="mb-md-0">All users of RocketPay platform.</p>
+                            <h2>Admin,</h2>
+                            <p class="mb-md-0">Administrators of RocketPay platform.</p>
                         </div>
                         <div class="d-flex">
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
                             <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a>
                             </p>
-                            <p class="text-primary mb-0 hover-cursor">Admin</p>
+                            <p class="text-primary mb-0 hover-cursor">Admins</p>
                         </div>
                     </div>
                     @include('layouts.quick-links')
@@ -64,10 +64,10 @@
                                     </div>
                                     <div
                                         class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                                        <i class="mdi mdi-cash-multiple mr-3 icon-lg text-danger"></i>
+                                        <i class="mdi mdi-account mr-3 icon-lg text-danger"></i>
                                         <div class="d-flex flex-column justify-content-around">
-                                            <small class="mb-1 text-muted">Num. of Active Users</small>
-                                            <h5 class="mr-2 mb-0">{{$numOfActiveUsers}}</h5>
+                                            <small class="mb-1 text-muted">Num. of Admins</small>
+                                            <h5 class="mr-2 mb-0">{{$adminCount}}</h5>
                                         </div>
                                     </div>
                                     <div
@@ -85,7 +85,6 @@
                 </div>
             </div>
         </div>
-        @include('layouts.message')
         <div class="row big-screen">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
@@ -99,33 +98,25 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    {{--                                    <th>Create At</th>--}}
-                                    <th>Referral Code</th>
+                                    <th>Transactions</th>
                                     <th>Num. of Inv.</th>
-                                    <th>Action</th>
+                                    <th>Latest Inv.</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach( $users as $user)
-                                    <tr>
-                                        <td>{{++$i}}</td>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->phone}}</td>
-                                        {{--                                        <td>{{$user->created_at->format('M d Y')}}</td>--}}
-                                        <td>{{$user->referral_code}}</td>
-                                        <td>{{($user->investment !== null)?$user->investment->count():'No Investment Yet'}}</td>
-                                        <td>@if($user->blocked == 0 )
-                                                <button class="btn btn-danger confirm-generic-block"
-                                                        data-id="{{$user->id}}">Block
-                                                </button>
-                                            @else
-                                                <button class="btn btn-primary confirm-unblock"
-                                                        data-id="{{$user->id}}">Unblock
-                                                </button>
-                                            @endif
-                                        </td>
-                                    </tr>
+                                @foreach( $adminRoles as $role)
+                                    @foreach($role->user as $admin)
+                                        <tr>
+                                            <td>{{++$i}}</td>
+                                            <td>{{$admin->name}}</td>
+                                            <td>{{$admin->email}}</td>
+                                            <td>{{$admin->phone}}</td>
+                                            <td><a class="btn btn-primary"
+                                                   href="{{route('admin.show', $hashIds->encode($admin->id))}}">View</a></td>
+                                            <td>{{($admin->investment !== null)?$admin->investment->count():'No Investment Yet'}}</td>
+                                            <td>{{($admin->investment()->latest()->first() !== null)? \Carbon\Carbon::parse($admin->investment()->latest()->first()->created_at)->format('M d Y H:i'):'No Investment Yet'}}</td>
+                                        </tr>
+                                    @endforeach
                                 @endforeach
                                 </tbody>
                             </table>
@@ -144,35 +135,31 @@
                     <div class="card-body">
                         {{--                        <h4 class="card-title">Investment History</h4>--}}
                         <div class="table-responsive">
-                            @foreach( $users as $user)
-                                <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
-                                    <div class="sale-box-inner">
-                                        <div class="sale-box-head">
-                                            <h4>{{$user->name}}</h4>
+                            @foreach( $adminRoles as $admin)
+                                @foreach($role->user as $admin)
+                                    <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                        <div class="sale-box-inner">
+                                            <div class="sale-box-head">
+                                                <h4>{{$admin->name}}</h4>
+                                            </div>
+                                            <ul class="sale-box-desc">
+                                                <li>
+                                                    <strong>{{$admin->email}}</strong>
+                                                    <span>Role - {{ucfirst($role->name)}}</span>
+                                                </li>
+                                                <li>Transactions -
+                                                    <a class="btn btn-primary"
+                                                       href="{{route('admin.show', $hashIds->encode($admin->id))}}">View</a>
+                                                </li>
+                                                <li>
+                                                    <strong>Number of Investments
+                                                        - {{($admin->investment !== null)?$admin->investment->count():'No Investment Yet'}}</strong>
+                                                    <span>Latest Investment -  {{($admin->investment()->latest()->first() !== null)? \Carbon\Carbon::parse($admin->investment()->latest()->first()->created_at)->format('M d Y H:i'):'No Investment Yet'}}</span>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <ul class="sale-box-desc">
-                                            <li>
-                                                <strong>{{$user->email}}</strong>
-                                                <span>Referral Code - {{$user->referral_code}}</span>
-                                            </li>
-
-                                            <li>@if($user->blocked == 0 )
-                                                    <button class="btn btn-danger confirm-generic-block"
-                                                            data-id="{{$user->id}}">Block
-                                                    </button>
-                                                @else
-                                                    <button class="btn btn-primary confirm-unblock"
-                                                            data-id="{{$user->id}}">Unblock
-                                                    </button>
-                                                @endif
-                                            </li>
-                                            <li>
-                                                <strong>Number of Investments
-                                                    - {{($user->investment !== null)?$user->investment->count():'No Investment Yet'}}</strong>
-                                            </li>
-                                        </ul>
                                     </div>
-                                </div>
+                                @endforeach
                             @endforeach
                         </div>
                     </div>

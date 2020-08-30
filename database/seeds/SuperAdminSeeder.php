@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class SuperAdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,10 +11,10 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $role = \App\Role::where('name', 'admin')->first();
+        $role = \App\Role::where('name', 'super-admin')->first();
         $admin = \App\User::create([
             'name' => 'Rocket Pay',
-            'email' => 'admin@rocketpay.cc',
+            'email' => 'super_admin@rocketpay.cc',
             'password' => bcrypt('Rocking_hard_067'),
             'phone' => '07037555691',
             'referral_code' => substr(md5(time()), 0, 16),

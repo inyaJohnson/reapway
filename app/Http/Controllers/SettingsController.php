@@ -52,7 +52,7 @@ class SettingsController extends Controller
     {
         $input = $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => Rule::unique('users')->ignore(auth()->user()->id, 'id'),
+//            'email' => Rule::unique('users')->ignore(auth()->user()->id, 'id'),
             'phone' => ['required', 'digits:11'],
         ]);
         auth()->user()->update($input);
