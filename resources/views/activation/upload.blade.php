@@ -90,7 +90,11 @@
                                 'Successful!',
                                 response.success,
                                 'success'
-                            )
+                            ).then(function (result) {
+                                if(result.value){
+                                    location.reload()
+                                }
+                            })
                         } else {
                             Swal.fire(
                                 'Failed!',

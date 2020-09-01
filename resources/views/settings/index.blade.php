@@ -34,7 +34,7 @@
                                 <p>Name - {{auth()->user()->name}} </p>
                                 <p>Email - {{auth()->user()->email}} </p>
                                 <p>Phone - {{auth()->user()->phone}} </p>
-                                <a href="{{route('settings.edit', auth()->user()->id)}}">Edit Contact Information</a>
+{{--                                <a href="{{route('settings.edit', auth()->user()->id)}}">Edit Contact Information</a>--}}
                             </div>
 
                         </div>
@@ -46,8 +46,8 @@
                                     <p>Account Name - {{auth()->user()->account->name}} </p>
                                     <p>Account Number - {{auth()->user()->account->number}} </p>
                                     <p>Bank - {{auth()->user()->account->bank}} </p>
-                                    <a href="{{route('settings.edit', auth()->user()->id)}}">Edit Account
-                                        Information</a>
+{{--                                    <a href="{{route('settings.edit', auth()->user()->id)}}">Edit Account--}}
+{{--                                        Information</a>--}}
 {{--                                @else--}}
 {{--                                    <a href="{{route('settings.account', auth()->user()->id)}}">Click to Add your Payment Account--}}
 {{--                                        Information</a>--}}

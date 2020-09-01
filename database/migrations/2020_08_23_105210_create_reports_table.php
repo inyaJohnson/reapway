@@ -24,6 +24,7 @@ class CreateReportsTable extends Migration
             $table->text('message');
             $table->integer('status')->default(0);
             $table->string('attachment')->nullable();
+            $table->unsignedInteger('transaction_withdrawal_id');
             $table->timestamps();
         });
     }

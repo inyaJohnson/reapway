@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Report;
 use App\Transaction;
 use App\User;
+use App\Withdrawal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,16 +16,18 @@ class ReportController extends Controller
         return view('report.index', compact('reports'));
     }
 
-    public function create($id){
-        $defaulter = User::find($id);
-        if($defaulter !== null){
-            return view('report.create', compact('defaulter'));
+    public function create($userId, $transactionId){
+        $defaulter = User::find($userId);
+        $transaction = Transaction::find($transactionId);
+        if($defaulter !== null && $transaction !== null){
+            return view('report.create', compact('defaulter', 'transaction'));
         }
     }
 
     public function store(Request $request){
         $rule = array('message' => 'required|string', 'attachment' => 'max:2048', 'user_name' => 'required',
-            'user_id' =>'required', 'defaulter_id' =>'required', 'defaulter_name' =>'required', 'defaulter_email' =>'required');
+            'user_id' =>'required', 'defaulter_id' =>'required', 'defaulter_name' =>'required',
+            'defaulter_email' =>'required', 'transaction_withdrawal_id' => 'required');
         $error = Validator::make($request->all(), $rule);
         if($error->fails()){
             return response()->json(['error'=> $error->errors()->all()]);
@@ -47,6 +50,8 @@ class ReportController extends Controller
     public function block(Request $request){
         $user = User::find($request->defaulter_id);
         $report = Report::find($request->report_id);
+        $withdrawal = Withdrawal::find($report->transaction_withdrawal_id);
+        $withdrawal->update(['match' => 0]);
         $report->update(['status' => 1]);
         $result = $user->update(['blocked' => 1]);
         $message = ['success' => $user->name. ' blocked'];

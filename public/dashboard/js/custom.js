@@ -92,7 +92,7 @@ $(document).ready(function () {
                 $('.user-account .user-account-number').text(response.number)
                 $('.user-account .user-account-phone').text(response.phone)
                 $('.user-account .user-account-amount').text(formatNumber(amount))
-                $('#depositor-modal a').attr('href', '/report/'+response.userId);
+                $('#depositor-modal a').attr('href', '/report/'+response.userId+'/'+transactionId);
             }
         })
         $('#depositor-modal').modal();
@@ -165,6 +165,8 @@ $(document).ready(function () {
                         location.reload();
                     }else {
                         $('.alert-danger').text(response.error).show()
+
+
                     }
 
                 }

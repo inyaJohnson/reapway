@@ -49,8 +49,10 @@ Route::group(['middleware' => ['auth', 'block.user', 'activation']], function(){
     Route::get('referral', 'ReferralController@index')->name('referral.index');
     Route::post('referral/investment-store', 'ReferralController@referralInvestmentStore')->name('referral.investment-store');
     Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest');
-    Route::get('/report/{id}', 'ReportController@create')->name('report.create');
+//    Route::get('/report/{id}', 'ReportController@create')->name('report.create');
+    Route::get('/report/{userId}/{transactionId}', 'ReportController@create')->name('report.create');
     Route::post('/report/store', 'ReportController@store')->name('report.store');
+
 });
 
 Route::resource('help', 'HelpController')->middleware(['auth']);

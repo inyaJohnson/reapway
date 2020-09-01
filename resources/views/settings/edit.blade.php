@@ -51,11 +51,11 @@
 {{--                                        <input type="email" class="form-control" name="email" required--}}
 {{--                                               value="{{$user->email}}" placeholder="Email">--}}
 {{--                                    </div>--}}
-                                    <div class="form-group">
-                                        <label for="phone">Phone Number</label>
-                                        <input type="text" class="form-control" name="phone" required
-                                               value="{{$user->phone}}" placeholder="Phone Number">
-                                    </div>
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="phone">Phone Number</label>--}}
+{{--                                        <input type="text" class="form-control" name="phone" required--}}
+{{--                                               value="{{$user->phone}}" placeholder="Phone Number">--}}
+{{--                                    </div>--}}
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                     <button class="btn btn-light reset">Cancel</button>
                                 </form>

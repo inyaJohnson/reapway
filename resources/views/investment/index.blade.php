@@ -89,7 +89,7 @@
                                                 <span>ROI - #{{number_format((($investment->package->price * $investment->percentage)/100) + $investment->package->price) }} @ {{$investment->percentage}}% Profit</span>
                                             </li>
                                             <li>
-                                                <strong>{{$investment->percentage}}% Recommitment</strong>
+                                                <strong>100% Recommitment</strong>
                                                 <span>{{$investment->created_at->format('M d Y H:i')}}</span>
                                             </li>
                                             <li>@if($investment->maturity == 1)

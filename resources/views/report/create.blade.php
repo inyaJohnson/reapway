@@ -51,6 +51,7 @@
                                     <input type="hidden" name="defaulter_id" value="{{$defaulter->id}}">
                                     <input type="hidden" name="defaulter_name" value="{{$defaulter->name}}">
                                     <input type="hidden" name="defaulter_email" value="{{$defaulter->email}}">
+                                    <input type="hidden" name="transaction_withdrawal_id" value="{{$transaction->withdrawal_id}}">
                                 </div>
                                 <p class="warning">*Note: Document should not be more than 2Mb</p>
 

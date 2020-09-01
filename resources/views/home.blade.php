@@ -114,7 +114,7 @@
                                                     <label class="badge badge-danger">Not Due</label>
                                                 @endif
                                             </strong>
-                                            <span>Withdrawal Date- {{\Carbon\Carbon::parse($latestInvestment->created_at)->addDay($latestInvestment->package->duration)->format('M d Y H:i')}}</span>
+                                            <span>Withdrawal Date- {{\Carbon\Carbon::parse($latestInvestment->updated_at)->addDay($latestInvestment->package->duration)->format('M d Y H:i')}}</span>
                                         </li>
                                         <li>@if($latestInvestment->withdrawn == 1)
                                                 <span style="color:black;">Withdrawn</span>
@@ -164,7 +164,7 @@
                                                     <label class="badge badge-danger">Not Due</label>
                                                 @endif
                                             </strong>
-                                            <span>Withdrawal Date- {{\Carbon\Carbon::parse($latestInvestment->created_at)->addDay($latestInvestment->package->duration)->format('M d Y H:i')}}</span>
+                                            <span>Withdrawal Date- {{\Carbon\Carbon::parse($latestInvestment->updated_at)->addDay($latestInvestment->package->duration)->format('M d Y H:i')}}</span>
                                         </li>
                                         <li>@if($latestInvestment->withdrawn == 1)
                                                 <span style="color:black;">Withdrawn</span>
@@ -195,14 +195,15 @@
                         <p class="card-title">Total Investment</p>
                         <h1># {{$totalInvestment}}</h1>
                         <h4>Welcome to RocketPay</h4>
-                        <p class="text-muted"><strong>Note: There is a 100% Recommitment on
-                                deposit before withdrawal.</strong>
-                        </p>
                         <p class="text-muted">
-                            We do not tolerate any act of fraud through upload of fake proof of payment and so a severe
-                            penalty is attracted if found guilty. <br>
-
-                            Do not pay to any other account number asides what is given on the platform.
+                           Years back, many people rely on banks to keep their money, but in recent times they are faced with the problem of low returns. Welcome to RocketPay your best Investment solution.
+                        </p>
+                        <p class="text-warning">
+                            <strong>We have your interest at heart, so you have no worries as we are all together to help each other grow. We got your back.
+                            </strong>
+                        </p>
+                        <p class="text-warning">
+                            <strong>Note: There is a 100% Recommitment on your initial deposit before you can withdraw.</strong>
                         </p>
                         <div id="total-sales-chart-legend"></div>
                     </div>

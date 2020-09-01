@@ -75,7 +75,6 @@ class TransactionController extends Controller
     public function showDepositor(Request $request)
     {
         $account = Account::where('user_id', $request->depositorId)->first();
-
         $message = [
             'userId' => $request->depositorId,
             'name' => $account->name,

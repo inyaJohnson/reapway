@@ -10,7 +10,7 @@
     <!-- favicon & bookmark -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('assets/images/bookmark.png')}}"
           type="image/x-icon"/>
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon"/>
     <!-- Font Family -->
     <link href="{{url('https://fonts.googleapis.com/css?family=PT+Sans:400,700')}}" rel="stylesheet">
     <link
@@ -571,6 +571,13 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="widget-area">
+                            <div class="widget widget-html text-center">
+                                <span class="fa fa-phone text-warning" style="padding-right:20px; "></span>Tel +66630190813
+                                <span class="fa fa-envelope text-warning" style="padding: 0px 20px; "></span>help@rocketpay.cc
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -579,7 +586,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="copy-text">© {{\Carbon\Carbon::now()->year}}<a href="#">RocketPay.</a></div>
+                        <div class="copy-text">©{{\Carbon\Carbon::now()->year}} <a href="#">RocketPay.</a></div>
                     </div>
                 </div>
             </div>
