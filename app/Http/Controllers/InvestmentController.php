@@ -61,10 +61,10 @@ class InvestmentController extends Controller
         return view('investment.invest', compact('availablePackages'));
     }
 
-    public function reinvest(Request $request)
+    public function reinvest($id)
     {
-        $message = ['success' => 'Reinvestment Successful'];
-        $investment = Investment::findorFail($request->id);
+        $message = ['success' => 'Reinvestment Successful, Make payment to the investor(s) listed'];
+        $investment = Investment::findorFail($id);
 //        Create a new investment cycle
         $reinvestment = auth()->user()->investment()->create([
             'package_id' => $investment->package_id,
@@ -80,24 +80,27 @@ class InvestmentController extends Controller
         if (!$result) {
             $message = ['error' => 'Reinvestment failed'];
         }
-        return response()->json($message);
+        return redirect()->route('transaction.deposit')->with($message);
     }
 
-    public function withdraw(Request $request)
+    public function withdraw($id)
     {
         $message = ['success' => 'Withdrawal request was successful, You will be Matched soon...'];
-        $investment = Investment::findorFail($request->id);
+        $investment = Investment::findorFail($id);
+        if($investment->withdraw_btn == 1){
+            return redirect()->back()->with('custom_error', 'Already withdrawn');
+        }
         auth()->user()->withdrawal()->create([
             'investment_id' => $investment->id,
             'amount' => $investment->profit,
         ]);
         $result = $investment->update([
-            'reinvest' => 2
+            'withdraw_btn' => 1
         ]);
         if (!$result) {
             $message = ['error' => 'Withdrawal request failed'];
         }
-        return response()->json($message);
+        return redirect()->route('transaction.withdraw')->with($message);;
     }
 
     protected function matchMaker($packageId, $price, $depositorInvestmentId)

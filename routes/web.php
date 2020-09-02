@@ -28,8 +28,8 @@ Route::post('/referral/registration/store', 'ReferralController@referredRegistra
 Route::group(['middleware' => ['auth', 'block.user', 'activation']], function(){
     Route::get('investment', 'InvestmentController@index')->name('investment.index');
     Route::post('investment/store', 'InvestmentController@store')->name('investment.store');
-    Route::get('investment/reinvest', 'InvestmentController@reinvest')->name('investment.reinvest');
-    Route::get('investment/withdraw', 'InvestmentController@withdraw')->name('investment.withdraw');
+    Route::get('investment/reinvest/{id}', 'InvestmentController@reinvest')->name('investment.reinvest');
+    Route::get('investment/withdraw/{id}', 'InvestmentController@withdraw')->name('investment.withdraw');
     Route::get('withdrawal/request', 'WithdrawalController@request')->name('withdrawal.request');
     Route::resource('withdrawal', 'WithdrawalController');
     Route::get('settings/password', 'SettingsController@password')->name('settings.password');

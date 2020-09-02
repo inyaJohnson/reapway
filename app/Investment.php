@@ -10,7 +10,7 @@ class Investment extends Model
     use SoftDeletes;
 
     protected $fillable = ['package_id', 'percentage', 'duration', 'maturity', 'withdrawn', 'profit',
-        'reinvest', 'commitment', 'user_id', 'previous_investment_id', 'reinvest_btn'];
+        'withdraw_btn','reinvest_commit_btn', 'commitment', 'user_id', 'previous_investment_id', 'reinvest_btn'];
 
     public function package()
     {

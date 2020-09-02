@@ -43,17 +43,18 @@ class CheckMaturityCommand extends Command
             ['maturity', 0],
             ['commitment', 1]
         ])->get();
-        foreach ($investments as $investment){
-            if(Carbon::now()->dayOfYear() - Carbon::parse($investment->updated_at)->dayOfYear >= $investment->duration) {
+        foreach ($investments as $investment) {
+            if (Carbon::now()->dayOfYear() - Carbon::parse($investment->updated_at)->dayOfYear >= $investment->duration) {
                 $investment->update([
                     'maturity' => 1,
                 ]);
             }
 
-            if($investment->previous_investment_id != 0){
+            if ($investment->previous_investment_id != 0) {
                 $previousInvestment = Investment::find($investment->previous_investment_id);
-                $previousInvestment->update(['reinvest' => 1]);
+                $previousInvestment->update(['reinvest_commit_btn' => 1]);
             }
+
         }
     }
 }

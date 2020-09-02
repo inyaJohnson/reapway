@@ -31,7 +31,9 @@ class FirstInvestmentSeeder extends Seeder
                 'maturity' => 1,
                 'withdrawn' => 0,
                 'commitment' => 1,
-                'reinvest' => 2
+                'reinvest_btn' => 1,
+                'withdraw_btn' => 1,
+                'reinvest_commit_btn' => 1
             ]);
 
             Withdrawal::create([

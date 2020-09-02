@@ -12,3 +12,9 @@
         {{$message}}
     </div>
 @endif
+
+@if($message = Session::get('custom_error'))
+    <div class="alert alert-danger">
+        {{$message}}
+    </div>
+@endif

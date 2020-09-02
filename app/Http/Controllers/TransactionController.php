@@ -112,7 +112,7 @@ class TransactionController extends Controller
             $transaction = Transaction::find($request->transaction_id);
             $transaction->update(['depositor_status' => 1, 'proof_of_payment' => $attachmentName]);
             $message = array(
-                'success' => 'Payment confirmed',
+                'success' => 'Upload Successful',
                 'image' => '<embed src="/rocket_pay/public/store/'.$attachmentName.'" class="img-thumbnail" />'
             );
         }

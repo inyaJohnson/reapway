@@ -39,8 +39,10 @@ class InjectInvestmentController extends Controller
             'profit' => ($package->price * $input['percentage']) / 100,
             'maturity' => 1,
             'withdrawn' => 0,
-            'reinvest' => 2,
-            'commitment' => 1
+            'commitment' => 1,
+            'reinvest_btn' => 1,
+            'withdraw_btn' => 1,
+            'reinvest_commit_btn' => 1
         ]);
 
         $withdrawal = new Withdrawal();

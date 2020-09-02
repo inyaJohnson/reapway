@@ -47,25 +47,27 @@
                                         <td>{{number_format((($investment->package->price * $investment->percentage)/100) + $investment->package->price) }}</td>
                                         <td>{{number_format($investment->profit)}}</td>
                                         <td>
-                                            @if($investment->maturity == 0)
-                                                Not Matured
-                                            @elseif($investment->reinvest != 0 && $investment->reinvest != 1 && $investment->maturity == 1)
+                                            @switch($investment)
+                                                @case($investment->maturity == 1 && $investment->reinvest_btn == 0)
+                                                <a href="{{route('investment.reinvest', $investment->id)}}"
+                                                   class="btn btn-danger reinvest"
+                                                   style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Reinvest
+                                                </a>
+                                                @break
+                                                @case($investment->maturity == 1 && $investment->reinvest_btn == 1 && $investment->reinvest_commit_btn == 0)
+                                                Awaiting confirmation of reinvestment
+                                                @break
+                                                @case($investment->maturity == 1 && $investment->reinvest_commit_btn ==1 && $investment->withdraw_btn == 0)
+                                                <a href="{{route('investment.withdraw', $investment->id )}}"
+                                                   class="btn btn-warning withdraw"
+                                                   style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Withdraw
+                                                </a>
+                                                @break
+                                                @case($investment->maturity == 1 && $investment->withdraw_btn == 1)
                                                 Completed
-                                            @else
-                                                <button
-                                                    class="btn btn-danger reinvest"
-                                                    @php echo ((isset($investment) && $investment->reinvest != 0) || $investment->reinvest_btn == 1)? 'disabled':'';  @endphp
-                                                    style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
-                                                    data-id={{$investment->id}}>Reinvest
-                                                </button>
-                                                <button
-                                                    class="btn btn-warning withdraw"
-                                                    @php echo (isset($investment) && $investment->reinvest != 1)? 'disabled':'';  @endphp
-                                                    style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
-                                                    data-id={{$investment->id}}>Withdraw
-                                                </button>
-                                            @endif
-
+                                                @break
+                                                @default Not Matured for withdrawal
+                                            @endswitch
                                         </td>
                                     </tr>
                                 @endforeach
@@ -99,24 +101,28 @@
                                             <strong>100% Recommitment</strong>
                                             <span>Profit #{{number_format($investment->profit)}}</span>
                                         </li>
-                                        <li>@if($investment->maturity == 0)
-                                                Not Matured
-                                            @elseif($investment->reinvest != 0 && $investment->reinvest != 1 && $investment->maturity == 1)
+                                        <li>
+                                            @switch($investment)
+                                                @case($investment->maturity == 1 && $investment->reinvest_btn == 0)
+                                                <a href="{{route('investment.reinvest', $investment->id)}}"
+                                                   class="btn btn-danger reinvest"
+                                                   style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Reinvest
+                                                </a>
+                                                @break
+                                                @case($investment->maturity == 1 && $investment->reinvest_btn == 1 && $investment->reinvest_commit_btn == 0)
+                                                Awaiting confirmation of reinvestment
+                                                @break
+                                                @case($investment->maturity == 1 && $investment->reinvest_commit_btn ==1 && $investment->withdraw_btn == 0)
+                                                <a href="{{route('investment.withdraw', $investment->id )}}"
+                                                   class="btn btn-warning withdraw"
+                                                   style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Withdraw
+                                                </a>
+                                                @break
+                                                @case($investment->maturity == 1 && $investment->withdraw_btn == 1)
                                                 Completed
-                                            @else
-                                                <button
-                                                    class="btn btn-danger reinvest"
-                                                    @php echo ((isset($investment) && $investment->reinvest != 0) || $investment->reinvest_btn == 1)? 'disabled':'';  @endphp
-                                                    style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
-                                                    data-id={{$investment->id}}>Reinvest
-                                                </button>
-                                                <button
-                                                    class="btn btn-warning withdraw"
-                                                    @php echo (isset($investment) && $investment->reinvest != 1)? 'disabled':'';  @endphp
-                                                    style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;"
-                                                    data-id={{$investment->id}}>Withdraw
-                                                </button>
-                                            @endif
+                                                @break
+                                                @default Not Matured for withdrawal
+                                            @endswitch
                                         </li>
                                     </ul>
                                 </div>
@@ -127,63 +133,4 @@
             </div>
         </div>
     </div>
-@endsection
-@section('script')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.investment-history').dataTable();
-
-            var failed = '/withdrawal';
-
-            function sweetAlert(response, failed, redirectTo) {
-                if (response.success) {
-                    Swal.fire(
-                        'Successful!',
-                        response.success,
-                        'success'
-                    ).then(function (result) {
-                        if (result.value) {
-                            window.location = redirectTo
-                        }
-                    })
-                } else {
-                    Swal.fire(
-                        'Failed!',
-                        response.error,
-                        'error'
-                    ).then(function (result) {
-                        if (result.value) {
-                            window.location = failed;
-                        }
-                    })
-                }
-
-            }
-
-            $('.reinvest').on('click', function () {
-                $.ajax({
-                    type: 'GET',
-                    url: 'investment/reinvest',
-                    data: {id: $(this).attr('data-id')},
-                    success: function (response) {
-                        var redirectTo = 'transactions/deposit';
-                        sweetAlert(response, failed, redirectTo)
-                    }
-
-                })
-            })
-
-            $('.withdraw').on('click', function () {
-                $.ajax({
-                    type: 'GET',
-                    url: 'investment/withdraw',
-                    data: {id: $(this).attr('data-id')},
-                    success: function (response) {
-                        var redirectTo = 'transactions/withdrawal-request';
-                        sweetAlert(response, failed, redirectTo)
-                    }
-                })
-            })
-        })
-    </script>
 @endsection
