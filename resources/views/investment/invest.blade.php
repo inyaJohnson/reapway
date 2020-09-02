@@ -21,7 +21,7 @@
         </div>
         @include('layouts.message')
         <div class="row">
-            @foreach($availablePackages as $package)
+            @foreach($packages as $package)
                 <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
                     <div class="sale-box-inner">
                         <div class="sale-box-head">

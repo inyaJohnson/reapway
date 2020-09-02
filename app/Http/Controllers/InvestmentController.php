@@ -5,21 +5,22 @@ namespace App\Http\Controllers;
 use App\Investment;
 use App\Package;
 use App\Referral;
+use App\Traits\CreatePendingInvestment;
+use App\Traits\MatchMaker;
 use App\Withdrawal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class InvestmentController extends Controller
 {
+    use MatchMaker, CreatePendingInvestment;
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-//        $investments = Investment::all();
-//        if (!auth()->user()->hasRole('Admin')) {
-            $investments = auth()->user()->investment;
-//        }
+        $investments = auth()->user()->investment;
         return view('investment.index', compact('investments'));
 
     }
@@ -30,21 +31,27 @@ class InvestmentController extends Controller
      */
     public function store(Request $request)
     {
+        $message = ['success' => 'Investment successful, You have been matched'];
         $package = Package::where('id', $request->package_id)->firstOrFail();
-        $referral  = Referral::where('referred_id', auth()->user()->id)->first();
-        $investment = auth()->user()->investment()->create([
-            'package_id' => $package->id,
-            'percentage' => $package->percentage,
-            'duration' => $package->duration,
-            'profit' => round($package->price * ($package->percentage / 100))
-        ]);
-        if(auth()->user()->investment->count() ==1 && $referral !== null){
-           $referral->update(['amount' => ($package->price * 5) / 100, 'investment_id' => $investment->id]);
-        }
-        //Matches investor to matured withdrawers
-        $this->matchMaker($package->id, $package->price, $investment->id);
+        $referral = Referral::where('referred_id', auth()->user()->id)->first();
+        $withdrawable = Withdrawal::where([['status', 0], ['match', 0], ['user_id', '!=', auth()->user()->id]])->pluck('amount')->sum();
 
-        return redirect()->route('transaction.deposit');
+        if ($package->price > $withdrawable) {
+            $message = $this->pendingInvestment($package);
+        } else {
+            $investment = auth()->user()->investment()->create([
+                'package_id' => $package->id,
+                'percentage' => $package->percentage,
+                'duration' => $package->duration,
+                'profit' => round($package->price * ($package->percentage / 100))
+            ]);
+            if (auth()->user()->investment->count() == 1 && $referral !== null) {
+                $referral->update(['amount' => ($package->price * 5) / 100, 'investment_id' => $investment->id]);
+            }
+            //Matches investor to matured withdrawers
+            $this->matchMaker($package->id, $package->price, $investment->id);
+        }
+        return redirect()->route('transaction.deposit')->with($message);
     }
 
     public function invest()
@@ -52,29 +59,30 @@ class InvestmentController extends Controller
         if (auth()->user()->account === null) {
             return redirect()->route('settings.account')->with('success', 'Enter Your Bank Account Information for payment before investing');
         }
-
-        $totalWithdrawable = Withdrawal::where([['status', 0], ['match', 0], ['user_id', '!=', auth()->user()->id]])->pluck('amount')->sum();
-        $availablePackages = Package::where([
-            ['price', '<=', $totalWithdrawable],
-            ['id', '!=', 1]
-        ])->get();
-        return view('investment.invest', compact('availablePackages'));
+        $packages = Package::all();
+        return view('investment.invest', compact('packages'));
     }
 
     public function reinvest($id)
     {
         $message = ['success' => 'Reinvestment Successful, Make payment to the investor(s) listed'];
         $investment = Investment::findorFail($id);
+        $withdrawable = Withdrawal::where([['status', 0], ['match', 0], ['user_id', '!=', auth()->user()->id]])->pluck('amount')->sum();
+
 //        Create a new investment cycle
-        $reinvestment = auth()->user()->investment()->create([
-            'package_id' => $investment->package_id,
-            'percentage' => $investment->percentage,
-            'duration' => $investment->duration,
-            'profit' => round($investment->package->price * ($investment->percentage / 100)),
-            'previous_investment_id' => $investment->id
-        ]);
-        //        Matches investor to matured withdrawers
-        $this->matchMaker($reinvestment->package->id, $reinvestment->package->price, $reinvestment->id);
+        if ($investment->package->price > $withdrawable) {
+            $message = $this->pendingInvestment($investment->package);
+        } else {
+            $reinvestment = auth()->user()->investment()->create([
+                'package_id' => $investment->package_id,
+                'percentage' => $investment->percentage,
+                'duration' => $investment->duration,
+                'profit' => round($investment->package->price * ($investment->percentage / 100)),
+                'previous_investment_id' => $investment->id
+            ]);
+            //        Matches investor to matured withdrawers
+            $this->matchMaker($reinvestment->package->id, $reinvestment->package->price, $reinvestment->id);
+        }
 
         $result = $investment->update(['reinvest_btn' => 1]);
         if (!$result) {
@@ -87,7 +95,7 @@ class InvestmentController extends Controller
     {
         $message = ['success' => 'Withdrawal request was successful, You will be Matched soon...'];
         $investment = Investment::findorFail($id);
-        if($investment->withdraw_btn == 1){
+        if ($investment->withdraw_btn == 1) {
             return redirect()->back()->with('custom_error', 'Already withdrawn');
         }
         auth()->user()->withdrawal()->create([
@@ -103,84 +111,4 @@ class InvestmentController extends Controller
         return redirect()->route('transaction.withdraw')->with($message);;
     }
 
-    protected function matchMaker($packageId, $price, $depositorInvestmentId)
-    {
-        /**
-         * ptbp => people to be paid
-         * mtbp => money to be paid
-         * pdfp => people due for payment
-         */
-        $pdfp = [];
-        $mismatch = [];
-        $mtbp = $price;
-        $withdrawals = Withdrawal::where([
-            ['user_id', '!=', auth()->user()->id],
-            ['status', 0],
-            ['match', 0]
-        ])->get();
-        $recipients = [];
-        foreach ($withdrawals as $withdrawal) {
-            $recipients[] = [
-                'id' => $withdrawal->id,
-                'investment_id' => $withdrawal->investment_id,
-                'recipient_id' => $withdrawal->user_id,
-                'maturityAge' => Carbon::now()->dayOfYear() - Carbon::parse($withdrawal->created_at)->dayOfYear,
-                'amount' => $withdrawal->amount
-            ];
-        }
-        $maturityAgeArray = array_column($recipients, 'maturityAge');
-        array_multisort($maturityAgeArray, SORT_DESC, $recipients);
-        foreach ($recipients as $recipient) {
-            $temp = $mtbp - $recipient['amount'];
-            if ($temp < 0) {
-                array_push($mismatch, [
-                    'id' => $recipient['id'],
-                    'amount' => $recipient['amount'],
-                    'recipient_id' => $recipient['recipient_id'],
-                    'investment_id' => $recipient['investment_id']
-                ]);
-                continue;
-            }
-            $mtbp = $mtbp - $recipient['amount'];
-            array_push($pdfp, [
-                'id' => $recipient['id'],
-                'amount' => $recipient['amount'],
-                'recipient_id' => $recipient['recipient_id'],
-                'investment_id' => $recipient['investment_id']
-            ]);
-        }
-
-        if ($mtbp !== 0) {
-            array_push($pdfp, [
-                'id' => $mismatch[0]['id'],
-                'amount' => $mtbp,
-                'recipient_id' => $mismatch[0]['recipient_id'],
-                'investment_id' => $mismatch[0]['investment_id']
-            ]);
-//            $createBalanceWithdrawal = Withdrawal::findOrFail($mismatch[0]['recipient_id']);
-            Withdrawal::create([
-                'user_id' => $mismatch[0]['recipient_id'],
-                'investment_id' => $mismatch[0]['investment_id'],
-                'amount' => $mismatch[0]['amount'] - $mtbp,
-            ]);
-        }
-
-//        what to do if investment > withdrawal
-
-        foreach ($pdfp as $transaction) {
-            auth()->user()->transaction()->create([
-                'package_id' => $packageId,
-                'recipient_investment_id' => $transaction['investment_id'],
-                'depositor_investment_id' => $depositorInvestmentId,
-                'depositor_id' => auth()->user()->id,
-                'recipient_id' => $transaction['recipient_id'],
-                'withdrawal_id' => $transaction['id'],
-                'amount' => $transaction['amount'],
-                'deadline' => Carbon::now()->addHours(13),
-            ]);
-
-            $updateWithdrawal = Withdrawal::findOrFail($transaction['id']);
-            $updateWithdrawal->update(['match' => 1]);
-        }
-    }
 }

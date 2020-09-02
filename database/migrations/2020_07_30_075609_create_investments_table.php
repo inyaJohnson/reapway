@@ -27,6 +27,7 @@ class CreateInvestmentsTable extends Migration
             $table->integer('reinvest_commit_btn')->default(0);
             $table->integer('commitment')->default(0);
             $table->integer('previous_investment_id')->default(0);
+            $table->integer('pending')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
