@@ -44,7 +44,7 @@
                                         <td>{{$report->user_name}}</td>
                                         <td>{{$report->defaulter_name}}</td>
                                         <td>{{$report->subject}}</td>
-                                        <td>{{$report->created_at}}</td>
+                                        <td>{{\Carbon\Carbon::parse($report->created_at)->addHour()->format('M d Y H:i')}}</td>
                                         <td><a class="btn btn-primary report-message-btn" href="#" data-toggle="modal"
                                                data-target="#report-message-modal" data-id="{{$report->id}}"
                                                style="padding: 10px;">View</a></td>
@@ -93,7 +93,7 @@
                                                            data-toggle="modal"
                                                            data-target="#report-message-modal" data-id="{{$report->id}}"
                                                            style="padding: 10px;">View</a></strong>
-                                                <span>{{$report->created_at->format('M d Y H:i')}}</span>
+                                                <span>{{\Carbon\Carbon::parse($report->created_at)->addHour()->format('M d Y H:i')}}</span>
                                             </li>
                                             <li>
                                                 <form id="report-ids">

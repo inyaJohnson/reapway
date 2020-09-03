@@ -48,9 +48,8 @@
                                                 <th>Package</th>
                                                 <th>Date Matched</th>
                                                 <th>Amount</th>
-                                                <th>Recipient's Info</th>
+                                                <th>Recipient</th>
                                                 <th>Action</th>
-                                                <th>Status</th>
                                                 <th>Proof of Payment</th>
                                             </tr>
                                             </thead>
@@ -58,31 +57,23 @@
                                             @foreach($deposits as $deposit)
                                                 <tr>
                                                     <td>{{$deposit->package->name}}</td>
-                                                    <td>{{$deposit->created_at}}</td>
+                                                    <td>{{\Carbon\Carbon::parse($deposit->created_at)->addHour()->format('M d Y H:i')}}</td>
                                                     <td>{{number_format($deposit->amount)}}</td>
+                                                    <td>{{$deposit->recipient->name}}</td>
                                                     <td><a class="btn btn-primary view-recipient"
-                                                           href="javascript:void(0)"
-                                                           data-id={{$deposit->recipient_id}} data='{{$deposit->id}}'>View
-                                                            Recipient</a></td>
-                                                    <input value="{{$deposit->amount}}" id="amount{{$deposit->id}}"
-                                                           type="hidden">
-                                                    <td>
-                                                        <button class="btn btn-primary confirm-deposit-btn"
-                                                                data-id="{{$deposit->id}}">Upload Proof
-                                                        </button>
+                                                           href={!! '/report/'.$hashIds->encode($deposit->recipient_id).'/'.$deposit->id !!}>Report</a>
                                                     </td>
                                                     <td>
-                                                        @if($deposit->recipient_status == 0)
-                                                            <span class="text-danger">Awaiting Confirmation</span>
-                                                        @else
-                                                            <span class="text-success">Completed</span>
+                                                        @if($withdrawal->proof_of_payment !== null)
+                                                            <a class="btn btn-primary"
+                                                               href="/rocket_pay/public/store/{{$deposit->proof_of_payment}}"
+                                                               download>Download
+                                                                File</a>
                                                         @endif
                                                     </td>
-                                                    <td><a class="btn btn-primary"
-                                                           href="/rocket_pay/public/store/{{$deposit->proof_of_payment}}" download>Download
-                                                            File</a></td>
                                                 </tr>
                                             @endforeach
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -101,7 +92,7 @@
                                                 <th>Package</th>
                                                 <th>Date Matched</th>
                                                 <th>Amount</th>
-                                                <th>Depositor's Info</th>
+                                                <th>Depositor</th>
                                                 <th>Action</th>
                                                 <th>Proof of Payment</th>
                                             </tr>
@@ -110,24 +101,17 @@
                                             @foreach($withdrawals as $withdrawal)
                                                 <tr>
                                                     <td>{{$withdrawal->package->name}}</td>
-                                                    <td>{{$withdrawal->created_at}}</td>
+                                                    <td>{{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y H:i')}}</td>
                                                     <td>{{number_format($withdrawal->amount)}}</td>
-                                                    <td><a class="btn btn-primary view-depositor" href="#"
-                                                           data-id={{$withdrawal->depositor_id}} data='{{$withdrawal->id}}'>View
-                                                            Depositor</a></td>
-                                                    <input value="{{$withdrawal->amount}}"
-                                                           id="amount{{$withdrawal->id}}" type="hidden">
-                                                    <td>
-                                                        <button class="btn btn-primary confirm-withrawal"
-                                                                data-id="{{$withdrawal->id}}">Confirm Payment
-                                                        </button>
+                                                    <td>{{$withdrawal->depositor->name}}</td>
+                                                    <td><a class="btn btn-primary view-recipient"
+                                                           href={!! '/report/'.$hashIds->encode($withdrawal->depositor_id).'/'.$withdrawal->id !!}>Report</a>
                                                     </td>
-                                                    <td>@if($withdrawal->proof_of_payment !== null)
+                                                    <td>
+                                                        @if($withdrawal->proof_of_payment !== null)
                                                             <a class='btn btn-link'
                                                                href='/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}'
                                                                download>Download File</a>
-                                                        @else
-                                                            "No proof Yet"
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -141,111 +125,95 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
-
         {{--        SMALL SCREEN --}}
-
         <div class="row small-screen">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div>
-                            <h4 style="margin-bottom: 30px;">Deposit History</h4>
-                            @foreach($deposits as $deposit)
-                                <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
-                                    <div class="sale-box-inner">
-                                        <div class="sale-box-head">
-                                            <h4>{{$deposit->package->name}}</h4>
-                                        </div>
-                                        <ul class="sale-box-desc">
-                                            <li>
-                                                <strong>Amount
-                                                    - {{number_format($deposit->amount)}}</strong>
-                                                <span>Matched on - {{$deposit->created_at->format('M d Y H:i')}}</span>
-                                            </li>
-                                            <li>
-                                                <strong><a class="btn btn-primary view-recipient"
-                                                           href="javascript:void(0)"
-                                                           data-id={{$deposit->recipient_id}} data='{{$deposit->id}}'>View
-                                                        Recipient</a></strong>
-                                            </li>
-                                            <li>
-                                                <button class="btn btn-primary confirm-deposit-btn"
-                                                        data-id="{{$deposit->id}}">Upload Proof
-                                                </button>
-                                            </li>
-                                            <li><a class="btn btn-link"
-                                                   href="/rocket_pay/public/store/{{$deposit->proof_of_payment}}" download>Download
-                                                    File</a>
-                                            </li>
-                                            <li>
-                                                            <span> @if($deposit->recipient_status == 0)
-                                                                    <span class="text-danger">Awaiting Confirmation</span>
-                                                                @else
-                                                                    <span class="text-success">Completed</span>
-                                                                @endif</span>
-                                            </li>
-                                            <input value="{{$deposit->amount}}" id="amount{{$deposit->id}}"
-                                                   type="hidden">
-                                        </ul>
-                                    </div>
+                            <div class="history-panel">
+                                <div class="profile-panel-heading card-title">
+                                    Deposit History
                                 </div>
-                            @endforeach
+                                <div class="profile-panel-body">
+                                    @foreach($deposits as $deposit)
+                                        <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                            <div class="sale-box-inner">
+                                                <div class="sale-box-head">
+                                                    <h4>{{$deposit->package->name}}</h4>
+                                                </div>
+                                                <ul class="sale-box-desc">
+                                                    <li>
+                                                        <strong>Recipient - {{$deposit->recipient->name}}</strong>
+                                                    </li>
+                                                    <li>
+                                                        <strong>Amount
+                                                            - {{number_format($deposit->amount)}}</strong>
+                                                        <span>Matched on - {{\Carbon\Carbon::parse($deposit->created_at)->addHour()->format('M d Y H:i')}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <strong>
+                                                            <a class="btn btn-primary view-recipient"
+                                                               href={!! '/report/'.$hashIds->encode($deposit->recipient_id).'/'.$deposit->id !!}>Report</a>
+                                                        </strong>
+                                                        @if($withdrawal->proof_of_payment !== null)
+                                                            <a class="btn btn-link"
+                                                               href="/rocket_pay/public/store/{{$deposit->proof_of_payment}}"
+                                                               download>Download
+                                                                File</a>
+                                                        @endif
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
-
-
                         {{--                            Recipeint--}}
-
                         <div>
-                            <h4 style="margin-bottom: 30px;">Withdrawal History</h4>
-                            @foreach($withdrawals as $withdrawal)
-                                <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
-                                    <div class="sale-box-inner">
-                                        <div class="sale-box-head">
-                                            <h4>{{$withdrawal->package->name}}</h4>
-                                        </div>
-                                        <ul class="sale-box-desc">
-                                            <li>
-                                                <strong>Amount -
-                                                    #{{number_format($withdrawal->amount)}}</strong>
-                                                <span>{{$withdrawal->created_at->format('M d Y H:i')}}</span>
-                                            </li>
-                                            <li>
-                                                <strong><a class="btn btn-primary view-depositor" href="#"
-                                                           data-id={{$withdrawal->depositor_id}} data='{{$withdrawal->id}}'>View
-                                                        Depositor</a></strong>
-                                                {{--                                                            <span>{{$investment->created_at}}</span>--}}
-                                            </li>
-                                            <li>
-                                                <button class="btn btn-primary confirm-withrawal"
-                                                        data-id="{{$withdrawal->id}}">Confirm Payment
-                                                </button>
-                                            </li>
-                                            <li>
-                                                @if($withdrawal->proof_of_payment !== null)
-                                                    <a class='btn btn-link'
-                                                       href='/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}'
-                                                       download>Download File</a>
-                                                @else
-                                                    "No proof Yet"
-                                                @endif
-                                            </li>
-                                            <input value="{{$withdrawal->amount}}"
-                                                   id="amount{{$withdrawal->id}}" type="hidden">
-                                        </ul>
-                                    </div>
+                            <div class="history-panel">
+                                <div class="profile-panel-heading card-title">Withdrawal History
                                 </div>
-                            @endforeach
+                                <div class="profile-panel-body">
+                                    @foreach($withdrawals as $withdrawal)
+                                        <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                            <div class="sale-box-inner">
+                                                <div class="sale-box-head">
+                                                    <h4>{{$withdrawal->package->name}}</h4>
+                                                </div>
+                                                <ul class="sale-box-desc">
+                                                    <li>
+                                                        <strong>Depositor - {{$withdrawal->depositor->name}}</strong>
+                                                    </li>
+                                                    <li>
+                                                        <strong>Amount -
+                                                            #{{number_format($withdrawal->amount)}}</strong>
+                                                        <span>{{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y H:i')}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <strong>
+                                                            <a class="btn btn-primary view-recipient"
+                                                               href={!! '/report/'.$hashIds->encode($withdrawal->depositor_id).'/'.$withdrawal->id !!}>Report</a>
+                                                        </strong>
+                                                        @if($withdrawal->proof_of_payment !== null)
+                                                            <a class='btn btn-link'
+                                                               href='/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}'
+                                                               download>Download File</a>
+                                                        @endif
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @include('transaction.depositor-info')
-    @include('transaction.recipient-info')
-    @include('transaction.confirm-depositor')
 @endsection

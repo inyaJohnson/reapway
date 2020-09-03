@@ -44,7 +44,7 @@
                                         <td>{{$request->name}}</td>
                                         <td>{{$request->email}}</td>
                                         <td>{{$request->subject}}</td>
-                                        <td>{{$request->created_at}}</td>
+                                        <td>{{\Carbon\Carbon::parse($request->created_at)->addHour()->format('M d Y H:i')}}</td>
                                         <td><a class="btn btn-primary request-message-btn" href="#" data-toggle="modal"
                                                data-target="#request-message-modal" data-id="{{$request->id}}"
                                                style="padding: 10px;">View</a></td>
@@ -87,7 +87,7 @@
                                         <ul class="sale-box-desc">
                                             <li>
                                                 <strong>{{$request->subject}}</strong>
-                                                <span>{{$request->created_at->format('M d Y H:i')}}</span>
+                                                <span>{{\Carbon\Carbon::parse($request->created_at)->addHour()->format('M d Y H:i')}}</span>
                                             </li>
                                             <li>
                                                 <strong>{{$request->email}}</strong>

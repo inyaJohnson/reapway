@@ -46,7 +46,7 @@
                                         <td>{{$activation->user->name}}</td>
                                         <td>{{$activation->user->email}}</td>
                                         <td>{{$activation->user->phone}}</td>
-                                        <td>{{$activation->user->created_at->format('M d Y H:i')}}</td>
+                                        <td>{{\Carbon\Carbon::parse($activation->user->created_at)->addHour()->format('M d Y H:i')}}</td>
                                         <td>{{$activation->activator->account_name}}</td>
                                         <td>{{$activation->activator->phone}}</td>
                                         <td>
@@ -88,7 +88,7 @@
                                         <ul class="sale-box-desc">
                                             <li>
                                                 <strong>{{$activation->user->email}}</strong>
-                                                <span>Registered on {{$activation->user->created_at->format('M d Y H:i')}}</span>
+                                                <span>Registered on {{\Carbon\Carbon::parse($activation->user->created_at)->addHour()->format('M d Y H:i')}}</span>
                                             </li>
                                             <li>
                                                 <strong>Activator - {{$activation->activator->account_name}}</strong>

@@ -161,24 +161,10 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#transaction" aria-expanded="false"
-                       aria-controls="transaction">
+                    <a class="nav-link" href="{{route('transaction.history')}}">
                         <i class="mdi mdi-cash-multiple menu-icon"></i>
-                        <span class="menu-title">Transaction</span>
-                        <i class="menu-arrow"></i>
+                        <span class="menu-title">Transaction History</span>
                     </a>
-                    <div class="collapse" id="transaction">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="{{route('transaction.deposit')}}">Deposit
-                                    Match</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="{{route('transaction.withdraw')}}">Withdrawal
-                                    Match</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="{{route('transaction.history')}}">History</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
                 @can('client-actions')
                     <li class="nav-item">

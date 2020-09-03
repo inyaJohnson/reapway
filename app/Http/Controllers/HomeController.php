@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Investment;
+use App\Traits\ConfirmTransaction;
+use App\Traits\ShowInfo;
+use App\Transaction;
 use App\User;
+use Hashids\Hashids;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
+    use ShowInfo, ConfirmTransaction;
     /**
      * Create a new controller instance.
      *
@@ -26,7 +33,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $latestInvestment = auth()->user()->investment()->latest()->first();
         $totalWithdrawn = auth()->user()->withdrawal()->where('status', 1)->count();
         $pendingWithdrawal = auth()->user()->withdrawal()->where('status', 0)->count();
         $totalNumberInvestment = auth()->user()->investment->count();
@@ -35,8 +41,25 @@ class HomeController extends Controller
             $investmentPriceList[] = $investment->package->price;
         }
         $totalInvestment = number_format(array_sum($investmentPriceList));
+
+        $deposits = Transaction::where([
+            ['depositor_id', auth()->user()->id],
+            ['recipient_status', 0]
+        ])->get();
+
+        $withdrawals = Transaction::where([
+            ['recipient_id', auth()->user()->id],
+            ['recipient_status', 0]
+        ])->get();
+
+        $depositDeadline = Transaction::where([
+            ['depositor_id', auth()->user()->id],
+            ['depositor_status', 0],
+            ['recipient_status', 0]
+        ])->first();
+
         return view('home', compact('totalWithdrawn', 'pendingWithdrawal', 'totalNumberInvestment',
-            'totalInvestment', 'latestInvestment'));
+            'totalInvestment', 'deposits', 'depositDeadline', 'withdrawals'));
     }
 
     public function welcome(){

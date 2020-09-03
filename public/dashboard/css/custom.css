@@ -44,6 +44,8 @@
     margin-bottom: 30px;
 }
 
+
+
 .profile-panel-heading{
     border-bottom: thin solid #dddddd;
     padding: 12px 12px 12px 12px;
@@ -62,11 +64,21 @@
    font-size: small;
 }
 
-.user-account .account{
+.history-panel{
+    min-height: 200px;
+    margin-bottom: 30px;
+}
+
+.history-panel .profile-panel-heading{
+    color:#ffffff;
+    margin-bottom: 30px;
+}
+
+.depositor-account .account, .recipient-account .account{
     padding: 5px;
 }
 
-.user-account .account .mdi {
+.depositor-account .account .mdi, .recipient-account .account .mdi{
     padding-right: 7px;
 }
 

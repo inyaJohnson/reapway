@@ -46,7 +46,7 @@
                                         <td>{{number_format($investment->package->price)}}</td>
                                         <td>{{$investment->percentage}}</td>
                                         <td>{{number_format((($investment->package->price * $investment->percentage)/100) + $investment->package->price) }}</td>
-                                        <td>{{$investment->created_at}}</td>
+                                        <td>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</td>
                                         <td>@if($investment->maturity == 1)
                                                 <label class="badge badge-success">Matured</label>
                                             @else
@@ -90,7 +90,7 @@
                                             </li>
                                             <li>
                                                 <strong>100% Recommitment</strong>
-                                                <span>{{$investment->created_at->format('M d Y H:i')}}</span>
+                                                <span>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</span>
                                             </li>
                                             <li>@if($investment->maturity == 1)
                                                     <label class="badge badge-success">Matured</label>

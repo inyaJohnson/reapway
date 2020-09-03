@@ -40,7 +40,7 @@
                                 @foreach($referrals as $referred)
                                     <tr>
                                         <td>{{$referred->referred->name}}</td>
-                                        <td>{{$referred->created_at->format('M d Y')}}</td>
+                                        <td>{{\Carbon\Carbon::parse($referred->created_at)->addHour()->format('M d Y')}}</td>
                                         <td>{{number_format($referred->amount)}}</td>
                                         <td>{!! ($referred->withdrawn == 1)?"<span class='text-success'>Yes</span>" : "<span class='text-danger'>No</span>"!!}</td>
                                     </tr>
@@ -66,7 +66,7 @@
                                         <ul class="sale-box-desc">
                                             <li>
                                                 <strong>Amount - #{{number_format($referred->amount)}}</strong>
-                                                <span>Created on {{$referred->created_at->format('M d Y H:i')}}</span>
+                                                <span>Created on {{\Carbon\Carbon::parse($referred->created_at)->addHour()->format('M d Y H:i')}}</span>
                                             </li>
                                             <li>
                                                 Withdrawn - {!! ($referred->withdrawn == 1)?"<span class='text-success'>Yes</span>" : "<span class='text-danger'>No</span>"!!}

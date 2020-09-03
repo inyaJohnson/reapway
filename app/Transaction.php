@@ -15,4 +15,12 @@ class Transaction extends Model
     public function package(){
         return $this->belongsTo(Package::class);
     }
+
+    public function recipient(){
+        return $this->belongsTo(User::class, 'recipient_id');
+    }
+
+    public function depositor(){
+        return $this->belongsTo(User::class, 'depositor_id');
+    }
 }

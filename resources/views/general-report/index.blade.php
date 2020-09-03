@@ -107,7 +107,7 @@
                                 @foreach( $investments as $investment)
                                     <tr>
                                         <td>{{$investment->user->name}}</td>
-                                        <td>{{$investment->created_at}}</td>
+                                        <td>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</td>
                                         <td>{{$investment->package->name}}</td>
                                         <td>{{number_format($investment->package->price)}}</td>
                                         <td>{{number_format(($investment->package->price * $investment->package->percentage)/100)}}</td>
@@ -156,7 +156,7 @@
                                             </li>
                                             <li>
                                                 <strong>100% Recommitment</strong>
-                                                <span>{{$investment->created_at->format('M d Y H:i')}}</span>
+                                                <span>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</span>
                                             </li>
                                             <li>@if($investment->maturity == 1)
                                                     <label class="badge badge-success">Matured</label>

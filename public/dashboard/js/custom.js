@@ -53,30 +53,27 @@ $(document).ready(function () {
     }
 
 
-    // Deposit blade
+
     $('.view-recipient').on('click', function () {
         var recipientId = $(this).attr('data-id');
         var transactionId = $(this).attr('data');
         var amount = parseInt($('#amount' + transactionId).val());
         $.ajax({
             type: 'GET',
-            url: "show-recipient",
+            url: "home/show-recipient",
             data: {recipientId: recipientId},
             success: function (response) {
-                $('.user-account .user-account-bank').text(response.bank)
-                $('.user-account .user-account-name').text(response.name)
-                $('.user-account .user-account-number').text(response.number)
-                $('.user-account .user-account-phone').text(response.phone)
-                $('.user-account .user-account-amount').text(formatNumber(amount))
-                $('#recipient-modal a').attr('href', '/report/'+response.userId);
-
+                $('.recipient-account .recipient-account-bank').text(response.bank)
+                $('.recipient-account .recipient-account-name').text(response.name)
+                $('.recipient-account .recipient-account-number').text(response.number)
+                $('.recipient-account .recipient-account-phone').text(response.phone)
+                $('.recipient-account .recipient-account-amount').text(formatNumber(amount))
+                $('#recipient-modal a').attr('href', '/report/'+response.userId+'/'+transactionId);
             }
         })
         $('#recipient-modal').modal();
     })
 
-
-    //Withdrawal Blade
 
     $('.view-depositor').on('click', function () {
         var depositorId = $(this).attr('data-id');
@@ -84,19 +81,20 @@ $(document).ready(function () {
         var amount = parseInt($('#amount' + transactionId).val());
         $.ajax({
             type: 'GET',
-            url: "show-depositor",
+            url: "home/show-depositor",
             data: {depositorId: depositorId},
             success: function (response) {
-                $('.user-account .user-account-bank').text(response.bank)
-                $('.user-account .user-account-name').text(response.name)
-                $('.user-account .user-account-number').text(response.number)
-                $('.user-account .user-account-phone').text(response.phone)
-                $('.user-account .user-account-amount').text(formatNumber(amount))
+                $('.depositor-account .depositor-account-bank').text(response.bank)
+                $('.depositor-account .depositor-account-name').text(response.name)
+                $('.depositor-account .depositor-account-number').text(response.number)
+                $('.depositor-account .depositor-account-phone').text(response.phone)
+                $('.depositor-account .depositor-account-amount').text(formatNumber(amount))
                 $('#depositor-modal a').attr('href', '/report/'+response.userId+'/'+transactionId);
             }
         })
         $('#depositor-modal').modal();
     })
+
 
     $('.confirm-withrawal').on('click', function () {
         var warningMessage = 'You want to confirm this payment'
@@ -105,7 +103,7 @@ $(document).ready(function () {
         var callback = function () {
             $.ajax({
                 type: 'GET',
-                url: '/transactions/confirm-withdrawal',
+                url: '/home/confirm-withdrawal',
                 data: {id: id},
                 success: function (response) {
                     if (response.success) {
@@ -208,7 +206,7 @@ $(document).ready(function () {
             event.preventDefault();
             $.ajax({
                 type: 'POST',
-                url: '/transactions/confirm-deposit',
+                url: '/home/confirm-deposit',
                 data: new FormData(this),
                 cache: false,
                 contentType: false,
@@ -234,6 +232,11 @@ $(document).ready(function () {
                         $('#success').append(response.image)
                         $("#confirm-deposit-modal button[type='submit']").hide();
                     }
+
+                    $("#confirm-deposit-modal button[type='button']").on('click', function(){
+                        $('#confirm-deposit-modal').modal()
+                        location.reload();
+                    });
                 },
                 error: function (error) {
                     if (error.responseJSON.errors.hasOwnProperty('attachment')) {
@@ -243,9 +246,9 @@ $(document).ready(function () {
             })
         })
     })
-    $("#confirm-deposit-modal button[type='button']").on('click', function () {
-        window.location = '/transactions/history'
-    });
+    // $("#confirm-deposit-modal button[type='button']").on('click', function () {
+    //     window.location = '/transactions/history'
+    // });
 
 //    Report / Block
 

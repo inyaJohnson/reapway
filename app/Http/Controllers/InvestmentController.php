@@ -36,9 +36,9 @@ class InvestmentController extends Controller
         $referral = Referral::where('referred_id', auth()->user()->id)->first();
         $withdrawable = Withdrawal::where([['status', 0], ['match', 0], ['user_id', '!=', auth()->user()->id]])->pluck('amount')->sum();
 
-        if ($package->price > $withdrawable) {
+        if($package->price > $withdrawable){
             $message = $this->pendingInvestment($package);
-        } else {
+        }else{
             $investment = auth()->user()->investment()->create([
                 'package_id' => $package->id,
                 'percentage' => $package->percentage,
@@ -51,7 +51,7 @@ class InvestmentController extends Controller
             //Matches investor to matured withdrawers
             $this->matchMaker($package->id, $package->price, $investment->id);
         }
-        return redirect()->route('transaction.deposit')->with($message);
+        return redirect()->to('home/#deposit-section')->with($message);
     }
 
     public function invest()
@@ -70,9 +70,9 @@ class InvestmentController extends Controller
         $withdrawable = Withdrawal::where([['status', 0], ['match', 0], ['user_id', '!=', auth()->user()->id]])->pluck('amount')->sum();
 
 //        Create a new investment cycle
-        if ($investment->package->price > $withdrawable) {
+        if($investment->package->price > $withdrawable){
             $message = $this->pendingInvestment($investment->package);
-        } else {
+        }else {
             $reinvestment = auth()->user()->investment()->create([
                 'package_id' => $investment->package_id,
                 'percentage' => $investment->percentage,
@@ -88,7 +88,7 @@ class InvestmentController extends Controller
         if (!$result) {
             $message = ['error' => 'Reinvestment failed'];
         }
-        return redirect()->route('transaction.deposit')->with($message);
+        return redirect()->to('home/#deposit-section')->with($message);
     }
 
     public function withdraw($id)
@@ -108,7 +108,7 @@ class InvestmentController extends Controller
         if (!$result) {
             $message = ['error' => 'Withdrawal request failed'];
         }
-        return redirect()->route('transaction.withdraw')->with($message);;
+        return redirect()->to('home/#withdrawal-section')->with($message);;
     }
 
 }

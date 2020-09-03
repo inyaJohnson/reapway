@@ -39,17 +39,16 @@ Route::group(['middleware' => ['auth', 'block.user', 'activation']], function(){
     Route::get('settings/edit/{id}', 'SettingsController@edit')->name('settings.edit');
     Route::post('settings/update-contact-info', 'SettingsController@updateContactInfo')->name('settings.update-contact-info');
     Route::post('settings/update-account-info', 'SettingsController@updateAccountInfo')->name('settings.update-account-info');
-    Route::get('transactions/deposit', 'TransactionController@deposit')->name('transaction.deposit');
     Route::get('transactions/history', 'TransactionController@history')->name('transaction.history');
-    Route::get('transactions/withdrawal-request', 'TransactionController@withdrawal')->name('transaction.withdraw');
-    Route::get('transactions/show-depositor', 'TransactionController@showDepositor')->name('depositor-info');
-    Route::get('transactions/show-recipient', 'TransactionController@showRecipient')->name('recipient-info');
-    Route::get('transactions/confirm-withdrawal', 'TransactionController@confirmWithdrawal')->name('confirm-withdrawal');
-    Route::post('transactions/confirm-deposit', 'TransactionController@confirmDeposit')->name('confirm-deposit');
+     Route::get('transactions/show-depositor', 'TransactionController@showDepositor');
+    Route::get('transactions/show-recipient', 'TransactionController@showRecipient');
+    Route::get('home/show-depositor', 'HomeController@showDepositor')->name('depositor-info');
+    Route::get('home/show-recipient', 'HomeController@showRecipient')->name('recipient-info');
+    Route::get('home/confirm-withdrawal', 'HomeController@confirmWithdrawal')->name('confirm-withdrawal');
+    Route::post('home/confirm-deposit', 'HomeController@confirmDeposit')->name('confirm-deposit');
     Route::get('referral', 'ReferralController@index')->name('referral.index');
     Route::post('referral/investment-store', 'ReferralController@referralInvestmentStore')->name('referral.investment-store');
     Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest');
-//    Route::get('/report/{id}', 'ReportController@create')->name('report.create');
     Route::get('/report/{userId}/{transactionId}', 'ReportController@create')->name('report.create');
     Route::post('/report/store', 'ReportController@store')->name('report.store');
 

@@ -136,5 +136,4 @@
         </div>
     </div>
     <!-- content-wrapper ends -->
-    @include('transaction.recipient-info')
 @endsection

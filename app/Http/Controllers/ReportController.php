@@ -6,6 +6,7 @@ use App\Report;
 use App\Transaction;
 use App\User;
 use App\Withdrawal;
+use Hashids\Hashids;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,7 +18,8 @@ class ReportController extends Controller
     }
 
     public function create($userId, $transactionId){
-        $defaulter = User::find($userId);
+        $hashIds = new Hashids('Rocking_hard_067', 10);
+        $defaulter = User::find($hashIds->decode($userId)[0]);
         $transaction = Transaction::find($transactionId);
         if($defaulter !== null && $transaction !== null){
             return view('report.create', compact('defaulter', 'transaction'));
