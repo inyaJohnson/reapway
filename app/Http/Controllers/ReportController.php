@@ -54,8 +54,10 @@ class ReportController extends Controller
         $report = Report::find($request->report_id);
         $withdrawal = Withdrawal::find($report->transaction_withdrawal_id);
         $withdrawal->update(['match' => 0]);
-        $report->update(['status' => 1]);
-        $result = $user->update(['blocked' => 1]);
+        if($user->hasRole('user')){
+            $user->update(['blocked' => 1]);
+        }
+        $result = $report->update(['status' => 1]);
         $message = ['success' => $user->name. ' blocked'];
         if(!$result){
             $message = ['error' => 'Unable to block '. $user->name];

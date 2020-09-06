@@ -47,11 +47,15 @@
                                         <td>{{$investment->percentage}}</td>
                                         <td>{{number_format((($investment->package->price * $investment->percentage)/100) + $investment->package->price) }}</td>
                                         <td>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</td>
-                                        <td>@if($investment->maturity == 1)
-                                                <label class="badge badge-success">Matured</label>
-                                            @else
-                                                <label class="badge badge-danger">Not Due</label>
-                                            @endif</td>
+                                        <td>@if($investment->pending != 1)
+                                                @if($investment->maturity == 1)
+                                                    <label class="badge badge-success">Matured</label>
+                                                @else
+                                                    <label class="badge badge-danger">Not Due</label>
+                                                @endif</td>
+                                        @else
+                                            <label class="badge badge-warning">Awaiting to be Matched</label>
+                                        @endif
                                         <td>@if($investment->withdrawn == 1)
                                                 Yes
                                             @else
@@ -92,10 +96,14 @@
                                                 <strong>100% Recommitment</strong>
                                                 <span>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</span>
                                             </li>
-                                            <li>@if($investment->maturity == 1)
-                                                    <label class="badge badge-success">Matured</label>
+                                            <li>@if($investment->pending != 1)
+                                                    @if($investment->maturity == 1)
+                                                        <label class="badge badge-success">Matured</label>
+                                                    @else
+                                                        <label class="badge badge-danger">Not Due</label>
+                                                    @endif
                                                 @else
-                                                    <label class="badge badge-danger">Not Due</label>
+                                                    <label class="badge badge-warning">Awaiting to be Matched</label>
                                                 @endif
                                             </li>
                                             <li>@if($investment->withdrawn == 1)

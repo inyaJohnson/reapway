@@ -103,10 +103,14 @@
                         </div>
 
                     </div>
+{{--                    <div class="form-group">--}}
+{{--                        <p class="text-left remember-me-checkbox"><label><input type="checkbox" name="remember"--}}
+{{--                                                                                value="0">I agree with the website's <a--}}
+{{--                                    href="#">Terms and conditions</a></label></p>--}}
+{{--                    </div>--}}
                     <div class="form-group">
-                        <p class="text-left remember-me-checkbox"><label><input type="checkbox" name="remember"
-                                                                                value="0">I agree with the website's <a
-                                    href="#">Terms and conditions</a></label></p>
+                        <p class="text-left remember-me-checkbox"><label><input type="checkbox" name="remember" required
+                                                                                value="0">I agree at my own free will</label></p>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">

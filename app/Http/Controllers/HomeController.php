@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth' =>'verified'])->except(['welcome', 'setup']);
+        $this->middleware(['auth'])->except(['welcome', 'setup']);
     }
 
     /**
@@ -52,6 +52,8 @@ class HomeController extends Controller
             ['recipient_status', 0]
         ])->get();
 
+        $pendingInvestments = auth()->user()->investment()->where('pending', 1)->get();
+
         $depositDeadline = Transaction::where([
             ['depositor_id', auth()->user()->id],
             ['depositor_status', 0],
@@ -59,7 +61,7 @@ class HomeController extends Controller
         ])->first();
 
         return view('home', compact('totalWithdrawn', 'pendingWithdrawal', 'totalNumberInvestment',
-            'totalInvestment', 'deposits', 'depositDeadline', 'withdrawals'));
+            'totalInvestment', 'deposits', 'depositDeadline', 'withdrawals', 'pendingInvestments'));
     }
 
     public function welcome(){

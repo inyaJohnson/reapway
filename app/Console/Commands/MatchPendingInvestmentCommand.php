@@ -48,7 +48,6 @@ class MatchPendingInvestmentCommand extends Command
             $referral = Referral::where('referred_id', $pendingInvestment->user_id)->first();
             $withdrawable = Withdrawal::where([['status', 0], ['match', 0], ['user_id', '!=', $pendingInvestment->user_id]])->pluck('amount')->sum();
             if($pendingInvestment->package->price <= $withdrawable){
-
                 $this->match($pendingInvestment->package->id, $pendingInvestment->package->price, $pendingInvestment->id, $pendingInvestment->user_id);
                 $user = User::find($pendingInvestment->user_id);
                 if ($user->investment->count() == 1 && $referral !== null) {

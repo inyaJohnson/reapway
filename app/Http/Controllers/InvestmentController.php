@@ -22,7 +22,6 @@ class InvestmentController extends Controller
     {
         $investments = auth()->user()->investment;
         return view('investment.index', compact('investments'));
-
     }
 
     /**
@@ -51,7 +50,7 @@ class InvestmentController extends Controller
             //Matches investor to matured withdrawers
             $this->matchMaker($package->id, $package->price, $investment->id);
         }
-        return redirect()->to('home/#deposit-section')->with($message);
+        return redirect()->route('home')->with($message);
     }
 
     public function invest()
@@ -88,7 +87,7 @@ class InvestmentController extends Controller
         if (!$result) {
             $message = ['error' => 'Reinvestment failed'];
         }
-        return redirect()->to('home/#deposit-section')->with($message);
+        return redirect()->route('home')->with($message);
     }
 
     public function withdraw($id)
@@ -108,7 +107,7 @@ class InvestmentController extends Controller
         if (!$result) {
             $message = ['error' => 'Withdrawal request failed'];
         }
-        return redirect()->to('home/#withdrawal-section')->with($message);;
+        return redirect()->route('home')->with($message);;
     }
 
 }

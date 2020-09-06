@@ -49,7 +49,7 @@
                                                 <th>Date Matched</th>
                                                 <th>Amount</th>
                                                 <th>Recipient</th>
-                                                <th>Action</th>
+{{--                                                <th>Action</th>--}}
                                                 <th>Proof of Payment</th>
                                             </tr>
                                             </thead>
@@ -60,9 +60,9 @@
                                                     <td>{{\Carbon\Carbon::parse($deposit->created_at)->addHour()->format('M d Y H:i')}}</td>
                                                     <td>{{number_format($deposit->amount)}}</td>
                                                     <td>{{$deposit->recipient->name}}</td>
-                                                    <td><a class="btn btn-primary view-recipient"
-                                                           href={!! '/report/'.$hashIds->encode($deposit->recipient_id).'/'.$deposit->id !!}>Report</a>
-                                                    </td>
+{{--                                                    <td><a class="btn btn-primary view-recipient"--}}
+{{--                                                           href={!! '/report/create/'.$hashIds->encode($deposit->recipient_id).'/'.$deposit->id !!}>Report</a>--}}
+{{--                                                    </td>--}}
                                                     <td>
                                                         @if($withdrawal->proof_of_payment !== null)
                                                             <a class="btn btn-primary"
@@ -93,7 +93,7 @@
                                                 <th>Date Matched</th>
                                                 <th>Amount</th>
                                                 <th>Depositor</th>
-                                                <th>Action</th>
+{{--                                                <th>Action</th>--}}
                                                 <th>Proof of Payment</th>
                                             </tr>
                                             </thead>
@@ -104,9 +104,9 @@
                                                     <td>{{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y H:i')}}</td>
                                                     <td>{{number_format($withdrawal->amount)}}</td>
                                                     <td>{{$withdrawal->depositor->name}}</td>
-                                                    <td><a class="btn btn-primary view-recipient"
-                                                           href={!! '/report/'.$hashIds->encode($withdrawal->depositor_id).'/'.$withdrawal->id !!}>Report</a>
-                                                    </td>
+{{--                                                    <td><a class="btn btn-primary view-recipient"--}}
+{{--                                                           href={!! '/report/create/'.$hashIds->encode($withdrawal->depositor_id).'/'.$withdrawal->id !!}>Report</a>--}}
+{{--                                                    </td>--}}
                                                     <td>
                                                         @if($withdrawal->proof_of_payment !== null)
                                                             <a class='btn btn-link'
@@ -154,10 +154,10 @@
                                                         <span>Matched on - {{\Carbon\Carbon::parse($deposit->created_at)->addHour()->format('M d Y H:i')}}</span>
                                                     </li>
                                                     <li>
-                                                        <strong>
-                                                            <a class="btn btn-primary view-recipient"
-                                                               href={!! '/report/'.$hashIds->encode($deposit->recipient_id).'/'.$deposit->id !!}>Report</a>
-                                                        </strong>
+{{--                                                        <strong>--}}
+{{--                                                            <a class="btn btn-primary view-recipient"--}}
+{{--                                                               href={!! '/report/create/'.$hashIds->encode($deposit->recipient_id).'/'.$deposit->id !!}>Report</a>--}}
+{{--                                                        </strong>--}}
                                                         @if($withdrawal->proof_of_payment !== null)
                                                             <a class="btn btn-link"
                                                                href="/rocket_pay/public/store/{{$deposit->proof_of_payment}}"
@@ -194,10 +194,10 @@
                                                         <span>{{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y H:i')}}</span>
                                                     </li>
                                                     <li>
-                                                        <strong>
-                                                            <a class="btn btn-primary view-recipient"
-                                                               href={!! '/report/'.$hashIds->encode($withdrawal->depositor_id).'/'.$withdrawal->id !!}>Report</a>
-                                                        </strong>
+{{--                                                        <strong>--}}
+{{--                                                            <a class="btn btn-primary view-recipient"--}}
+{{--                                                               href={!! '/report/create/'.$hashIds->encode($withdrawal->depositor_id).'/'.$withdrawal->id !!}>Report</a>--}}
+{{--                                                        </strong>--}}
                                                         @if($withdrawal->proof_of_payment !== null)
                                                             <a class='btn btn-link'
                                                                href='/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}'

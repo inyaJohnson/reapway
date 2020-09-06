@@ -20,6 +20,7 @@
                 </div>
             </div>
         </div>
+        @include('layouts.message')
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
@@ -57,7 +58,6 @@
                 </div>
             </div>
         </div>
-        @include('layouts.message')
         <div class="row ">
             <div class="col-md-6 grid-margin stretch-card" id="deposit-section">
                 <div class="card">
@@ -192,6 +192,44 @@
                 {{--                <img src="{{asset('assets/images/banner-2.jpg')}}" alt="banner" height="200px"/>--}}
             </div>
         </div>
+
+        <div class="row ">
+            <div class="col-md-12 grid-margin stretch-card" id="pending-investment-section">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="history-panel">
+                            <div class="profile-panel-heading card-title">
+                                Investment Awaiting to be Matched
+                            </div>
+                            <div class="profile-panel-body">
+                                @if(!$pendingInvestments->isEmpty())
+                                    @foreach($pendingInvestments as $deposit)
+                                        <div class=" col-md-6 sale-box wow fadeInUp" data-wow-iteration="1">
+                                            <div class="sale-box-inner">
+                                                <div class="sale-box-head">
+                                                    <h4>{{$deposit->package->name}}</h4>
+                                                </div>
+                                                <ul class="sale-box-desc">
+                                                    <li>
+                                                        <strong>Amount - {{number_format($deposit->package->price)}}</strong>
+                                                        <span>Created on {{\Carbon\Carbon::parse($deposit->created_at)->addHour()->format('M d Y H:i')}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <strong>up to {{$deposit->package->percentage}}% ROI - #{{number_format((($deposit->package->price*$deposit->package->percentage)/100) + $deposit->package->price)}}</strong>
+                                                        <span class="text-danger">Awaiting to be matched</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <!-- content-wrapper ends -->
 
