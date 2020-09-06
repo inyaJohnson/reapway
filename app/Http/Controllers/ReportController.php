@@ -64,7 +64,8 @@ class ReportController extends Controller
     }
 
     public function show($id){
-        $report= Report::find($id);
+        $hashIds = new Hashids('Rocking_hard_067', 10);
+        $report= Report::find($hashIds->decode($id)[0]);
         return response()->json([
             'name'=>$report->user_name, 'message' => $report->message, 'subject'=> $report->subject,
             'attachment' => $report->attachment

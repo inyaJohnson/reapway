@@ -24,19 +24,34 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4>Welcome to RocketPay</h4>
-                        <p class="text-muted">
-                            Years back, many people rely on banks to keep their money, but in recent times they are
-                            faced with the problem of low returns. Welcome to RocketPay your best Investment solution.
+                        <h4 class="text-center">Welcome to RocketPay</h4>
+                        <p class="text-muted text-center">
+                            <strong>
+                                NB: You have to Recommit your initial Investment amount to be eligible for full
+                                withdrawal.
+                            </strong>
                         </p>
-                        <p class="text-warning">
+                        <p class="text-muted text-center">
+                            <strong>
+                                This is necessary to ensure that no User withdraws money from the programme and refuses
+                                to continue.
+                                You can recommit by investing the same amount as your initial investment or a higher
+                                amount.
+                                You will be assigned to pay it as usual, after which you can then withdraw. You will
+                                also get paid 50% interest on your recommitment amount.
+                            </strong>
+                        </p>
+                        <p class="text-center delay-notice">
+                            <strong>
+                                Notice: You might experience delay in merging as we have put this in place to avoid the
+                                over merging issue we have had the past few days. Please be patient and wait to get
+                                merged.
+                            </strong>
+                        </p>
+                        <p class="text-primary text-center">
                             <strong>We have your interest at heart, so you have no worries as we are all together to
                                 help each other grow. We got your back.
                             </strong>
-                        </p>
-                        <p class="text-warning">
-                            <strong>Note: There is a 100% Recommitment on your initial deposit before you can
-                                withdraw.</strong>
                         </p>
                     </div>
                 </div>
@@ -52,7 +67,7 @@
                                 Deposit Match
                             </div>
                             <div class="profile-panel-body">
-                                @if($deposits !== null)
+                                @if(!$deposits->isEmpty())
                                     @foreach($deposits as $deposit)
                                         <div class="sale-box wow fadeInUp" data-wow-iteration="1">
                                             <div class="sale-box-inner">
@@ -98,7 +113,7 @@
                                     @endforeach
                                 @else
                                     <div class="latest-investment">
-                                        <div>Invest in any of our packages and start earning today...</div>
+                                        <div class="text-muted">Invest in any of our packages and start earning today...</div>
                                         <div>
                                             <a type="button" class="btn btn-primary"
                                                href="{{route('investment.invest')}}">Invest
@@ -126,7 +141,7 @@
                             <div class="profile-panel-heading card-title">Withdrawal Match
                             </div>
                             <div class="profile-panel-body">
-                                @if($withdrawals !== null)
+                                @if(!$withdrawals->isEmpty())
                                     @foreach($withdrawals as $withdrawal)
                                         <div class="sale-box wow fadeInUp" data-wow-iteration="1">
                                             <div class="sale-box-inner">
@@ -165,9 +180,8 @@
                                     @endforeach
                                 @else
                                     <div class="latest-investment">
-                                        <div>Invest in any of our packages and start earning today...</div>
-                                        <div>
-                                            You are expected to recommit 10% before withdrawal
+                                        <div class="text-muted">Invest in any of our packages and start earning today...
+                                            You are expected to recommit 100% your investment before profit withdrawal
                                         </div>
                                     </div>
                                 @endif

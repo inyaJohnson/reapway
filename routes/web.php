@@ -40,7 +40,7 @@ Route::group(['middleware' => ['auth', 'block.user', 'activation']], function(){
     Route::post('settings/update-contact-info', 'SettingsController@updateContactInfo')->name('settings.update-contact-info');
     Route::post('settings/update-account-info', 'SettingsController@updateAccountInfo')->name('settings.update-account-info');
     Route::get('transactions/history', 'TransactionController@history')->name('transaction.history');
-     Route::get('transactions/show-depositor', 'TransactionController@showDepositor');
+    Route::get('transactions/show-depositor', 'TransactionController@showDepositor');
     Route::get('transactions/show-recipient', 'TransactionController@showRecipient');
     Route::get('home/show-depositor', 'HomeController@showDepositor')->name('depositor-info');
     Route::get('home/show-recipient', 'HomeController@showRecipient')->name('recipient-info');
@@ -48,8 +48,8 @@ Route::group(['middleware' => ['auth', 'block.user', 'activation']], function(){
     Route::post('home/confirm-deposit', 'HomeController@confirmDeposit')->name('confirm-deposit');
     Route::get('referral', 'ReferralController@index')->name('referral.index');
     Route::post('referral/investment-store', 'ReferralController@referralInvestmentStore')->name('referral.investment-store');
-    Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest');
-    Route::get('/report/{userId}/{transactionId}', 'ReportController@create')->name('report.create');
+    Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest')->middleware('client');
+    Route::get('/report/create/{userId}/{transactionId}', 'ReportController@create')->name('report.create');
     Route::post('/report/store', 'ReportController@store')->name('report.store');
 
 });
@@ -77,7 +77,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('users/confirm-user-unblock','UserController@unblock')->name('user.confirm-unblock');
     Route::get('/report','ReportController@index')->name('report.index');
     Route::post('/report/block-user','ReportController@block');
-    Route::get('/report/show/{id}','ReportController@show');
+    Route::get('report/show/{id}','ReportController@show');
 });
 
 Route::group(['middleware' => ['auth', 'super-admin'], 'prefix'=>'admin', 'namespace'=> 'Admin'], function (){

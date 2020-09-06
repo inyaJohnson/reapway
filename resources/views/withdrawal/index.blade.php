@@ -35,6 +35,7 @@
                                     <th>Percentage</th>
                                     <th>ROI</th>
                                     <th>Profit</th>
+                                    <th>Maturity Date</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -46,6 +47,7 @@
                                         <td>{{$investment->percentage}}</td>
                                         <td>{{number_format((($investment->package->price * $investment->percentage)/100) + $investment->package->price) }}</td>
                                         <td>{{number_format($investment->profit)}}</td>
+                                        <td>{{\Carbon\Carbon::parse($investment->updated_at)->addHour()->addDay($investment->package->duration)->format('M d Y H:i')}}</td>
                                         <td>
                                             @switch($investment)
                                                 @case($investment->maturity == 1 && $investment->reinvest_btn == 0)
@@ -123,6 +125,9 @@
                                                 @break
                                                 @default Not Matured for withdrawal
                                             @endswitch
+                                        </li>
+                                        <li>
+                                            <span>Maturity Date - {{\Carbon\Carbon::parse($investment->updated_at)->addHour()->addDay($investment->package->duration)->format('M d Y H:i')}}</span>
                                         </li>
                                     </ul>
                                 </div>

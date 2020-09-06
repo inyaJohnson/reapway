@@ -74,11 +74,11 @@
     margin-bottom: 30px;
 }
 
-.depositor-account .account, .recipient-account .account{
+.user-account .account, .depositor-account .account, .recipient-account .account{
     padding: 5px;
 }
 
-.depositor-account .account .mdi, .recipient-account .account .mdi{
+.user-account .account .mdi, .depositor-account .account .mdi, .recipient-account .account .mdi{
     padding-right: 7px;
 }
 
@@ -182,13 +182,14 @@
 }
 
 .latest-investment{
-    min-height: 300px;
     display: flex;
     flex-flow: column wrap;
     color: #4a4a4a;
     font-weight: bold;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    line-height: 1.3em;
 }
 
 .latest-investment div{
@@ -245,10 +246,15 @@
     padding: 20px;
     color: red;
 }
+
 .deny-access h3{
     font-size: xx-large;
     font-weight: bolder;
     padding: 20px;
+}
+
+.delay-notice{
+    color: #990033 !important;
 }
 
 

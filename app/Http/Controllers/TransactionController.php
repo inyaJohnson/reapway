@@ -14,7 +14,6 @@ class TransactionController extends Controller
     use ShowInfo;
 
     public function history(){
-
         $deposits = Transaction::where([
             ['depositor_id', auth()->user()->id],
             ['depositor_status', 1],

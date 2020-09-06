@@ -211,7 +211,7 @@
             </div>
         </div>
     </div>
-    @include('transaction.depositor-info')
-    @include('transaction.recipient-info')
-    @include('transaction.confirm-depositor')
+    @include('home.depositor-info')
+    @include('home.recipient-info')
+    @include('home.confirm-depositor')
 @endsection

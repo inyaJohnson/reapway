@@ -45,6 +45,9 @@ class SettingsController extends Controller
         $input = $request->validated();
         $input['user_id'] = auth()->user()->id;
         Account::create($input);
+        if(auth()->user()->hasAnyRole(['admin', 'super-admin'])){
+            return redirect()->route('home')->with('success', 'Account successfully created.');
+        }
         return redirect()->route('investment.invest')->with('success', 'Account successfully created, Invest now!');
     }
 

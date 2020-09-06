@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Builder::defaultStringLength(191); // Update defaultStringLength
         View::composer(['general-report.index', 'users.*', 'admin.*'], 'App\Http\View\Composers\Data');
-        View::composer(['referral.*', 'admin.*', 'activation.*', 'users.*','home', 'transaction.*'], 'App\Http\View\Composers\HashIds');
+        View::composer(['referral.*', 'admin.*', 'activation.*', 'users.*','home', 'transaction.*', 'report.*'], 'App\Http\View\Composers\HashIds');
         View::composer(['admin.*'], 'App\Http\View\Composers\Admin');
     }
 }

@@ -45,9 +45,8 @@
                                         <td>{{$report->defaulter_name}}</td>
                                         <td>{{$report->subject}}</td>
                                         <td>{{\Carbon\Carbon::parse($report->created_at)->addHour()->format('M d Y H:i')}}</td>
-                                        <td><a class="btn btn-primary report-message-btn" href="#" data-toggle="modal"
-                                               data-target="#report-message-modal" data-id="{{$report->id}}"
-                                               style="padding: 10px;">View</a></td>
+                                        <td><button class="btn btn-primary report-message-btn" data-id="{{$hashIds->encode($report->id)}}"
+                                                    style="padding: 10px;">View Report</button></td>
                                         <td>{!! ($report->status == 1)? "<span class='text-success'>Processed</span>":"<span class='text-danger'>New</span>"!!}</td>
                                         <td>
                                             <form id="report-ids">
@@ -89,10 +88,8 @@
                                                 <span>{{$report->subject}}</span>
                                             </li>
 
-                                            <li><strong><a class="btn btn-primary report-message-btn" href="#"
-                                                           data-toggle="modal"
-                                                           data-target="#report-message-modal" data-id="{{$report->id}}"
-                                                           style="padding: 10px;">View</a></strong>
+                                            <li><strong><button class="btn btn-primary report-message-btn" data-id="{{$hashIds->encode($report->id)}}"
+                                                           style="padding: 10px;">View Report</button></strong>
                                                 <span>{{\Carbon\Carbon::parse($report->created_at)->addHour()->format('M d Y H:i')}}</span>
                                             </li>
                                             <li>
@@ -127,6 +124,7 @@
             $('.report').dataTable();
             $('.report-message-btn').on('click', function () {
                 var id = $(this).attr('data-id')
+                $('#report-message-modal').modal('show');
                 $.ajax({
                     type: 'GET',
                     url: '/report/show/' + id,
@@ -137,10 +135,11 @@
                         if (response.attachment !== null)
                             var link = "/rocket_pay/public/store/" + response.attachment
                         $('.modal-footer').append(`<a class='btn btn-primary' href=${link}  download>Download File</a>`)
-
                     }
                 })
-                $('#report-message-modal').modal();
+                $('#report-message-modal').on('hidden.bs.modal', function () {
+                    location.reload();
+                })
             })
         })
     </script>

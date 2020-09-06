@@ -68,7 +68,7 @@ $(document).ready(function () {
                 $('.recipient-account .recipient-account-number').text(response.number)
                 $('.recipient-account .recipient-account-phone').text(response.phone)
                 $('.recipient-account .recipient-account-amount').text(formatNumber(amount))
-                $('#recipient-modal a').attr('href', '/report/'+response.userId+'/'+transactionId);
+                $('#recipient-modal a').attr('href', '/report/create/'+response.userId+'/'+transactionId);
             }
         })
         $('#recipient-modal').modal();
@@ -89,7 +89,7 @@ $(document).ready(function () {
                 $('.depositor-account .depositor-account-number').text(response.number)
                 $('.depositor-account .depositor-account-phone').text(response.phone)
                 $('.depositor-account .depositor-account-amount').text(formatNumber(amount))
-                $('#depositor-modal a').attr('href', '/report/'+response.userId+'/'+transactionId);
+                $('#depositor-modal a').attr('href', '/report/create/'+response.userId+'/'+transactionId);
             }
         })
         $('#depositor-modal').modal();
