@@ -111,11 +111,16 @@
                                         <td>{{$investment->package->name}}</td>
                                         <td>{{number_format($investment->package->price)}}</td>
                                         <td>{{number_format(($investment->package->price * $investment->package->percentage)/100)}}</td>
-                                        <td>@if($investment->maturity == 1)
-                                                <label class="badge badge-success">Matured</label>
+                                        <td>
+                                            @if($investment->pending != 1)
+                                                @if($investment->maturity == 1)
+                                                    <label class="badge badge-success">Matured</label>
+                                                @else
+                                                    <label class="badge badge-danger">Not Due</label>
+                                                @endif
                                             @else
-                                                <label class="badge badge-danger">Not Due</label>
-                                            @endif</td>
+                                                <label class="badge badge-warning">Awaiting to be Matched</label>
+                                        @endif
                                         <td><a href="{{route('general-report.show', $investment->id)}}"
                                                class="btn btn-primary">View Transaction
                                             </a>
@@ -131,14 +136,12 @@
         </div>
 
 
-        {{--        SMALL SCREEN--}}
-
         <div class="row small-screen">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         {{--                        <h4 class="card-title">Investment History</h4>--}}
-                        <div class="table-responsive">
+                        <div>
                             @foreach( $investments as $investment)
                                 <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
                                     <div class="sale-box-inner">
@@ -158,10 +161,15 @@
                                                 <strong>100% Recommitment</strong>
                                                 <span>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</span>
                                             </li>
-                                            <li>@if($investment->maturity == 1)
-                                                    <label class="badge badge-success">Matured</label>
+                                            <li>
+                                                @if($investment->pending != 1)
+                                                    @if($investment->maturity == 1)
+                                                        <label class="badge badge-success">Matured</label>
+                                                    @else
+                                                        <label class="badge badge-danger">Not Due</label>
+                                                    @endif
                                                 @else
-                                                    <label class="badge badge-danger">Not Due</label>
+                                                    <label class="badge badge-warning">Awaiting to be Matched</label>
                                                 @endif
                                             </li>
                                             <li><a href="{{route('general-report.show', $investment->id)}}"

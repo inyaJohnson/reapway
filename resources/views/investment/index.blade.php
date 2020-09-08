@@ -96,7 +96,8 @@
                                                 <strong>100% Recommitment</strong>
                                                 <span>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</span>
                                             </li>
-                                            <li>@if($investment->pending != 1)
+                                            <li>
+                                                @if($investment->pending != 1)
                                                     @if($investment->maturity == 1)
                                                         <label class="badge badge-success">Matured</label>
                                                     @else

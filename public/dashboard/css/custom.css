@@ -124,8 +124,8 @@
     color: red !important;
 }
 
-.nav-item a:hover, .nav-item .nav-link a:visited{
-    color:#FBC012 !important;
+.nav-item a:hover, .nav-item .nav-link a:visited {
+    color: #FBC012 !important;
 }
 
 .nav-tabs .nav-item .nav-link.active{
@@ -147,7 +147,7 @@
 /*PACKAGE  */
 
 .sale-box-inner {
-    border: 3px solid #fbbd18;
+    border: 1px solid #eeeeee;
     text-align: center;
     color: #fff;
     -webkit-border-radius: 7px;
