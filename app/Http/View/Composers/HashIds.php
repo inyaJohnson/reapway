@@ -10,7 +10,7 @@ class HashIds
 {
     public function compose(View $view)
     {
-        $hashIds = new \Hashids\Hashids('Rocking_hard_067', 10);
+        $hashIds = new \Hashids\Hashids('ReapWay', 10);
         return $view->with('hashIds', $hashIds);
     }
 }

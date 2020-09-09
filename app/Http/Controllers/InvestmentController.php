@@ -5,16 +5,12 @@ namespace App\Http\Controllers;
 use App\Investment;
 use App\Package;
 use App\Referral;
-use App\Traits\CreatePendingInvestment;
-use App\Traits\MatchMaker;
-use App\Withdrawal;
-use Carbon\Carbon;
+use App\Traits\DepositTransaction;
 use Illuminate\Http\Request;
 
 class InvestmentController extends Controller
 {
-    use MatchMaker, CreatePendingInvestment;
-
+    use DepositTransaction;
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -33,23 +29,17 @@ class InvestmentController extends Controller
         $message = ['success' => 'Investment successful, You have been matched'];
         $package = Package::where('id', $request->package_id)->firstOrFail();
         $referral = Referral::where('referred_id', auth()->user()->id)->first();
-        $withdrawable = Withdrawal::where([['status', 0], ['match', 0], ['user_id', '!=', auth()->user()->id]])->pluck('amount')->sum();
-
-        if($package->price > $withdrawable){
-            $message = $this->pendingInvestment($package);
-        }else{
             $investment = auth()->user()->investment()->create([
                 'package_id' => $package->id,
                 'percentage' => $package->percentage,
                 'duration' => $package->duration,
                 'profit' => round($package->price * ($package->percentage / 100))
             ]);
+            $this->create($package->id, $investment->id, $package->price);
             if (auth()->user()->investment->count() == 1 && $referral !== null) {
                 $referral->update(['amount' => ($package->price * 5) / 100, 'investment_id' => $investment->id]);
             }
-            //Matches investor to matured withdrawers
-            $this->matchMaker($package->id, $package->price, $investment->id);
-        }
+
         return redirect()->route('home')->with($message);
     }
 
@@ -66,23 +56,13 @@ class InvestmentController extends Controller
     {
         $message = ['success' => 'Reinvestment Successful, Make payment to the investor(s) listed'];
         $investment = Investment::findorFail($id);
-        $withdrawable = Withdrawal::where([['status', 0], ['match', 0], ['user_id', '!=', auth()->user()->id]])->pluck('amount')->sum();
-
-//        Create a new investment cycle
-        if($investment->package->price > $withdrawable){
-            $message = $this->pendingInvestment($investment->package);
-        }else {
-            $reinvestment = auth()->user()->investment()->create([
+            auth()->user()->investment()->create([
                 'package_id' => $investment->package_id,
                 'percentage' => $investment->percentage,
                 'duration' => $investment->duration,
                 'profit' => round($investment->package->price * ($investment->percentage / 100)),
                 'previous_investment_id' => $investment->id
             ]);
-            //        Matches investor to matured withdrawers
-            $this->matchMaker($reinvestment->package->id, $reinvestment->package->price, $reinvestment->id);
-        }
-
         $result = $investment->update(['reinvest_btn' => 1]);
         if (!$result) {
             $message = ['error' => 'Reinvestment failed'];
@@ -97,10 +77,8 @@ class InvestmentController extends Controller
         if ($investment->withdraw_btn == 1) {
             return redirect()->back()->with('custom_error', 'Already withdrawn');
         }
-        auth()->user()->withdrawal()->create([
-            'investment_id' => $investment->id,
-            'amount' => $investment->profit,
-        ]);
+
+//        $this->with
         $result = $investment->update([
             'withdraw_btn' => 1
         ]);

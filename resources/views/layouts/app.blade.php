@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'RocketPay') }}</title>
+    <title>{{ config('app.name', 'ReapWay') }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('dashboard/countdown/css/jquery.countdown.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/js/bootstrap/css/bootstrap.min.css')}}">
@@ -126,12 +126,10 @@
                             @can('admin-actions')
                                 <li class="nav-item"><a class="nav-link"
                                                         href="{{route('packages.index')}}">Package List</a></li>
-                                @can('super-admin')
-                                    <li class="nav-item"><a class="nav-link"
-                                                            href="{{route('packages.create')}}">Create Package</a></li>
-                                @endcan
+
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="{{route('inject-create')}}">Inject Investment</a></li>
+                                                        href="{{route('packages.create')}}">Create Package</a></li>
+
                             @endcan
                         </ul>
                     </div>
@@ -209,9 +207,6 @@
                         </a>
                         <div class="collapse" id="user">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="{{route('activate.index')}}">Activate User</a>
-                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('user.index')}}">
                                         <span class="menu-title">Users</span>
@@ -220,21 +215,9 @@
                                 <li class="nav-item"><a class="nav-link"
                                                         href="{{route('user.blocked')}}">Blocked Users</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="{{route('report.index')}}">Report</a>
-                                </li>
                             </ul>
                         </div>
                     </li>
-                    @can('super-admin')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.index')}}">
-                                <i class="mdi mdi-pac-man menu-icon"></i>
-                                <span class="menu-title">Admins</span>
-                            </a>
-                        </li>
-                    @endcan
-
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('help.index')}}">
                             <i class="mdi mdi-history menu-icon"></i>
@@ -251,7 +234,7 @@
             <footer class="footer">
                 <div class="d-sm-flex justify-content-center">
                     <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © {{\Carbon\Carbon::now()->year}} <a
-                            href="https://www.rocketpay.cc/" target="_blank">RocketPay</a>. All rights reserved.</span>
+                            href="https://www.rocketpay.cc/" target="_blank">ReapWay</a>. All rights reserved.</span>
                 </div>
             </footer>
             <!-- partial -->

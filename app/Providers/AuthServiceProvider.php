@@ -32,10 +32,6 @@ class AuthServiceProvider extends ServiceProvider
            return $user->hasAnyRole(['admin', 'super-admin']);
         });
 
-        Gate::define('super-admin', function($user){
-            return $user->hasRole('super-admin');
-        });
-
         Gate::define('client-actions', function ($user){
            return $user->hasRole('user');
         });
@@ -49,8 +45,5 @@ class AuthServiceProvider extends ServiceProvider
            return 0 == $user->blocked;
         });
 
-        Gate::define('activation', function ($user){
-            return 1 == $user->activation;
-        });
     }
 }

@@ -246,9 +246,6 @@ $(document).ready(function () {
             })
         })
     })
-    // $("#confirm-deposit-modal button[type='button']").on('click', function () {
-    //     window.location = '/transactions/history'
-    // });
 
 //    Report / Block
 
@@ -295,50 +292,5 @@ $(document).ready(function () {
             }
         })
     })
-
-
-    //Activation
-
-    $('.view-activator').on('click', function () {
-        var activatorId = $(this).attr('data-id');
-        $.ajax({
-            type: 'GET',
-            url: "/activate/show-activator",
-            data: {activatorId: activatorId},
-            success: function (response) {
-                $('.user-account .user-account-bank').text(response.bank)
-                $('.user-account .user-account-name').text(response.name)
-                $('.user-account .user-account-number').text(response.number)
-                $('.user-account .user-account-phone').text(response.phone)
-                $('.user-account .user-account-amount').text(formatNumber(1000))
-                $('#activator-modal a').attr('href', '/activate/upload-payment/'+response.activatorId);
-
-            }
-        })
-        $('#activator-modal').modal();
-    })
-
-    $('.confirm-activation').on('click', function () {
-        var warningMessage = 'You want to Activate this account'
-        var successMessage = 'Activation Confirmed';
-        var id = $(this).attr('data-id');
-        var callback = function () {
-            $.ajax({
-                type: 'GET',
-                url: 'activate/activate/'+id,
-                success: function (response) {
-                    if (response.success) {
-                        $('.alert-success').text(response.success).show()
-                        location.reload();
-                    }else {
-                        $('.alert-danger').text(response.error).show()
-                    }
-
-                }
-            })
-        }
-        sweetConfirmation(warningMessage, successMessage, callback)
-    })
-
 
 })

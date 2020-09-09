@@ -20,8 +20,8 @@ class data
             $investmentPriceList[] = $investment->package->price;
         }
         $totalInvestment = number_format(array_sum($investmentPriceList));
-        $availableWithdrawal = number_format(Withdrawal::where('match', 0)->sum('amount'));
-        $totalWithdrawal = number_format(Transaction::where('recipient_status', 1)->sum('amount'));
+        $availableWithdrawal = number_format(Withdrawal::where('confirmation_status', 0)->sum('amount'));
+        $totalWithdrawal = number_format(Withdrawal::where('confirmation_status', 1)->sum('amount'));
         $totalReferralBonus = Referral::all()->pluck('amount')->sum();
         $totalNumberOfInvestment = Investment::all()->count();
         $investments = Investment::with('withdrawal', 'user', 'package')->latest()->get();

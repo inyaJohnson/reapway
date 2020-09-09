@@ -17,7 +17,6 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\CheckCommitmentCommand',
         'App\Console\Commands\BlockUserCommand',
         'App\Console\Commands\CheckWithdrawalCommand',
-        'App\Console\Commands\MatchPendingInvestmentCommand'
     ];
 
     /**
@@ -38,11 +37,10 @@ class Kernel extends ConsoleKernel
 //        $schedule->command('block:user')->everyFiveMinutes()->withoutOverlapping();
 //        $schedule->command('check:withdrawal')->everyFiveMinutes()->withoutOverlapping();
 
-//        $schedule->command('check:maturity')->everyMinute()->withoutOverlapping();
-//        $schedule->command('check:commitment')->everyMinute()->withoutOverlapping();
-//        $schedule->command('block:user')->everyMinute()->withoutOverlapping();
-//        $schedule->command('check:withdrawal')->everyMinute()->withoutOverlapping();
-        $schedule->command('match:pendingInvestment')->everyMinute()->withoutOverlapping();
+        $schedule->command('check:maturity')->everyMinute()->withoutOverlapping();
+        $schedule->command('check:commitment')->everyMinute()->withoutOverlapping();
+        $schedule->command('block:user')->everyMinute()->withoutOverlapping();
+        $schedule->command('check:withdrawal')->everyMinute()->withoutOverlapping();
     }
 
     /**

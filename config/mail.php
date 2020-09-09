@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@rocketpay.cc'),
-        'name' => env('MAIL_FROM_NAME', 'RocketPay'),
+        'address' => env('MAIL_FROM_ADDRESS', 'admin@reapway.ng'),
+        'name' => env('MAIL_FROM_NAME', 'ReapWay'),
     ],
 
     /*

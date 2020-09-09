@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Account;
-use App\Investment;
+use App\Deposit;
 use App\Traits\ConfirmTransaction;
 use App\Traits\ShowInfo;
-use App\Transaction;
-use App\User;
-use Hashids\Hashids;
-use Illuminate\Http\Request;
+use App\Withdrawal;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -33,8 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $totalWithdrawn = auth()->user()->withdrawal()->where('status', 1)->count();
-        $pendingWithdrawal = auth()->user()->withdrawal()->where('status', 0)->count();
+        $totalWithdrawn = auth()->user()->withdrawal()->where('confirmation_status', 1)->count();
+        $pendingWithdrawal = auth()->user()->withdrawal()->where('confirmation_status', 0)->count();
         $totalNumberInvestment = auth()->user()->investment->count();
         $investmentPriceList = [];
         foreach (auth()->user()->investment as $investment){
@@ -42,22 +37,22 @@ class HomeController extends Controller
         }
         $totalInvestment = number_format(array_sum($investmentPriceList));
 
-        $deposits = Transaction::where([
-            ['depositor_id', auth()->user()->id],
-            ['recipient_status', 0]
+        $deposits = Deposit::where([
+            ['user_id', auth()->user()->id],
+            ['confirmation_status', 0]
         ])->get();
 
-        $withdrawals = Transaction::where([
-            ['recipient_id', auth()->user()->id],
-            ['recipient_status', 0]
+        $withdrawals = Withdrawal::where([
+            ['user_id', auth()->user()->id],
+            ['confirmation_status', 0]
         ])->get();
 
         $pendingInvestments = auth()->user()->investment()->where('pending', 1)->get();
 
-        $depositDeadline = Transaction::where([
-            ['depositor_id', auth()->user()->id],
-            ['depositor_status', 0],
-            ['recipient_status', 0]
+        $depositDeadline = Deposit::where([
+            ['user_id', auth()->user()->id],
+            ['deposit_status', 0],
+            ['confirmation_status', 0]
         ])->first();
 
         return view('home', compact('totalWithdrawn', 'pendingWithdrawal', 'totalNumberInvestment',

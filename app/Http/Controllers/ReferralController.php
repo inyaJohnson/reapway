@@ -24,14 +24,14 @@ class ReferralController extends Controller
     {
         $uncommittedInvestments = Investment::where('commitment', 0)->pluck('id')->toArray();
         $referrals = auth()->user()->referred->where('withdrawn', 0);
-//        dd($referrals);
         $maturedReferrals = [];
         foreach ($referrals as $referral){
             if(!in_array($referral->investment_id, $uncommittedInvestments)){
                 $maturedReferrals[] = $referral->amount;
             }
         }
-        $totalWithdrawable = Withdrawal::where([['status', 0], ['match', 0], ['user_id', '!=', auth()->user()->id]])->pluck('amount')->sum();
+//        $totalWithdrawable = Withdrawal::where([['status', 0], ['match', 0], ['user_id', '!=', auth()->user()->id]])->pluck('amount')->sum();
+        $totalWithdrawable = 0;
         $availablePackages = Package::where([
             ['price', '<=', $totalWithdrawable],
             ['price', '<=', array_sum($maturedReferrals)],

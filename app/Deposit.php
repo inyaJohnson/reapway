@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Withdrawal extends Model
+class Deposit extends Model
 {
     use SoftDeletes;
 
     protected $fillable = ['user_id', 'package_id', 'investment_id',
-        'amount', 'proof_of_payment', 'withdrawal_status', 'confirmation_status'];
+        'amount', 'proof_of_payment', 'deposit_status', 'confirmation_status', 'deadline'];
 
     public function package(){
         return $this->belongsTo(Package::class);

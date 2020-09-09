@@ -10,7 +10,7 @@
     </a>
     @endcan
     @can('admin-actions')
-        <a type="button" href="{{route('general-report.index')}}" class="btn btn-primary mt-2 mt-xl-0">General
+        <a type="button" href="#" class="btn btn-primary mt-2 mt-xl-0">General
             report</a>
     @endcan
 </div>

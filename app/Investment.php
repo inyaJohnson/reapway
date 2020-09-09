@@ -27,14 +27,9 @@ class Investment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function depositorTransaction()
+    public function transaction()
     {
-        return $this->hasMany(Transaction::class, 'depositor_investment_id');
-    }
-
-    public function recipientTransaction()
-    {
-        return $this->hasMany(Transaction::class, 'recipient_investment_id');
+        return $this->hasMany(Transaction::class);
     }
 
 
