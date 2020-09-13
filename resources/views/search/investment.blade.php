@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        @include('layouts.statistics')
+        @include('layouts.message')
         <div class="row big-screen">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
@@ -93,11 +93,11 @@
                                                 <span>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</span>
                                             </li>
                                             <li>
-                                                    @if($investment->maturity == 1)
-                                                        <label class="badge badge-success">Matured</label>
-                                                    @else
-                                                        <label class="badge badge-danger">Not Due</label>
-                                                    @endif
+                                                @if($investment->maturity == 1)
+                                                    <label class="badge badge-success">Matured</label>
+                                                @else
+                                                    <label class="badge badge-danger">Not Due</label>
+                                                @endif
                                             </li>
                                             <li>@if($investment->withdrawn == 1)
                                                     <span style="color:black;">Withdrawn</span>

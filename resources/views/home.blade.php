@@ -20,44 +20,7 @@
                 </div>
             </div>
         </div>
-        @include('layouts.message')
-        <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="text-center">Welcome to RocketPay</h4>
-                        <p class="text-muted text-center">
-                            <strong>
-                                NB: You have to Recommit your initial Investment amount to be eligible for full
-                                withdrawal.
-                            </strong>
-                        </p>
-                        <p class="text-muted text-center">
-                            <strong>
-                                This is necessary to ensure that no User withdraws money from the programme and refuses
-                                to continue.
-                                You can recommit by investing the same amount as your initial investment or a higher
-                                amount.
-                                You will be assigned to pay it as usual, after which you can then withdraw. You will
-                                also get paid 50% interest on your recommitment amount.
-                            </strong>
-                        </p>
-                        <p class="text-center delay-notice">
-                            <strong>
-                                Notice: You might experience delay in merging as we have put this in place to avoid the
-                                over merging issue we have had the past few days. Please be patient and wait to get
-                                merged.
-                            </strong>
-                        </p>
-                        <p class="text-primary text-center">
-                            <strong>We have your interest at heart, so you have no worries as we are all together to
-                                help each other grow. We got your back.
-                            </strong>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('layouts.statistics')
         <div class="row ">
             <div class="col-md-6 grid-margin stretch-card" id="deposit-section">
                 <div class="card">
@@ -124,13 +87,6 @@
                             </div>
                         </div>
                     </div>
-                    @if($depositDeadline !== null)
-                        <input type="hidden" id="deposit-deadline"
-                               value="{{\Carbon\Carbon::parse($depositDeadline->deadline)}}">
-                    @else
-                        <input type="hidden" id="deposit-deadline" value="{{\Carbon\Carbon::parse(0)}}">
-                    @endif
-                    <div class="defaultCountdown"></div>
                 </div>
             </div>
 
@@ -190,43 +146,6 @@
                     </div>
                 </div>
                 {{--                <img src="{{asset('assets/images/banner-2.jpg')}}" alt="banner" height="200px"/>--}}
-            </div>
-        </div>
-
-        <div class="row ">
-            <div class="col-md-12 grid-margin stretch-card" id="pending-investment-section">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="history-panel">
-                            <div class="profile-panel-heading card-title">
-                                Investment Awaiting to be Matched
-                            </div>
-                            <div class="profile-panel-body">
-                                @if(!$pendingInvestments->isEmpty())
-                                    @foreach($pendingInvestments as $deposit)
-                                        <div class=" col-md-6 sale-box wow fadeInUp" data-wow-iteration="1">
-                                            <div class="sale-box-inner">
-                                                <div class="sale-box-head">
-                                                    <h4>{{$deposit->package->name}}</h4>
-                                                </div>
-                                                <ul class="sale-box-desc">
-                                                    <li>
-                                                        <strong>Amount - {{number_format($deposit->package->price)}}</strong>
-                                                        <span>Created on {{\Carbon\Carbon::parse($deposit->created_at)->addHour()->format('M d Y H:i')}}</span>
-                                                    </li>
-                                                    <li>
-                                                        <strong>up to {{$deposit->package->percentage}}% ROI - #{{number_format((($deposit->package->price*$deposit->package->percentage)/100) + $deposit->package->price)}}</strong>
-                                                        <span class="text-danger">Awaiting to be matched</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 

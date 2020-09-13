@@ -7,7 +7,7 @@ use Carbon\Carbon;
 trait DepositTransaction
 {
     public function  create($packageId, $investmentId, $amount){
-        auth()->user()->transaction()->create([
+        auth()->user()->deposit()->create([
             'package_id' => $packageId,
             'investment_id' => $investmentId,
             'depositor_id' => auth()->user()->id,

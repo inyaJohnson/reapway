@@ -29,7 +29,8 @@ class PackageController extends Controller
         $input = $this->validate($request, [
             'name' => ['required', 'min:3', 'string'],
             'description' => ['required', 'string'],
-            'price' => ['required', 'integer'],
+            'mini_price' => ['required', 'integer'],
+            'max_price' => ['required', 'integer'],
             'percentage' => ['required', 'integer'],
             'duration' => ['required', 'integer']
         ]);

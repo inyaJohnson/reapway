@@ -13,7 +13,7 @@ class AdminSeeder extends Seeder
     {
         $role = \App\Role::where('name', 'admin')->first();
         $admin = \App\User::create([
-            'name' => 'Admin',
+            'name' => 'Admin Way',
             'email' => 'admin@reapway.ng',
             'password' => bcrypt('12345678'),
             'phone' => '08134822658',

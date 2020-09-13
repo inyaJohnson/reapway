@@ -19,6 +19,7 @@
                 </div>
             </div>
         </div>
+        @include('layouts.statistics')
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">

@@ -5,8 +5,6 @@ namespace App\Http\View\Composers;
 
 
 use App\Investment;
-use App\Referral;
-use App\Transaction;
 use App\User;
 use App\Withdrawal;
 use Illuminate\View\View;
@@ -22,7 +20,6 @@ class data
         $totalInvestment = number_format(array_sum($investmentPriceList));
         $availableWithdrawal = number_format(Withdrawal::where('confirmation_status', 0)->sum('amount'));
         $totalWithdrawal = number_format(Withdrawal::where('confirmation_status', 1)->sum('amount'));
-        $totalReferralBonus = Referral::all()->pluck('amount')->sum();
         $totalNumberOfInvestment = Investment::all()->count();
         $investments = Investment::with('withdrawal', 'user', 'package')->latest()->get();
         $numOfUsers = User::all()->count();
@@ -32,7 +29,6 @@ class data
         return $view->with(['investments' => $investments, 'totalInvestment'=> $totalInvestment,
             'totalWithdrawal' => $totalWithdrawal, 'availableWithdrawal'=>$availableWithdrawal,
             'totalNumberOfInvestment' => $totalNumberOfInvestment, 'numOfUsers' => $numOfUsers,
-            'numOfBlockedUsers' => $numOfBlockedUsers, 'numOfActiveUsers' => $numOfActiveUsers,
-            'totalReferralBonus' =>$totalReferralBonus]);
+            'numOfBlockedUsers' => $numOfBlockedUsers, 'numOfActiveUsers' => $numOfActiveUsers]);
     }
 }

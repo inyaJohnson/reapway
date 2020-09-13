@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InvestRequest;
 use App\Investment;
 use App\Package;
-use App\Referral;
 use App\Traits\DepositTransaction;
 use Illuminate\Http\Request;
 
 class InvestmentController extends Controller
 {
     use DepositTransaction;
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $investments = auth()->user()->investment;
+        $investments = Investment::all();
+        if(!auth()->user()->hasRole('admin')){
+            $investments = auth()->user()->investment;
+        }
         return view('investment.index', compact('investments'));
     }
 
@@ -24,23 +28,25 @@ class InvestmentController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(InvestRequest $request)
     {
-        $message = ['success' => 'Investment successful, You have been matched'];
-        $package = Package::where('id', $request->package_id)->firstOrFail();
-        $referral = Referral::where('referred_id', auth()->user()->id)->first();
+        $message = ['success' => 'Investment successful'];
+        $package = Package::where([
+            ['mini_price', '<=', $request->amount],
+            ['max_price', '>=', $request->amount]
+        ])->first();
+
+        if($package !== null){
             $investment = auth()->user()->investment()->create([
                 'package_id' => $package->id,
                 'percentage' => $package->percentage,
                 'duration' => $package->duration,
-                'profit' => round($package->price * ($package->percentage / 100))
+                'capital' => $request->amount
             ]);
-            $this->create($package->id, $investment->id, $package->price);
-            if (auth()->user()->investment->count() == 1 && $referral !== null) {
-                $referral->update(['amount' => ($package->price * 5) / 100, 'investment_id' => $investment->id]);
-            }
-
-        return redirect()->route('home')->with($message);
+//            $this->create($package->id, $investment->id, $package->price);
+            return redirect()->route('home')->with($message);
+        }
+        return redirect()->route('home')->withErrors('Package not available');
     }
 
     public function invest()
@@ -56,13 +62,13 @@ class InvestmentController extends Controller
     {
         $message = ['success' => 'Reinvestment Successful, Make payment to the investor(s) listed'];
         $investment = Investment::findorFail($id);
-            auth()->user()->investment()->create([
-                'package_id' => $investment->package_id,
-                'percentage' => $investment->percentage,
-                'duration' => $investment->duration,
-                'profit' => round($investment->package->price * ($investment->percentage / 100)),
-                'previous_investment_id' => $investment->id
-            ]);
+        auth()->user()->investment()->create([
+            'package_id' => $investment->package_id,
+            'percentage' => $investment->percentage,
+            'duration' => $investment->duration,
+            'profit' => round($investment->package->price * ($investment->percentage / 100)),
+            'previous_investment_id' => $investment->id
+        ]);
         $result = $investment->update(['reinvest_btn' => 1]);
         if (!$result) {
             $message = ['error' => 'Reinvestment failed'];

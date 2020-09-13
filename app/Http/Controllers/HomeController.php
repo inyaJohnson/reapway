@@ -47,16 +47,8 @@ class HomeController extends Controller
             ['confirmation_status', 0]
         ])->get();
 
-        $pendingInvestments = auth()->user()->investment()->where('pending', 1)->get();
-
-        $depositDeadline = Deposit::where([
-            ['user_id', auth()->user()->id],
-            ['deposit_status', 0],
-            ['confirmation_status', 0]
-        ])->first();
-
         return view('home', compact('totalWithdrawn', 'pendingWithdrawal', 'totalNumberInvestment',
-            'totalInvestment', 'deposits', 'depositDeadline', 'withdrawals', 'pendingInvestments'));
+            'totalInvestment', 'deposits', 'withdrawals'));
     }
 
     public function welcome(){

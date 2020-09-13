@@ -53,7 +53,6 @@ $(document).ready(function () {
     }
 
 
-
     $('.view-recipient').on('click', function () {
         var recipientId = $(this).attr('data-id');
         var transactionId = $(this).attr('data');
@@ -68,7 +67,7 @@ $(document).ready(function () {
                 $('.recipient-account .recipient-account-number').text(response.number)
                 $('.recipient-account .recipient-account-phone').text(response.phone)
                 $('.recipient-account .recipient-account-amount').text(formatNumber(amount))
-                $('#recipient-modal a').attr('href', '/report/create/'+response.userId+'/'+transactionId);
+                $('#recipient-modal a').attr('href', '/report/create/' + response.userId + '/' + transactionId);
             }
         })
         $('#recipient-modal').modal();
@@ -89,7 +88,7 @@ $(document).ready(function () {
                 $('.depositor-account .depositor-account-number').text(response.number)
                 $('.depositor-account .depositor-account-phone').text(response.phone)
                 $('.depositor-account .depositor-account-amount').text(formatNumber(amount))
-                $('#depositor-modal a').attr('href', '/report/create/'+response.userId+'/'+transactionId);
+                $('#depositor-modal a').attr('href', '/report/create/' + response.userId + '/' + transactionId);
             }
         })
         $('#depositor-modal').modal();
@@ -108,7 +107,7 @@ $(document).ready(function () {
                 success: function (response) {
                     if (response.success) {
                         $('.alert-success').text(response.success).show()
-                    }else {
+                    } else {
                         $('.alert-danger').text(response.error).show()
                     }
                     location.reload();
@@ -142,12 +141,6 @@ $(document).ready(function () {
     })
 
 
-
-//    COUNTDOWN
-    var deadline = new Date($('#deposit-deadline').val())
-    $('.defaultCountdown').countdown({until: deadline, format: 'HMS'});
-
-
     //    CONFIRM UNBLOCK
 
     $('.confirm-generic-block').on('click', function () {
@@ -157,11 +150,11 @@ $(document).ready(function () {
         var callback = function () {
             $.ajax({
                 type: 'GET',
-                url: '/users/block/'+id,
+                url: '/users/block/' + id,
                 success: function (response) {
                     if (response.success) {
                         location.reload();
-                    }else {
+                    } else {
                         $('.alert-danger').text(response.error).show()
 
 
@@ -188,7 +181,7 @@ $(document).ready(function () {
                 success: function (response) {
                     if (response.success) {
                         $('.alert-success').text(response.success).show()
-                    }else {
+                    } else {
                         $('.alert-danger').text(response.error).show()
                     }
                     location.reload();
@@ -211,29 +204,29 @@ $(document).ready(function () {
                 cache: false,
                 contentType: false,
                 processData: false,
-                beforeSend: function(){
+                beforeSend: function () {
                     $('#success').empty()
                 },
-                onUploadProgress: function(event, position, total, percentageComplete){
+                onUploadProgress: function (event, position, total, percentageComplete) {
                     $('.progress-bar').text(percentageComplete + '%');
                     $('.progress-bar').css('width', percentageComplete + '%');
                 },
                 success: function (response) {
-                    if(response.error){
+                    if (response.error) {
                         $('.progress-bar').text('0%');
                         $('.progress-bar').css('width', '0%');
-                        $('#success').html("<span class='text-danger'><b>"+ response.error+"</b></span>");
+                        $('#success').html("<span class='text-danger'><b>" + response.error + "</b></span>");
                     }
 
-                    if (response.success){
+                    if (response.success) {
                         $('.progress-bar').text('Uploaded');
                         $('.progress-bar').css('width', '100%');
-                        $('#success').html("<span class='text-success'><b>"+ response.success+"</b></span><br /><br />");
+                        $('#success').html("<span class='text-success'><b>" + response.success + "</b></span><br /><br />");
                         $('#success').append(response.image)
                         $("#confirm-deposit-modal button[type='submit']").hide();
                     }
 
-                    $("#confirm-deposit-modal button[type='button']").on('click', function(){
+                    $("#confirm-deposit-modal button[type='button']").on('click', function () {
                         $('#confirm-deposit-modal').modal()
                         location.reload();
                     });
@@ -273,7 +266,7 @@ $(document).ready(function () {
         // window.alert("hello")
         Swal.fire({
             title: 'Are you sure?',
-            text: "You want to invest #" + formatNumber($(this).parents('form').children('.package_price').val()) + "!",
+            text: "You want to invest #" + formatNumber($(this).parents('form').children("input[name='amount']").val()) + "!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -281,14 +274,8 @@ $(document).ready(function () {
             confirmButtonText: 'Yes, Invest Now!'
         }).then((result) => {
             if (result.value) {
-                Swal.fire(
-                    'Congrats',
-                    'Your investment was successful',
-                    'success'
-                ).then(()=>{
-                    var form = $(this).parents('form:first');
-                    form.submit();
-                })
+                var form = $(this).parents('form:first');
+                form.submit();
             }
         })
     })

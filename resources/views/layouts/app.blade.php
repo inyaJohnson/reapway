@@ -118,7 +118,10 @@
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link"
-                                                    href="{{route('investment.index')}}">History</a></li>
+                                                    href="{{route('investment.index')}}">
+                                    @can('client-actions') History @endcan
+                                    @can('admin-actions') Investments @endcan
+                                </a></li>
                             @can('client-actions')
                                 <li class="nav-item"><a class="nav-link" href="{{route('investment.invest')}}">Invest
                                         Now</a></li>
@@ -129,12 +132,12 @@
 
                                 <li class="nav-item"><a class="nav-link"
                                                         href="{{route('packages.create')}}">Create Package</a></li>
-
                             @endcan
                         </ul>
                     </div>
                 </li>
 
+                @can('client-actions')
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('withdrawal.index')}}" aria-expanded="false">
                         <i class="mdi mdi-cash-multiple menu-icon"></i>
@@ -164,14 +167,6 @@
                         <span class="menu-title">Transaction History</span>
                     </a>
                 </li>
-                @can('client-actions')
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('referral.index')}}">
-                            <i class="mdi mdi-emoticon menu-icon"></i>
-                            <span class="menu-title">Referral</span>
-                        </a>
-                    </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('help.create')}}">
                             <i class="mdi mdi-help-circle-outline menu-icon"></i>
@@ -180,24 +175,6 @@
                     </li>
                 @endcan
                 @can('admin-actions')
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#referral" aria-expanded="false"
-                           aria-controls="referral">
-                            <i class="mdi mdi-emoticon menu-icon"></i>
-                            <span class="menu-title">Referral Management</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="referral">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('referral.index')}}">
-                                        <span class="menu-title">Referral</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#user" aria-expanded="false"
                            aria-controls="user">

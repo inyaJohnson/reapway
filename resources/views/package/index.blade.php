@@ -20,27 +20,35 @@
                 </div>
             </div>
         </div>
-        @include('layouts.message')
+        @include('layouts.statistics')
         <div class="row">
-            @foreach($packages as $package)
-                <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
-                    <div class="sale-box-inner">
-                        <div class="sale-box-head">
-                            <h4>{{$package->name}}</h4>
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Packages</h4>
+                        <div class="row">
+                            @foreach($packages as $package)
+                                <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                    <div class="sale-box-inner">
+                                        <div class="sale-box-head">
+                                            <h4>{{$package->name}}</h4>
+                                        </div>
+                                        <ul class="sale-box-desc">
+                                            <li>
+                                                <strong>Price Range </strong>
+                                                <span>#{{number_format($package->mini_price)}} - #{{number_format($package->max_price)}}</span>
+                                            </li>
+                                            <li>
+                                                <strong>Up to {{$package->percentage}}% ROI</strong>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-                        <ul class="sale-box-desc">
-                            <li>
-                                <strong>#{{number_format($package->price)}}</strong>
-                                <span>up to {{$package->percentage}}% ROI - #{{number_format(($package->price*$package->percentage)/100)}}</span>
-                            </li>
-                            <li>
-                                <strong>100% Recommitment</strong>
-                                <span>(You get 5% referral bonus)</span>
-                            </li>
-                        </ul>
                     </div>
                 </div>
-            @endforeach
+            </div>
         </div>
     </div>
     <!-- content-wrapper ends -->

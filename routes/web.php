@@ -17,8 +17,6 @@ Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('/setup', 'HomeController@setup');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/blocked-user', 'BlockUserController@deny')->name('blocked');
-Route::get('/referral/registration/{id}', 'ReferralController@referralLink')->name('referral.link')->middleware('guest');
-Route::post('/referral/registration/store', 'ReferralController@referredRegistration')->name('referral.store');
 
 Route::group(['middleware' => ['auth', 'block.user']], function(){
     Route::get('investment', 'InvestmentController@index')->name('investment.index');
@@ -41,8 +39,6 @@ Route::group(['middleware' => ['auth', 'block.user']], function(){
     Route::get('home/show-recipient', 'HomeController@showRecipient')->name('recipient-info');
     Route::get('home/confirm-withdrawal', 'HomeController@confirmWithdrawal')->name('confirm-withdrawal');
     Route::post('home/confirm-deposit', 'HomeController@confirmDeposit')->name('confirm-deposit');
-    Route::get('referral', 'ReferralController@index')->name('referral.index');
-    Route::post('referral/investment-store', 'ReferralController@referralInvestmentStore')->name('referral.investment-store');
     Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest')->middleware('client');
 });
 
@@ -52,6 +48,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'admin', 'namespace'=
     Route::get('/package', 'PackageController@index')->name('packages.index');
     Route::get('/create-package', 'PackageController@create')->name('packages.create');
     Route::post('/store-package', 'PackageController@store')->name('packages.store');
+    Route::get('search/investment', 'SearchController@investment')->name('search.investment');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {

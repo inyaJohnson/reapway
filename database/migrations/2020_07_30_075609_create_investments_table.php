@@ -17,17 +17,10 @@ class CreateInvestmentsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('package_id');
-            $table->integer('percentage');
-            $table->integer('duration');
-            $table->integer('profit');
+            $table->integer('capital');
             $table->integer('maturity')->default(0);
             $table->integer('withdrawn')->default(0);
-            $table->integer('withdraw_btn')->default(0);
-            $table->integer('reinvest_btn')->default(0);
-            $table->integer('reinvest_commit_btn')->default(0);
             $table->integer('commitment')->default(0);
-            $table->integer('previous_investment_id')->default(0);
-            $table->integer('pending')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
