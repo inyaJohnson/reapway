@@ -40,6 +40,13 @@ Route::group(['middleware' => ['auth', 'block.user']], function(){
     Route::get('home/confirm-withdrawal', 'HomeController@confirmWithdrawal')->name('confirm-withdrawal');
     Route::post('home/confirm-deposit', 'HomeController@confirmDeposit')->name('confirm-deposit');
     Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest')->middleware('client');
+
+
+
+
+// Laravel 5.1.17 and above
+    Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
+    Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 });
 
 Route::resource('help', 'HelpController')->middleware(['auth']);

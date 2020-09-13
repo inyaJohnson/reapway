@@ -25,26 +25,19 @@ class InvestmentController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param InvestRequest $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function store(InvestRequest $request)
     {
-        $message = ['success' => 'Investment successful'];
         $package = Package::where([
             ['mini_price', '<=', $request->amount],
             ['max_price', '>=', $request->amount]
         ])->first();
-
         if($package !== null){
-            $investment = auth()->user()->investment()->create([
-                'package_id' => $package->id,
-                'percentage' => $package->percentage,
-                'duration' => $package->duration,
-                'capital' => $request->amount
-            ]);
-//            $this->create($package->id, $investment->id, $package->price);
-            return redirect()->route('home')->with($message);
+            $message = ['success' => 'Your request for the '.$package->name .' was successful. Proceed with payment'];
+            $amount = $request->amount.'00';
+            return view('payment.create', compact('message', 'package', 'amount'));
         }
         return redirect()->route('home')->withErrors('Package not available');
     }
@@ -93,5 +86,29 @@ class InvestmentController extends Controller
         }
         return redirect()->route('home')->with($message);;
     }
+
+
+
+//    public function store(InvestRequest $request)
+//    {
+//        $message = ['success' => 'Investment successful'];
+//        $package = Package::where([
+//            ['mini_price', '<=', $request->amount],
+//            ['max_price', '>=', $request->amount]
+//        ])->first();
+//
+//        if($package !== null){
+//            $investment = auth()->user()->investment()->create([
+//                'package_id' => $package->id,
+//                'percentage' => $package->percentage,
+//                'duration' => $package->duration,
+//                'capital' => $request->amount
+//            ]);
+////            $this->create($package->id, $investment->id, $package->price);
+//            return redirect()->route('home')->with($message);
+//        }
+//        return redirect()->route('home')->withErrors('Package not available');
+//    }
+
 
 }
