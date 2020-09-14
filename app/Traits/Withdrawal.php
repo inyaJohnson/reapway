@@ -2,12 +2,14 @@
 
 
 namespace App\Traits;
+
+
 use Carbon\Carbon;
 
-trait DepositTransaction
+trait Withdrawal
 {
-    public function  create($packageId, $investmentId, $amount){
-        auth()->user()->deposit()->create([
+    public function createWithdrawal($packageId, $investmentId, $amount){
+        auth()->user()->transaction()->create([
             'package_id' => $packageId,
             'investment_id' => $investmentId,
             'depositor_id' => auth()->user()->id,
@@ -16,6 +18,4 @@ trait DepositTransaction
             'deadline' => Carbon::now()->addHours(13),
         ]);
     }
-
-
 }

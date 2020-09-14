@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Deposit;
-use App\Traits\ConfirmTransaction;
+use App\Investment;
 use App\Traits\ShowInfo;
 use App\Withdrawal;
 use Illuminate\Support\Facades\Artisan;
 
 class HomeController extends Controller
 {
-    use ShowInfo, ConfirmTransaction;
+    use ShowInfo;
     /**
      * Create a new controller instance.
      *

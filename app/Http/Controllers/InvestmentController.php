@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InvestRequest;
 use App\Investment;
 use App\Package;
-use App\Traits\DepositTransaction;
+use App\Traits\Deposit;
 use Illuminate\Http\Request;
 
 class InvestmentController extends Controller
 {
-    use DepositTransaction;
+    use Deposit;
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -18,28 +18,32 @@ class InvestmentController extends Controller
     public function index()
     {
         $investments = Investment::all();
-        if(!auth()->user()->hasRole('admin')){
+        if (!auth()->user()->hasRole('admin')) {
             $investments = auth()->user()->investment;
         }
         return view('investment.index', compact('investments'));
     }
 
     /**
-     * @param InvestRequest $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(InvestRequest $request)
+    public function store(Request $request)
     {
         $package = Package::where([
             ['mini_price', '<=', $request->amount],
             ['max_price', '>=', $request->amount]
         ])->first();
-        if($package !== null){
-            $message = ['success' => 'Your request for the '.$package->name .' was successful. Proceed with payment'];
-            $amount = $request->amount.'00';
-            return view('payment.create', compact('message', 'package', 'amount'));
+        if ($package !== null) {
+            $message = ['success' => 'Investment successful. Proceed with payment and Upload proof'];
+            $investment = auth()->user()->investment()->create([
+                'package_id' => $package->id,
+                'capital' => $request->amount
+            ]);
+            $this->createDeposit($investment);
+            return redirect()->route('deposit.index')->with($message);
         }
-        return redirect()->route('home')->withErrors('Package not available');
+        return redirect()->back()->withErrors('Package not available, Please check package list for available packages');
     }
 
     public function invest()
@@ -88,27 +92,19 @@ class InvestmentController extends Controller
     }
 
 
-
+//    Using paystack
 //    public function store(InvestRequest $request)
 //    {
-//        $message = ['success' => 'Investment successful'];
 //        $package = Package::where([
 //            ['mini_price', '<=', $request->amount],
 //            ['max_price', '>=', $request->amount]
 //        ])->first();
-//
 //        if($package !== null){
-//            $investment = auth()->user()->investment()->create([
-//                'package_id' => $package->id,
-//                'percentage' => $package->percentage,
-//                'duration' => $package->duration,
-//                'capital' => $request->amount
-//            ]);
-////            $this->create($package->id, $investment->id, $package->price);
-//            return redirect()->route('home')->with($message);
+//            $message = ['success' => 'Your request for the '.$package->name .' was successful. Proceed with payment'];
+//            $amount = $request->amount.'00';
+//            return view('payment.create', compact('message', 'package', 'amount'));
 //        }
 //        return redirect()->route('home')->withErrors('Package not available');
 //    }
-
 
 }

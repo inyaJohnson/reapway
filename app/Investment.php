@@ -9,7 +9,7 @@ class Investment extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['package_id', 'maturity', 'capital', 'withdrawn', 'commitment', 'user_id'];
+    protected $fillable = ['package_id', 'maturity', 'capital', 'withdrawn', 'user_id'];
 
     public function package()
     {
@@ -18,7 +18,7 @@ class Investment extends Model
 
     public function withdrawal()
     {
-        return $this->hasMany(Withdrawal::class);
+        return $this->hasOne(Withdrawal::class);
     }
 
     public function user()
@@ -27,4 +27,8 @@ class Investment extends Model
     }
 
 
+    public function deposit()
+    {
+        return $this->hasOne(Deposit::class);
+    }
 }

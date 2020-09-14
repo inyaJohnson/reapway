@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Deposit;
 use App\Investment;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -39,22 +40,13 @@ class CheckMaturityCommand extends Command
      */
     public function handle()
     {
-        $investments = Investment::where([
-            ['maturity', 0],
-            ['commitment', 1]
-        ])->get();
-        foreach ($investments as $investment) {
-            if (Carbon::now()->dayOfYear() - Carbon::parse($investment->updated_at)->dayOfYear >= $investment->duration) {
-                $investment->update([
+        $deposits = Deposit::with('investment', 'package')->where('confirmation_status', 1)->get();
+        foreach ($deposits as $deposit) {
+            if (Carbon::now()->dayOfYear() - Carbon::parse($deposit->updated_at)->dayOfYear >= $deposit->package->duration) {
+                $deposit->investment->update([
                     'maturity' => 1,
                 ]);
             }
-
-            if ($investment->previous_investment_id != 0) {
-                $previousInvestment = Investment::find($investment->previous_investment_id);
-                $previousInvestment->update(['reinvest_commit_btn' => 1]);
-            }
-
         }
     }
 }

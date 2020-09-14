@@ -1,29 +1,35 @@
 <?php
 
-
 namespace App\Traits;
 
-
-use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-trait ConfirmTransaction
+
+trait Deposit
 {
-    public function confirmWithdrawal(Request $request){
-        $transaction = Transaction::find($request->id);
+    public function  createDeposit($investment){
+        auth()->user()->deposit()->create([
+            'package_id' => $investment->package_id,
+            'investment_id' => $investment->id,
+            'amount' => $investment->capital,
+        ]);
+    }
+
+    public function confirmDeposit(Request $request){
+        $deposit = \App\Deposit::find($request->id);
         $message = ['success' => 'Payment confirmed'];
-        $result = $transaction->update(['recipient_status' => 1]);
+        $result = $deposit->update(['confirmation_status' => 1]);
         if(!$result){
             $message = ['error' => 'Unable to confirmed Payment' ];
         }
         return response()->json($message);
     }
 
-    public function confirmDeposit(Request $request){
+    public function uploadDepositProof(Request $request){
         $rules = array(
-            'attachment' => 'file|max:2048',
-            'transaction_id' => 'required'
+            'attachment' => 'file|max:5000',
+            'deposit_id' => 'required'
         );
         $error = Validator::make($request->all(), $rules);
 
@@ -34,11 +40,11 @@ trait ConfirmTransaction
         if(isset($request->attachment)) {
             $attachmentName = time(). '.' . $request->attachment->extension();
             $request->attachment->move(public_path('store'), $attachmentName);
-            $transaction = Transaction::find($request->transaction_id);
-            $transaction->update(['depositor_status' => 1, 'proof_of_payment' => $attachmentName]);
+            $deposit = \App\Deposit::find($request->deposit_id);
+            $deposit->update(['deposit_status' => 1, 'proof_of_payment' => $attachmentName]);
             $message = array(
                 'success' => 'Upload Successful',
-                'image' => '<embed src="/rocket_pay/public/store/'.$attachmentName.'" class="img-thumbnail" />'
+                'image' => '<embed src="/reapway/public/store/'.$attachmentName.'" class="img-thumbnail" />'
             );
         }
         return response()->json($message);

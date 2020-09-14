@@ -1,17 +1,17 @@
 @extends('layouts.modal')
 @section('modal-id')
-    confirm-deposit-modal
+    upload-payment-modal
 @overwrite
 @section('modal-title')
     Payment from Recipient
 @overwrite
 @section('modal-content')
-    <div class="confirm-deposit">
-        <form id="confirm-deposit-form" enctype="multipart/form-data">
+    <div class="upload-payment">
+        <form id="upload-payment-form" enctype="multipart/form-data">
             @csrf
             <input type="file" name="attachment" class="form-control">
             <span>*Note: Document should not be more than 2Mb</span>
-            <input type="hidden" name="transaction_id" id="transaction_id">
+            <input type="hidden" name="deposit_id" id="deposit_id">
         </form>
         <div class="progress" style="height: 15px !important;">
             <div class="progress-bar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: 0%; ">0%</div>
@@ -22,6 +22,6 @@
 @overwrite
 @section('modal-footer')
     <button type="button" class="btn btn-secondary">Close</button>
-    <button type="submit" class="btn btn-primary" form="confirm-deposit-form">Submit</button>
+    <button type="submit" class="btn btn-primary" form="upload-payment-form">Submit</button>
 @overwrite
 

@@ -128,45 +128,45 @@
                             @endcan
                             @can('admin-actions')
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="{{route('packages.index')}}">Package List</a></li>
-
-                                <li class="nav-item"><a class="nav-link"
                                                         href="{{route('packages.create')}}">Create Package</a></li>
                             @endcan
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="{{route('packages.index')}}">Package List</a></li>
                         </ul>
                     </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('deposit.index')}}">
+                        <i class="mdi mdi-cash-multiple menu-icon"></i>
+                        <span class="menu-title">Deposit</span>
+                    </a>
                 </li>
 
                 @can('client-actions')
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('withdrawal.index')}}" aria-expanded="false">
-                        <i class="mdi mdi-cash-multiple menu-icon"></i>
-                        <span class="menu-title">Withdraw</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false"
-                       aria-controls="settings">
-                        <i class="mdi mdi-account menu-icon"></i>
-                        <span class="menu-title">Settings</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="settings">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="{{route('settings.index')}}">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('settings.account')}}">Account</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('transaction.history')}}">
-                        <i class="mdi mdi-cash-multiple menu-icon"></i>
-                        <span class="menu-title">Transaction History</span>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('withdrawal.index')}}" aria-expanded="false">
+                            <i class="mdi mdi-cash-multiple menu-icon"></i>
+                            <span class="menu-title">Withdraw</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false"
+                           aria-controls="settings">
+                            <i class="mdi mdi-account menu-icon"></i>
+                            <span class="menu-title">Settings</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="settings">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{route('settings.index')}}">Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('settings.account')}}">Account</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('help.create')}}">
                             <i class="mdi mdi-help-circle-outline menu-icon"></i>

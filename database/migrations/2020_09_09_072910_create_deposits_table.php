@@ -22,7 +22,6 @@ class CreateDepositsTable extends Migration
             $table->string('proof_of_payment')->nullable();
             $table->integer('deposit_status')->default(0);
             $table->integer('confirmation_status')->default(0);
-            $table->string('deadline');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -49,7 +49,7 @@
                                                                 Recipient</a></strong>
                                                     </li>
                                                     <li>
-                                                        <button class="btn btn-primary confirm-deposit-btn"
+                                                        <button class="btn btn-primary upload-payment-btn"
                                                                 data-id="{{$deposit->id}}">Upload Proof
                                                         </button>
                                                     </li>
@@ -153,6 +153,5 @@
     <!-- content-wrapper ends -->
 
     @include('home.recipient-info')
-    @include('home.confirm-depositor')
     @include('home.depositor-info')
 @endsection

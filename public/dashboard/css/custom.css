@@ -109,7 +109,7 @@
     padding: 10px !important;
 }
 
-#confirm-deposit-form span, #referrer-form span, p.warning {
+#upload-payment-form span, #referrer-form span, p.warning {
     color: #888888;
     font-size: small;
 }

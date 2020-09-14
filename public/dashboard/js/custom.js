@@ -30,6 +30,7 @@ $(document).ready(function () {
         }
     }
 
+
     function sweetConfirmation(warningMessage, successMessage, callback) {
         Swal.fire({
             title: 'Are you sure?',
@@ -41,13 +42,7 @@ $(document).ready(function () {
             confirmButtonText: 'Yes, Confirm Now!'
         }).then((result) => {
             if (result.value) {
-                Swal.fire(
-                    'Congrats',
-                    successMessage,
-                    'success'
-                ).then(() => {
-                    callback()
-                })
+                callback()
             }
         })
     }
@@ -95,49 +90,25 @@ $(document).ready(function () {
     })
 
 
-    $('.confirm-withrawal').on('click', function () {
+
+    $('.confirm-deposit-btn').on('click', function () {
         var warningMessage = 'You want to confirm this payment'
         var successMessage = 'Payment Confirmed'
         var id = $(this).attr('data-id');
         var callback = function () {
             $.ajax({
                 type: 'GET',
-                url: '/home/confirm-withdrawal',
+                url: '/deposit/confirm-deposit',
                 data: {id: id},
                 success: function (response) {
-                    if (response.success) {
-                        $('.alert-success').text(response.success).show()
-                    } else {
-                        $('.alert-danger').text(response.error).show()
+                    var redirectTo = failed = function () {
+                        location.reload()
                     }
-                    location.reload();
+                    sweetAlert(response, redirectTo, failed)
                 }
             })
         }
         sweetConfirmation(warningMessage, successMessage, callback)
-    })
-
-
-//    Referral form toggle
-
-    $('.referrer-form-toggle').on('click', function () {
-        $('#referrer-modal').modal();
-    })
-
-    $('#referrer-form').on('submit', function (event) {
-        event.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: '/referral/store',
-            data: $(this).serialize(),
-            success: function (response) {
-                var redirectTo = failed = function () {
-                    $('#referrer-modal').modal('toggle');
-                    location.reload()
-                }
-                sweetAlert(response, redirectTo, failed)
-            }
-        })
     })
 
 
@@ -192,14 +163,14 @@ $(document).ready(function () {
     })
 
 // CONFIRM DEPOSIT WITH FILE UPLOAD
-    $('.confirm-deposit-btn').on('click', function () {
-        $('#confirm-deposit-modal').modal();
-        $("#confirm-deposit-modal #transaction_id").val($(this).attr('data-id'))
-        $('#confirm-deposit-form').on('submit', function (event) {
+    $('.upload-payment-btn').on('click', function () {
+        $('#upload-payment-modal').modal();
+        $("#upload-payment-modal #deposit_id").val($(this).attr('data-id'))
+        $('#upload-payment-form').on('submit', function (event) {
             event.preventDefault();
             $.ajax({
                 type: 'POST',
-                url: '/home/confirm-deposit',
+                url: '/deposit/upload-payment',
                 data: new FormData(this),
                 cache: false,
                 contentType: false,
@@ -223,17 +194,17 @@ $(document).ready(function () {
                         $('.progress-bar').css('width', '100%');
                         $('#success').html("<span class='text-success'><b>" + response.success + "</b></span><br /><br />");
                         $('#success').append(response.image)
-                        $("#confirm-deposit-modal button[type='submit']").hide();
+                        $("#upload-payment-modal button[type='submit']").hide();
                     }
 
-                    $("#confirm-deposit-modal button[type='button']").on('click', function () {
-                        $('#confirm-deposit-modal').modal()
+                    $("#upload-payment-modal button[type='button']").on('click', function () {
+                        $('#upload-payment-modal').modal()
                         location.reload();
                     });
                 },
                 error: function (error) {
                     if (error.responseJSON.errors.hasOwnProperty('attachment')) {
-                        $('#confirm-deposit-form span').addClass('error').text('The File is required and the size must not be more than 2Mb');
+                        $('#upload-payment-form span').addClass('error').text('The File is required and the size must not be more than 2Mb');
                     }
                 }
             })
