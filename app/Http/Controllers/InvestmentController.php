@@ -7,6 +7,7 @@ use App\Investment;
 use App\Package;
 use App\Traits\Deposit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class InvestmentController extends Controller
 {
@@ -27,9 +28,14 @@ class InvestmentController extends Controller
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
+        $rule = ['amount' => 'required|integer'];
+        $validationMessage  = ['required' => 'Amount field is required', 'integer'=> 'Package price must be a number'];
+        Validator::make($request->all(), $rule, $validationMessage)->validate();
+
         $package = Package::where([
             ['mini_price', '<=', $request->amount],
             ['max_price', '>=', $request->amount]

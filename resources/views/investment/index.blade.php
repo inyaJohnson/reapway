@@ -35,8 +35,10 @@
                                     <th>Percentage</th>
                                     <th>ROI</th>
                                     <th>Created At</th>
+                                    <th>Status</th>
                                     <th>Maturity</th>
                                     <th>Withdrawn</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -48,6 +50,13 @@
                                         <td>{{number_format((($investment->capital * $investment->package->percentage)/100) + $investment->capital) }}</td>
                                         <td>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</td>
                                         <td>
+                                            @if($investment->status == 1)
+                                                <span class="badge badge-success">Approved</span>
+                                                @else
+                                                <span class="badge badge-warning">Pending Deposit Confirmation</span>
+                                            @endif
+                                        </td>
+                                        <td>
                                             @if($investment->maturity == 1)
                                                 <label class="badge badge-success">Matured</label>
                                             @else
@@ -58,6 +67,17 @@
                                                 Yes
                                             @else
                                                 No
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($investment->maturity == 1 && $investment->withdrawn == 1)
+                                                Completed
+                                            @elseif($investment->maturity == 1 && $investment->withdrawn == 0)
+                                                <button class="btn btn-primary" data-id="{{$investment->id}}">Withdraw
+                                                    Investment
+                                                </button>
+                                            @else
+                                                In progress
                                             @endif
                                         </td>
                                     </tr>
@@ -91,18 +111,34 @@
                                             </li>
                                             <li>
                                                 <span>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</span>
+                                                @if($investment->status == 1)
+                                                    <span class="badge badge-success">Approved</span>
+                                                @else
+                                                    <span class="badge badge-warning">Pending Deposit Confirmation</span>
+                                                @endif
                                             </li>
                                             <li>
-                                                    @if($investment->maturity == 1)
-                                                        <label class="badge badge-success">Matured</label>
-                                                    @else
-                                                        <label class="badge badge-danger">Not Due</label>
-                                                    @endif
+                                                @if($investment->maturity == 1)
+                                                    <label class="badge badge-success">Matured</label>
+                                                @else
+                                                    <label class="badge badge-danger">Not Due</label>
+                                                @endif
                                             </li>
                                             <li>@if($investment->withdrawn == 1)
                                                     <span style="color:black;">Withdrawn</span>
                                                 @else
                                                     <span style="color:black;">Not Withdrawn</span>
+                                                @endif
+                                            </li>
+                                            <li>
+                                                @if($investment->maturity == 1 && $investment->withdrawn == 1)
+                                                    Completed
+                                                @elseif($investment->maturity == 1 && $investment->withdrawn == 0)
+                                                    <button class="btn btn-primary" data-id="{{$investment->id}}">Withdraw
+                                                        Investment
+                                                    </button>
+                                                @else
+                                                    In progress
                                                 @endif
                                             </li>
                                         </ul>

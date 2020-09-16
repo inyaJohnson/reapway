@@ -32,7 +32,6 @@ class Kernel extends ConsoleKernel
 //        $schedule->command('block:user')->everyThirtyMinutes();
 //        $schedule->command('check:withdrawal')->everyThirtyMinutes();
 
-
         $schedule->command('check:maturity')->everyMinute()->withoutOverlapping();
         $schedule->command('check:commitment')->everyMinute()->withoutOverlapping();
         $schedule->command('block:user')->everyMinute()->withoutOverlapping();

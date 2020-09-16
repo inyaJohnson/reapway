@@ -19,7 +19,8 @@ trait Deposit
     public function confirmDeposit(Request $request){
         $deposit = \App\Deposit::find($request->id);
         $message = ['success' => 'Payment confirmed'];
-        $result = $deposit->update(['confirmation_status' => 1]);
+        $deposit->update(['confirmation_status' => 1]);
+        $result = $deposit->investment()->update(['status' => 1]);
         if(!$result){
             $message = ['error' => 'Unable to confirmed Payment' ];
         }

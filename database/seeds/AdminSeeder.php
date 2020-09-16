@@ -17,7 +17,6 @@ class AdminSeeder extends Seeder
             'email' => 'admin@reapway.ng',
             'password' => bcrypt('12345678'),
             'phone' => '08134822658',
-            'referral_code' => substr(md5(time()), 0, 16),
         ]);
 
         $admin->role()->attach($role, ['created_at' => now(), 'updated_at' => now()]);
