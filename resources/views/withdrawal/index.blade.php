@@ -27,49 +27,52 @@
                     <div class="card-body">
                         <h4 class="card-title">Withdrawal Request</h4>
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover investment-history">
+                            <table class="table table-striped table-hover withdrawal-history">
                                 <thead>
                                 <tr>
-                                    <th>Package</th>
-                                    <th>Price</th>
-                                    <th>Percentage</th>
-                                    <th>ROI</th>
-                                    <th>Profit</th>
-                                    <th>Maturity Date</th>
-                                    <th>Actions</th>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                    <th>Requested on</th>
+                                    <th>Proof of Payment</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach( $investments as $investment)
+                                @foreach( $withdrawals as $withdrawal)
                                     <tr>
-                                        <td>{{$investment->package->name}}</td>
-                                        <td>{{number_format($investment->package->price)}}</td>
-                                        <td>{{$investment->percentage}}</td>
-                                        <td>{{number_format((($investment->package->price * $investment->percentage)/100) + $investment->package->price) }}</td>
-                                        <td>{{number_format($investment->profit)}}</td>
-                                        <td>{{\Carbon\Carbon::parse($investment->updated_at)->addHour()->addDay($investment->package->duration)->format('M d Y H:i')}}</td>
+                                        <td>{{$withdrawal->user->name}}</td>
+                                        <td>{{$withdrawal->amount}}</td>
+                                        <td>{{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y H:i')}}</td>
+                                        <td>{{number_format($withdrawal->amount)}}</td>
                                         <td>
-                                            @switch($investment)
-                                                @case($investment->maturity == 1 && $investment->reinvest_btn == 0)
-                                                <a href="{{route('investment.reinvest', $investment->id)}}"
-                                                   class="btn btn-danger reinvest"
-                                                   style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Reinvest
-                                                </a>
-                                                @break
-                                                @case($investment->maturity == 1 && $investment->reinvest_btn == 1 && $investment->reinvest_commit_btn == 0)
-                                                Awaiting confirmation of reinvestment
-                                                @break
-                                                @case($investment->maturity == 1 && $investment->reinvest_commit_btn ==1 && $investment->withdraw_btn == 0)
-                                                <a href="{{route('investment.withdraw', $investment->id )}}"
-                                                   class="btn btn-warning withdraw"
-                                                   style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Withdraw
-                                                </a>
-                                                @break
-                                                @case($investment->maturity == 1 && $investment->withdraw_btn == 1)
-                                                Completed
-                                                @break
-                                                @default Not Matured for withdrawal
-                                            @endswitch
+                                            @if($withdrawal->proof_of_payment !== null)
+                                                <a class="btn btn-primary" rel="noreferrer noopener" target="_blank"
+                                                   href="/store/{{$withdrawal->proof_of_payment}}"
+                                                >View
+                                                    File</a>
+                                            @else
+                                                No proof yet
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($withdrawal->confirmation_status == 1)
+                                                <span class="badge badge-success">Paid</span>
+                                            @elseif($withdrawal->confirmation_status == 0)
+                                                <span class="badge badge-warning">Pending</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @can('admin-actions')
+                                                <button class="btn btn-primary upload-withdrawal-payment-btn"
+                                                        data-id="{{$withdrawal->id}}">Upload Proof
+                                                </button>
+                                            @endcan
+                                            @can('client-actions')
+                                                <button class="btn btn-primary confirm-withdrawal-btn"
+                                                        data-id="{{$withdrawal->id}}">Confirm Payment
+                                                </button>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
@@ -83,59 +86,50 @@
 
         {{--        SMALL SCREEN--}}
 
-        <div class="row small-screen">
-            <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Withdrawal Request</h4>
-                        @foreach( $investments as $investment)
-                            <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
-                                <div class="sale-box-inner">
-                                    <div class="sale-box-head">
-                                        <h4>{{$investment->package->name}}</h4>
-                                    </div>
-                                    <ul class="sale-box-desc">
-                                        <li>
-                                            <strong>Amount - {{number_format($investment->package->price)}}</strong>
-                                            <span>ROI - #{{number_format((($investment->package->price * $investment->percentage)/100) + $investment->package->price) }}@ {{$investment->percentage}}% Profit</span>
-                                        </li>
-                                        <li>
-                                            <strong>100% Recommitment</strong>
-                                            <span>Profit #{{number_format($investment->profit)}}</span>
-                                        </li>
-                                        <li>
-                                            @switch($investment)
-                                                @case($investment->maturity == 1 && $investment->reinvest_btn == 0)
-                                                <a href="{{route('investment.reinvest', $investment->id)}}"
-                                                   class="btn btn-danger reinvest"
-                                                   style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Reinvest
-                                                </a>
-                                                @break
-                                                @case($investment->maturity == 1 && $investment->reinvest_btn == 1 && $investment->reinvest_commit_btn == 0)
-                                                Awaiting confirmation of reinvestment
-                                                @break
-                                                @case($investment->maturity == 1 && $investment->reinvest_commit_btn ==1 && $investment->withdraw_btn == 0)
-                                                <a href="{{route('investment.withdraw', $investment->id )}}"
-                                                   class="btn btn-warning withdraw"
-                                                   style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Withdraw
-                                                </a>
-                                                @break
-                                                @case($investment->maturity == 1 && $investment->withdraw_btn == 1)
-                                                Completed
-                                                @break
-                                                @default Not Matured for withdrawal
-                                            @endswitch
-                                        </li>
-                                        <li>
-                                            <span>Maturity Date - {{\Carbon\Carbon::parse($investment->updated_at)->addHour()->addDay($investment->package->duration)->format('M d Y H:i')}}</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{--        <div class="row small-screen">--}}
+        {{--            <div class="col-lg-12 grid-margin stretch-card">--}}
+        {{--                <div class="card">--}}
+        {{--                    <div class="card-body">--}}
+        {{--                        <h4 class="card-title">Withdrawal Request</h4>--}}
+        {{--                        @foreach( $withdrawals as $withdrawal)--}}
+        {{--                            <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">--}}
+        {{--                                <div class="sale-box-inner">--}}
+        {{--                                    <div class="sale-box-head">--}}
+        {{--                                        <h4>{{$withdrawal->package->name}}</h4>--}}
+        {{--                                    </div>--}}
+        {{--                                    <ul class="sale-box-desc">--}}
+        {{--                                        <li>--}}
+        {{--                                            <strong>Amount - {{number_format($withdrawal->capital)}}</strong>--}}
+        {{--                                            <span>ROI - #{{number_format((($withdrawal->capital * $withdrawal->package->percentage)/100) + $withdrawal->capital) }}@ {{$withdrawal->package->percentage}}% Profit</span>--}}
+        {{--                                        </li>--}}
+        {{--                                        <li>--}}
+        {{--                                            <span>Profit #{{number_format(($withdrawal->capital * $withdrawal->package->percentage)/100)}}</span>--}}
+        {{--                                        </li>--}}
+        {{--                                        <li>--}}
+        {{--                                            @switch($withdrawal)--}}
+        {{--                                                @case($withdrawal->maturity == 1 && $withdrawal->withdrawn == 1)--}}
+        {{--                                                <span class="badge badge-success"> Completed</span>--}}
+        {{--                                                @break--}}
+        {{--                                                @case($withdrawal->maturity == 1 && $withdrawal->withdrawn == 0)--}}
+        {{--                                                <a href="{{route('withdrawal.withdraw', $withdrawal->id )}}"--}}
+        {{--                                                   class="btn btn-warning withdraw"--}}
+        {{--                                                   style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Withdraw--}}
+        {{--                                                </a>--}}
+        {{--                                                @break--}}
+        {{--                                                @default <span class="badge badge-warning">In progress</span>--}}
+        {{--                                            @endswitch--}}
+        {{--                                        </li>--}}
+        {{--                                        <li>--}}
+        {{--                                            <span>Maturity Date - {{\Carbon\Carbon::parse($withdrawal->updated_at)->addHour()->addDay($withdrawal->package->duration)->format('M d Y H:i')}}</span>--}}
+        {{--                                        </li>--}}
+        {{--                                    </ul>--}}
+        {{--                                </div>--}}
+        {{--                            </div>--}}
+        {{--                        @endforeach--}}
+        {{--                    </div>--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
     </div>
+    @include('withdrawal.upload_withdrawal_payment_proof')
 @endsection

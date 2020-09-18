@@ -52,7 +52,7 @@
                                         <td>
                                             @if($investment->status == 1)
                                                 <span class="badge badge-success">Approved</span>
-                                                @else
+                                            @else
                                                 <span class="badge badge-warning">Pending Deposit Confirmation</span>
                                             @endif
                                         </td>
@@ -70,15 +70,18 @@
                                             @endif
                                         </td>
                                         <td>
-                                            @if($investment->maturity == 1 && $investment->withdrawn == 1)
-                                                Completed
-                                            @elseif($investment->maturity == 1 && $investment->withdrawn == 0)
-                                                <button class="btn btn-primary" data-id="{{$investment->id}}">Withdraw
-                                                    Investment
-                                                </button>
-                                            @else
-                                                In progress
-                                            @endif
+                                            @switch($investment)
+                                                @case($investment->maturity == 1 && $investment->withdrawn == 1)
+                                                <span class="badge badge-success"> Completed</span>
+                                                @break
+                                                @case($investment->maturity == 1 && $investment->withdrawn == 0)
+                                                <a href="{{route('investment.withdraw', $hashIds->encode($investment->id))}}"
+                                                   class="btn btn-primary withdraw"
+                                                   style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Withdraw
+                                                </a>
+                                                @break
+                                                @default <span class="badge badge-warning">In progress</span>
+                                            @endswitch
                                         </td>
                                     </tr>
                                 @endforeach
@@ -114,7 +117,8 @@
                                                 @if($investment->status == 1)
                                                     <span class="badge badge-success">Approved</span>
                                                 @else
-                                                    <span class="badge badge-warning">Pending Deposit Confirmation</span>
+                                                    <span
+                                                        class="badge badge-warning">Pending Deposit Confirmation</span>
                                                 @endif
                                             </li>
                                             <li>
@@ -131,15 +135,18 @@
                                                 @endif
                                             </li>
                                             <li>
-                                                @if($investment->maturity == 1 && $investment->withdrawn == 1)
-                                                    Completed
-                                                @elseif($investment->maturity == 1 && $investment->withdrawn == 0)
-                                                    <button class="btn btn-primary" data-id="{{$investment->id}}">Withdraw
-                                                        Investment
-                                                    </button>
-                                                @else
-                                                    In progress
-                                                @endif
+                                                @switch($investment)
+                                                    @case($investment->maturity == 1 && $investment->withdrawn == 1)
+                                                    <span class="badge badge-success"> Completed</span>
+                                                    @break
+                                                    @case($investment->maturity == 1 && $investment->withdrawn == 0)
+                                                    <a href="{{route('investment.withdraw', $investment->id )}}"
+                                                       class="btn btn-primary withdraw"
+                                                       style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Withdraw
+                                                    </a>
+                                                    @break
+                                                    @default <span class="badge badge-warning">In progress</span>
+                                                @endswitch
                                             </li>
                                         </ul>
                                     </div>

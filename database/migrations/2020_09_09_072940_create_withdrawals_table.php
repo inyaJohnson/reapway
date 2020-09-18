@@ -16,8 +16,6 @@ class CreateWithdrawalsTable extends Migration
         Schema::create('withdrawals', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('package_id');
-            $table->unsignedInteger('investment_id');
             $table->integer('amount');
             $table->string('proof_of_payment')->nullable();
             $table->integer('withdrawal_status')->default(0);

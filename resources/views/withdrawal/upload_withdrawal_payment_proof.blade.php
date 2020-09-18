@@ -1,13 +1,13 @@
 @extends('layouts.modal')
 @section('modal-id')
-    upload-payment-modal
+    upload-withdrawal-payment-modal
 @overwrite
 @section('modal-title')
     Payment Proof
 @overwrite
 @section('modal-content')
-    <div class="upload-payment">
-        <form id="upload-payment-form" enctype="multipart/form-data">
+    <div class="upload-withdrawal-payment">
+        <form id="upload-withdrawal-payment-form" enctype="multipart/form-data">
             @csrf
             <input type="file" name="attachment" class="form-control">
             <span>*Note: Document should not be more than 2Mb</span>
@@ -22,6 +22,6 @@
 @overwrite
 @section('modal-footer')
     <button type="button" class="btn btn-secondary">Close</button>
-    <button type="submit" class="btn btn-primary" form="upload-payment-form">Submit</button>
+    <button type="submit" class="btn btn-primary" form="upload-withdrawal-payment-form">Submit</button>
 @overwrite
 

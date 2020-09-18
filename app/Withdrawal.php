@@ -9,8 +9,7 @@ class Withdrawal extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['user_id', 'package_id', 'investment_id',
-        'amount', 'proof_of_payment', 'withdrawal_status', 'confirmation_status'];
+    protected $fillable = ['user_id', 'amount', 'proof_of_payment', 'withdrawal_status', 'confirmation_status'];
 
     public function package(){
         return $this->belongsTo(Package::class);

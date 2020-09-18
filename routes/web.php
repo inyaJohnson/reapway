@@ -32,18 +32,17 @@ Route::group(['middleware' => ['auth', 'block.user']], function(){
     Route::get('settings/edit/{id}', 'SettingsController@edit')->name('settings.edit');
     Route::post('settings/update-contact-info', 'SettingsController@updateContactInfo')->name('settings.update-contact-info');
     Route::post('settings/update-account-info', 'SettingsController@updateAccountInfo')->name('settings.update-account-info');
-    //    Route::get('transactions/history', 'TransactionController@history')->name('transaction.history');
-//    Route::get('transactions/show-depositor', 'TransactionController@showDepositor');
-//    Route::get('transactions/show-recipient', 'TransactionController@showRecipient');
-
-    Route::get('deposit', 'DepositController@index')->name('deposit.index');
 
     Route::get('/package', 'Admin\PackageController@index')->name('packages.index');
 
-//    Route::get('home/show-depositor', 'HomeController@showDepositor')->name('depositor-info');
-//    Route::get('home/show-recipient', 'HomeController@showRecipient')->name('recipient-info');
+    Route::get('deposit', 'DepositController@index')->name('deposit.index');
     Route::get('deposit/confirm-deposit', 'DepositController@confirmDeposit')->name('confirm-deposit');
     Route::post('deposit/upload-payment', 'DepositController@uploadDepositProof')->name('upload-payment');
+
+
+    Route::get('withdrawal', 'WithdrawalController@index')->name('withdrawal.index');
+    Route::get('withdrawal/confirm-withdrawal', 'WithdrawalController@confirmWithdrawal')->name('confirm-withdrawal');
+    Route::post('withdrawal/upload-payment', 'WithdrawalController@uploadWithdrawalProof')->name('upload-payment');
 
     Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest')->middleware('client');
 

@@ -89,29 +89,6 @@ $(document).ready(function () {
         $('#depositor-modal').modal();
     })
 
-
-
-    $('.confirm-deposit-btn').on('click', function () {
-        var warningMessage = 'You want to confirm this payment'
-        var successMessage = 'Payment Confirmed'
-        var id = $(this).attr('data-id');
-        var callback = function () {
-            $.ajax({
-                type: 'GET',
-                url: '/deposit/confirm-deposit',
-                data: {id: id},
-                success: function (response) {
-                    var redirectTo = failed = function () {
-                        location.reload()
-                    }
-                    sweetAlert(response, redirectTo, failed)
-                }
-            })
-        }
-        sweetConfirmation(warningMessage, successMessage, callback)
-    })
-
-
     //    CONFIRM UNBLOCK
 
     $('.confirm-generic-block').on('click', function () {
@@ -162,7 +139,29 @@ $(document).ready(function () {
         sweetConfirmation(warningMessage, successMessage, callback)
     })
 
-// CONFIRM DEPOSIT WITH FILE UPLOAD
+
+    // CONFIRM DEPOSIT
+    $('.confirm-deposit-btn').on('click', function () {
+        var warningMessage = 'You want to confirm this payment'
+        var successMessage = 'Payment Confirmed'
+        var id = $(this).attr('data-id');
+        var callback = function () {
+            $.ajax({
+                type: 'GET',
+                url: '/deposit/confirm-deposit',
+                data: {id: id},
+                success: function (response) {
+                    var redirectTo = failed = function () {
+                        location.reload()
+                    }
+                    sweetAlert(response, redirectTo, failed)
+                }
+            })
+        }
+        sweetConfirmation(warningMessage, successMessage, callback)
+    })
+
+    // CONFIRM DEPOSIT WITH FILE UPLOAD
     $('.upload-payment-btn').on('click', function () {
         $('#upload-payment-modal').modal();
         $("#upload-payment-modal #deposit_id").val($(this).attr('data-id'))
@@ -211,7 +210,79 @@ $(document).ready(function () {
         })
     })
 
-//    Report / Block
+
+    // CONFIRM WITHDRAWAL
+    $('.confirm-withdrawal-btn').on('click', function () {
+        var warningMessage = 'You want to confirm this payment'
+        var successMessage = 'Payment Confirmed'
+        var id = $(this).attr('data-id');
+        var callback = function () {
+            $.ajax({
+                type: 'GET',
+                url: '/withdrawal/confirm-deposit',
+                data: {id: id},
+                success: function (response) {
+                    var redirectTo = failed = function () {
+                        location.reload()
+                    }
+                    sweetAlert(response, redirectTo, failed)
+                }
+            })
+        }
+        sweetConfirmation(warningMessage, successMessage, callback)
+    })
+
+    // CONFIRM WITHDRAWAL WITH FILE UPLOAD
+    $('.upload-withdrawal-payment-btn').on('click', function () {
+        $('#upload-withdrawal-payment-modal').modal();
+        $("#upload-withdrawal-payment-modal #deposit_id").val($(this).attr('data-id'))
+        $('#upload-withdrawal-payment-form').on('submit', function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/withdrawal/upload-payment',
+                data: new FormData(this),
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function () {
+                    $('#success').empty()
+                },
+                onUploadProgress: function (event, position, total, percentageComplete) {
+                    $('.progress-bar').text(percentageComplete + '%');
+                    $('.progress-bar').css('width', percentageComplete + '%');
+                },
+                success: function (response) {
+                    if (response.error) {
+                        $('.progress-bar').text('0%');
+                        $('.progress-bar').css('width', '0%');
+                        $('#success').html("<span class='text-danger'><b>" + response.error + "</b></span>");
+                    }
+
+                    if (response.success) {
+                        $('.progress-bar').text('Uploaded');
+                        $('.progress-bar').css('width', '100%');
+                        $('#success').html("<span class='text-success'><b>" + response.success + "</b></span><br /><br />");
+                        $('#success').append(response.image)
+                        $("#upload-withdrawal-payment-modal button[type='submit']").hide();
+                    }
+
+                    $("#upload-withdrawal-payment-modal button[type='button']").on('click', function () {
+                        $('#upload-withdrawal-payment-modal').modal()
+                        location.reload();
+                    });
+                },
+                error: function (error) {
+                    if (error.responseJSON.errors.hasOwnProperty('attachment')) {
+                        $('#upload-withdrawal-payment-form span').addClass('error').text('The File is required and the size must not be more than 2Mb');
+                    }
+                }
+            })
+        })
+    })
+
+
+
 
     //    CONFIRM UNBLOCK
     $('.confirm-block').on('click', function () {

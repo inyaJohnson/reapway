@@ -6,6 +6,7 @@ use App\Http\Requests\InvestRequest;
 use App\Investment;
 use App\Package;
 use App\Traits\Deposit;
+use Hashids\Hashids;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -28,14 +29,10 @@ class InvestmentController extends Controller
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(InvestRequest $request)
     {
-        $rule = ['amount' => 'required|integer'];
-        $validationMessage  = ['required' => 'Amount field is required', 'integer'=> 'Package price must be a number'];
-        Validator::make($request->all(), $rule, $validationMessage)->validate();
-
+        $request->validated();
         $package = Package::where([
             ['mini_price', '<=', $request->amount],
             ['max_price', '>=', $request->amount]
@@ -63,6 +60,11 @@ class InvestmentController extends Controller
 
     public function reinvest($id)
     {
+//
+//        if($request->amount > auth()->user()->account_balance ){
+//            return redirect()->back()->withErrors('Your Available balance can not afford this investment');
+//        }
+
         $message = ['success' => 'Reinvestment Successful, Make payment to the investor(s) listed'];
         $investment = Investment::findorFail($id);
         auth()->user()->investment()->create([
@@ -81,16 +83,16 @@ class InvestmentController extends Controller
 
     public function withdraw($id)
     {
-        $message = ['success' => 'Withdrawal request was successful, You will be Matched soon...'];
-        $investment = Investment::findorFail($id);
-        if ($investment->withdraw_btn == 1) {
+        $hashIds = new Hashids('ReapWay', 10);
+        $message = ['success' => 'Withdrawal Successful'];
+        $investment = Investment::findorFail($hashIds->decode($id)[0]);
+        if ($investment->withdrawn == 1) {
             return redirect()->back()->with('custom_error', 'Already withdrawn');
         }
-
-//        $this->with
-        $result = $investment->update([
-            'withdraw_btn' => 1
-        ]);
+        $ROI = (($investment->capital * $investment->package->percentage)/100) + $investment->capital;  //Return On Investment
+        $newBalance = $investment->user->account_balance + $ROI;
+        $investment->user()->update(['account_balance' => $newBalance]);
+        $result = $investment->update(['withdrawn' => 1]);
         if (!$result) {
             $message = ['error' => 'Withdrawal request failed'];
         }
