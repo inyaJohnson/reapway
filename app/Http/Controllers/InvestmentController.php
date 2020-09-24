@@ -19,7 +19,7 @@ class InvestmentController extends Controller
      */
     public function index()
     {
-        $investments = Investment::all();
+//        $investments = Investment::all();
         if (!auth()->user()->hasRole('admin')) {
             $investments = auth()->user()->investment;
         }
@@ -44,7 +44,7 @@ class InvestmentController extends Controller
                 'capital' => $request->amount
             ]);
             $this->createDeposit($investment);
-            return redirect()->route('deposit.index')->with($message);
+            return redirect()->route('deposit.transaction')->with($message);
         }
         return redirect()->back()->withErrors('Package not available, Please check package list for available packages');
     }
@@ -61,7 +61,7 @@ class InvestmentController extends Controller
     public function reinvest($id)
     {
 //
-//        if($request->amount > auth()->user()->account_balance ){
+//        if($request->amount > auth()->user()->actual_balance ){
 //            return redirect()->back()->withErrors('Your Available balance can not afford this investment');
 //        }
 
@@ -90,8 +90,8 @@ class InvestmentController extends Controller
             return redirect()->back()->with('custom_error', 'Already withdrawn');
         }
         $ROI = (($investment->capital * $investment->package->percentage)/100) + $investment->capital;  //Return On Investment
-        $newBalance = $investment->user->account_balance + $ROI;
-        $investment->user()->update(['account_balance' => $newBalance]);
+        $newBalance = $investment->user->actual_balance + $ROI;
+        $investment->user()->update(['actual_balance' => $newBalance]);
         $result = $investment->update(['withdrawn' => 1]);
         if (!$result) {
             $message = ['error' => 'Withdrawal request failed'];

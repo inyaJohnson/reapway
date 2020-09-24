@@ -1,0 +1,183 @@
+.auth{
+    min-height: 100vh;
+    background-color: #FFFFFF;
+    padding-top: 4em;
+}
+.auth .auth-right{
+padding: 3em 4em;
+}
+
+.auth .auth-left{
+    padding: 3em 2em;
+
+}
+
+
+.auth .auth-left img{
+    height : 120px;
+    
+}
+
+
+.auth .form-wrapper{
+    position: relative;
+    padding: 3em 3em 2em 1em;
+    min-height: 30px;
+    background-color: #EEEEEE;
+    border: #707070;
+    border-left: 4.5em solid #3F8A03;
+    border-radius: 2.5em 0em 0em 2.5em;
+
+    -webkit-box-shadow: 10px 10px 64px -28px rgba(0,0,0,0.79);
+-moz-box-shadow: 10px 10px 64px -28px rgba(0,0,0,0.79);
+box-shadow: 10px 10px 64px -28px rgba(0,0,0,0.79);
+
+
+
+}
+
+
+.auth .form-wrapper>i.fa-user{
+    
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    top: 40%;
+    left: -1.8em;
+}
+
+
+.auth .form-wrapper>i.fa-unlock{
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    top: 58%;
+    left: -1.8em;
+}
+
+.auth .form-wrapper i.fa-eye{
+    position: absolute;
+    color: #3F8A03;
+    font-size: 24px;
+    top: .5em;
+    right: .5em;
+}
+
+/* Register Icons */
+
+.auth .form-wrapper.register-icon i.input-icon{
+
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    left: -1.8em;
+
+}
+.auth .form-wrapper.register-icon i.fa-user{
+  
+    top: 7em;
+}
+
+
+.auth .form-wrapper.register-icon i.fa-envelope{
+  
+    top: 11em;
+  
+}
+
+
+.auth .form-wrapper.register-icon i.fa-phone{
+
+    top: 15em;
+
+}
+
+.auth .form-wrapper.register-icon i.fa-unlock{
+
+    top: 18.6em;
+}
+
+/* Register Icon End */
+
+.auth .md-form input[type=text]:focus,
+input[type=text]:focus,
+input[type=number]:focus,
+input[type=email]:focus,
+input[type=password]:focus {
+
+    box-shadow: 0 1px 0 0 green !important;
+    border-bottom: 1px solid #52802D !important;
+    }
+
+.auth .md-form input:focus + label{
+
+color: #52802D !important;        
+    
+}
+
+    .auth .md-form .float-right{
+        position: relative;
+        color:white;
+        background-color: #52802D;
+        height: 50px;
+        width: 50px;
+        border-radius: 3em;
+    }
+
+    .auth .md-form> p i{
+        position: absolute;
+        color:white;
+        top: 1.2em;
+        left: 1.3em;
+        
+    }
+
+    .auth button{
+        background-color: green;
+        border-radius: 10px 10px 0px 0px;
+        color: white;
+        font-weight: 700;
+        display: block;
+        margin:auto;
+        padding: 0.6em 1em .4em 1em;
+        height: 55px;
+        border:none;
+    }
+
+
+    @media (max-width: 1199.98px) {
+
+    .auth{
+    min-height: 100vh;
+    background-color: #FFFFFF;
+    padding-top: 0em;
+}
+.auth .auth-right{
+padding: 2em .5em;
+}
+
+.auth .auth-left{
+    padding: 0em 2em 1em;
+
+}
+.auth .auth-left .auth-left-title{
+display: none;
+}
+
+.auth .auth-left img{
+    height : 60px;
+    display: block;
+    margin: auto;
+}
+
+.auth .form-wrapper>i.fa-user{
+    
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    top: 42%;
+    left: -1.8em;
+}
+    
+}
+  

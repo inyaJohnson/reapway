@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Account;
 use App\Http\Requests\AccountRequest;
+use App\Http\Requests\SettingsRequest;
 use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Validation\Rule;
 
 class SettingsController extends Controller
 {
@@ -24,20 +22,10 @@ class SettingsController extends Controller
         return view('settings.index', compact('totalInvestment'));
     }
 
-    public function password()
-    {
-        return view('settings.password');
-    }
 
     public function createAccount()
     {
         return view('settings.account');
-    }
-
-    public function edit($id)
-    {
-        $user = User::findOrFail($id);
-        return view('settings.edit', compact('user'));
     }
 
     public function storeAccount(AccountRequest $request)
@@ -51,23 +39,16 @@ class SettingsController extends Controller
         return redirect()->route('investment.invest')->with('success', 'Account successfully created, Invest now!');
     }
 
-    public function updateContactInfo(Request $request)
+    public function update(SettingsRequest $request)
     {
-        $input = $this->validate($request, [
-            'name' => ['required', 'string', 'max:255'],
-//            'email' => Rule::unique('users')->ignore(auth()->user()->id, 'id'),
-            'phone' => ['required', 'digits:11'],
+        auth()->user()->update($request->all());
+        auth()->user()->account()->update([
+            'name' => $request->account_name,
+            'number' => $request->account_number,
+            'bank' => $request->bank,
         ]);
-        auth()->user()->update($input);
         return redirect()->route('settings.index')->with('success', 'Contact successfully updated');
 
-    }
-
-    public function updateAccountInfo(AccountRequest $request)
-    {
-        $input = $request->validated();
-        auth()->user()->account()->update($input);
-        return redirect()->route('settings.index')->with('success', 'Account successfully updated');
     }
 
 }

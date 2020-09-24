@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth'])->except(['welcome', 'setup']);
+        $this->middleware(['auth'])->only('index');
     }
 
     /**
@@ -47,12 +47,20 @@ class HomeController extends Controller
             ['confirmation_status', 0]
         ])->get();
 
+        //        $investments = Investment::all();
+        if (!auth()->user()->hasRole('admin')) {
+            $investments = auth()->user()->investment;
+        }
         return view('home', compact('totalWithdrawn', 'pendingWithdrawal', 'totalNumberInvestment',
-            'totalInvestment', 'deposits', 'withdrawals'));
+            'totalInvestment', 'deposits', 'withdrawals', 'investments'));
     }
 
     public function welcome(){
         return view('welcome');
+    }
+
+    public function about(){
+        return view('other_pages.about');
     }
 
     public function setup(){

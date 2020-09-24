@@ -1,6 +1,6 @@
 // Dashboard JS
 $(document).ready(function () {
-    $('.investment-history').dataTable();
+    // $('.investment-history').dataTable();
 
     function formatNumber(num) {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
@@ -322,4 +322,50 @@ $(document).ready(function () {
         })
     })
 
+
+//    HELP
+
+    $('#help-form').on('submit', function (event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            type: 'POST',
+            url: '/help',
+            data: formData,
+            contentType : false,
+            processData : false,
+            cache: false,
+            beforeSend: function () {
+                swal.showLoading()
+            },
+            success: function (response) {
+                if (response.success) {
+                    Swal.fire(
+                        'Successful!',
+                        response.success,
+                        'success'
+                    ).then(function (result) {
+                        if (result.value) {
+                            window.location = '/home'
+                        }
+                    })
+                } else {
+                    Swal.fire(
+                        'Failed!',
+                        response.error,
+                        'error'
+                    ).then(function (result) {
+                        if (result.value) {
+                            window.location = '/home'
+                        }
+                    })
+                }
+            },
+            error: function (error) {
+                if (error.responseJSON.errors.hasOwnProperty('attachment')) {
+                    $('p.warning').addClass('error').text('The File is required and the size must not be more than 2Mb');
+                }
+            }
+        })
+    })
 })

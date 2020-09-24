@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Account;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AccountRequest extends FormRequest
@@ -23,10 +24,6 @@ class AccountRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-                'name' => ['required', 'string', 'max:255'],
-                'bank' => ['required', 'string', 'max:255'],
-                'number' => ['required',  'digits:10']
-        ];
+        return Account::ACCOUNT_VALIDATION_RULES;
     }
 }

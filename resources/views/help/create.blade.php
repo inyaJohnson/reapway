@@ -1,26 +1,16 @@
 @extends('layouts.app')
+@section('css')
+    <link href="{{asset('frontend/css/dashboard.css')}}" rel="stylesheet">
+@endsection
 @section('content')
-    <div class="content-wrapper">
-        <div class="row">
-            <div class="col-md-12 grid-margin">
-                <div class="d-flex justify-content-between flex-wrap">
-                    <div class="d-flex align-items-end flex-wrap">
-                        <div class="mr-md-3 mr-xl-5">
-                            <h2>Ask for Help</h2>
-                            <p class="mb-md-0">State issues if any and Advise on investment.</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="mdi mdi-home text-muted hover-cursor"></i>
-                            <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a></p>
-                            <p class="text-primary mb-0 hover-cursor">Help</p>
-                        </div>
-                    </div>
-                    @include('layouts.quick-links')
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
+    <body class="bg-white">
+    <!--Main Navigation-->
+    @include('layouts.dashboard_navigation')
+    <!--Main Navigation-->
+    <!--Main layout-->
+    <main class="pt-5 mx-lg-5">
+        <div class="container-fluid">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
 
@@ -56,7 +46,7 @@
                                 <p>Thanks. Items marked with an asterisk (<span class="star">*</span>) are required
                                     fields.</p>
                                 <div class="help-form-group">
-                                    <input type="file" class="form-control" name="attachment"> <br />
+                                    <input type="file" class="form-control" name="attachment"> <br/>
                                     <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                                 </div>
                                 <p class="warning">*Note: Document should not be more than 2Mb</p>
@@ -78,54 +68,13 @@
                 </div>
             </div>
         </div>
-    </div>
-@endsection
-@section('script')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#help-form').on('submit', function (event) {
-                event.preventDefault();
-                var formData = new FormData(this);
-                $.ajax({
-                    type: 'POST',
-                    url: '/help',
-                    data: formData,
-                    contentType : false,
-                    processData : false,
-                    cache: false,
-                    beforeSend: function () {
-                        swal.showLoading()
-                    },
-                    success: function (response) {
-                        if (response.success) {
-                            Swal.fire(
-                                'Successful!',
-                                response.success,
-                                'success'
-                            ).then(function (result) {
-                                if (result.value) {
-                                    window.location = '/home'
-                                }
-                            })
-                        } else {
-                            Swal.fire(
-                                'Failed!',
-                                response.error,
-                                'error'
-                            ).then(function (result) {
-                                if (result.value) {
-                                    window.location = '/home'
-                                }
-                            })
-                        }
-                    },
-                    error: function (error) {
-                        if (error.responseJSON.errors.hasOwnProperty('attachment')) {
-                            $('p.warning').addClass('error').text('The File is required and the size must not be more than 2Mb');
-                        }
-                    }
-                })
-            })
-        })
-    </script>
-@endsection
+    </main>
+    @endsection
+    <!--Main layout-->
+
+    <!--Footer-->
+    @section('footer')
+        @include('layouts.footer')
+    @endsection
+
+    </body>

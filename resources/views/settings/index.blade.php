@@ -1,77 +1,65 @@
 @extends('layouts.app')
-@section('content')
-    <div class="content-wrapper">
-        <div class="row">
-            <div class="col-md-12 grid-margin">
-                <div class="d-flex justify-content-between flex-wrap">
-                    <div class="d-flex align-items-end flex-wrap">
-                        <div class="mr-md-3 mr-xl-5">
-                            <h2>My Profile,</h2>
-                            <p class="mb-md-0">Your Contact and Payment Account details  .</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="mdi mdi-home text-muted hover-cursor"></i>
-                            <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a></p>
-                            <p class="text-primary mb-0 hover-cursor">Profile</p>
-                        </div>
-                    </div>
-                    @include('layouts.quick-links')
-                </div>
-            </div>
-        </div>
-        @include('layouts.message')
-        <div class="row">
-            <div class="col-md-7 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="profile-panel">
-                            <div>
-                                <div class="profile-panel-heading card-title" style="color:#ffffff;">Contact
-                                    Information
-                                </div>
-                            </div>
-                            <div class="profile-panel-body">
-                                <p>Name - {{auth()->user()->name}} </p>
-                                <p>Email - {{auth()->user()->email}} </p>
-                                <p>Phone - {{auth()->user()->phone}} </p>
-{{--                                <a href="{{route('settings.edit', auth()->user()->id)}}">Edit Contact Information</a>--}}
-                            </div>
-
-                        </div>
-                        <div class="profile-panel">
-                            <div class="profile-panel-heading card-title" style="color:#ffffff;">Account Information
-                            </div>
-                            <div class="profile-panel-body">
-                                @if(auth()->user()->account !== null)
-                                    <p>Account Name - {{auth()->user()->account->name}} </p>
-                                    <p>Account Number - {{auth()->user()->account->number}} </p>
-                                    <p>Bank - {{auth()->user()->account->bank}} </p>
-{{--                                    <a href="{{route('settings.edit', auth()->user()->id)}}">Edit Account--}}
-{{--                                        Information</a>--}}
-{{--                                @else--}}
-{{--                                    <a href="{{route('settings.account', auth()->user()->id)}}">Click to Add your Payment Account--}}
-{{--                                        Information</a>--}}
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-5 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <p class="card-title">Total Investment</p>
-                        <h1>#{{$totalInvestment}}</h1>
-                        <h4>Payment Guide</h4>
-                        <p class="text-muted">Today, many people rely on different banks and banking solution, so it advised to always
-                            keep you account information updated to avoid complications in payment. Your Email and phone number are important as well
-                            for easy communication.
-                        </p>
-                    </div>
-                    <img src="{{asset('assets/images/banner-2.jpg')}}"  alt="banner" height="200px"/>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- content-wrapper ends -->
+@section('css')
+    <link href="{{asset('frontend/css/dashboard.css')}}" rel="stylesheet">
 @endsection
+@section('content')
+    <body class="bg-white">
+    <!--Main Navigation-->
+    @include('layouts.dashboard_navigation')
+    <!--Main Navigation-->
+    <!--Main layout-->
+    <main class="pt-5 mx-lg-5" id="settings">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div>
+                    <img src="{{asset('frontend/img/Mask Group 6.png')}}" class="mb-4" style="height:120px"/>
+                    <span class="ml-3 small">Tap to change</span>
+                </div>
+                @include('layouts.message')
+                <form action="{{route('settings.update')}}" method="POST">
+                    <!-- Default input name -->
+                    @csrf
+                    <div class="form-group  grey lighten-3">
+                        <input type="text" name="name" value="{{auth()->user()->name}}" class="form-control">
+                    </div>
+
+                    <div class="form-group  grey lighten-3">
+                        <input type="email" name="email" value="{{auth()->user()->email}}" class="form-control">
+                    </div>
+
+                    <div class="form-group  grey lighten-3">
+                        <input type="text" name="phone" value="{{auth()->user()->phone}}" class="form-control">
+                    </div>
+
+                    <div><h5>Account Details</h5></div>
+
+                    <div class="form-group  grey lighten-3">
+                        <input type="text" name="account_name" value="{{auth()->user()->account->name}}"
+                               class="form-control">
+                    </div>
+
+                    <div class="form-group  grey lighten-3">
+                        <input type="text" name="account_number" value="{{auth()->user()->account->number}}"
+                               class="form-control">
+                    </div>
+
+                    <div class="form-group  grey lighten-3">
+                        <input type="text" name="bank" value="{{auth()->user()->account->bank}}" class="form-control">
+                    </div>
+
+                    <div class="py-4 mt-3">
+                        <button type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+    @endsection
+    <!--Main layout-->
+    <!--Footer-->
+    @section('footer')
+        @include('layouts.footer')
+    @endsection
+
+    </body>

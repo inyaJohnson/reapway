@@ -1,113 +1,91 @@
-<!DOCTYPE html>
-<html lang="en" xml:lang="en">
+@extends('layouts.app')
+@section('css')
+    <link href="{{asset('frontend/css/auth.css')}}" rel="stylesheet">
+@endsection
+@section('content')
+    <body class="grey lighten-3">
+    <!--Auth layout-->
+    <div class="auth">
+        <!--Main layout-->
+        <main class="">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4 mt-5">
+                        <div class="auth-left">
+                            <img class="mb-5" src="{{asset('frontend/img/Reapway Logo one (1).png')}}" alt="">
+                            <div class="mt-4 auth-left-title">
+                                <h3 class="font-weight-bolder text-success">Welcome back!</h3>
+                                <h3 class="font-weight-light">Login to continue</h3>
+                            </div>
+                        </div>
 
-<head>
-    <meta charset="UTF-8">
-    <!-- Responsive Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- favicon & bookmark -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('assets/images/bookmark.html')}}"
-          type="image/x-icon"/>
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.html')}}" type="image/x-icon"/>
-    <!-- Font Family -->
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
-    <!-- Website Title -->
-    <title>Login - RocketPay</title>
-    <!-- Stylesheets Start -->
-    <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('assets/other-pages/style.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}" type="text/css"/>
-    <!-- Stylesheets End -->
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
-<!--[if lt IE 9]><script src="{{asset('assets/js/respond.js')}}"></script><![endif]-->
+                    </div>
+                    <div class="col-md-6">
+                        <form method="POST" action="{{route('login')}}">
+                            @csrf
+                            <div class="auth-right">
+                                <div class="form-wrapper">
+                                    <i class="fas fa-user"></i>
+                                    <i class="fas fa-unlock"></i>
+                                    <h3 class="text-center font-weight-bolder">Login to your account </h3>
+                                    <p class="text-center mb-5">Login to your ReapWay Account</p>
 
-</head>
-<body>
-<!--Main Wrapper Start-->
-<div class="wrapper login-page style-2" id="top">
-    <div class="cp-container">
+                                    <div class="md-form mb-5">
+                                        <input type="email" id="email" name="email"
+                                               class="form-control @error('email') is-invalid @enderror"
+                                               value="{{old('email')}}"
+                                               required autocomplete="email" autofocus>
+                                        <label for="email">Email</label>
+                                        @error('email')
+                                        <span class="invalid-feedback"
+                                              role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
+                                    </div>
 
-        <div class="image-part">
-            <img src="{{asset('assets/images/about-img.png')}}" alt="">
-        </div>
-        <div class="form-part">
-            <div class="cp-header">
-                <div class="logo">
-                    <a href="{{route('welcome')}}"><img class="light" src="{{asset('assets/images/dark-logo1.jpg')}}" alt="RocketPay"></a>
+                                    <div class="md-form mb-5">
+                                        <i class="fas fa-eye input-prefix"></i>
+                                        <input type="password" id="password" name="password"
+                                               class="form-control @error('password')is-invalid @enderror"
+                                               value="{{old('password')}}"
+                                               required autocomplete="password">
+                                        <label for="password">Password</label>
+                                        @error('password')
+                                        <span class="invalid-feedback"
+                                              role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="md-form">
+                                        @if (Route::has('password.request'))
+                                            <p><a class="text-success" href="{{ route('password.request') }}"> Forgot
+                                                    Password?</a>
+                                                @endif
+                                                <button type="submit"
+                                                        class="float-right"><i
+                                                        class="fas fa-arrow-right"></i></button>
+                                            </p>
+                                    </div>
+
+                                    <div class="md-form">
+                                        <p><span> Don't have an account?</span><span><a href="{{route('register')}}"
+                                                                                        class="text-success"> Register</a></span>
+                                        </p>
+                                    </div>
+
+                                    <!-- <div class="md-form">
+                                      <button class="btn">Login</button>
+                                </div> -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-1"></div>
                 </div>
             </div>
-            <div class="cp-heading">
-                <h5>Welcome Back</h5>
-                <p>Too keep connected with us please login with your personal information by email address and
-                    password.</p>
-            </div>
-            <div class="cp-body">
-                <form method="POST" action="{{ route('login')}}">
-                    @csrf
-                    <div class="form-group">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                               name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <input id="password" type="password"
-                               class="form-control @error('password') is-invalid @enderror" name="password" required
-                               autocomplete="current-password">
-
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <div class="col remember-me">
-                            <div class="text-left remember-me-checkbox">
-                                <label>
-                                    <input class="form-check-input" type="checkbox" name="remember"
-                                           id="remember" {{ old('remember') ? 'checked' : '' }}>Remember me</label>
-                            </div>
-                            <div class="spacer"></div>
-                        @if (Route::has('password.request'))
-                                <div class="text-right">
-                                    <a class="forgot-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                </div>
-                        </div>
-                        @endif
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('Login') }}
-                        </button>
-                        <a href="{{route('register')}}" class="btn btn4">Sign Up</a>
-                    </div>
-                </form>
-            </div>
-{{--            <div class="social-login">--}}
-{{--                <span>Or Sign In With</span>--}}
-{{--                <div class="clearfix"></div>--}}
-{{--                <a href="#" class="facebook-login"><i class="icon fab fa-facebook-f"></i>Facebook</a>--}}
-{{--                <a href="#" class="google-login"><i class="icon fab fa-google"></i>Google</a>--}}
-{{--            </div>--}}
-        </div>
+        </main>
+        <!--Main layout-->
     </div>
-</div>
-</body>
-
-</html>
+    <!--Auth layout-->
+    @endsection
+    </body>

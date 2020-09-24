@@ -9,8 +9,8 @@ class DepositController extends Controller
 {
     use \App\Traits\Deposit;
 
-    public function index(){
+    public function transaction(){
         $deposits = Deposit::latest()->get();
-        return view('deposit.index', compact('deposits'));
+        return view('deposit.transaction', compact('deposits'));
     }
 }
