@@ -1,6 +1,6 @@
 // Dashboard JS
 $(document).ready(function () {
-    // $('.investment-history').dataTable();
+    $('.data-table').dataTable();
 
     function formatNumber(num) {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
@@ -46,48 +46,6 @@ $(document).ready(function () {
             }
         })
     }
-
-
-    $('.view-recipient').on('click', function () {
-        var recipientId = $(this).attr('data-id');
-        var transactionId = $(this).attr('data');
-        var amount = parseInt($('#amount' + transactionId).val());
-        $.ajax({
-            type: 'GET',
-            url: "home/show-recipient",
-            data: {recipientId: recipientId},
-            success: function (response) {
-                $('.recipient-account .recipient-account-bank').text(response.bank)
-                $('.recipient-account .recipient-account-name').text(response.name)
-                $('.recipient-account .recipient-account-number').text(response.number)
-                $('.recipient-account .recipient-account-phone').text(response.phone)
-                $('.recipient-account .recipient-account-amount').text(formatNumber(amount))
-                $('#recipient-modal a').attr('href', '/report/create/' + response.userId + '/' + transactionId);
-            }
-        })
-        $('#recipient-modal').modal();
-    })
-
-
-    $('.view-depositor').on('click', function () {
-        var depositorId = $(this).attr('data-id');
-        var transactionId = $(this).attr('data');
-        var amount = parseInt($('#amount' + transactionId).val());
-        $.ajax({
-            type: 'GET',
-            url: "home/show-depositor",
-            data: {depositorId: depositorId},
-            success: function (response) {
-                $('.depositor-account .depositor-account-bank').text(response.bank)
-                $('.depositor-account .depositor-account-name').text(response.name)
-                $('.depositor-account .depositor-account-number').text(response.number)
-                $('.depositor-account .depositor-account-phone').text(response.phone)
-                $('.depositor-account .depositor-account-amount').text(formatNumber(amount))
-                $('#depositor-modal a').attr('href', '/report/create/' + response.userId + '/' + transactionId);
-            }
-        })
-        $('#depositor-modal').modal();
-    })
 
     //    CONFIRM UNBLOCK
 
@@ -367,5 +325,23 @@ $(document).ready(function () {
                 }
             }
         })
+    })
+
+
+    //Help request
+
+    $('.request-message-btn').on('click', function () {
+        var id = $(this).attr('data-id')
+        $.ajax({
+            type: 'GET',
+            url: '/help/' + id,
+            success: function (response) {
+                $('.modal-title span').text(response.name)
+                $('.modal-body h5').text(response.subject)
+                $('.modal-body p').text(response.message)
+                $('.modal-footer a').attr('href', '/response/create/' + response.id)
+            }
+        })
+        $('#request-message-modal').modal();
     })
 })

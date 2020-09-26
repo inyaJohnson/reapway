@@ -10,7 +10,6 @@ class WithdrawalController extends Controller
 {
     use Withdrawal;
 
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

@@ -21,6 +21,8 @@
     <!-- Your custom styles (optional) -->
     <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
 
+    <link href="{{asset('dashboard/DataTables/datatables.min.css')}}" rel="stylesheet">
+
     <link rel="stylesheet" href="{{asset('dashboard/js/sweetalert2/dist/sweetalert2.min.css')}}">
 
     @yield('css')
@@ -64,6 +66,8 @@
 <script type="text/javascript" src="{{asset('frontend/js/mdb.min.js')}}"></script>
 
 <script type="text/javascript" src="{{asset('dashboard/js/sweetalert2/dist/sweetalert2.min.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('dashboard/DataTables/datatables.min.js')}}"></script>
 
 <script src="{{asset('dashboard/js/custom.js')}}"></script>
 <!-- Initializations -->

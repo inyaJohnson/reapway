@@ -5,7 +5,7 @@
 @section('content')
     <body class="bg-white">
     <!--Main Navigation-->
-    @include('layouts.dashboard_navigation')
+    @include('layouts.dashboard_navigation.layout')
     <!--Main Navigation-->
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
@@ -13,7 +13,6 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-
                         <div class="help-form-div">
                             <form id="help-form" enctype="multipart/form-data">
                                 <h4 class="card-title">Any Problems? Report Here</h4>

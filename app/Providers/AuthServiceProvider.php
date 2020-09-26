@@ -29,16 +29,11 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('admin-actions', function ($user){
-           return $user->hasAnyRole(['admin', 'super-admin']);
+           return $user->hasRole('admin');
         });
 
         Gate::define('client-actions', function ($user){
            return $user->hasRole('user');
-        });
-
-        Gate::define('referral_actions', function($user){
-            $referred_user = Referral::where('referred_id', $user->id )->first();
-            return null == $referred_user;
         });
 
         Gate::define('block_user', function ($user){

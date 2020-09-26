@@ -152,10 +152,7 @@
 {{--    </div>--}}
 {{--    <!-- content-wrapper ends -->--}}
 
-{{--    @include('home.recipient-info')--}}
-{{--    @include('home.depositor-info')--}}
 {{--@endsection--}}
-
 
 @extends('layouts.app')
 @section('css')
@@ -164,14 +161,12 @@
 @section('content')
     <body class="bg-white">
     <!--Main Navigation-->
-    @include('layouts.dashboard_navigation')
+    @include('layouts.dashboard_navigation.layout')
     <!--Main Navigation-->
 
     <!--Main layout-->
     <main class="pt-5 mx-lg-5" id="dashboard">
-
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-md-4">
                     <div class="dashboard-flash-card success-color-dark darken-2 ">
@@ -249,7 +244,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Investment History</h4>
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-hover investment-history">
+                                    <table class="table table-striped table-hover data-table">
                                         <thead>
                                         <tr>
                                             <th>Package</th>

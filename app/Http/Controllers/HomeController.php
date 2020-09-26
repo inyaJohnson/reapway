@@ -28,31 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $totalWithdrawn = auth()->user()->withdrawal()->where('confirmation_status', 1)->count();
-        $pendingWithdrawal = auth()->user()->withdrawal()->where('confirmation_status', 0)->count();
-        $totalNumberInvestment = auth()->user()->investment->count();
-        $investmentPriceList = [];
-        foreach (auth()->user()->investment as $investment){
-            $investmentPriceList[] = $investment->package->price;
+        if(!auth()->user()->hasRole('admin')){
+            return view('home');
         }
-        $totalInvestment = number_format(array_sum($investmentPriceList));
-
-        $deposits = Deposit::where([
-            ['user_id', auth()->user()->id],
-            ['confirmation_status', 0]
-        ])->get();
-
-        $withdrawals = Withdrawal::where([
-            ['user_id', auth()->user()->id],
-            ['confirmation_status', 0]
-        ])->get();
-
-        //        $investments = Investment::all();
-        if (!auth()->user()->hasRole('admin')) {
-            $investments = auth()->user()->investment;
-        }
-        return view('home', compact('totalWithdrawn', 'pendingWithdrawal', 'totalNumberInvestment',
-            'totalInvestment', 'deposits', 'withdrawals', 'investments'));
+        return view('admin.home');
     }
 
     public function welcome(){

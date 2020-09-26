@@ -143,68 +143,76 @@
     <body class="bg-white">
 
     <!--Main Navigation-->
-    @include('layouts.dashboard_navigation')
+    @include('layouts.dashboard_navigation.layout')
     <!--Main Navigation-->
 
     <!--Main layout-->
     <main class="pt-5 mx-lg-5" id="withdraw">
         <div class="container-fluid">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Withdrawal Request</h4>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover withdrawal-history">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Amount</th>
-                                    <th>Requested on</th>
-                                    <th>Proof of Payment</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach( $withdrawals as $withdrawal)
-                                    <tr>
-                                        <td>{{$withdrawal->user->name}}</td>
-                                        <td>{{$withdrawal->amount}}</td>
-                                        <td>{{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y H:i')}}</td>
-                                        <td>{{number_format($withdrawal->amount)}}</td>
-                                        <td>
-                                            @if($withdrawal->proof_of_payment !== null)
-                                                <a class="btn btn-primary" rel="noreferrer noopener" target="_blank"
-                                                   href="/store/{{$withdrawal->proof_of_payment}}"
-                                                >View
-                                                    File</a>
-                                            @else
-                                                No proof yet
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if($withdrawal->confirmation_status == 1)
-                                                <span class="badge badge-success">Paid</span>
-                                            @elseif($withdrawal->confirmation_status == 0)
-                                                <span class="badge badge-warning">Pending</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @can('admin-actions')
-                                                <button class="btn btn-primary upload-withdrawal-payment-btn"
-                                                        data-id="{{$withdrawal->id}}">Upload Proof
-                                                </button>
-                                            @endcan
-                                            @can('client-actions')
-                                                <button class="btn btn-primary confirm-withdrawal-btn"
-                                                        data-id="{{$withdrawal->id}}">Confirm Payment
-                                                </button>
-                                            @endcan
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+            @can('admin-actions')
+                @include('layouts.statistics')
+            @endcan
+            <div class="section-table mt-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Withdrawal Request</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover data-table">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Amount</th>
+                                            <th>Requested on</th>
+                                            <th>Proof of Payment</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach( $withdrawals as $withdrawal)
+                                            <tr>
+                                                <td>{{$withdrawal->user->name}}</td>
+                                                <td>{{$withdrawal->amount}}</td>
+                                                <td>{{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y H:i')}}</td>
+                                                <td>{{number_format($withdrawal->amount)}}</td>
+                                                <td>
+                                                    @if($withdrawal->proof_of_payment !== null)
+                                                        <a class="btn btn-primary" rel="noreferrer noopener"
+                                                           target="_blank"
+                                                           href="/store/{{$withdrawal->proof_of_payment}}"
+                                                        >View
+                                                            File</a>
+                                                    @else
+                                                        No proof yet
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if($withdrawal->confirmation_status == 1)
+                                                        <span class="badge badge-success">Paid</span>
+                                                    @elseif($withdrawal->confirmation_status == 0)
+                                                        <span class="badge badge-warning">Pending</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @can('admin-actions')
+                                                        <button class="btn btn-primary upload-withdrawal-payment-btn"
+                                                                data-id="{{$withdrawal->id}}">Upload Proof
+                                                        </button>
+                                                    @endcan
+                                                    @can('client-actions')
+                                                        <button class="btn btn-primary confirm-withdrawal-btn"
+                                                                data-id="{{$withdrawal->id}}">Confirm Payment
+                                                        </button>
+                                                    @endcan
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
