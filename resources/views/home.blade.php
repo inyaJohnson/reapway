@@ -229,8 +229,8 @@
                         <p class="text-center small">{{\Carbon\Carbon::now()->format('M d Y H:i')}}</p>
                         <div class="row">
                             <div class="col-md-6 mx-auto text-center">
-                                <span class="badge badge-light ">Withdraw</span>
-                                <span class="badge badge-warning">Invest</span>
+                                <a href="{{route('withdrawal')}}" ><span class="badge badge-light ">Withdraw</span></a>
+                                <a href="{{route('investment.reinvest')}}" ><span class="badge badge-warning">Reinvest</span></a>
                             </div>
 
                         </div>
@@ -238,6 +238,7 @@
                 </div>
             </div>
             <div class="section-table mt-4">
+                @include('layouts.message')
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -251,7 +252,7 @@
                                             <th>Capital</th>
                                             <th>Percentage</th>
                                             <th>ROI</th>
-                                            <th>Created At</th>
+                                            <th>Created_On</th>
                                             <th>Status</th>
                                             <th>Maturity</th>
                                             <th>Withdrawn</th>
@@ -270,7 +271,7 @@
                                                     @if($investment->status == 1)
                                                         <span class="badge badge-success">Approved</span>
                                                     @else
-                                                        <span class="badge badge-warning">Pending Deposit Confirmation</span>
+                                                        <span class="badge badge-warning">Pending Confirmation</span>
                                                     @endif
                                                 </td>
                                                 <td>

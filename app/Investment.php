@@ -9,7 +9,7 @@ class Investment extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['package_id', 'maturity', 'capital', 'withdrawn', 'user_id', 'status'];
+    protected $fillable = ['package_id', 'maturity', 'capital', 'withdrawn', 'user_id', 'status', 'type'];
 
     public function package()
     {

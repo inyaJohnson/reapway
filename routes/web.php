@@ -22,7 +22,8 @@ Route::get('/blocked-user', 'BlockUserController@deny')->name('blocked');
 Route::group(['middleware' => ['auth', 'block.user']], function(){
     Route::get('investment', 'InvestmentController@index')->name('investment.index');
     Route::post('investment/store', 'InvestmentController@store')->name('investment.store');
-    Route::get('investment/reinvest/{id}', 'InvestmentController@reinvest')->name('investment.reinvest');
+    Route::get('investment/reinvest', 'InvestmentController@reinvest')->name('investment.reinvest');
+    Route::post('investment/store-reinvestment', 'InvestmentController@storeReinvestment')->name('investment.store-reinvestment');
     Route::get('investment/withdraw/{id}', 'InvestmentController@withdraw')->name('investment.withdraw');
     Route::get('investment/invest', 'InvestmentController@invest')->name('investment.invest')->middleware('client');
 
@@ -38,6 +39,7 @@ Route::group(['middleware' => ['auth', 'block.user']], function(){
     Route::post('deposit/upload-payment', 'DepositController@uploadDepositProof')->name('upload-payment');
 
     Route::get('withdrawal', 'WithdrawalController@index')->name('withdrawal');
+    Route::post('withdrawal/request', 'WithdrawalController@withdrawalRequest')->name('withdrawal.request');
     Route::get('withdrawal/transaction', 'WithdrawalController@transaction')->name('withdrawal.transaction');
     Route::get('withdrawal/confirm-withdrawal', 'WithdrawalController@confirmWithdrawal')->name('confirm-withdrawal');
     Route::post('withdrawal/upload-payment', 'WithdrawalController@uploadWithdrawalProof')->name('upload-payment');
