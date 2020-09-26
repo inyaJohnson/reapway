@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\WithdrawalRequest;
+use App\Investment;
 use App\Traits\Withdrawal;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,10 @@ class WithdrawalController extends Controller
      */
     public function index()
     {
-        return view('withdrawal.index');
+        if(! auth()->user()->hasRole('admin')){
+            return view('withdrawal.index');
+        }
+        return view('admin.withdrawal');
     }
 
 

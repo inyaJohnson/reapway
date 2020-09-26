@@ -25,9 +25,8 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            {{--                                    <th>Create At</th>--}}
-                                            <th>Referral Code</th>
-                                            <th>Num. of Inv.</th>
+                                            <th>Join Date</th>
+                                            <th>Num_of_Inv.</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -37,9 +36,8 @@
                                                 <td>{{++$i}}</td>
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->email}}</td>
+                                                <td>{{\Carbon\Carbon::parse($user->created_at)->addHour()->format('M d Y')}}</td>
                                                 <td>{{$user->phone}}</td>
-                                                {{--                                        <td>{{$user->created_at->format('M d Y')}}</td>--}}
-                                                <td>{{$user->referral_code}}</td>
                                                 <td>{{($user->investment !== null)?$user->investment->count():'No Investment Yet'}}</td>
                                                 <td>@if($user->blocked == 0 )
                                                         <button class="btn btn-danger confirm-generic-block"

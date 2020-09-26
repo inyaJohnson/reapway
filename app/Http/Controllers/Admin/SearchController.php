@@ -15,14 +15,14 @@ class SearchController extends Controller
         $end = $request->end;
         switch ($request) {
             case (isset($request->start) && !isset($request->end) || $request->start === $request->end) :
-                $investments = Investment::whereDate('created_at', $request->start)->get();
+                $searchResult = Investment::whereDate('created_at', $request->start)->get();
                 break;
             case (!isset($request->start) && isset($request->end)) :
-                $investments = Investment::whereDate('created_at', $request->end)->get();
+                $searchResult = Investment::whereDate('created_at', $request->end)->get();
                 break;
             default :
-                $investments = Investment::whereBetween('created_at', [$request->start, $request->end])->get();
+                $searchResult = Investment::whereBetween('created_at', [$request->start, $request->end])->get();
         }
-        return view('investment.index', compact('investments', 'start', 'end'));
+        return view('search.investment', compact('searchResult', 'start', 'end'));
     }
 }

@@ -19,7 +19,6 @@ class InvestmentController extends Controller
      */
     public function index()
     {
-//        $investments = Investment::all();
         if (!auth()->user()->hasRole('admin')) {
             $investments = auth()->user()->investment;
         }
