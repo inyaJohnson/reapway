@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Deposit;
 use App\Http\Controllers\Controller;
 use App\Investment;
 use Illuminate\Database\Query\Builder;
@@ -24,5 +25,23 @@ class SearchController extends Controller
                 $searchResult = Investment::whereBetween('created_at', [$request->start, $request->end])->get();
         }
         return view('search.investment', compact('searchResult', 'start', 'end'));
+    }
+
+
+    public function deposit(Request $request)
+    {
+        $start = $request->start;
+        $end = $request->end;
+        switch ($request) {
+            case (isset($request->start) && !isset($request->end) || $request->start === $request->end) :
+                $searchResult = Deposit::whereDate('created_at', $request->start)->get();
+                break;
+            case (!isset($request->start) && isset($request->end)) :
+                $searchResult = Deposit::whereDate('created_at', $request->end)->get();
+                break;
+            default :
+                $searchResult = Deposit::whereBetween('created_at', [$request->start, $request->end])->get();
+        }
+        return view('search.deposit', compact('searchResult', 'start', 'end'));
     }
 }

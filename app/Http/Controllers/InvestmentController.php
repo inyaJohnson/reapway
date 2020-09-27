@@ -117,20 +117,8 @@ class InvestmentController extends Controller
         return redirect()->route('home')->with($message);;
     }
 
-
-//    Using paystack
-//    public function store(InvestRequest $request)
-//    {
-//        $package = Package::where([
-//            ['mini_price', '<=', $request->amount],
-//            ['max_price', '>=', $request->amount]
-//        ])->first();
-//        if($package !== null){
-//            $message = ['success' => 'Your request for the '.$package->name .' was successful. Proceed with payment'];
-//            $amount = $request->amount.'00';
-//            return view('payment.create', compact('message', 'package', 'amount'));
-//        }
-//        return redirect()->route('home')->withErrors('Package not available');
-//    }
-
+    public function nextToMature()
+    {
+        return view('admin.next_to_mature');
+    }
 }

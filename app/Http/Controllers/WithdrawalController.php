@@ -16,10 +16,7 @@ class WithdrawalController extends Controller
      */
     public function index()
     {
-        if(! auth()->user()->hasRole('admin')){
             return view('withdrawal.index');
-        }
-        return view('admin.withdrawal');
     }
 
 
