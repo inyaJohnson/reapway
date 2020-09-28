@@ -1,14 +1,31 @@
-p, input{
-  font-weight: 600;
-  font-family: 'Nunito', sans-serif;
+@font-face {font-family: "Circular Std Book Italic"; src: url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.eot"); src: url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.woff") format("woff"), url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.svg#Circular Std Book Italic") format("svg"); }
+@font-face {
+  font-family: "Circular Std Medium";
+  src: url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.eot");
+  src: url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.eot?#iefix")
+          format("embedded-opentype"),
+      url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.woff2")
+          format("woff2"),
+      url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.woff")
+          format("woff"),
+      url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.ttf")
+          format("truetype"),
+      url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.svg#Circular Std Medium")
+          format("svg");
+}
+p, input, td{
+  font-weight: 300 !important;
+  font-family: "Rubik", sans-serif;
+  vertical-align: baseline;
+  line-height: 1.7em;
+  font-weight: 300;
   /* letter-spacing: .5px; */
   /* font-family: 'Oswald', sans-serif; */
 }
 
 h1, h2,h3, h4, h5, h6{
-  font-family: 'Nunito', sans-serif;
-  /* letter-spacing: .5px; */
-  /* font-family: 'Oswald', sans-serif; */
+  font-family: "Rubik", sans-serif;
+
 }
 
 .sidebar-fixed {
@@ -66,6 +83,10 @@ h1, h2,h3, h4, h5, h6{
         color: #CEFF00 !important;
         background-color: green;
       }
+
+      .sidebar-fixed .list-group-item{
+        border: none;
+      } 
   
 
 
@@ -163,11 +184,13 @@ h1, h2,h3, h4, h5, h6{
 
       main#dashboard .dashboard-flash-card{
        margin-top: 3em;
+    
+       box-shadow:         3px 1px 5px 1px #ccc;  /* Opera 10.5, IE 9, Firefo*/
       }
 
 
       main#dashboard .dashboard-flash-card{
-        border-radius:10px 10px 0px 0px;
+        border-radius:6px;
         color: #fff;
         padding: 1em;
 
@@ -210,9 +233,7 @@ main#invest input[type=text], main input[type=password],  main input[type=email]
 
 /* Dashboard-Settings */
         main#settings form button {
-            width: 100%;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            border-radius: 10px;
         }
 
 /* Dashboard-Withdraw */
@@ -221,9 +242,7 @@ main#withdraw {
   /* margin-top: 3em; */
 }
 main#withdraw form button {
-    width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
 }
 
 main#withdraw .form-group-wrapper {
@@ -237,6 +256,15 @@ main#withdraw .form-group-wrapper i.fa-eye{
   font-size: 24px;
   top: .5em;
   right: 4%;
+}
+
+#search-button{
+  height: 45px;
+  border-radius: 10px;
+  margin-top: 13px;
+  background-color: grey;
+  width: 100px !important;
+
 }
 
 
@@ -281,7 +309,10 @@ footer button{
   
   }
 
-@media (max-width: 1199.98px) {
+@media (max-width: 990px) {
+  form button{
+    width: 100%;
+  }
   .sidebar-fixed {
     display: none; }
 

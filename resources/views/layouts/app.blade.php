@@ -11,7 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&family=Oswald:wght@600&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+          <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@200&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->

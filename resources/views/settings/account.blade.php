@@ -35,10 +35,13 @@
                             <input type="text" class="form-control" name="bank" required value="{{old('bank')}}"
                                    placeholder="Bank Name">
                         </div>
+                        <div class="float-right mr-3">
                         <button type="submit"
                                 class="btn btn-primary mr-2" {{(auth()->user()->account !== null)?'disabled':''}}>Submit
                         </button>
                         <button class="btn btn-light reset">Cancel</button>
+                        </div>
+                       
                     </form>
                 </div>
             </div>

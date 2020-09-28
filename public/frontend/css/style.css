@@ -1,65 +1,122 @@
 :root {
-    --main-color: #3F8A03;
+    --main-color: #3f8a03;
     --inverse-color: #ffa304;
-
-
-
 }
-.reap-bg-color{background-color:var(--main-color)}
-.reap-color{color:var(--main-color) }
-.reap-orange-color{color: var(--inverse-color);}
-.reap-bg-orange-color{background-color: var(--inverse-color);}
 
-p{
-    font-weight: 600;
-    font-family: 'Nunito', sans-serif;
+@font-face {
+    font-family: "Circular Std Book Italic";
+    src: url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.eot");
+    src: url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.eot?#iefix")
+            format("embedded-opentype"),
+        url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.woff2")
+            format("woff2"),
+        url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.woff")
+            format("woff"),
+        url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.ttf")
+            format("truetype"),
+        url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.svg#Circular Std Book Italic")
+            format("svg");
+}
+
+@font-face {
+    font-family: "Circular Std Medium";
+    src: url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.eot");
+    src: url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.eot?#iefix")
+            format("embedded-opentype"),
+        url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.woff2")
+            format("woff2"),
+        url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.woff")
+            format("woff"),
+        url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.ttf")
+            format("truetype"),
+        url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.svg#Circular Std Medium")
+            format("svg");
+}
+.reap-bg-color {
+    background-color: var(--main-color);
+}
+.reap-color {
+    color: var(--main-color);
+}
+.reap-orange-color {
+    color: var(--inverse-color);
+}
+.reap-bg-orange-color {
+    background-color: var(--inverse-color);
+}
+
+p {
+    font-weight: 300 !important;
+    font-family: "Circular Std Medium", sans-serif;
+    vertical-align: baseline;
+    line-height: 1.7em;
+    color: #545454;
     /* letter-spacing: .5px; */
     /* font-family: 'Oswald', sans-serif; */
-
 }
 
-.home-header{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Circular Std Book Italic", sans-serif;
+}
+
+h1 {
+    font-size: 45px;
+    line-height: 55px;
+    letter-spacing: -1px;
+}
+.home-header {
     position: relative;
     min-height: 100vh;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: linear-gradient(to left,#141613b4 0%,#0e0c0e 100%),url("../img/Image\ 1.png");
+    background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
+        url("../img/Image\ 1.png");
     background-blend-mode: multiply;
 }
 
-.home-header h1{
-margin-top: 6em;
+.home-header h1 {
+    margin-top: 6em;
 }
 
- /* Set the border color */
+.home-header p {
+    color: #ededed;
+    font-weight: 300 !important;
+    font-family: 'Epilogue', sans-serif;
+}
 
- .home-header .custom-toggler.navbar-toggler {
+.home-header .desktop-img{
+    margin-left: 10%;
+}
+
+/* Set the border color */
+
+.home-header .custom-toggler.navbar-toggler {
     border-color: lightgreen;
 }
 /* Setting the stroke to green using rgb values (0, 128, 0) */
 
- .custom-toggler .navbar-toggler-icon {
-    background-image: url(
-"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 128, 0, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 128, 0, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
-
 
 /* MAIN SECTION BEGIN */
 
 /* How It Works */
 
-#how-it-works{
+#how-it-works {
     padding-top: 2em;
     position: relative;
-  /* background: url("../img/Ellipse\ 1.png"); */
-  background-color: #4f5a4513;
-
-
+    /* background: url("../img/Ellipse\ 1.png"); */
+    background-color: #4f5a4513;
 }
 
-
-#how-it-works .col-md-3>div{
+#how-it-works .col-md-3 > div {
     margin: auto;
     padding-top: 30px;
     background-color: #408a039a;
@@ -68,118 +125,110 @@ margin-top: 6em;
     width: 130px;
 }
 
-#how-it-works .col-md-3>div>img{
+#how-it-works .col-md-3 > div > img {
     margin: auto;
     display: block;
     height: 70px;
     width: 70px;
-
 }
 
-p{
+p {
     /* color: #fff; */
 }
 
- #best-investment-plan .card{
+#best-investment-plan .card {
     display: block;
 
     margin: auto;
 }
- #best-investment-plan .card-body>p.stroke{
+#best-investment-plan .card-body > p.stroke {
     display: block;
-    height: 2px; width: 50px;
+    height: 2px;
+    width: 50px;
     background-color: rgb(144, 144, 165);
     margin: auto;
 }
 
- #best-investment-plan .card-body>h2{
-margin-top:1.8em;
-margin-bottom:1.8em;
-font-weight: 900;
+#best-investment-plan .card-body > h2 {
+    margin-top: 1.8em;
+    margin-bottom: 1.8em;
+    font-weight: 900;
 }
 
 /* Investment */
- #investment{
-    margin-top:8em;
+#investment {
+    margin-top: 8em;
 }
 
- #investment img{
+#investment img {
     width: 250px;
 }
 
-
-main #investor .title{
+main #investor .title {
     width: 30%;
- padding: .3em;
- background-color: #408a0336;
- text-align:center;
- margin: 2em auto 1em;
- font-weight: 900;
+    padding: 0.3em;
+    background-color: #408a0336;
+    text-align: center;
+    margin: 2em auto 1em;
+    font-weight: 900;
 }
 
-main #investor img{
+main #investor img {
     display: block;
-   height: 300px;
-   margin: auto;
-   }
+    height: 300px;
+    margin: auto;
+}
 
-
-
-   #customers{
+#customers {
     margin-top: 3em;
     padding-bottom: 3em;
     background-color: #408a0336;
-   }
-
-
-   #customers button{
- width: 150px;
- height: 40px;
- border: none;
 }
 
-   #customers .customer-card{
-       position: relative;
-       background-color: #fff;
-       border-radius: 1em;
-       padding: 1em;
-       margin: 1em auto 2em;
+#customers button {
+    width: 150px;
+    height: 40px;
+    border: none;
+}
 
-box-shadow:  2px 2px 20px #babcc25b,
-             -2px -2px 20px #babcc25b;
+#customers .customer-card {
+    position: relative;
+    background-color: #fff;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 1em auto 2em;
 
-   }
+    box-shadow: 2px 2px 20px #babcc25b, -2px -2px 20px #babcc25b;
+}
 
-   #customers .customer-card img{
+#customers .customer-card img {
     position: absolute;
     right: 2em;
     bottom: 8px;
     height: 80px;
-
 }
 
-#faq{
-    margin-top:2em;
-    margin-bottom:4em;
-
+#faq {
+    margin-top: 2em;
+    margin-bottom: 4em;
 }
 
-main #faq .card .card-header span{
+main #faq .card .card-header span {
     font-size: 20px;
 }
 
-main #faq .card .card-header span:first-child{
+main #faq .card .card-header span:first-child {
     color: rgba(0, 128, 43, 0.63);
 }
-    /* MAIN SECTIONS END */
+/* MAIN SECTIONS END */
 
-nav .nav-link{
+nav .nav-link {
     text-decoration: none;
     color: white;
     font-weight: 800;
 }
 
-nav .nav-link:hover{
+nav .nav-link:hover {
     text-decoration: none;
     color: white;
     font-weight: 800;
@@ -187,7 +236,7 @@ nav .nav-link:hover{
     border-radius: 0px;
     /* border-bottom-width: 30px; */
 }
-.navbar{
+.navbar {
     box-shadow: none;
 }
 
@@ -195,107 +244,117 @@ nav .nav-link:hover{
     color: green;
 } */
 
-
-
 /* About */
 
-.about-header  img.img-top {
-   height: 300px;
-margin-top: 10em;
+.about-header img.img-top {
+    height: 300px;
+    margin-top: 10em;
 }
-
 
 footer {
     background-color: #408a03c5;
 }
 
-footer input[type=email]{
+footer p {
+    color: #fff;
+}
+
+footer input[type="email"] {
     text-align: center;
     border-radius: 0px;
     height: 40px;
     border: 1px solid rgba(156, 156, 68, 0.555);
     background-color: #408a03c5;
     color: white;
-
 }
 
-footer button{
+footer button {
     border-radius: 0px;
     border: none;
     height: 40px;
-
 }
 
-
-
-@media (max-width: 1199.98px) {
-
-    .home-header{
+@media (max-width: 990px) {
+    p {
+        font-size: 12px;
+    }
+    .home-header {
         position: relative;
         min-height: 100vh;
         width: 100%;
         background-size: cover;
-        background-position:center;
+        background-position: center;
         background-repeat: no-repeat;
-        background-image: linear-gradient(to left,#141613b4 0%,#0e0c0e 100%),url("../img/Image\ 1.png");
+        background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
+            url("../img/Image\ 1.png");
         background-blend-mode: multiply;
     }
     .navbar-nav {
-      display: inline;
-        }
+        display: inline;
+    }
 
-        .navbar .nav-item .nav-link{
-            display: inline;
-        }
-        .hide-on-mobile{
-            display: none !important;
-        }
+    .navbar .nav-item .nav-link {
+        display: inline;
+    }
+    .hide-on-mobile {
+        display: none !important;
+    }
 
-        .fixed-top{
-            background: white !important;
-        }
-        .fixed-top .nav-link{
-            color: green !important;
+ 
 
-        }
+    .fixed-top {
+        background: white !important;
+    }
+    .fixed-top .nav-link {
+        color: green !important;
+    }
 
-        /* .mobile-nav{
+    /* .mobile-nav{
             background-color: white;
         } */
 
-        h3{
-            padding: 0px 1em;
-            font-size: 25px;
-        }
-        .home-header h1{
-            margin-top: 3.5em;
-            text-align: center;
-            font-size: 30px;
-
-        }
-
-        #investment{
-            margin-top: 1em;
-        }
-
-        .home-header p{
-            text-align: center;
-
-        }
-
-        .about-header  img.img-top{
-            height: 200px;
-        }
-
-
-        main #investor .title{
-            width: 60%;
-         padding: .3em;
-         background-color: #408a0336;
-         text-align:center;
-         margin: 2em auto 1em;
-         font-weight: 900;
-        }
-
-
+    h3 {
+        padding: 0px 1em;
+        font-size: 25px;
     }
+    .home-header h1 {
+        margin-top: 3.5em;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    #investment {
+        margin-top: 1em;
+    }
+
+    .home-header p {
+        text-align: center;
+    }
+
+    .about-header img.img-top {
+        height: 200px;
+    }
+
+    main #investor .title {
+        width: 60%;
+        padding: 0.3em;
+        background-color: #408a0336;
+        text-align: center;
+        margin: 2em auto 1em;
+        font-weight: 900;
+    }
+    #investor img {
+        width: 200px;
+    }
+
+    #customers .customer-card img{
+        height: 50px;
+    }
+}
+
+
+@media (min-width: 990px) and (max-device-width: 1024px){
+     .home-header .desktop-img{
+        margin-left: 1em;
+    }
+}

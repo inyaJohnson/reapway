@@ -38,7 +38,7 @@
                                 <div class="col-md-9">
                                     <h6 class="font-weight-bold">Confirm if you want your money to be sent to this
                                         Account</h6>
-                                    <p class="font-weight-bold">Gtbank * Okanlawon Sunday * 0223547059</p>
+                                    <p class="font-weight-bold text-white font-weight-light">Gtbank * Okanlawon Sunday * 0223547059</p>
                                 </div>
 
                                 <div class="col-md-3">

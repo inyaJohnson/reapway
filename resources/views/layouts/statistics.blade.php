@@ -16,7 +16,7 @@
                                         <div
                                             class="btn btn-secondary p-0 bg-transparent border-0 text-dark shadow-none font-weight-medium"
                                             aria-haspopup="true" aria-expanded="false">
-                                            <h5 class="mb-0 d-inline-block">#{{$totalInvestment}}</h5>
+                                            <h5 class="mb-0 d-inline-block"><span>&#8358;</span> {{$totalInvestment}}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -25,7 +25,7 @@
                                     <i class="mdi mdi mdi-currency-ngn mr-3 icon-lg text-danger"></i>
                                     <div class="d-flex flex-column justify-content-around">
                                         <small class="mb-1 text-muted">Total Withdrawal</small>
-                                        <h5 class="mr-2 mb-0">#{{$totalWithdrawal}}</h5>
+                                        <h5 class="mr-2 mb-0"><span>&#8358;</span> {{$totalWithdrawal}}</h5>
                                     </div>
                                 </div>
                                 <div
@@ -41,7 +41,7 @@
                                     <i class="mdi mdi-cash-multiple mr-3 icon-lg text-danger"></i>
                                     <div class="d-flex flex-column justify-content-around">
                                         <small class="mb-1 text-muted">Pending Inv.</small>
-                                        <h5 class="mr-2 mb-0">#{{$pendingInvestment}}</h5>
+                                        <h5 class="mr-2 mb-0"><span>&#8358;</span> {{$pendingInvestment}}</h5>
                                     </div>
                                 </div>
                                 <div
@@ -49,7 +49,7 @@
                                     <i class="mdi mdi-download mr-3 icon-lg text-warning"></i>
                                     <div class="d-flex flex-column justify-content-around">
                                         <small class="mb-1 text-muted">Num. of Inv.</small>
-                                        <h5 class="mr-2 mb-0">#{{$totalNumberOfInvestment}}</h5>
+                                        <h5 class="mr-2 mb-0"><span>&#8358;</span> {{$totalNumberOfInvestment}}</h5>
                                     </div>
                                 </div>
                             </div>

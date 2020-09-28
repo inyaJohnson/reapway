@@ -169,24 +169,24 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="dashboard-flash-card success-color-dark darken-2 ">
+                    <div class="dashboard-flash-card   bg-default ">
                         <h6 class="font-weight-bold text-center">Current Total Investment</h6>
                         <table>
                             <tr>
-                                <td>#1,000,000</td>
-                                <td><small>2/10/2020</small></td>
+                                <td class="text-white">₦1,000,000</td>
+                                <td class="text-white"><small>2/10/2020</small></td>
                                 <td><span class="badge badge-light">Approved</span></td>
                             </tr>
                             <br/>
 
                             <tr>
-                                <td>#1,000,000</td>
+                                <td class="text-white">₦1,000,000</td>
                                 <td>---</td>
                                 <td><span class="badge badge-warning">Pending</span></td>
                             </tr>
 
                             <tr>
-                                <td>#1,000,000</td>
+                                <td class="text-white">₦1,000,000</td>
                                 <td>---</td>
                                 <td><span class="badge badge-warning">Pending</span>
                                 </td>
@@ -197,22 +197,22 @@
 
 
                 <div class="col-md-4">
-                    <div class="dashboard-flash-card bg-success darken-2 ">
+                    <div class="dashboard-flash-card bg-warning darken-2">
                         <h6 class="font-weight-bold text-center">Investment + ROI</h6>
                         <table>
                             <tr>
-                                <td>#1,000,000</td>
+                                <td>₦ 1,000,000</td>
                                 <td><small>2/10/2020</small></td>
                                 <td><span class="badge badge-light">Approved</span></td>
                             </tr>
                             <br/>
                             <tr>
-                                <td>#1,000,000</td>
+                                <td class="text-dark-50">₦ 1,000,000</td>
                                 <td>---</td>
                                 <td><span class="badge badge-warning">Pending</span></td>
                             </tr>
                             <tr>
-                                <td>#1,000,000</td>
+                                <td class="text-dark-50"> ₦1,000,000</td>
                                 <td>---</td>
                                 <td><span class="badge badge-warning">Pending</span>
                                 </td>
@@ -223,10 +223,10 @@
 
 
                 <div class="col-md-4">
-                    <div class="dashboard-flash-card success-color-dark darken-2 ">
+                    <div class="dashboard-flash-card   bg-default">
                         <h6 class="font-weight-bold text-center">Balance</h6>
                         <h4 class="font-weight-bold text-center">₦ {{number_format(auth()->user()->actual_balance, 2)}}</h4>
-                        <p class="text-center small">{{\Carbon\Carbon::now()->format('M d Y H:i')}}</p>
+                        <p class="text-center small text-white">{{\Carbon\Carbon::now()->format('M d Y H:i')}}</p>
                         <div class="row">
                             <div class="col-md-6 mx-auto text-center">
                                 <span class="badge badge-light ">Withdraw</span>
