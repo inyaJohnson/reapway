@@ -91,7 +91,7 @@
 
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
-        if (scroll < 300) {
+        if (scroll < 210) {
             $('.fixed-top').css('background', 'transparent');
             $('.fixed-top a').css('color', 'white');
             $('.fixed-top .btn').css('color', 'green');

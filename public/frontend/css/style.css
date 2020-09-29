@@ -81,7 +81,7 @@ h1 {
 }
 
 .home-header h1 {
-    margin-top: 6em;
+    margin-top: 5em;
 }
 
 .home-header p {
@@ -224,6 +224,10 @@ main #investor img {
 
 main #faq .card .card-header span {
     font-size: 20px;
+}
+
+main #faq .card .card-header .btn:hover {
+    text-decoration: unset;
 }
 
 main #faq .card .card-header span:first-child {
