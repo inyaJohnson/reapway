@@ -10,23 +10,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <h1 class="text-white font-weight-bold" data-aos="zoom-in">
+                    <h1 class="text-white" data-aos="zoom-in">
                         The Best Way To
                         Invest Securely And
                         Profitably
                     </h1>
-                    <p class="text-white mt-4">
+                    <p class="mt-4">
                         We are experts at studying the financial
                         market and placing accurate profit laden
                         trades.
                     </p>
 
-                    <p class="text-white mt-4">
+                    <p class="mt-4">
                         Earn 15% - 20% returns on investments
                         on Bronze and Silver plans respectively.
                     </p>
 
-                    <p class="text-white mt-4">
+                    <p class="mt-4">
                         We are experts at studying the financial
                         market and placing accurate profit laden
                         trades.
@@ -101,7 +101,7 @@
                 </div>
                 <div class="row justify-content-md-center text-center mt-3">
                     <div class="col-md-4 mb-4" data-aos="fade-up-right">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" style="">
                             <div class="card-body">
                                 <h4 class="card-title font-weight-bolder ">GOLD</h4>
                                 <p class="stroke"></p>
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-4" data-aos="fade-up">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title font-weight-bolder">SILVER</h4>
                                 <p class="stroke"></p>
@@ -127,7 +127,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-4" data-aos="fade-up-right">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" style="">
                             <div class="card-body">
                                 <h4 class="card-title font-weight-bolder">BRONZE</h4>
                                 <p class="stroke"></p>

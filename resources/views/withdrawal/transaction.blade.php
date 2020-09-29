@@ -21,7 +21,7 @@
 {{--            </div>--}}
 {{--        </div>--}}
 {{--        @include('layouts.message')--}}
-{{--        <div class="row big-screen">--}}
+{{--        <div class="row big-screen" >--}}
 {{--            <div class="col-lg-12 grid-margin stretch-card">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="card-body">--}}

@@ -13,9 +13,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="dashboard-flash-card success-color-dark darken-2 ">
+                    <div class="dashboard-flash-card   bg-default ">
                         <h6 class="font-weight-bold text-center">Current Total Investment</h6>
                         <table>
+
                             @foreach($runningInvestments as $runningInvestment)
                                 <tr>
                                     <td>₦{{$runningInvestment->capital}}</td>
@@ -29,13 +30,14 @@
                                     </td>
                                 </tr>
                             @endforeach
+
                         </table>
                     </div>
                 </div>
 
 
                 <div class="col-md-4">
-                    <div class="dashboard-flash-card bg-success darken-2 ">
+                    <div class="dashboard-flash-card bg-warning darken-2">
                         <h6 class="font-weight-bold text-center">Investment + ROI</h6>
                         <table>
                             @foreach($runningInvestments as $runningInvestment)
@@ -57,11 +59,12 @@
 
 
                 <div class="col-md-4">
-                    <div class="dashboard-flash-card success-color-dark darken-2 ">
+                    <div class="dashboard-flash-card   bg-default">
                         <h6 class="font-weight-bold text-center">Balance</h6>
-                        <h4 class="font-weight-bold text-center">
-                            ₦ {{number_format(auth()->user()->actual_balance, 2)}}</h4>
-                        <p class="text-center small">{{\Carbon\Carbon::now()->format('M d Y H:i')}}</p>
+
+                        <h4 class="font-weight-bold text-center">₦ {{number_format(auth()->user()->actual_balance, 2)}}</h4>
+                        <p class="text-center small text-white">{{\Carbon\Carbon::now()->format('M d Y H:i')}}</p>
+
                         <div class="row">
                             <div class="col-md-6 mx-auto text-center">
                                 <a href="{{route('withdrawal')}}"><span class="badge badge-light ">Withdraw</span></a>

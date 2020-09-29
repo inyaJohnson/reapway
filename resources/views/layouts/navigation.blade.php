@@ -32,7 +32,6 @@
                     <!-- <h4 class="font-weight-bold text-black-50">Sunday</h4> -->
                     <a href="{{route('welcome')}}">
                         <img src="{{asset('frontend/img/Reapway Logo one (1).png')}}" height="60px"/>
-
                     </a>
                 </li>
 
@@ -40,30 +39,30 @@
 
             <!-- Right -->
             <ul class="navbar-nav nav-flex-icons">
-                <li class="nav-item">
+                <li class="nav-item mt-2">
                     <a class="nav-link waves-effect" style="color: green;" href="{{route('welcome')}}">
                         Home
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mt-2">
                     <a class="nav-link waves-effect" style="color: green;" href="{{route('about')}}">
                         About
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mt-2">
                     <a class="nav-link waves-effect" style="color: green;"
                        href="index.html#best-investment-plan">
                         Plans</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mt-2">
                     <a class="nav-link waves-effect" style="color: green;" href="index.html#investor"
                     >Testimonies</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mt-2">
                     <a class="nav-link waves-effect" style="color: green;" href="index.html#faq">
                         FAQ</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mt-2">
                     <a class="nav-link waves-effect" style="color: green;" href="{{route('login')}}">
                         Log in</a>
                 </li>
