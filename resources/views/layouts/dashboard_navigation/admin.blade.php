@@ -1,3 +1,4 @@
+
 <a  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" class="list-group-item list-group-item-action waves-effect  text-white">
     <i class="fas fa-user mr-2"></i> Package<i class="fas fa-chevron-right ml-2 " style="font-size: 12px;"></i>
 </a>
@@ -8,8 +9,6 @@
     <a href="{{route('packages.index')}}" class="list-group-item  waves-effect  text-white">
         <i class="fas fa-user mr-2"></i>Packages</a>
 </p>
-
-
 <a href="{{route('withdrawal')}}" class="list-group-item  waves-effect text-white">
     <i class="fas fa-map mr-2"></i>Withdraw</a>
 <a href="{{route('withdrawal.transaction')}}" class="list-group-item  waves-effect text-white ">

@@ -16,10 +16,7 @@ class WithdrawalController extends Controller
      */
     public function index()
     {
-        if(! auth()->user()->hasRole('admin')){
             return view('withdrawal.index');
-        }
-        return view('admin.withdrawal');
     }
 
 
@@ -29,12 +26,13 @@ class WithdrawalController extends Controller
      */
     public function withdrawalRequest(WithdrawalRequest $request)
     {
-        $request->validated();
         if ($request->amount > auth()->user()->actual_balance) {
             return redirect()->back()->withErrors('You can not withdraw more than your available balance');
         }
         $message = ['success' => 'Your withdrawal request was successfully placed'];
         $this->createWithdrawal($request->amount);
+        $newBalance = auth()->user()->actual_balance - $request->amount;
+        auth()->user()->update(['actual_balance' => $newBalance]);
         return redirect()->route('withdrawal.transaction')->with($message);
     }
 

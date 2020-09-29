@@ -15,12 +15,7 @@ class UserData
         $totalWithdrawn = auth()->user()->withdrawal()->where('confirmation_status', 1)->count();
         $pendingWithdrawal = auth()->user()->withdrawal()->where('confirmation_status', 0)->count();
         $totalNumberInvestment = auth()->user()->investment->count();
-        $investmentPriceList = [];
-        foreach (auth()->user()->investment as $investment){
-            $investmentPriceList[] = $investment->package->price;
-        }
-        $totalInvestment = number_format(array_sum($investmentPriceList));
-
+        $totalInvestment = number_format(auth()->user()->investment->pluck('amount')->sum());
         $deposits = Deposit::where([
             ['user_id', auth()->user()->id],
             ['confirmation_status', 0]
@@ -31,9 +26,11 @@ class UserData
             ['confirmation_status', 0]
         ])->get();
 
+        $runningInvestments = auth()->user()->investment()->where('withdrawn', 0)->get();
         $investments = auth()->user()->investment;
 
-        return $view->with(['totalWithdrawn' => $totalWithdrawn , 'pendingWithdrawal' => $pendingWithdrawal, 'totalNumberInvestment' =>$totalNumberInvestment,
-            'totalInvestment' => $totalInvestment, 'deposits' => $deposits, 'withdrawals' => $withdrawals,'investments' =>$investments]);
+        return $view->with(['totalWithdrawn' => $totalWithdrawn, 'pendingWithdrawal' => $pendingWithdrawal, 'totalNumberInvestment' => $totalNumberInvestment,
+            'totalInvestment' => $totalInvestment, 'deposits' => $deposits, 'withdrawals' => $withdrawals, 'runningInvestments' => $runningInvestments,
+            'investments' => $investments]);
     }
 }

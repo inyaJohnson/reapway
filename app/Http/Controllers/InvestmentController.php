@@ -26,28 +26,8 @@ class InvestmentController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function store(InvestRequest $request)
-    {
-        $request->validated();
-        $package = Package::where([
-            ['mini_price', '<=', $request->amount],
-            ['max_price', '>=', $request->amount]
-        ])->first();
-        if ($package !== null) {
-            $message = ['success' => 'Investment successful. Proceed with payment and Upload proof'];
-            $investment = auth()->user()->investment()->create([
-                'package_id' => $package->id,
-                'capital' => $request->amount
-            ]);
-            $this->createDeposit($investment);
-            return redirect()->route('deposit.transaction')->with($message);
-        }
-        return redirect()->back()->withErrors('Package not available, Please check package list for available packages');
-    }
-
     public function invest()
     {
         if (auth()->user()->account === null) {
@@ -57,27 +37,66 @@ class InvestmentController extends Controller
         return view('investment.invest', compact('packages'));
     }
 
-    public function reinvest($id)
-    {
-//
-//        if($request->amount > auth()->user()->actual_balance ){
-//            return redirect()->back()->withErrors('Your Available balance can not afford this investment');
-//        }
 
-        $message = ['success' => 'Reinvestment Successful, Make payment to the investor(s) listed'];
-        $investment = Investment::findorFail($id);
-        auth()->user()->investment()->create([
-            'package_id' => $investment->package_id,
-            'percentage' => $investment->percentage,
-            'duration' => $investment->duration,
-            'profit' => round($investment->package->price * ($investment->percentage / 100)),
-            'previous_investment_id' => $investment->id
-        ]);
-        $result = $investment->update(['reinvest_btn' => 1]);
-        if (!$result) {
-            $message = ['error' => 'Reinvestment failed'];
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(InvestRequest $request)
+    {
+        $package = Package::where([
+            ['mini_price', '<=', $request->amount],
+            ['max_price', '>=', $request->amount]
+        ])->first();
+        if ($package !== null) {
+            $message = ['success' => 'Investment successful. Proceed with payment and Upload proof'];
+            $investment = auth()->user()->investment()->create([
+                'package_id' => $package->id,
+                'capital' => $request->amount,
+                'type' => 'deposit'
+            ]);
+            $this->createDeposit($investment);
+            return redirect()->route('deposit.transaction')->with($message);
         }
-        return redirect()->route('home')->with($message);
+        return redirect()->back()->withErrors('Package not available, Please check package list for available packages');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function reinvest()
+    {
+        if (auth()->user()->account === null) {
+            return redirect()->route('settings.account')->with('success', 'Enter Your Bank Account Information for payment before investing');
+        }
+        $packages = Package::where('mini_price', '<=', auth()->user()->actual_balance)->get();
+        return view('investment.reinvest', compact('packages'));
+    }
+
+
+    /**
+     * @param InvestRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function storeReinvestment(InvestRequest $request)
+    {
+        $package = Package::where([
+            ['mini_price', '<=', $request->amount],
+            ['max_price', '>=', $request->amount]
+        ])->first();
+        if ($package !== null) {
+            $message = ['success' => 'Investment successful. Proceed with payment and Upload proof'];
+            auth()->user()->investment()->create([
+                'package_id' => $package->id,
+                'capital' => $request->amount,
+                'status' => 1,
+                'type' => 'reinvestment'
+            ]);
+            $newBalance = auth()->user()->actual_balance - $request->amount;
+            auth()->user()->update(['actual_balance' => $newBalance]);
+            return redirect()->route('home')->with($message);
+        }
+        return redirect()->back()->withErrors('Package not available, Please check package list for available packages');
     }
 
     public function withdraw($id)
@@ -88,7 +107,7 @@ class InvestmentController extends Controller
         if ($investment->withdrawn == 1) {
             return redirect()->back()->with('custom_error', 'Already withdrawn');
         }
-        $ROI = (($investment->capital * $investment->package->percentage)/100) + $investment->capital;  //Return On Investment
+        $ROI = (($investment->capital * $investment->package->percentage) / 100) + $investment->capital;  //Return On Investment
         $newBalance = $investment->user->actual_balance + $ROI;
         $investment->user()->update(['actual_balance' => $newBalance]);
         $result = $investment->update(['withdrawn' => 1]);
@@ -98,20 +117,8 @@ class InvestmentController extends Controller
         return redirect()->route('home')->with($message);;
     }
 
-
-//    Using paystack
-//    public function store(InvestRequest $request)
-//    {
-//        $package = Package::where([
-//            ['mini_price', '<=', $request->amount],
-//            ['max_price', '>=', $request->amount]
-//        ])->first();
-//        if($package !== null){
-//            $message = ['success' => 'Your request for the '.$package->name .' was successful. Proceed with payment'];
-//            $amount = $request->amount.'00';
-//            return view('payment.create', compact('message', 'package', 'amount'));
-//        }
-//        return redirect()->route('home')->withErrors('Package not available');
-//    }
-
+    public function nextToMature()
+    {
+        return view('admin.next_to_mature');
+    }
 }

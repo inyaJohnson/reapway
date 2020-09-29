@@ -10,7 +10,10 @@ class DepositController extends Controller
     use \App\Traits\Deposit;
 
     public function transaction(){
-        $deposits = Deposit::latest()->get();
+        $deposits = Deposit::with('user')->latest()->get();
+        if(!auth()->user()->hasRole('admin')) {
+            $deposits = auth()->user()->deposit()->latest()->get();
+        }
         return view('deposit.transaction', compact('deposits'));
     }
 }

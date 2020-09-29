@@ -261,7 +261,6 @@ $(document).ready(function () {
     })
 
 //    INVEST NOW
-
     $('.invest_submit').on('click', function () {
         // window.alert("hello")
         Swal.fire({
@@ -344,4 +343,23 @@ $(document).ready(function () {
         })
         $('#request-message-modal').modal();
     })
+
+    //    Actual Withdrawal
+    $('.actual-withdrawal-btn').on('click', function () {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to withdraw #" + formatNumber($(this).parents('form').children("input[name='amount']").val()) + "!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Withdraw Now!'
+        }).then((result) => {
+            if (result.value) {
+                var form = $(this).parents('form:first');
+                form.submit();
+            }
+        })
+    })
+
 })

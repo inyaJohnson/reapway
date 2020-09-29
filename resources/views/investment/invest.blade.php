@@ -20,7 +20,7 @@
                     <!-- Default input name -->
                     <form method="POST" action="{{route('investment.store')}}">
                         @csrf
-                        <input type="number" id="defaultFormCardNameEx" placeholder="Enter mount here" name="amount" required
+                        <input type="number" id="defaultFormCardNameEx" placeholder="Enter amount here" name="amount" required
                                value="{{old('amount')}}"
                                class="form-control">
                         <div class="py-4 mt-3">
