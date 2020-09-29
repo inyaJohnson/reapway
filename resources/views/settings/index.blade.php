@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="py-4 mt-3">
-                        <button type="submit">Update</button>
+                        <button type="submit" style="padding: 10px;">Update</button>
                     </div>
                 </form>
             </div>

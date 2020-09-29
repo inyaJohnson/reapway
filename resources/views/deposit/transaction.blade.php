@@ -66,12 +66,12 @@
                                                 <td>
                                                     @can('client-actions')
                                                         <button class="btn btn-primary upload-payment-btn"
-                                                                data-id="{{$deposit->id}}">Upload Proof
+                                                                data-id="{{$deposit->id}}">Upload
                                                         </button>
                                                     @endcan
                                                     @can('admin-actions')
                                                         <button class="btn btn-primary confirm-deposit-btn"
-                                                                data-id="{{$deposit->id}}">Confirm Payment
+                                                                data-id="{{$deposit->id}}">Confirm
                                                         </button>
                                                     @endcan
                                                 </td>

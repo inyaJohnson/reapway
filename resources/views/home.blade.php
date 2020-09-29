@@ -13,10 +13,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="dashboard-flash-card   bg-default ">
+                    <div class="dashboard-flash-card bg-default ">
                         <h6 class="font-weight-bold text-center">Current Total Investment</h6>
                         <table>
-
                             @foreach($runningInvestments as $runningInvestment)
                                 <tr>
                                     <td>₦{{$runningInvestment->capital}}</td>
@@ -42,7 +41,8 @@
                         <table>
                             @foreach($runningInvestments as $runningInvestment)
                                 <tr>
-                                    <td>₦{{(($runningInvestment->capital * $runningInvestment->package->percentage) / 100) + $runningInvestment->capital}}</td>
+                                    <td>
+                                        ₦{{(($runningInvestment->capital * $runningInvestment->package->percentage) / 100) + $runningInvestment->capital}}</td>
                                     <td><small>{{$runningInvestment->created_at->format('d/m/Y')}}</small></td>
                                     <td>
                                         @if($runningInvestment->status == 1)
@@ -59,19 +59,24 @@
 
 
                 <div class="col-md-4">
-                    <div class="dashboard-flash-card   bg-default">
+                    <div class="dashboard-flash-card bg-default">
                         <h6 class="font-weight-bold text-center">Balance</h6>
 
-                        <h4 class="font-weight-bold text-center">₦ {{number_format(auth()->user()->actual_balance, 2)}}</h4>
+                        <h4 class="font-weight-bold text-center">
+                            ₦ {{number_format(auth()->user()->actual_balance, 2)}}</h4>
                         <p class="text-center small text-white">{{\Carbon\Carbon::now()->format('M d Y H:i')}}</p>
 
                         <div class="row">
-                            <div class="col-md-6 mx-auto text-center">
-                                <a href="{{route('withdrawal')}}"><span class="badge badge-light ">Withdraw</span></a>
-                                <a href="{{route('investment.reinvest')}}"><span
-                                        class="badge badge-warning">Reinvest</span></a>
+                            <div class="col-md-10 mx-auto text-center">
+                                <div>
+                                    <a href="{{route('withdrawal')}}"><span
+                                            class="badge badge-light ">Withdraw</span></a>
+                                </div>
+                                <div>
+                                    <a href="{{route('investment.reinvest')}}"><span
+                                            class="badge badge-warning">Reinvest</span></a>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
