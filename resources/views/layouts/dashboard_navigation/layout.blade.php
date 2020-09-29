@@ -28,7 +28,7 @@
                 <ul class="navbar-nav mr-auto mobile-menu">
                     <div class="list-group list-group-flush">
                         <a href="{{route('home')}}" class="list-group-item active text-dark waves-effect">
-                            <i class="fas fa-chart-pie mr-3"></i>Dashboard
+                            <i class="fas fa-chart-pie mr-2"></i>Dashboard
                         </a>
                         @can('client-actions')
                             @include('layouts.dashboard_navigation.user')
@@ -67,8 +67,8 @@
             <img src="{{asset('frontend/img/Reapway Logo one (2).png')}}" class="img-fluid" alt="">
         </a>
         <div class="list-group list-group-flush">
-            <a href="{{route('home')}}" class="list-group-item active waves-effect">
-                <i class="fas fa-chart-pie mr-3"></i>Dashboard
+            <a href="{{route('home')}}" class="list-group-item list-group-item-action  waves-effect">
+                <i class="fas fa-chart-pie mr-2"></i>Dashboard
             </a>
             @can('client-actions')
                 @include('layouts.dashboard_navigation.user')

@@ -11,9 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&family=Oswald:wght@600&display=swap"
           rel="stylesheet">
-          <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@200&display=swap" rel="stylesheet">
-          <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-          <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->
@@ -25,7 +26,7 @@
 
     <link href="{{asset('dashboard/DataTables/datatables.min.css')}}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('dashboard/js/sweetalert2/dist/sweetalert2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/img/favicon.png')}}">
 
     @yield('css')
 
@@ -105,6 +106,31 @@
             $('.fixed-top').css("box-shadow", "0px 9px 12px -4px rgba(022,022,022,.4)");
         }
     });
+
+
+//     $('.panel-collapse').on('show.bs.collapse', function () {
+//     $(this).siblings('.panel-heading').addClass('active');
+//   });
+
+//   $('.panel-collapse').on('hide.bs.collapse', function () {
+//     $(this).siblings('.panel-heading').removeClass('active');
+//   });
+
+
+
+</script>
+<script>
+
+
+
+jQuery(function($) {
+ var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+ $('.sidebar-fixed a').each(function() {
+  if (this.href === path) {
+   $(this).addClass('active');
+  }
+ });
+});
 </script>
 <!--Google Maps-->
 <script src="https://maps.google.com/maps/api/js"></script>
