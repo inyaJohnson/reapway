@@ -266,7 +266,7 @@ footer {
 }
 
 footer p, footer small, footer span, footer i {
-    color: #dddddd;
+    color: white;
 }
 
 footer input[type="email"] {

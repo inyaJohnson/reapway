@@ -21,6 +21,7 @@ class CreateInvestmentsTable extends Migration
             $table->integer('maturity')->default(0);
             $table->integer('withdrawn')->default(0);
             $table->integer('status')->default(0);
+            $table->string('type');
             $table->softDeletes();
             $table->timestamps();
         });

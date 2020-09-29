@@ -27,9 +27,9 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         $input = $this->validate($request, [
-            'name' => ['required', 'min:3', 'string'],
+            'name' => ['required', 'min:3', 'string', 'unique:packages'],
             'description' => ['required', 'string'],
-            'mini_price' => ['required', 'integer'],
+            'mini_price' => ['required', 'integer', 'lte:max_price'],
             'max_price' => ['required', 'integer'],
             'percentage' => ['required', 'integer'],
             'duration' => ['required', 'integer']

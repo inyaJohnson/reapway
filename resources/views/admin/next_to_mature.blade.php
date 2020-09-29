@@ -20,7 +20,7 @@
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Investment History</h4>
+                                <h4 class="card-title">Soon to mature investments</h4>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-hover data-table">
                                         <thead>
@@ -36,7 +36,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach( $upComingWithdrawal as $investment)
+                                        @foreach( $nextToMature as $investment)
                                             <tr>
                                                 <td>{{$investment->package->name}}</td>
                                                 <td>{{number_format($investment->capital)}}</td>

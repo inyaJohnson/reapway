@@ -164,8 +164,8 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Amount</th>
-                                            <th>Requested on</th>
-                                            <th>Proof of Payment</th>
+                                            <th>Request_Date</th>
+                                            <th>Payment_Proof</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -174,9 +174,8 @@
                                         @foreach( $withdrawals as $withdrawal)
                                             <tr>
                                                 <td>{{$withdrawal->user->name}}</td>
-                                                <td>{{$withdrawal->amount}}</td>
-                                                <td>{{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y H:i')}}</td>
                                                 <td>{{number_format($withdrawal->amount)}}</td>
+                                                <td>{{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y H:i')}}</td>
                                                 <td>
                                                     @if($withdrawal->proof_of_payment !== null)
                                                         <a class="btn btn-primary" rel="noreferrer noopener"

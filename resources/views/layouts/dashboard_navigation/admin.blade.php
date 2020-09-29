@@ -1,4 +1,5 @@
-<a  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" class="list-group-item list-group-item-action waves-effect  text-white panel-heading">
+<a  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" class="list-group-item list-group-item-action waves-effect ">
+
     <i class="fas fa-user mr-2"></i> Package<i class="fas fa-chevron-right ml-2 " style="font-size: 12px;"></i>
 </a>
 <p id="collapseExample" class="collapse ml-2 panel-collapse">

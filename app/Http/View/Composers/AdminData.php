@@ -15,12 +15,12 @@ class AdminData
 {
     public function compose(View $view)
     {
-        $upComingWithdrawal = [];
+        $nextToMature = [];
         $investments = Investment::with('user', 'package')->get();
         foreach ($investments as $investment) {
             if ((Carbon::now()->dayOfYear - Carbon::parse($investment->updated_at)->dayOfYear) >= 20
                 && $investment->status == 1 && $investment->withdrawn == 0) {
-                $upComingWithdrawal[] = $investment;
+                $nextToMature[] = $investment;
             }
         }
         $totalInvestment = number_format(Investment::where([
@@ -39,7 +39,7 @@ class AdminData
         return $view->with(['investments' => $investments, 'totalInvestment' => $totalInvestment,
             'totalWithdrawal' => $totalWithdrawal, 'availableWithdrawal' => $availableWithdrawal,
             'totalNumberOfInvestment' => $totalNumberOfInvestment, 'numOfUsers' => $numOfUsers, 'pendingInvestment' => $pendingInvestment,
-            'numOfBlockedUsers' => $numOfBlockedUsers, 'numOfActiveUsers' => $numOfActiveUsers, 'upComingWithdrawal' => $upComingWithdrawal]);
+            'numOfBlockedUsers' => $numOfBlockedUsers, 'numOfActiveUsers' => $numOfActiveUsers, 'nextToMature' => $nextToMature]);
     }
 }
 

@@ -1,159 +1,3 @@
-{{--@extends('layouts.app')--}}
-{{--@section('content')--}}
-{{--    <div class="content-wrapper">--}}
-{{--        <div class="row">--}}
-{{--            <div class="col-md-12 grid-margin">--}}
-{{--                <div class="d-flex justify-content-between flex-wrap">--}}
-{{--                    <div class="d-flex align-items-end flex-wrap">--}}
-{{--                        <div class="mr-md-3 mr-xl-5">--}}
-{{--                            <h2>Welcome back,</h2>--}}
-{{--                            <p class="mb-md-0">Your user dashboard and statistics.</p>--}}
-{{--                        </div>--}}
-{{--                        <div class="d-flex">--}}
-{{--                            <i class="mdi mdi-home text-muted hover-cursor"></i>--}}
-{{--                            <p class="text-muted mb-0 hover-cursor crumbs"><a href="{{route('home')}}">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</a>--}}
-{{--                            </p>--}}
-{{--                            <p class="text-primary mb-0 hover-cursor">Dashboard</p>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    @include('layouts.quick-links')--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        @include('layouts.statistics')--}}
-{{--        <div class="row ">--}}
-{{--            <div class="col-md-6 grid-margin stretch-card" id="deposit-section">--}}
-{{--                <div class="card">--}}
-{{--                    <div class="card-body">--}}
-{{--                        <div class="history-panel">--}}
-{{--                            <div class="profile-panel-heading card-title">--}}
-{{--                                Deposit Match--}}
-{{--                            </div>--}}
-{{--                            <div class="profile-panel-body">--}}
-{{--                                @if(!$deposits->isEmpty())--}}
-{{--                                    @foreach($deposits as $deposit)--}}
-{{--                                        <div class="sale-box wow fadeInUp" data-wow-iteration="1">--}}
-{{--                                            <div class="sale-box-inner">--}}
-{{--                                                <div class="sale-box-head">--}}
-{{--                                                    <h4>{{$deposit->package->name}}</h4>--}}
-{{--                                                </div>--}}
-{{--                                                <ul class="sale-box-desc">--}}
-{{--                                                    <li>--}}
-{{--                                                        <strong>Amount - {{number_format($deposit->amount)}}</strong>--}}
-{{--                                                        <span>Matched on {{\Carbon\Carbon::parse($deposit->created_at)->addHour()->format('M d Y H:i')}}</span>--}}
-{{--                                                    </li>--}}
-{{--                                                    <li>--}}
-{{--                                                        <strong><a class="btn btn-primary view-recipient"--}}
-{{--                                                                   href="javascript:void(0)"--}}
-{{--                                                                   data-id={{$deposit->recipient_id}} data='{{$deposit->id}}'>View--}}
-{{--                                                                Recipient</a></strong>--}}
-{{--                                                    </li>--}}
-{{--                                                    <li>--}}
-{{--                                                        <button class="btn btn-primary upload-payment-btn"--}}
-{{--                                                                data-id="{{$deposit->id}}">Upload Proof--}}
-{{--                                                        </button>--}}
-{{--                                                    </li>--}}
-{{--                                                    <li>--}}
-{{--                                                        @if($deposit->proof_of_payment !== null)--}}
-{{--                                                            <a class="btn btn-link"--}}
-{{--                                                               href="/rocket_pay/public/store/{{$deposit->proof_of_payment}}"--}}
-{{--                                                               download>Download--}}
-{{--                                                                File</a>--}}
-{{--                                                        @endif--}}
-{{--                                                    </li>--}}
-{{--                                                    <li>--}}
-{{--                                                        @if($deposit->depositor_status == 1 && $deposit->recipicent_status == 0  )--}}
-{{--                                                            <span class="text-danger">Awaiting Confirmation</span>--}}
-{{--                                                        @elseif($deposit->depositor_status == 0)--}}
-{{--                                                            <span class="text-waring">New</span>--}}
-{{--                                                        @endif--}}
-{{--                                                    </li>--}}
-{{--                                                    <input value="{{$deposit->amount}}" id="amount{{$deposit->id}}"--}}
-{{--                                                           type="hidden">--}}
-{{--                                                </ul>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    @endforeach--}}
-{{--                                @else--}}
-{{--                                    <div class="latest-investment">--}}
-{{--                                        <div class="text-muted">Invest in any of our packages and start earning today...</div>--}}
-{{--                                        <div>--}}
-{{--                                            <a type="button" class="btn btn-primary"--}}
-{{--                                               href="{{route('investment.invest')}}">Invest--}}
-{{--                                                Now</a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--            <div class="col-md-6 grid-margin stretch-card" id="withrawal-section">--}}
-{{--                <div class="card">--}}
-{{--                    <div class="card-body">--}}
-{{--                        <div class="history-panel">--}}
-{{--                            <div class="profile-panel-heading card-title">Withdrawal Match--}}
-{{--                            </div>--}}
-{{--                            <div class="profile-panel-body">--}}
-{{--                                @if(!$withdrawals->isEmpty())--}}
-{{--                                    @foreach($withdrawals as $withdrawal)--}}
-{{--                                        <div class="sale-box wow fadeInUp" data-wow-iteration="1">--}}
-{{--                                            <div class="sale-box-inner">--}}
-{{--                                                <div class="sale-box-head">--}}
-{{--                                                    <h4>{{$withdrawal->package->name}}</h4>--}}
-{{--                                                </div>--}}
-{{--                                                <ul class="sale-box-desc">--}}
-{{--                                                    <li>--}}
-{{--                                                        <strong>Amount - {{number_format($withdrawal->amount)}}</strong>--}}
-{{--                                                        <span>Matched on - {{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y  H:i')}}</span>--}}
-{{--                                                    </li>--}}
-{{--                                                    <li>--}}
-{{--                                                        <strong><a class="btn btn-primary view-depositor" href="#"--}}
-{{--                                                                   data-id={{$withdrawal->depositor_id}} data='{{$withdrawal->id}}'>View--}}
-{{--                                                                Depositor</a></strong>--}}
-
-{{--                                                    </li>--}}
-{{--                                                    <li>--}}
-{{--                                                        <button class="btn btn-primary confirm-withrawal"--}}
-{{--                                                                data-id="{{$withdrawal->id}}">Confirm Payment--}}
-{{--                                                        </button>--}}
-{{--                                                    </li>--}}
-{{--                                                    <li>--}}
-{{--                                                        @if($withdrawal->proof_of_payment !== null)--}}
-{{--                                                            <a class='btn btn-link'--}}
-{{--                                                               href='/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}'--}}
-{{--                                                               download>Download File</a>--}}
-{{--                                                        @endif--}}
-{{--                                                    </li>--}}
-{{--                                                    <input value="{{$withdrawal->amount}}"--}}
-{{--                                                           id="amount{{$withdrawal->id}}"--}}
-{{--                                                           type="hidden">--}}
-{{--                                                </ul>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    @endforeach--}}
-{{--                                @else--}}
-{{--                                    <div class="latest-investment">--}}
-{{--                                        <div class="text-muted">Invest in any of our packages and start earning today...--}}
-{{--                                            You are expected to recommit 100% your investment before profit withdrawal--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                --}}{{--                <img src="{{asset('assets/images/banner-2.jpg')}}" alt="banner" height="200px"/>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--    </div>--}}
-{{--    <!-- content-wrapper ends -->--}}
-
-{{--@endsection--}}
-
 @extends('layouts.app')
 @section('css')
     <link href="{{asset('frontend/css/dashboard.css')}}" rel="stylesheet">
@@ -172,25 +16,21 @@
                     <div class="dashboard-flash-card   bg-default ">
                         <h6 class="font-weight-bold text-center">Current Total Investment</h6>
                         <table>
-                            <tr>
-                                <td class="text-white">₦1,000,000</td>
-                                <td class="text-white"><small>2/10/2020</small></td>
-                                <td><span class="badge badge-light">Approved</span></td>
-                            </tr>
-                            <br/>
 
-                            <tr>
-                                <td class="text-white">₦1,000,000</td>
-                                <td>---</td>
-                                <td><span class="badge badge-warning">Pending</span></td>
-                            </tr>
+                            @foreach($runningInvestments as $runningInvestment)
+                                <tr>
+                                    <td>₦{{$runningInvestment->capital}}</td>
+                                    <td><small>{{$runningInvestment->created_at->format('d/m/Y')}}</small></td>
+                                    <td>
+                                        @if($runningInvestment->status == 1)
+                                            <span class="badge badge-light">Approved</span>
+                                        @else
+                                            <span class="badge badge-warning">Pending</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
 
-                            <tr>
-                                <td class="text-white">₦1,000,000</td>
-                                <td>---</td>
-                                <td><span class="badge badge-warning">Pending</span>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </div>
@@ -200,23 +40,19 @@
                     <div class="dashboard-flash-card bg-warning darken-2">
                         <h6 class="font-weight-bold text-center">Investment + ROI</h6>
                         <table>
-                            <tr>
-                                <td>₦ 1,000,000</td>
-                                <td><small>2/10/2020</small></td>
-                                <td><span class="badge badge-light">Approved</span></td>
-                            </tr>
-                            <br/>
-                            <tr>
-                                <td class="text-dark-50">₦ 1,000,000</td>
-                                <td>---</td>
-                                <td><span class="badge badge-warning">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-dark-50"> ₦1,000,000</td>
-                                <td>---</td>
-                                <td><span class="badge badge-warning">Pending</span>
-                                </td>
-                            </tr>
+                            @foreach($runningInvestments as $runningInvestment)
+                                <tr>
+                                    <td>₦{{(($runningInvestment->capital * $runningInvestment->package->percentage) / 100) + $runningInvestment->capital}}</td>
+                                    <td><small>{{$runningInvestment->created_at->format('d/m/Y')}}</small></td>
+                                    <td>
+                                        @if($runningInvestment->status == 1)
+                                            <span class="badge badge-light">Approved</span>
+                                        @else
+                                            <span class="badge badge-warning">Pending</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>
@@ -225,12 +61,15 @@
                 <div class="col-md-4">
                     <div class="dashboard-flash-card   bg-default">
                         <h6 class="font-weight-bold text-center">Balance</h6>
+
                         <h4 class="font-weight-bold text-center">₦ {{number_format(auth()->user()->actual_balance, 2)}}</h4>
                         <p class="text-center small text-white">{{\Carbon\Carbon::now()->format('M d Y H:i')}}</p>
+
                         <div class="row">
                             <div class="col-md-6 mx-auto text-center">
-                                <span class="badge badge-light ">Withdraw</span>
-                                <span class="badge badge-warning">Invest</span>
+                                <a href="{{route('withdrawal')}}"><span class="badge badge-light ">Withdraw</span></a>
+                                <a href="{{route('investment.reinvest')}}"><span
+                                        class="badge badge-warning">Reinvest</span></a>
                             </div>
 
                         </div>
@@ -238,6 +77,7 @@
                 </div>
             </div>
             <div class="section-table mt-4">
+                @include('layouts.message')
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -251,7 +91,7 @@
                                             <th>Capital</th>
                                             <th>Percentage</th>
                                             <th>ROI</th>
-                                            <th>Created At</th>
+                                            <th>Created_On</th>
                                             <th>Status</th>
                                             <th>Maturity</th>
                                             <th>Withdrawn</th>
@@ -270,7 +110,7 @@
                                                     @if($investment->status == 1)
                                                         <span class="badge badge-success">Approved</span>
                                                     @else
-                                                        <span class="badge badge-warning">Pending Deposit Confirmation</span>
+                                                        <span class="badge badge-warning">Pending Confirmation</span>
                                                     @endif
                                                 </td>
                                                 <td>
