@@ -14,7 +14,9 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-4 mt-5">
                         <div class="auth-left">
-                            <img class="mb-5" src="{{asset('frontend/img/Reapway Logo one (1).png')}}" alt="">
+                            <a href="{{route('welcome')}}">
+                            <img class="mb-5" src="{{asset('frontend/img/Reapway Logo one (1).png')}}"  alt="">
+                            </a>
                             <div class="mt-4 auth-left-title">
                                 <h3 class="font-weight-bolder text-success">Create an account!</h3>
                                 <h3 class="font-weight-light">
