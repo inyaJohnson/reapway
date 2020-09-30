@@ -68,8 +68,7 @@
                                                         @break
                                                         @case($investment->maturity == 1 && $investment->withdrawn == 0)
                                                         <a href="{{route('investment.withdraw', $hashIds->encode($investment->id))}}"
-                                                           class="btn btn-primary withdraw"
-                                                           style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Withdraw
+                                                           class="btn btn-primary withdraw">Withdraw
                                                         </a>
                                                         @break
                                                         @default <span class="badge badge-warning">In progress</span>

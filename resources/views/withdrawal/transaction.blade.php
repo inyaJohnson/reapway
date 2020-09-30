@@ -178,7 +178,7 @@
                                                 <td>{{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y H:i')}}</td>
                                                 <td>
                                                     @if($withdrawal->proof_of_payment !== null)
-                                                        <a class="btn btn-primary" rel="noreferrer noopener"
+                                                        <a class="btn btn-primary view-withdrawal" rel="noreferrer noopener"
                                                            target="_blank"
                                                            href="/store/{{$withdrawal->proof_of_payment}}"
                                                         >View
@@ -197,12 +197,12 @@
                                                 <td>
                                                     @can('admin-actions')
                                                         <button class="btn btn-primary upload-withdrawal-payment-btn"
-                                                                data-id="{{$withdrawal->id}}">Upload Proof
+                                                                data-id="{{$withdrawal->id}}">Upload
                                                         </button>
                                                     @endcan
                                                     @can('client-actions')
                                                         <button class="btn btn-primary confirm-withdrawal-btn"
-                                                                data-id="{{$withdrawal->id}}">Confirm Payment
+                                                                data-id="{{$withdrawal->id}}">Confirm
                                                         </button>
                                                     @endcan
                                                 </td>
