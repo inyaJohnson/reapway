@@ -2,31 +2,23 @@
     font-family: "Circular Std Book Italic";
     src: url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.eot");
 
-    src: url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.eot?#iefix")
-            format("embedded-opentype"),
-        url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.woff2")
-            format("woff2"),
-        url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.woff")
-            format("woff"),
-        url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.ttf")
-            format("truetype"),
-        url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.svg#Circular Std Book Italic")
-            format("svg");
+    src: url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.svg#Circular Std Book Italic") format("svg");
 }
+
 @font-face {
     font-family: "Circular Std Medium";
     src: url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.eot");
-    src: url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.eot?#iefix")
-            format("embedded-opentype"),
-        url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.woff2")
-            format("woff2"),
-        url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.woff")
-            format("woff"),
-        url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.ttf")
-            format("truetype"),
-        url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.svg#Circular Std Medium")
-            format("svg");
+    src: url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.svg#Circular Std Medium") format("svg");
 }
+
 p,
 input,
 td {
@@ -39,7 +31,6 @@ td {
     /* letter-spacing: .5px; */
     /* font-family: 'Oswald', sans-serif; */
 }
-
 
 
 h1,
@@ -55,15 +46,16 @@ h6 {
     height: 100vh;
     width: 270px;
     -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
-        0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    0 2px 10px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
-        0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    0 2px 10px 0 rgba(0, 0, 0, 0.12);
     z-index: 1050;
 
     background-color: #3f8a03;
     padding: 1.5rem;
     padding-top: 0;
 }
+
 .sidebar-fixed .list-group .active {
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -71,6 +63,7 @@ h6 {
     background-color: #3f8a03;
     border-color: #3f8a03;
 }
+
 /* //mobile */
 .navbar-nav .list-group .active {
     -webkit-border-radius: 5px;
@@ -87,9 +80,11 @@ h6 {
     background-color: white;
     border-color: #3f8a03;
 }
+
 .sidebar-fixed .logo-wrapper {
     padding: 2.5rem;
 }
+
 .sidebar-fixed .logo-wrapper img {
     max-height: 50px;
 }
@@ -112,6 +107,7 @@ h6 {
 .dashboard-tabs h5 {
     font-size: 35px;
 }
+
 main {
     background-color: white;
 }
@@ -119,6 +115,7 @@ main {
 main > div {
     margin-top: 5rem;
 }
+
 /* main{
         padding-top: 10em !important;
       } */
@@ -178,6 +175,7 @@ main .custom-control-input:checked ~ .custom-control-label::before {
 main .file-field.medium .file-path-wrapper {
     height: 3rem;
 }
+
 main .file-field.medium .file-path-wrapper .file-path {
     height: 2.8rem;
 }
@@ -185,6 +183,7 @@ main .file-field.medium .file-path-wrapper .file-path {
 main .file-field.big-2 .file-path-wrapper {
     height: 3.7rem;
 }
+
 main .file-field.big-2 .file-path-wrapper .file-path {
     height: 3.5rem;
 }
@@ -291,9 +290,8 @@ main#withdraw .form-group-wrapper i.fa-eye {
 }
 
 #search-button {
-    height: 45px;
-    border-radius: 10px;
-    margin-top: 13px;
+    height: 36px;
+    border-radius: 5px!important;
     background-color: grey;
     width: 100px !important;
 
@@ -305,6 +303,7 @@ main#withdraw .form-group-wrapper i.fa-eye {
     float: right;
     transition: all 0.5s;
 }
+
 .panel-heading.active a:before {
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
@@ -358,7 +357,7 @@ footer i {
     form button {
         width: 100%;
     }
-  
+
     .sidebar-fixed {
         display: none;
     }
@@ -367,9 +366,11 @@ footer i {
         display: block;
         margin: auto;
     }
+
     .list-group {
         width: 200px;
     }
+
     .list-group-item {
         border: 0px;
     }
@@ -377,6 +378,7 @@ footer i {
     .user-icon {
         display: none;
     }
+
     .hide-on-mobile {
         display: none !important;
     }
@@ -395,7 +397,7 @@ footer i {
         display: none;
         color: black;
     }
-
+}
 
 /*STYLE BY DEV TOSE*/
 
@@ -404,8 +406,8 @@ footer i {
 }
 
 
-.withdraw a, .confirm-deposit-btn, .upload-payment-btn, .confirm-unblock, .confirm-generic-block, .request-message-btn,
-.upload-withdrawal-payment-btn, .confirm-withdrawal-btn, .view-withdrawal{
+.withdraw, .confirm-deposit-btn, .upload-payment-btn, .confirm-unblock, .confirm-generic-block, .request-message-btn,
+.upload-withdrawal-payment-btn, .confirm-withdrawal-btn, .view-withdrawal {
     padding: 8px 10px;
     /*font-size: 1em;*/
     border-radius: 5px;
@@ -415,8 +417,6 @@ footer i {
 }
 
 /*PACKAGE  */
-
-
 .sale-box-inner {
     border: 1px solid #eeeeee;
     text-align: center;
@@ -424,30 +424,35 @@ footer i {
     -webkit-border-radius: 7px;
     border-radius: 7px;
     overflow: hidden;
-    cursor:pointer;
+    cursor: pointer;
     margin-bottom: 30px;
 }
+
 .sale-box-head {
     background: green;
     padding: 15px 5px;
 }
+
 .sale-box-head h4 {
     font-size: 24px;
     margin-bottom: 0;
     line-height: 28px;
     font-weight: 700;
 }
+
 .sale-box-desc {
     margin: 0;
     padding: 20px 10px;
     list-style: none;
     color: #808080;
 }
+
 .sale-box-desc strong {
     display: block;
     color: #1d1d1d;
     font-size: 18px;
 }
+
 .sale-box-desc li {
     margin-top: 15px;
 }
@@ -455,17 +460,60 @@ footer i {
 
 /*dashboard card*/
 
-.dashboard-flash-card{
+.dashboard-flash-card {
     height: 160px;
 }
 
-.dashboard-flash-card .mx-auto{
+.dashboard-flash-card .mx-auto {
     display: flex;
-    flex-flow:row wrap;
+    flex-flow: row wrap;
     justify-content: space-evenly;
 }
+
 @media (max-width: 425px) {
     .package-creator .row input[name='mini_price'], .package-creator .row input[name='percentage'] {
         margin-bottom: 40px;
     }
+}
+
+
+/*Media Query*/
+
+@media(max-width: 426px) {
+    .big-screen {
+        display: none;
+    }
+}
+
+
+@media (min-width: 426px) {
+    .small-screen {
+        display: none;
+    }
+}
+
+
+/*BTN PRIMARY*/
+.btn-primary, .active a.page-link{
+    background-color: green !important;
+}
+
+
+/*dashboard-flash-card*/
+.dashboard-flash-card-first, .dashboard-flash-card-third{
+    background-color: green;
+}
+
+
+/*filter*/
+.filter{
+    display: flex;
+    flex-flow: row wrap ;
+    justify-content: flex-end;
+    width: 100%;
+
+}
+
+.filter form{
+    margin-bottom: 0!important;
 }

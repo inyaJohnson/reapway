@@ -29,7 +29,7 @@ class ResponseMail extends Mailable
      */
     public function build()
     {
-        $email = $this->from('info@rocketpay.cc')->view('help.response_mail');
+        $email = $this->from('help@reapway.ng')->view('help.response_mail');
         if (isset($this->data['attachment']) && !is_string($this->data['attachment'])) {
             $email->attach($this->data['attachment']->getRealPath(),
                 [

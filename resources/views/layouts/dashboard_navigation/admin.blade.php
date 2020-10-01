@@ -9,10 +9,8 @@
     <a href="{{route('packages.index')}}" class="list-group-item  waves-effect ">
         <i class="fas fa-user mr-2"></i>Packages</a>
 </p>
-
-
-<a href="{{route('withdrawal')}}" class="list-group-item list-group-item-action  waves-effect">
-    <i class="fas fa-map mr-2"></i>Withdraw</a>
+<a href="{{route('next-to-mature')}}" class="list-group-item list-group-item-action  waves-effect">
+    <i class="fas fa-map mr-2"></i>Next to Mature</a>
 <a href="{{route('withdrawal.transaction')}}" class="list-group-item list-group-item-action  waves-effect">
     <i class="fas fa-archway mr-2"></i><span >Withdraw Transaction</span></a>
 <a href="{{route('deposit.transaction')}}" class="list-group-item list-group-item-action  waves-effect">

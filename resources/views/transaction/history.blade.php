@@ -62,7 +62,7 @@
                                                             <td>
                                                                 @if($withdrawal->proof_of_payment !== null)
                                                                     <a class="btn btn-primary"
-                                                                       href="/rocket_pay/public/store/{{$deposit->proof_of_payment}}"
+                                                                       href="/reapway/public/store/{{$deposit->proof_of_payment}}"
                                                                        download>Download
                                                                         File</a>
                                                                 @endif
@@ -106,7 +106,7 @@
                                                             <td>
                                                                 @if($withdrawal->proof_of_payment !== null)
                                                                     <a class='btn btn-link'
-                                                                       href='/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}'
+                                                                       href='/reapway/public/store/{{$withdrawal->proof_of_payment}}'
                                                                        download>Download File</a>
                                                                 @endif
                                                             </td>
@@ -157,7 +157,7 @@
                                                                 {{--                                                        </strong>--}}
                                                                 @if($withdrawal->proof_of_payment !== null)
                                                                     <a class="btn btn-link"
-                                                                       href="/rocket_pay/public/store/{{$deposit->proof_of_payment}}"
+                                                                       href="/reapway/public/store/{{$deposit->proof_of_payment}}"
                                                                        download>Download
                                                                         File</a>
                                                                 @endif
@@ -198,7 +198,7 @@
                                                                 {{--                                                        </strong>--}}
                                                                 @if($withdrawal->proof_of_payment !== null)
                                                                     <a class='btn btn-link'
-                                                                       href='/rocket_pay/public/store/{{$withdrawal->proof_of_payment}}'
+                                                                       href='/reapway/public/store/{{$withdrawal->proof_of_payment}}'
                                                                        download>Download File</a>
                                                                 @endif
                                                             </li>

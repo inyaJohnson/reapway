@@ -48,7 +48,7 @@
 {{--                                        <td>--}}
 {{--                                            @if($withdrawal->proof_of_payment !== null)--}}
 {{--                                                <a class="btn btn-primary" rel="noreferrer noopener" target="_blank"--}}
-{{--                                                   href="/store/{{$withdrawal->proof_of_payment}}"--}}
+{{--                                                   href="/reapway/public/store/{{$withdrawal->proof_of_payment}}"--}}
 {{--                                                >View--}}
 {{--                                                    File</a>--}}
 {{--                                            @else--}}
@@ -153,7 +153,7 @@
                 @include('layouts.statistics')
             @endcan
             <div class="section-table mt-4">
-                <div class="row">
+                <div class="row big-screen">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -162,7 +162,9 @@
                                     <table class="table table-striped table-hover data-table">
                                         <thead>
                                         <tr>
-                                            <th>Name</th>
+                                            @can('admin-actions')
+                                                <th>Name</th>
+                                            @endcan
                                             <th>Amount</th>
                                             <th>Request_Date</th>
                                             <th>Payment_Proof</th>
@@ -173,14 +175,17 @@
                                         <tbody>
                                         @foreach( $withdrawals as $withdrawal)
                                             <tr>
-                                                <td>{{$withdrawal->user->name}}</td>
-                                                <td>{{number_format($withdrawal->amount)}}</td>
+                                                @can('admin-actions')
+                                                    <td> {{$withdrawal->user->name}}</td>
+                                                @endcan
+                                                <td><span>&#8358;</span> {{number_format($withdrawal->amount)}}</td>
                                                 <td>{{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y H:i')}}</td>
                                                 <td>
                                                     @if($withdrawal->proof_of_payment !== null)
-                                                        <a class="btn btn-primary view-withdrawal" rel="noreferrer noopener"
+                                                        <a class="btn btn-primary view-withdrawal"
+                                                           rel="noreferrer noopener"
                                                            target="_blank"
-                                                           href="/store/{{$withdrawal->proof_of_payment}}"
+                                                           href="/reapway/public/store/{{$withdrawal->proof_of_payment}}"
                                                         >View
                                                             File</a>
                                                     @else
@@ -189,9 +194,9 @@
                                                 </td>
                                                 <td>
                                                     @if($withdrawal->confirmation_status == 1)
-                                                        <span class="badge badge-success">Paid</span>
+                                                        <span class="text-success">Paid</span>
                                                     @elseif($withdrawal->confirmation_status == 0)
-                                                        <span class="badge badge-warning">Pending</span>
+                                                        <span class="text-warning">Pending</span>
                                                     @endif
                                                 </td>
                                                 <td>
@@ -215,6 +220,72 @@
                         </div>
                     </div>
                 </div>
+
+
+                {{--                SMALL SCREEN--}}
+                <div class="row small-screen">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Withdraw Request</h4>
+                                @foreach( $withdrawals as $withdrawal)
+                                    <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                        <div class="sale-box-inner">
+                                            <div class="sale-box-head">
+                                                @can('admin-actions')
+                                                    <h4>{{$withdrawal->user->name}}</h4>
+                                                @endcan
+                                                @can('client-actions')
+                                                    <h4>Amount - &#8358; {{$withdrawal->amount}}</h4>
+                                                @endcan
+                                            </div>
+                                            <ul class="sale-box-desc">
+                                                <li><strong>Amount - &#8358; {{$withdrawal->amount}}</strong></li>
+                                                <li>
+                                                    <span>Request Date - {{\Carbon\Carbon::parse($withdrawal->created_at)->addHour()->format('M d Y')}}</span>
+                                                    <span>@if($withdrawal->proof_of_payment !== null)
+                                                            <a class="btn btn-primary view-withdrawal"
+                                                               rel="noreferrer noopener"
+                                                               target="_blank"
+                                                               href="/reapway/public/store/{{$withdrawal->proof_of_payment}}"
+                                                            >View
+                                                                File</a>
+                                                        @else
+                                                            No proof yet
+                                                        @endif
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <strong>
+                                                        @can('admin-actions')
+                                                            <button class="btn btn-primary upload-withdrawal-payment-btn"
+                                                                    data-id="{{$withdrawal->id}}">Upload
+                                                        </button>
+                                                        @endcan
+                                                        @can('client-actions')
+                                                            <button class="btn btn-primary confirm-withdrawal-btn"
+                                                                    data-id="{{$withdrawal->id}}">Confirm
+                                                        </button>
+                                                        @endcan
+                                                    </strong>
+                                                    <span>
+                                                        Status -
+                                                        @if($withdrawal->confirmation_status == 1)
+                                                            <span class="text-success">Paid</span>
+                                                        @elseif($withdrawal->confirmation_status == 0)
+                                                            <span class="text-warning">Pending</span>
+                                                        @endif
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         @include('withdrawal.upload_withdrawal_payment_proof')

@@ -13,7 +13,7 @@
         <div class="container-fluid">
             @include('layouts.statistics')
             <div class="section-table mt-4">
-                <div class="row">
+                <div class="row big-screen">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -22,37 +22,38 @@
                                     <table class="table table-striped table-hover data-table">
                                         <thead>
                                         <tr>
+                                            <th>Investor</th>
                                             <th>Package</th>
                                             <th>Capital</th>
                                             <th>Percentage</th>
                                             <th>ROI</th>
-                                            <th>Created_at</th>
+                                            <th>Created_On</th>
                                             <th>Status</th>
                                             <th>Maturity</th>
                                             <th>Withdrawn</th>
-                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach( $investments as $investment)
                                             <tr>
+                                                <td>{{$investment->user->name}}</td>
                                                 <td>{{$investment->package->name}}</td>
                                                 <td>{{number_format($investment->capital)}}</td>
                                                 <td>{{$investment->package->percentage}} %</td>
                                                 <td>{{number_format((($investment->capital * $investment->package->percentage)/100) + $investment->capital) }}</td>
-                                                <td>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($investment->created_at)->format('M d Y')}}</td>
                                                 <td>
                                                     @if($investment->status == 1)
-                                                        <span class="badge badge-success">Approved</span>
+                                                        <span class="text-success">Approved</span>
                                                     @else
-                                                        <span class="badge badge-warning">Pending Confirmation</span>
+                                                        <span class="text-warning">Pending Confirmation</span>
                                                     @endif
                                                 </td>
                                                 <td>
                                                     @if($investment->maturity == 1)
-                                                        <label class="badge badge-success">Matured</label>
+                                                        <span class="text-success">Matured</span>
                                                     @else
-                                                        <label class="badge badge-danger">Not Due</label>
+                                                        <span class="text-danger">Not Due</span>
                                                     @endif
                                                 </td>
                                                 <td>@if($investment->withdrawn == 1)
@@ -60,19 +61,6 @@
                                                     @else
                                                         No
                                                     @endif
-                                                </td>
-                                                <td>
-                                                    @switch($investment)
-                                                        @case($investment->maturity == 1 && $investment->withdrawn == 1)
-                                                        <span class="badge badge-success"> Completed</span>
-                                                        @break
-                                                        @case($investment->maturity == 1 && $investment->withdrawn == 0)
-                                                        <a href="{{route('investment.withdraw', $hashIds->encode($investment->id))}}"
-                                                           class="btn btn-primary withdraw">Withdraw
-                                                        </a>
-                                                        @break
-                                                        @default <span class="badge badge-warning">In progress</span>
-                                                    @endswitch
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -83,29 +71,79 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="section-chart">
-                <div class="row">
+
+                {{--                SMALL SCREEN--}}
+                <div class="row small-screen">
                     <div class="col-md-12">
-                        <!--Card-->
                         <div class="card">
-
-                            <!-- Card header -->
-                            <div class="card-header">Line chart</div>
-
-                            <!--Card content-->
                             <div class="card-body">
-
-                                <canvas id="lineChart"></canvas>
-
+                                <h4 class="card-title">Investment History</h4>
+                                @foreach( $investments as $investment)
+                                    <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                        <div class="sale-box-inner">
+                                            <div class="sale-box-head">
+                                                <h4>{{$investment->user->name}}</h4>
+                                            </div>
+                                            <ul class="sale-box-desc">
+                                                <li>
+                                                    <strong>Package - {{$investment->package->name}}</strong>
+                                                </li>
+                                                <li>
+                                                    <span>Capital - ₦{{number_format($investment->capital)}}
+                                                        @ {{$investment->package->percentage}} %</span>
+                                                    <strong>ROI - ₦{{number_format((($investment->capital * $investment->package->percentage)/100) + $investment->capital) }}</strong>
+                                                </li>
+                                                <li>
+                                                    <strong>Created
+                                                        on {{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y')}}</strong>
+                                                    <span>Status - @if($investment->status == 1)
+                                                            <span class="text-success">Approved</span>
+                                                        @else
+                                                            <span
+                                                                class="text-warning">Pending Confirmation</span>
+                                                        @endif</span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        @if($investment->maturity == 1)
+                                                            <span class="text-success">Matured</span>
+                                                        @else
+                                                            <span class="text-danger">Not Matured</span>
+                                                        @endif
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
-
                         </div>
-                        <!--/.Card-->
                     </div>
                 </div>
             </div>
+
+{{--            <div class="section-chart">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12">--}}
+{{--                        <!--Card-->--}}
+{{--                        <div class="card">--}}
+
+{{--                            <!-- Card header -->--}}
+{{--                            <div class="card-header">Line chart</div>--}}
+
+{{--                            <!--Card content-->--}}
+{{--                            <div class="card-body">--}}
+
+{{--                                <canvas id="lineChart"></canvas>--}}
+
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+{{--                        <!--/.Card-->--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </main>
     @endsection

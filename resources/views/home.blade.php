@@ -9,11 +9,11 @@
     <!--Main Navigation-->
 
     <!--Main layout-->
-    <main class="pt-5 mx-lg-5" id="dashboard">
-        <div class="container-fluid">
+    <main class="pt-5 mx-lg-5 " id="dashboard">
+        <div class="container-fluid" >
             <div class="row">
                 <div class="col-md-4">
-                    <div class="dashboard-flash-card bg-default ">
+                    <div class="dashboard-flash-card dashboard-flash-card-first">
                         <h6 class="font-weight-bold text-center">Current Total Investment</h6>
                         <table>
                             @foreach($runningInvestments as $runningInvestment)
@@ -59,7 +59,7 @@
 
 
                 <div class="col-md-4">
-                    <div class="dashboard-flash-card bg-default">
+                    <div class="dashboard-flash-card dashboard-flash-card-third">
                         <h6 class="font-weight-bold text-center">Balance</h6>
 
                         <h4 class="font-weight-bold text-center">
@@ -83,7 +83,7 @@
             </div>
             <div class="section-table mt-4">
                 @include('layouts.message')
-                <div class="row">
+                <div class="row big-screen">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -110,19 +110,19 @@
                                                 <td>{{number_format($investment->capital)}}</td>
                                                 <td>{{$investment->package->percentage}} %</td>
                                                 <td>{{number_format((($investment->capital * $investment->package->percentage)/100) + $investment->capital) }}</td>
-                                                <td>{{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y H:i')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($investment->created_at)->format('M d Y')}}</td>
                                                 <td>
                                                     @if($investment->status == 1)
-                                                        <span class="badge badge-success">Approved</span>
+                                                        <span class="text-success">Approved</span>
                                                     @else
-                                                        <span class="badge badge-warning">Pending Confirmation</span>
+                                                        <span class="text-warning">Pending Confirmation</span>
                                                     @endif
                                                 </td>
                                                 <td>
                                                     @if($investment->maturity == 1)
-                                                        <label class="badge badge-success">Matured</label>
+                                                        <label class="text-success">Matured</label>
                                                     @else
-                                                        <label class="badge badge-danger">Not Due</label>
+                                                        <label class="text-danger">Not Due</label>
                                                     @endif
                                                 </td>
                                                 <td>@if($investment->withdrawn == 1)
@@ -134,15 +134,14 @@
                                                 <td>
                                                     @switch($investment)
                                                         @case($investment->maturity == 1 && $investment->withdrawn == 1)
-                                                        <span class="badge badge-success"> Completed</span>
+                                                        <span class="text-success"> Completed</span>
                                                         @break
                                                         @case($investment->maturity == 1 && $investment->withdrawn == 0)
                                                         <a href="{{route('investment.withdraw', $hashIds->encode($investment->id))}}"
-                                                           class="btn btn-primary withdraw"
-                                                           style="padding: 10px; font-size: 1em; border-radius: 5px; border:none; margin-top: 10px;">Withdraw
+                                                           class="btn btn-primary withdraw">Withdraw
                                                         </a>
                                                         @break
-                                                        @default <span class="badge badge-warning">In progress</span>
+                                                        @default <span class="text-warning">In progress</span>
                                                     @endswitch
                                                 </td>
                                             </tr>
@@ -154,26 +153,62 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="section-chart">
-                <div class="row">
+
+                {{--                SMALL SCREEN--}}
+                <div class="row small-screen">
                     <div class="col-md-12">
-                        <!--Card-->
                         <div class="card">
-
-                            <!-- Card header -->
-                            <div class="card-header">Line chart</div>
-
-                            <!--Card content-->
                             <div class="card-body">
-
-                                <canvas id="lineChart"></canvas>
-
+                                <h4 class="card-title">Investment History</h4>
+                                @foreach( $investments as $investment)
+                                    <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                        <div class="sale-box-inner">
+                                            <div class="sale-box-head">
+                                                <h4>{{$investment->package->name}}</h4>
+                                            </div>
+                                            <ul class="sale-box-desc">
+                                                <li>
+                                                    <span>Capital - ₦{{number_format($investment->capital)}}
+                                                        @ {{$investment->package->percentage}} %</span>
+                                                    <strong>ROI - ₦{{number_format((($investment->capital * $investment->package->percentage)/100) + $investment->capital) }}</strong>
+                                                </li>
+                                                <li>
+                                                    <strong>Created
+                                                        on {{\Carbon\Carbon::parse($investment->created_at)->addHour()->format('M d Y')}}</strong>
+                                                    <span>Status - @if($investment->status == 1)
+                                                            <span class="text-success">Approved</span>
+                                                        @else
+                                                            <span
+                                                                class="text-warning">Pending Confirmation</span>
+                                                        @endif</span>
+                                                </li>
+                                                <li>
+                                                    <strong>
+                                                        @if($investment->maturity == 1)
+                                                            <label>Matured</label>
+                                                        @else
+                                                            <label>Not Matured</label>
+                                                        @endif
+                                                    </strong>
+                                                    <span>Investment stage -  @switch($investment)
+                                                            @case($investment->maturity == 1 && $investment->withdrawn == 1)
+                                                            <span class="text-success"> Completed</span>
+                                                            @break
+                                                            @case($investment->maturity == 1 && $investment->withdrawn == 0)
+                                                            <a href="{{route('investment.withdraw', $hashIds->encode($investment->id))}}"
+                                                               class="btn btn-primary withdraw">Withdraw</a>
+                                                            @break
+                                                            @default <span
+                                                                class="text-warning">In progress</span>
+                                                        @endswitch</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
-
                         </div>
-                        <!--/.Card-->
                     </div>
                 </div>
             </div>

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::with('investment')->get();
+        $users = User::with('investment')->where('id', '!=', 1)->get();
         return view('users.index', compact('users'))
             ->with('i', (\request()->input('page', 1)-1)*10);
     }

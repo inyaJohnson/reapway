@@ -42,16 +42,15 @@
                         <!-- Social icons -->
                         <div class="pb-4">
                             <span class="font-weight-bold">Follow Us: </span>
-                            <a href="https://www.facebook.com/" target="_blank">
-                                <i class="fab fa-facebook-f mr-3"></i>
+                            <a href="https://www.facebook.com/" target="_blank" class="social-link">
+                                <img src="{{asset('frontend/img/social_links/facebook.svg')}}"  alt="facebook">
+                            </a>
+                            <a href="https://twitter.com/" target="_blank"  class="social-link">
+                                <img src="{{asset('frontend/img/social_links/twitter.svg')}}"  alt="twitter">
                             </a>
 
-                            <a href="https://twitter.com/" target="_blank">
-                                <i class="fab fa-twitter mr-3"></i>
-                            </a>
-
-                            <a href="https://www.youtube.com/watch?v=7MUISDJ5Z" target="_blank">
-                                <i class="fab fa-youtube mr-3"></i>
+                            <a href="https://twitter.com/" target="_blank"  class="social-link">
+                                <img src="{{asset('frontend/img/social_links/instagram.svg')}}" alt="instagram">
                             </a>
 
                         </div>

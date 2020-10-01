@@ -1,13 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-<body class="bg-white">
-
+    <body class="bg-white">
     <!--Main Navigation-->
     <header class="home-header">
         <!-- Navbar -->
-        @include('layouts.welcome_navigation')
-        <!-- Navbar -->
+    @include('layouts.welcome_navigation')
+    <!-- Navbar -->
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
@@ -16,30 +15,35 @@
                         Invest Securely And
                         Profitably
                     </h1>
-                    <p class="mt-4" data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500">
+                    <p class="mt-4" data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500"
+                       data-aos-duration="500">
                         We are experts at studying the financial
                         market and placing accurate profit laden
                         trades.
                     </p>
 
                     <p class="mt-4" data-aos="fade-left"
-     data-aos-anchor="#example-anchor"
-     data-aos-offset="500"
-     data-aos-duration="75000">
+                       data-aos-anchor="#example-anchor"
+                       data-aos-offset="500"
+                       data-aos-duration="75000">
                         Earn 15% - 20% returns on investments
                         on Bronze and Silver plans respectively.
                     </p>
 
                     <p class="mt-4" data-aos="fade-left"
-     data-aos-anchor="#example-anchor"
-     data-aos-offset="500"
-     data-aos-duration="1000">
+                       data-aos-anchor="#example-anchor"
+                       data-aos-offset="500"
+                       data-aos-duration="1000">
                         We are experts at studying the financial
                         market and placing accurate profit laden
                         trades.
                     </p>
-                    <button class="btn reap-bg-orange-color text-white font-weight-bold btn-rounded mt-4 waves-effect px-5 mx-auto d-block" type="submit">Get Started
-                    </button>
+                    <a href="{{route('register')}}">
+                        <button
+                            class="btn reap-bg-orange-color text-white font-weight-bold btn-rounded mt-4 waves-effect px-5 mx-auto d-block">
+                            Get Started
+                        </button>
+                    </a>
 
                 </div>
             </div>
@@ -106,43 +110,38 @@
                 </div>
                 <div class="row justify-content-md-center text-center mt-3">
                     <div class="col-md-4 mb-4" data-aos="fade-up"
-     data-aos-anchor-placement="center-bottom">
+                         data-aos-anchor-placement="center-bottom">
                         <div class="card" style="">
                             <div class="card-body">
-                                <h4 class="card-title font-weight-bolder mt-4">GOLD</h4>
+                                <h1 class="card-title font-weight-bolder mt-4">GOLD</h1>
                                 <p class="stroke"></p>
-                                <h2 class="card-title font-weight-bolder text-danger">25%</h2>
-
-                                <p class="card-text font-weight-bold">N2,000,000 (2M)</p>
-                                <p class="card-text font-weight-bold">N2,000,000 (2M)</p>
-
-                                <a href="#" class="btn reap-bg-orange-color text-white">Invest</a>
+                                <h1 class="card-title font-weight-bolder reap-orange-color">25%</h1>
+                                <p class="card-text font-weight-bold">N2,000,000 (2M) <br> - <br>N10,000,000 (10M)</p>
+                                <a href="{{route('login')}}" class="btn reap-bg-orange-color text-white">Invest</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mb-4" data-aos="fade-up"
-     data-aos-anchor-placement="center-bottom">
+                         data-aos-anchor-placement="center-bottom">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title font-weight-bolder mt-4">SILVER</h4>
+                                <h1 class="card-title font-weight-bolder mt-4">SILVER</h1>
                                 <p class="stroke"></p>
-                                <h2 class="card-title font-weight-bolder text-success">25%</h2>
-                                <p class="card-text font-weight-bold">N2,000,000 (2M)</p>
-                                <p class="card-text font-weight-bold">N2,000,000 (2M)</p>
-                                <a href="#" class="btn reap-bg-orange-color text-white">Invest</a>
+                                <h1 class="card-title font-weight-bolder reap-color">25%</h1>
+                                <p class="card-text font-weight-bold">N500,000 (500k) <br> - <br>N1,950,000 (1.9M)</p>
+                                <a href="{{route('login')}}" class="btn reap-bg-color text-white">Invest</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mb-4" data-aos="fade-up"
-     data-aos-anchor-placement="center-bottom">
+                         data-aos-anchor-placement="center-bottom">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title font-weight-bolder mt-4">BRONZE</h4>
+                                <h1 class="card-title font-weight-bolder mt-4">BRONZE</h1>
                                 <p class="stroke"></p>
-                                <h2 class="card-title font-weight-bolder">25%</h2>
-                                <p class="card-text font-weight-bold">N2,000,000 (2M)</p>
-                                <p class="card-text font-weight-bold">N2,000,000 (2M)</p>
-                                <a href="#" class="btn reap-bg-orange-color text-white">Invest</a>
+                                <h1 class="card-title font-weight-bolder">15%</h1>
+                                <p class="card-text font-weight-bold">N20,000 (20k) <br> - <br>N45,000 (45k)</p>
+                                <a href="{{route('login')}}" class="btn text-white" style="background-color: #222;">Invest</a>
                             </div>
                         </div>
                     </div>
@@ -154,42 +153,46 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-10 mx-auto">
-                    <div class="row">
-                    <div class="col-md-3 mx-auto" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                        <img class="mx-auto mt-5 d-block" style="height: 200px;" src="{{asset('frontend/img/undraw_personal_finance_tqcd.png')}}" alt="investment-ima" />
-                        <h4 class=" text-center reap-color font-weight-bold">The Smartest Investments Available
-                        </h4>
-                        <p class="text-center">
-                            ReapWay Investments promises you an iron-clad assurance on the
-                            Security of your Investments. With us, you can invest and sleep soundly
-                            knowing your money is safe.
+                        <div class="row">
+                            <div class="col-md-3 mx-auto" data-aos="fade-up" data-aos-anchor-placement="top-center">
+                                <img class="mx-auto mt-5 d-block" style="height: 200px;"
+                                     src="{{asset('frontend/img/undraw_personal_finance_tqcd.png')}}"
+                                     alt="investment-ima"/>
+                                <h4 class=" text-center reap-color font-weight-bold">The Smartest Investments Available
+                                </h4>
+                                <p class="text-center">
+                                    ReapWay Investments promises you an iron-clad assurance on the
+                                    Security of your Investments. With us, you can invest and sleep soundly
+                                    knowing your money is safe.
 
-                        </p>
-                    </div>
-                    <div class="col-md-3 mx-auto" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                        <img class="mx-auto mt-5 d-block" style="height: 200px;" src="{{asset('frontend/img/undraw_investment_xv9d.png')}}" alt="investment-ima" />
-                        <h4 class="text-center reap-color font-weight-bold">The Smartest Investments Available
-                        </h4>
-                        <p class="text-center">
-                            ReapWay Investments helps you reach your Financial Goals within
-                            the shortest time possible with the Competitive ROI we offer for
-                            every of our Products and Services.
+                                </p>
+                            </div>
+                            <div class="col-md-3 mx-auto" data-aos="fade-up" data-aos-anchor-placement="top-center">
+                                <img class="mx-auto mt-5 d-block" style="height: 200px;"
+                                     src="{{asset('frontend/img/undraw_investment_xv9d.png')}}" alt="investment-ima"/>
+                                <h4 class="text-center reap-color font-weight-bold">The Smartest Investments Available
+                                </h4>
+                                <p class="text-center">
+                                    ReapWay Investments helps you reach your Financial Goals within
+                                    the shortest time possible with the Competitive ROI we offer for
+                                    every of our Products and Services.
 
-                        </p>
-                    </div>
-                    <div class="col-md-3 mx-auto" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                        <img class="mx-auto mt-5 d-block" style="height: 200px;" src="{{asset('frontend/img/undraw_Security_on_ff2u.png')}}" alt="investment-ima" />
-                        <h4 class="text-center reap-color font-weight-bold">The Smartest Investments Available
-                        </h4>
-                        <p class="text-center">At ReapWay Investments, we believe in cutting coats according
-                            to the body’s size. This is why we offer Clients-Friendly Investment
-                            Plans for even the Minimum Wage Earner!
-                        </p>
+                                </p>
+                            </div>
+                            <div class="col-md-3 mx-auto" data-aos="fade-up" data-aos-anchor-placement="top-center">
+                                <img class="mx-auto mt-5 d-block" style="height: 200px;"
+                                     src="{{asset('frontend/img/undraw_Security_on_ff2u.png')}}" alt="investment-ima"/>
+                                <h4 class="text-center reap-color font-weight-bold">The Smartest Investments Available
+                                </h4>
+                                <p class="text-center">At ReapWay Investments, we believe in cutting coats according
+                                    to the body’s size. This is why we offer Clients-Friendly Investment
+                                    Plans for even the Minimum Wage Earner!
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                    </div>
-                </div>
-             
+
             </div>
         </div>
         <div id="investor">
@@ -227,33 +230,48 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="customer-card" data-aos="fade-up" data-aos-duration="3000">
-                            <p>
-                                It has been a gradual process. But little steps is the key. In
-                                the aspect of finance, Piggyvest has made that possible. It's a
-                                good feat to attain success in small strives. For me. It's great
-                            </p>
-                            <p class="reap-color">Kafayat Bolanle</p>
-                            <img src="{{asset('frontend/img/Mask Group 5.png')}}" class="" alt="">
+                            <div class="customer-card-content">
+                                <p>
+                                    It has been a gradual process. But little steps is the key. In
+                                    the aspect of finance, Piggyvest has made that possible. It's a
+                                    good feat to attain success in small strives. For me. It's great
+                                </p>
+                            </div>
+                            <div class="customer-card-content">
+                                <p class="reap-color"><i>Kafayat Bolanle</i></p>
+                                <div class="spacer"></div>
+                                <div><img src="{{asset('frontend/img/Mask Group 5.png')}}" class="" alt=""></div>
+                            </div>
                         </div>
 
                         <div class="customer-card" data-aos="fade-up" data-aos-duration="3000">
-                            <p>
-                                It has been a gradual process. But little steps is the key. In
-                                the aspect of finance, Piggyvest has made that possible. It's a
-                                good feat to attain success in small strives. For me. It's great
-                            </p>
-                            <p class="reap-color">Kafayat Bolanle</p>
-                            <img src="{{asset('frontend/img/Mask Group 5.png')}}" class="" alt="">
+                            <div class="customer-card-content">
+                                <p>
+                                    It has been a gradual process. But little steps is the key. In
+                                    the aspect of finance, Piggyvest has made that possible. It's a
+                                    good feat to attain success in small strives. For me. It's great
+                                </p>
+                            </div>
+                            <div class="customer-card-content">
+                                <p class="reap-color"><i>Kafayat Bolanle</i></p>
+                                <div class="spacer"></div>
+                                <div><img src="{{asset('frontend/img/Mask Group 5.png')}}" class="" alt=""></div>
+                            </div>
                         </div>
 
                         <div class="customer-card" data-aos="fade-up" data-aos-duration="3000">
-                            <p>
-                                It has been a gradual process. But little steps is the key. In
-                                the aspect of finance, Piggyvest has made that possible. It's a
-                                good feat to attain success in small strives. For me. It's great
-                            </p>
-                            <p class="reap-color">Kafayat Bolanle</p>
-                            <img src="{{asset('frontend/img/Mask Group 5.png')}}" class="" alt="">
+                            <div class="customer-card-content">
+                                <p>
+                                    It has been a gradual process. But little steps is the key. In
+                                    the aspect of finance, Piggyvest has made that possible. It's a
+                                    good feat to attain success in small strives. For me. It's great
+                                </p>
+                            </div>
+                            <div class="customer-card-content">
+                                <p class="reap-color"><i>Kafayat Bolanle</i></p>
+                                <div class="spacer"></div>
+                                <div><img src="{{asset('frontend/img/Mask Group 5.png')}}" class="" alt=""></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -267,13 +285,16 @@
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="font-weight-bold">What is ReapWay all about</span><span class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="font-weight-bold">What is ReapWay all about</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
                                 </button>
                             </h2>
                         </div>
 
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                             data-parent="#accordionExample">
                             <div class="card-body">
                                 <p>
                                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
@@ -295,12 +316,16 @@
                     <div class="card">
                         <div class="card-header" id="headingTwo">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <span class="font-weight-bold">How do I start investing with Reapway?</span><span class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                                <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                    <span class="font-weight-bold">How do I start investing with Reapway?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                             data-parent="#accordionExample">
                             <div class="card-body">
                                 <p>
                                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
@@ -323,12 +348,16 @@
                     <div class="card">
                         <div class="card-header" id="headingThree">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <span class="font-weight-bold"> Who can save?</span><span class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                                <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                    <span class="font-weight-bold"> Who can save?</span><span class="float-right"><i
+                                            class="fas fa-sort-down reap-color"></i></span>
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                             data-parent="#accordionExample">
                             <div class="card-body">
                                 <p>
                                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
@@ -350,12 +379,16 @@
                     <div class="card">
                         <div class="card-header" id="headingFour">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    <span class="font-weight-bold"> What are the investing plan available?</span><span class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                                <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
+                                    <span class="font-weight-bold"> What are the investing plan available?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapseFour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExample">
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingfour"
+                             data-parent="#accordionExample">
                             <div class="card-body">
                                 <p>
                                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
@@ -378,12 +411,16 @@
                     <div class="card">
                         <div class="card-header" id="headingFive">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    <span class="font-weight-bold"> How much can I start with?</span><span class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                                <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseFive" aria-expanded="false"
+                                        aria-controls="collapseFive">
+                                    <span class="font-weight-bold"> How much can I start with?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                             data-parent="#accordionExample">
                             <div class="card-body">
                                 <p>
                                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
@@ -410,7 +447,7 @@
     <!--Main layout-->
     @endsection
     @section('footer')
-    @include('layouts.footer')
+        @include('layouts.footer')
     @endsection
 
-</body>
+    </body>

@@ -6,41 +6,35 @@
 @font-face {
     font-family: "Circular Std Book Italic";
     src: url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.eot");
-    src: url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.eot?#iefix")
-            format("embedded-opentype"),
-        url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.woff2")
-            format("woff2"),
-        url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.woff")
-            format("woff"),
-        url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.ttf")
-            format("truetype"),
-        url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.svg#Circular Std Book Italic")
-            format("svg");
+    src: url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/9aecd41d350ef7dc4ccb27f4fff749db.svg#Circular Std Book Italic") format("svg");
 }
 
 @font-face {
     font-family: "Circular Std Medium";
     src: url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.eot");
-    src: url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.eot?#iefix")
-            format("embedded-opentype"),
-        url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.woff2")
-            format("woff2"),
-        url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.woff")
-            format("woff"),
-        url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.ttf")
-            format("truetype"),
-        url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.svg#Circular Std Medium")
-            format("svg");
+    src: url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.svg#Circular Std Medium") format("svg");
 }
+
 .reap-bg-color {
     background-color: var(--main-color);
 }
+
 .reap-color {
     color: var(--main-color);
 }
+
 .reap-orange-color {
     color: var(--inverse-color);
 }
+
 .reap-bg-orange-color {
     background-color: var(--inverse-color);
 }
@@ -68,7 +62,9 @@ h1 {
     font-size: 45px;
     line-height: 55px;
     letter-spacing: -1px;
+    font-weight: bold;
 }
+
 .home-header {
     position: relative;
     min-height: 100vh;
@@ -76,21 +72,39 @@ h1 {
     background-size: cover;
     background-repeat: no-repeat;
     background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
-        url("../img/Image\ 1.png");
+    url("../img/Image 1.png");
     background-blend-mode: multiply;
 }
 
+
+@media (min-width: 1920px) {
+    .home-header {
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%), url("../img/Image 2.png");
+        background-blend-mode: multiply;
+    }
+
+}
+
 .home-header h1 {
-    margin-top: 5em;
+    margin-top: 4em;
 }
 
 .home-header p {
     color: #ededed;
-    font-weight: 300 !important;
+    font-weight: bold !important;
     font-family: 'Epilogue', sans-serif;
 }
 
-.home-header .desktop-img{
+.home-header a:hover button {
+    background-color: #ff8f00;
+}
+
+.home-header .desktop-img {
     margin-left: 10%;
 }
 
@@ -99,6 +113,7 @@ h1 {
 .home-header .custom-toggler.navbar-toggler {
     border-color: lightgreen;
 }
+
 /* Setting the stroke to green using rgb values (0, 128, 0) */
 
 .custom-toggler .navbar-toggler-icon {
@@ -112,21 +127,32 @@ h1 {
 #how-it-works {
     padding-top: 2em;
     position: relative;
-    /* background: url("../img/Ellipse\ 1.png"); */
-    background-color: #4f5a4513;
+    background-color: #408a0336;
+    padding-bottom: 5em;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
 }
+
+@media (max-width: 425px) {
+    #how-it-works {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+
 
 #how-it-works .col-md-3 > div {
     margin: auto;
     padding-top: 30px;
-    background-color: #408a039a;
+    background-color: green;
     border-radius: 100px;
     height: 130px;
     width: 130px;
 }
+
 #how-it-works p {
     color: #0e0c0ee0;
-   }
+}
 
 #how-it-works .col-md-3 > div > img {
     margin: auto;
@@ -141,9 +167,10 @@ p {
 
 #best-investment-plan .card {
     display: block;
-
     margin: auto;
+    border-radius: 12px;
 }
+
 #best-investment-plan .card-body > p.stroke {
     display: block;
     height: 2px;
@@ -152,10 +179,22 @@ p {
     margin: auto;
 }
 
-#best-investment-plan .card-body > h2 {
-    margin-top: 1.8em;
-    margin-bottom: 1.8em;
-    font-weight: 900;
+#best-investment-plan .card-body > h1 {
+    margin-top: 1em;
+    margin-bottom: 0.1em;
+    font-weight: bold;
+}
+
+#best-investment-plan .card-text {
+    font-size: 1.5em;
+}
+
+#best-investment-plan .card-body a {
+    border-radius: 5px;
+}
+
+#best-investment-plan .card-title {
+    padding-bottom: 10px;
 }
 
 /* Investment */
@@ -163,9 +202,10 @@ p {
     background-color: wheat;
     margin-top: 8em;
     margin-bottom: 8em;
-    padding:4em 0em;
+    padding: 4em 0em;
 }
-#investment p{
+
+#investment p {
     color: #0e0c0ebe;
 }
 
@@ -203,18 +243,31 @@ main #investor img {
 #customers .customer-card {
     position: relative;
     background-color: #fff;
+    display: flex;
+    flex-flow: column wrap;
     border-radius: 1em;
     padding: 1em;
     margin: 1em auto 2em;
-
     box-shadow: 2px 2px 20px #babcc25b, -2px -2px 20px #babcc25b;
+}
+
+#customers .customer-card-content {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0.5em;
 }
 
 #customers .customer-card img {
     position: absolute;
     right: 2em;
-    bottom: 8px;
+    bottom: 25px;
     height: 80px;
+}
+
+@media (min-width: 426px) {
+    #customers .customer-card img {
+        bottom: 10px;
+    }
 }
 
 #faq {
@@ -233,6 +286,7 @@ main #faq .card .card-header .btn:hover {
 main #faq .card .card-header span:first-child {
     color: rgba(0, 128, 43, 0.63);
 }
+
 /* MAIN SECTIONS END */
 
 nav .nav-link {
@@ -249,6 +303,7 @@ nav .nav-link:hover {
     border-radius: 0px;
     /* border-bottom-width: 30px; */
 }
+
 .navbar {
     box-shadow: none;
 }
@@ -293,6 +348,7 @@ footer button {
     p {
         font-size: 12px;
     }
+
     .home-header {
         position: relative;
         min-height: 100vh;
@@ -301,9 +357,10 @@ footer button {
         background-position: center;
         background-repeat: no-repeat;
         background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
-            url("../img/Image\ 1.png");
+        url("../img/Image\ 1.png");
         background-blend-mode: multiply;
     }
+
     .navbar-nav {
         display: inline;
     }
@@ -311,15 +368,16 @@ footer button {
     .navbar .nav-item .nav-link {
         display: inline;
     }
+
     .hide-on-mobile {
         display: none !important;
     }
 
- 
 
     .fixed-top {
         background: white !important;
     }
+
     .fixed-top .nav-link {
         color: green !important;
     }
@@ -327,11 +385,11 @@ footer button {
     /* .mobile-nav{
             background-color: white;
         } */
-
     h3 {
         padding: 0px 1em;
         font-size: 25px;
     }
+
     .home-header h1 {
         margin-top: 3.5em;
         text-align: center;
@@ -350,7 +408,6 @@ footer button {
         height: 200px;
     }
 
-  
 
     main #investor .title {
         width: 60%;
@@ -360,18 +417,29 @@ footer button {
         margin: 2em auto 1em;
         font-weight: 900;
     }
+
     #investor img {
         width: 200px;
     }
 
-    #customers .customer-card img{
+    #customers .customer-card img {
         height: 50px;
     }
 }
 
 
-@media (min-width: 990px) and (max-device-width: 1024px){
-     .home-header .desktop-img{
+@media (min-width: 990px) and (max-device-width: 1024px) {
+    .home-header .desktop-img {
         margin-left: 1em;
     }
+}
+
+.social-link {
+    padding: 7px;
+}
+
+
+.social-link img {
+    height: 32px;
+    width: 32px;
 }

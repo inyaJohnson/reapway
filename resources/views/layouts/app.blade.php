@@ -24,6 +24,8 @@
     <!-- Your custom styles (optional) -->
     <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
 
+    <link href="{{asset('dashboard/js/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet">
+
     <link href="{{asset('dashboard/DataTables/datatables.min.css')}}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('frontend/img/favicon.png')}}">

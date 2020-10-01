@@ -43,10 +43,3 @@ class AdminData
     }
 }
 
-//
-//Investment::with('user', 'package')->where([
-//    ['status', 1],
-//    ['withdrawn', 0],
-//])
-//    ->whereRaw()
-//    ->latest()->get();

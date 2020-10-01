@@ -20,7 +20,7 @@
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Client Request</h4>
+                                <h4 class="card-title">Investors Request</h4>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-hover data-table">
                                         <thead>
@@ -47,7 +47,7 @@
                                                        style="padding: 10px;">View</a></td>
                                                 <td>@if($request->attachment !== null)
                                                         <a class='btn btn-link'
-                                                           href='/rocket_pay/public/store/{{$request->attachment}}'
+                                                           href='/reapway/public/store/{{$request->attachment}}'
                                                            download>Download File</a>
                                                     @else
                                                         No File
@@ -64,6 +64,60 @@
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                {{--                SMALL SCREEN--}}
+                <div class="row small-screen">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Investors Request</h4>
+                                @foreach($requests as $request)
+                                    <div class="col-md-3 sale-box wow fadeInUp" data-wow-iteration="1">
+                                        <div class="sale-box-inner">
+                                            <div class="sale-box-head">
+                                                <h4>{{$request->name}}</h4>
+                                            </div>
+                                            <ul class="sale-box-desc">
+                                                <li>
+                                                    <strong>{{$request->subject}}</strong>
+                                                    <span>{{$request->email}}</span>
+                                                </li>
+                                                <li>
+                                                    <span> Created on - {{\Carbon\Carbon::parse($request->created_at)->addHour()->format('M d Y H:i')}}</span>
+                                                    <span><a class="btn btn-primary request-message-btn" href="#"
+                                                             data-toggle="modal"
+                                                             data-target="#request-message-modal"
+                                                             data-id="{{$request->id}}"
+                                                             style="padding: 10px;">View</a>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        @if($request->attachment !== null)
+                                                            <a class='btn btn-link'
+                                                               href='/reapway/public/store/{{$request->attachment}}'
+                                                               download>Download File</a>
+                                                        @else
+                                                            No File
+                                                        @endif
+                                                    </span>
+                                                    <span>
+                                                        @if($request->response_status == 1)
+                                                            Yes
+                                                        @else
+                                                            No
+                                                        @endif
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
