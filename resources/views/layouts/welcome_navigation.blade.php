@@ -52,15 +52,15 @@
                 </li>
                 <li class="nav-item mt-2">
                     <a class="nav-link waves-effect"
-                       href="index.html#best-investment-plan">
+                       href="{{url('#best-investment-plan')}}">
                         Plans</a>
                 </li>
                 <li class="nav-item mt-2">
-                    <a class="nav-link waves-effect" href="index.html#investor"
+                    <a class="nav-link waves-effect" href="{{url('#investor')}}"
                     >Testimonies</a>
                 </li>
                 <li class="nav-item mt-2">
-                    <a class="nav-link waves-effect" href="index.html#faq">
+                    <a class="nav-link waves-effect" href="{{url('#faq')}}">
                         FAQ</a>
                 </li>
                 <li class="nav-item mt-2">

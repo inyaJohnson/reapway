@@ -10,9 +10,7 @@
 
                 <div class="col-md-4 font-weight-bold">
                     <p>Get latest financial tips and info from us.</p>
-
                     <p>Subscribe to our newsletter</p>
-
                 </div>
 
                 <div class="col-md-4">
@@ -20,7 +18,7 @@
                         <form class="form-inline">
                             <label for="staticEmail2" class="sr-only">Email</label>
                             <input type="email" class="" id="email" value="Email">
-                            <button type="submit" class="">SUBSCRIBER</button>
+                            <button type="submit" style="width: 40%;">SUBSCRIBER</button>
                         </form>
                     </div>
                 </div>
@@ -37,31 +35,25 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class=" mb-5">
-
+                    <div class="mb-5 social-link-div">
                         <!-- Social icons -->
-                        <div class="pb-4">
-                            <span class="font-weight-bold">Follow Us: </span>
-                            <a href="https://www.facebook.com/" target="_blank" class="social-link">
-                                <img src="{{asset('frontend/img/social_links/facebook.svg')}}"  alt="facebook">
-                            </a>
-                            <a href="https://twitter.com/" target="_blank"  class="social-link">
-                                <img src="{{asset('frontend/img/social_links/twitter.svg')}}"  alt="twitter">
-                            </a>
+                        <span class="font-weight-bold">FOLLOW US </span>
+                        <a href="https://www.facebook.com/" target="_blank" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
 
-                            <a href="https://twitter.com/" target="_blank"  class="social-link">
-                                <img src="{{asset('frontend/img/social_links/instagram.svg')}}" alt="instagram">
-                            </a>
-
-                        </div>
+                        <a href="https://twitter.com/" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--/.Call to action-->
-
-    <hr class="my-4">
 
     <!-- Social icons -->
 

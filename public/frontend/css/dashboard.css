@@ -316,34 +316,34 @@ background-color: green;
 padding: 1.5em;
 } */
 
-footer {
-    padding-top: 3em;
+/*footer {*/
+/*    padding-top: 3em;*/
 
-    background-color: #408a03c5;
-}
+/*    background-color: #408a03c5;*/
+/*}*/
 
-footer input[type="email"] {
-    text-align: center;
-    border-radius: 0px;
-    height: 40px;
-    border: 1px solid rgba(156, 156, 68, 0.555);
-    background-color: #408a03c5;
-    color: white;
-}
+/*footer input[type="email"] {*/
+/*    text-align: center;*/
+/*    border-radius: 0px;*/
+/*    height: 40px;*/
+/*    border: 1px solid rgba(156, 156, 68, 0.555);*/
+/*    background-color: #408a03c5;*/
+/*    color: white;*/
+/*}*/
 
-footer button {
-    border-radius: 0px;
-    border: 1px solid #408a03c5;
-    border: none;
-    height: 40px;
-}
+/*footer button {*/
+/*    border-radius: 0px;*/
+/*    border: 1px solid #408a03c5;*/
+/*    border: none;*/
+/*    height: 40px;*/
+/*}*/
 
-footer p,
-footer small,
-footer span,
-footer i {
-    color: white;
-}
+/*footer p,*/
+/*footer small,*/
+/*footer span,*/
+/*footer i {*/
+/*    color: white;*/
+/*}*/
 
 @media (min-width: 1200px) {
     .navbar,
@@ -387,9 +387,9 @@ footer i {
         width: 100% !important;
     }
 
-    footer input[type="email"] {
-        width: 100%;
-    }
+    /*footer input[type="email"] {*/
+    /*    width: 100%;*/
+    /*}*/
 }
 
 @media (min-width: 990px) {

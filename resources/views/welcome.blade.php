@@ -158,35 +158,33 @@
                                 <img class="mx-auto mt-5 d-block" style="height: 200px;"
                                      src="{{asset('frontend/img/undraw_personal_finance_tqcd.png')}}"
                                      alt="investment-ima"/>
-                                <h4 class=" text-center reap-color font-weight-bold">The Smartest Investments Available
-                                </h4>
+                                <h5 class="text-center reap-color font-weight-bold">The SMARTEST INVESTMENTS Available
+                                </h5>
                                 <p class="text-center">
-                                    ReapWay Investments promises you an iron-clad assurance on the
-                                    Security of your Investments. With us, you can invest and sleep soundly
-                                    knowing your money is safe.
-
+                                    ReapWay Investments helps you reach your Financial Goals within
+                                    the shortest time possible with the Competitive ROI we offer for
+                                    everyone of our Products and Services.
                                 </p>
                             </div>
                             <div class="col-md-3 mx-auto" data-aos="fade-up" data-aos-anchor-placement="top-center">
                                 <img class="mx-auto mt-5 d-block" style="height: 200px;"
                                      src="{{asset('frontend/img/undraw_investment_xv9d.png')}}" alt="investment-ima"/>
-                                <h4 class="text-center reap-color font-weight-bold">The Smartest Investments Available
-                                </h4>
+                                <h5 class="text-center reap-color font-weight-bold">INVEST According To Your MEANS!
+                                </h5>
                                 <p class="text-center">
-                                    ReapWay Investments helps you reach your Financial Goals within
-                                    the shortest time possible with the Competitive ROI we offer for
-                                    every of our Products and Services.
-
+                                    At ReapWay Investments, we believe in cutting coats according
+                                    to the body’s size. This is why we offer Clients-Friendly Investment
+                                    Plans for even the Minimum Wage Earner!
                                 </p>
                             </div>
                             <div class="col-md-3 mx-auto" data-aos="fade-up" data-aos-anchor-placement="top-center">
                                 <img class="mx-auto mt-5 d-block" style="height: 200px;"
                                      src="{{asset('frontend/img/undraw_Security_on_ff2u.png')}}" alt="investment-ima"/>
-                                <h4 class="text-center reap-color font-weight-bold">The Smartest Investments Available
-                                </h4>
-                                <p class="text-center">At ReapWay Investments, we believe in cutting coats according
-                                    to the body’s size. This is why we offer Clients-Friendly Investment
-                                    Plans for even the Minimum Wage Earner!
+                                <h5 class="text-center reap-color font-weight-bold">Invest with ASSURANCE OF SECURITY
+                                </h5>
+                                <p class="text-center">ReapWay Investments promises you an iron-clad assurance on the
+                                    Security of your Investments. With us, you can invest and sleep soundly
+                                    knowing your money is safe.
                                 </p>
                             </div>
                         </div>
