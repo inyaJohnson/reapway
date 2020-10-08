@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('css')
-    <link href="{{asset('frontend/css/dashboard.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/dashboard.css')}}" rel="stylesheet" >
 @endsection
 @section('content')
     <body class="bg-white">

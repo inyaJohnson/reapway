@@ -126,4 +126,10 @@
         </div>
         @include('help.message-modal')
     </main>
-@endsection
+    @endsection
+    <!--Footer-->
+    @section('footer')
+        @include('layouts.footer')
+    @endsection
+    <!--/.Footer-->
+    </body>
