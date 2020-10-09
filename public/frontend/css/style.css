@@ -65,6 +65,15 @@ h1 {
     font-weight: bold;
 }
 
+@media(min-width: 1920px) {
+    h1 {
+        font-size: 60px;
+        line-height: 70px;
+        letter-spacing: -0.5px;
+        font-weight: bold;
+    }
+}
+
 .home-header {
     position: relative;
     min-height: 100vh;
@@ -89,7 +98,6 @@ h1 {
     }
 
 }
-
 
 
 .home-header h1 {
@@ -471,3 +479,21 @@ footer .social-link-div .fab{
     height: 32px;
     width: 32px;
 }
+
+
+.container-fluid{
+    padding-right:5%;
+    padding-left: 5%;
+}
+
+nav .main-logo{
+    padding: 0;
+    margin-left: -13%;
+}
+
+.call-register{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+}
+
