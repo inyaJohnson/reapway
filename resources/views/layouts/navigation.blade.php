@@ -11,17 +11,16 @@
         <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <a href="{{route('welcome')}}">
                 <img src="{{asset('frontend/img//Reapway Logo one (1).png')}}" height="40px"/>
             </a>
         </button>
 
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
         <!-- Links -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -51,15 +50,15 @@
                 </li>
                 <li class="nav-item mt-2">
                     <a class="nav-link waves-effect" style="color: green;"
-                       href="index.html#best-investment-plan">
+                       href="{{url('/#best-investment-plan')}}">
                         Plans</a>
                 </li>
                 <li class="nav-item mt-2">
-                    <a class="nav-link waves-effect" style="color: green;" href="index.html#investor"
+                    <a class="nav-link waves-effect" style="color: green;" href="{{url('/#investor')}}"
                     >Testimonies</a>
                 </li>
                 <li class="nav-item mt-2">
-                    <a class="nav-link waves-effect" style="color: green;" href="index.html#faq">
+                    <a class="nav-link waves-effect" style="color: green;" href="{{url('/#faq')}}">
                         FAQ</a>
                 </li>
                 <li class="nav-item mt-2">
@@ -73,8 +72,6 @@
                         Create A Free Account</a>
                 </li>
             </ul>
-
         </div>
-
     </div>
 </nav>

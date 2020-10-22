@@ -1,0 +1,5 @@
+nav .nav-link {
+    text-decoration: none;
+    color: green !important;
+    font-weight: 800;
+}
