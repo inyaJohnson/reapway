@@ -30,36 +30,20 @@
 
     <link rel="stylesheet" href="{{asset('frontend/img/favicon.png')}}">
 
-    @yield('css')
-
-    <style>
-        .map-container {
-            overflow: hidden;
-            padding-bottom: 56.25%;
-            position: relative;
-            height: 0;
-        }
-
-        .map-container iframe {
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-        }
-    </style>
+    <link href="{{asset('frontend/css/dashboard.css')}}" rel="stylesheet">
 </head>
 
+<body class="bg-white">
+<!--Main Navigation-->
+@include('layouts.dashboard_navigation.layout')
+<!--Main Navigation-->
+
 {{--Content Starts--}}
-@yield('content')
+@yield("main")
 {{--Content Ends--}}
 
-<!--Footer-->
-@yield('footer')
-<!--End Footer-->
-<!-- SCRIPTS -->
-<!-- JQuery -->
-{{--<script type="text/javascript" src="{{asset('frontend/js/jquery-3.5.1.min.js')}}"></script>--}}
+@include('layouts.footer')
+
 
 <script type="text/javascript" src="{{asset('frontend/js/jquery-3.4.1.min.js')}}"></script>
 <!-- <script src="https://unpkg.com/popmotion/dist/popmotion.global.min.js"></script> -->
@@ -81,41 +65,6 @@
 @yield('script')
 
 <script src="https://unpkg.com/aos@next/dist/aos.js" type="text/javascript"></script>
-
-<script>
-    // Animations initialization
-    new WOW().init();
-    AOS.init();
-
-    $(window).scroll(function () {
-        var scroll = $(window).scrollTop();
-        if (scroll < 210) {
-            $('.fixed-top').css('background', 'transparent');
-            $('.fixed-top a').css('color', 'white');
-            $('.fixed-top .btn').css('color', 'green');
-            $('.fixed-top').css("box-shadow", "none");
-        } else if (scroll > 3500) {
-            $('.fixed-top').css('background', '#fff');
-            $('.fixed-top a').css('color', 'green');
-            $('.fixed-top .btn').css('color', 'green');
-        } else {
-            $('.fixed-top').css('background', '#fff');
-            $('.fixed-top a').css('color', 'green');
-            $('.fixed-top').css("box-shadow", "0px 9px 12px -4px rgba(022,022,022,.4)");
-        }
-    });
-
-
-    //     $('.panel-collapse').on('show.bs.collapse', function () {
-    //     $(this).siblings('.panel-heading').addClass('active');
-    //   });
-
-    //   $('.panel-collapse').on('hide.bs.collapse', function () {
-    //     $(this).siblings('.panel-heading').removeClass('active');
-    //   });
-
-
-</script>
 <script>
     jQuery(function ($) {
         var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
@@ -128,5 +77,6 @@
 </script>
 <!--Google Maps-->
 <script src="https://maps.google.com/maps/api/js"></script>
+</body>
 
 </html>

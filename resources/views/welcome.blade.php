@@ -5,7 +5,7 @@
     <!--Main Navigation-->
     <header class="home-header">
         <!-- Navbar -->
-    @include('layouts.welcome_navigation')
+    @include('layouts.navigation')
     <!-- Navbar -->
         <div class="container-fluid">
             <div class="row">

@@ -1,16 +1,8 @@
-@extends('layouts.app')
-@section('css')
-    <link href="{{asset('frontend/css/dashboard.css')}}" rel="stylesheet">
-@endsection
-@section('content')
-    <body class="bg-white">
-    <!--Main Navigation-->
-    @include('layouts.dashboard_navigation.layout')
-    <!--Main Navigation-->
-
+@extends("layouts.dashboard")
+@section("main")
     <!--Main layout-->
     <main class="pt-5 mx-lg-5 " id="dashboard">
-        <div class="container-fluid" >
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
                     <div class="dashboard-flash-card dashboard-flash-card-first">
@@ -19,7 +11,9 @@
                             @foreach($runningInvestments as $runningInvestment)
                                 <tr>
                                     <td>₦{{$runningInvestment->capital}}</td>
-                                    <td><small>{{$runningInvestment->created_at->format('d/m/Y')}}</small></td>
+                                    <td>
+                                        <small>{{$runningInvestment->created_at->format('d/m/Y')}}</small>
+                                    </td>
                                     <td>
                                         @if($runningInvestment->status == 1)
                                             <span class="badge badge-light">Approved</span>
@@ -43,7 +37,9 @@
                                 <tr>
                                     <td>
                                         ₦{{(($runningInvestment->capital * $runningInvestment->package->percentage) / 100) + $runningInvestment->capital}}</td>
-                                    <td><small>{{$runningInvestment->created_at->format('d/m/Y')}}</small></td>
+                                    <td>
+                                        <small>{{$runningInvestment->created_at->format('d/m/Y')}}</small>
+                                    </td>
                                     <td>
                                         @if($runningInvestment->status == 1)
                                             <span class="badge badge-light">Approved</span>
@@ -70,11 +66,11 @@
                             <div class="col-md-10 mx-auto text-center">
                                 <div>
                                     <a href="{{route('withdrawal')}}"><span
-                                            class="badge badge-light ">Withdraw</span></a>
+                                                class="badge badge-light ">Withdraw</span></a>
                                 </div>
                                 <div>
                                     <a href="{{route('investment.reinvest')}}"><span
-                                            class="badge badge-warning">Reinvest</span></a>
+                                                class="badge badge-warning">Reinvest</span></a>
                                 </div>
                             </div>
                         </div>
@@ -171,7 +167,8 @@
                                                 <li>
                                                     <span>Capital - ₦{{number_format($investment->capital)}}
                                                         @ {{$investment->package->percentage}} %</span>
-                                                    <strong>ROI - ₦{{number_format((($investment->capital * $investment->package->percentage)/100) + $investment->capital) }}</strong>
+                                                    <strong>ROI -
+                                                        ₦{{number_format((($investment->capital * $investment->package->percentage)/100) + $investment->capital) }}</strong>
                                                 </li>
                                                 <li>
                                                     <strong>Created
@@ -180,7 +177,7 @@
                                                             <span class="text-success">Approved</span>
                                                         @else
                                                             <span
-                                                                class="text-warning">Pending Confirmation</span>
+                                                                    class="text-warning">Pending Confirmation</span>
                                                         @endif</span>
                                                 </li>
                                                 <li>
@@ -191,7 +188,7 @@
                                                             <label>Not Matured</label>
                                                         @endif
                                                     </strong>
-                                                    <span>Investment stage -  @switch($investment)
+                                                    <span>Investment stage - @switch($investment)
                                                             @case($investment->maturity == 1 && $investment->withdrawn == 1)
                                                             <span class="text-success"> Completed</span>
                                                             @break
@@ -200,7 +197,7 @@
                                                                class="btn btn-primary withdraw">Withdraw</a>
                                                             @break
                                                             @default <span
-                                                                class="text-warning">In progress</span>
+                                                                    class="text-warning">In progress</span>
                                                         @endswitch</span>
                                                 </li>
                                             </ul>
@@ -214,72 +211,66 @@
             </div>
         </div>
     </main>
-    @endsection
-    <!--Main layout-->
-    <!--Footer-->
-    @section('footer')
-        @include('layouts.footer')
-    @endsection
-    <!--/.Footer-->
-    @section('script')
-        <!-- Initializations -->
-        <script type="text/javascript">
-            // Animations initialization
-            new WOW().init();
+@endsection
+<!--Main layout-->
+@section('script')
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
 
-            var ctxL = document.getElementById("lineChart").getContext('2d');
-            var myLineChart = new Chart(ctxL, {
-                type: 'line',
-                data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
-                    datasets: [{
-                        label: "My First dataset",
+        var ctxL = document.getElementById("lineChart").getContext('2d');
+        var myLineChart = new Chart(ctxL, {
+            type: 'line',
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "My First dataset",
+                    backgroundColor: [
+                        'rgba(105, 0, 132, .2)',
+                    ],
+                    borderColor: [
+                        'rgba(200, 99, 132, .7)',
+                    ],
+                    borderWidth: 2,
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                    {
+                        label: "My Second dataset",
                         backgroundColor: [
-                            'rgba(105, 0, 132, .2)',
+                            'rgba(0, 137, 132, .2)',
                         ],
                         borderColor: [
-                            'rgba(200, 99, 132, .7)',
+                            'rgba(0, 10, 130, .7)',
                         ],
-                        borderWidth: 2,
-                        data: [65, 59, 80, 81, 56, 55, 40]
+                        data: [28, 48, 40, 19, 86, 27, 90]
                     },
-                        {
-                            label: "My Second dataset",
-                            backgroundColor: [
-                                'rgba(0, 137, 132, .2)',
-                            ],
-                            borderColor: [
-                                'rgba(0, 10, 130, .7)',
-                            ],
-                            data: [28, 48, 40, 19, 86, 27, 90]
-                        },
-                        {
-                            label: "My Second dataset",
-                            backgroundColor: [
-                                'rgba(0, 13, 132, .2)',
-                            ],
-                            borderColor: [
-                                'rgba(0, 10, 130, .7)',
-                            ],
-                            data: [28, 48, 0, 169, 86, 27, 50]
-                        },
+                    {
+                        label: "My Second dataset",
+                        backgroundColor: [
+                            'rgba(0, 13, 132, .2)',
+                        ],
+                        borderColor: [
+                            'rgba(0, 10, 130, .7)',
+                        ],
+                        data: [28, 48, 0, 169, 86, 27, 50]
+                    },
 
-                        // {
-                        //   label: "My Second dataset",
-                        //   backgroundColor: [
-                        //     'rgba(0, 137, 132, .2)',
-                        //   ],
-                        //   borderColor: [
-                        //     'rgba(0, 140, 10, .7)',
-                        //   ],
-                        //   data: [26, 28, 40, 129, 86, 27, 30]
-                        // }
-                    ]
-                },
-                options: {
-                    responsive: true
-                }
-            });
-        </script>
-    @endsection
-    </body>
+                    // {
+                    //   label: "My Second dataset",
+                    //   backgroundColor: [
+                    //     'rgba(0, 137, 132, .2)',
+                    //   ],
+                    //   borderColor: [
+                    //     'rgba(0, 140, 10, .7)',
+                    //   ],
+                    //   data: [26, 28, 40, 129, 86, 27, 30]
+                    // }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+@endsection

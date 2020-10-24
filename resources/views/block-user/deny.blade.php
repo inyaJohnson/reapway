@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+@extends("layouts.dashboard")
+@section("main")
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -27,7 +27,7 @@
                         <div><span class="mdi mdi-cancel"></span></div>
                         <h3>Ooops!</h3>
                         <p>
-                            You have being denied access to the platform for late deposit.<br>
+                            You have being denied access to the platform.<br>
                             Contact support team for help.
                         </p>
                     </div>

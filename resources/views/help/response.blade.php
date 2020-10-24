@@ -1,14 +1,5 @@
-@extends('layouts.app')
-@section('css')
-    <link href="{{asset('frontend/css/dashboard.css')}}" rel="stylesheet">
-@endsection
-@section('content')
-    <body class="bg-white">
-
-    <!--Main Navigation-->
-    @include('layouts.dashboard_navigation.layout')
-    <!--Main Navigation-->
-
+@extends("layouts.dashboard")
+@section("main")
     <!--Main layout-->
     <main class="pt-5 mx-lg-5" id="withdraw">
         <div class="container-fluid">
@@ -87,59 +78,53 @@
             </div>
         </div>
     </main>
-    @endsection
-    <!--Footer-->
-    @section('footer')
-        @include('layouts.footer')
-    @endsection
-    <!--/.Footer-->
-    @section('script')
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#help-form').on('submit', function (event) {
-                    event.preventDefault();
-                    var formData = new FormData(this);
-                    $.ajax({
-                        type: 'POST',
-                        url: '/response/send',
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        cache: false,
-                        beforeSend: function () {
-                            swal.showLoading()
-                        },
-                        success: function (response) {
-                            if (response.success) {
-                                Swal.fire(
-                                    'Successful!',
-                                    response.success,
-                                    'success'
-                                ).then(function (result) {
-                                    if (result.value) {
-                                        window.location = '/help'
-                                    }
-                                })
-                            } else {
-                                Swal.fire(
-                                    'Failed!',
-                                    response.error,
-                                    'error'
-                                ).then(function (result) {
-                                    if (result.value) {
-                                        window.location = '/help'
-                                    }
-                                })
-                            }
-                        },
-                        error: function (error) {
-                            if (error.responseJSON.errors.hasOwnProperty('attachment')) {
-                                $('p.warning').addClass('error').text('The File is required and the size must not be more than 2Mb');
-                            }
+@endsection
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#help-form').on('submit', function (event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: '/response/send',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    beforeSend: function () {
+                        swal.showLoading()
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            Swal.fire(
+                                'Successful!',
+                                response.success,
+                                'success'
+                            ).then(function (result) {
+                                if (result.value) {
+                                    window.location = '/help'
+                                }
+                            })
+                        } else {
+                            Swal.fire(
+                                'Failed!',
+                                response.error,
+                                'error'
+                            ).then(function (result) {
+                                if (result.value) {
+                                    window.location = '/help'
+                                }
+                            })
                         }
-                    })
+                    },
+                    error: function (error) {
+                        if (error.responseJSON.errors.hasOwnProperty('attachment')) {
+                            $('p.warning').addClass('error').text('The File is required and the size must not be more than 2Mb');
+                        }
+                    }
                 })
             })
-        </script>
-    @endsection
-    </body>
+        })
+    </script>
+@endsection

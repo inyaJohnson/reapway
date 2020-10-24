@@ -1,12 +1,5 @@
-@extends('layouts.app')
-@section('css')
-    <link href="{{asset('frontend/css/dashboard.css')}}" rel="stylesheet">
-@endsection
-@section('content')
-    <body class="bg-white">
-    <!--Main Navigation-->
-    @include('layouts.dashboard_navigation.layout')
-    <!--Main Navigation-->
+@extends("layouts.dashboard")
+@section("main")
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
         <div class="container-fluid">
@@ -68,12 +61,6 @@
             </div>
         </div>
     </main>
-    @endsection
-    <!--Main layout-->
+@endsection
+<!--Main layout-->
 
-    <!--Footer-->
-    @section('footer')
-        @include('layouts.footer')
-    @endsection
-
-    </body>

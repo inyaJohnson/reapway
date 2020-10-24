@@ -1,12 +1,5 @@
-@extends('layouts.app')
-@section('css')
-    <link href="{{asset('frontend/css/dashboard.css')}}" rel="stylesheet">
-@endsection
-@section('content')
-    <body class="bg-white">
-    <!--Main Navigation-->
-    @include('layouts.dashboard_navigation.layout')
-    <!--Main Navigation-->
+@extends("layouts.dashboard")
+@section("main")
     <!--Main layout-->
     <main class="pt-5 mx-lg-5" id="settings">
         <div class="container-fluid">
@@ -34,18 +27,23 @@
                     <div><h5>Account Details</h5></div>
 
                     <div class="form-group  grey lighten-3">
-                        <input type="text" name="account_name" value="{{auth()->user()->account->name}}"
+                        <input type="text" name="account_name" placeholder="Account Name"
+                               value="@php echo (auth()->user()->account !== null)? auth()->user()->account->name:''; @endphp"
                                class="form-control">
                     </div>
 
                     <div class="form-group  grey lighten-3">
-                        <input type="text" name="account_number" value="{{auth()->user()->account->number}}"
+                        <input type="text" name="account_number" placeholder="Account Number"
+                               value="@php echo (auth()->user()->account !== null)? auth()->user()->account->number:''; @endphp"
                                class="form-control">
                     </div>
 
                     <div class="form-group  grey lighten-3">
-                        <input type="text" name="bank" value="{{auth()->user()->account->bank}}" class="form-control">
+                        <input type="text" name="bank" placeholder="Bank"
+                               value="@php echo (auth()->user()->account !== null)? auth()->user()->account->bank:''; @endphp"
+                               class="form-control">
                     </div>
+
 
                     <div class="py-4 mt-3">
                         <button type="submit" style="padding: 10px;">Update</button>
@@ -55,11 +53,6 @@
         </div>
 
     </main>
-    @endsection
-    <!--Main layout-->
-    <!--Footer-->
-    @section('footer')
-        @include('layouts.footer')
-    @endsection
+@endsection
+<!--Main layout-->
 
-    </body>

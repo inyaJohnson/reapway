@@ -16,7 +16,7 @@
                         <a href="{{route('welcome')}}">
                             <img class="mb-5" src="{{asset('frontend/img/Reapway Logo one (1).png')}}"  alt="">
                             </a>                            <div class="mt-4 auth-left-title">
-                                <h3 class="font-weight-bolder text-success">Welcome back!</h3>
+                                <h3 class="font-weight-bolder custom-text">Welcome back!</h3>
                                 <h3 class="font-weight-light">Login to continue</h3>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
 
                                     <div class="md-form">
                                         @if (Route::has('password.request'))
-                                            <p><a class="text-success" href="{{ route('password.request') }}"> Forgot
+                                            <p><a class="custom-text" href="{{ route('password.request') }}"> Forgot
                                                     Password?</a>
                                                 @endif
                                                 <button type="submit"
@@ -70,7 +70,7 @@
 
                                     <div class="md-form">
                                         <p><span> Don't have an account?</span><span><a href="{{route('register')}}"
-                                                                                        class="text-success"> Register</a></span>
+                                                                                        class="custom-text"> Register</a></span>
                                         </p>
                                     </div>
 

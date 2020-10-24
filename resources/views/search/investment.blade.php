@@ -1,13 +1,5 @@
-@extends('layouts.app')
-@section('css')
-    <link href="{{asset('frontend/css/dashboard.css')}}" rel="stylesheet">
-@endsection
-@section('content')
-    <body class="bg-white">
-    <!--Main Navigation-->
-    @include('layouts.dashboard_navigation.layout')
-    <!--Main Navigation-->
-
+@extends("layouts.dashboard")
+@section("main")
     <!--Main layout-->
     <main class="pt-5 mx-lg-5" id="dashboard">
         <div class="container-fluid">
@@ -92,7 +84,8 @@
                                                 <li>
                                                     <span>Capital - ₦{{number_format($investment->capital)}}
                                                         @ {{$investment->package->percentage}} %</span>
-                                                    <strong>ROI - ₦{{number_format((($investment->capital * $investment->package->percentage)/100) + $investment->capital) }}</strong>
+                                                    <strong>ROI -
+                                                        ₦{{number_format((($investment->capital * $investment->package->percentage)/100) + $investment->capital) }}</strong>
                                                 </li>
                                                 <li>
                                                     <strong>Created
@@ -101,7 +94,7 @@
                                                             <span class="text-success">Approved</span>
                                                         @else
                                                             <span
-                                                                class="text-warning">Pending Confirmation</span>
+                                                                    class="text-warning">Pending Confirmation</span>
                                                         @endif</span>
                                                 </li>
                                                 <li>
@@ -122,96 +115,69 @@
                     </div>
                 </div>
             </div>
-
-            {{--            <div class="section-chart">--}}
-            {{--                <div class="row">--}}
-            {{--                    <div class="col-md-12">--}}
-            {{--                        <!--Card-->--}}
-            {{--                        <div class="card">--}}
-
-            {{--                            <!-- Card header -->--}}
-            {{--                            <div class="card-header">Line chart</div>--}}
-
-            {{--                            <!--Card content-->--}}
-            {{--                            <div class="card-body">--}}
-
-            {{--                                <canvas id="lineChart"></canvas>--}}
-
-            {{--                            </div>--}}
-
-            {{--                        </div>--}}
-            {{--                        <!--/.Card-->--}}
-            {{--                    </div>--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
         </div>
     </main>
-    @endsection
-    <!--Main layout-->
-    <!--Footer-->
-    @section('footer')
-        @include('layouts.footer')
-    @endsection
-    <!--/.Footer-->
-    @section('script')
-        <!-- Initializations -->
-        <script type="text/javascript">
-            // Animations initialization
-            new WOW().init();
+@endsection
+<!--Main layout-->
 
-            var ctxL = document.getElementById("lineChart").getContext('2d');
-            var myLineChart = new Chart(ctxL, {
-                type: 'line',
-                data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
-                    datasets: [{
-                        label: "My First dataset",
+@section('script')
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+
+        var ctxL = document.getElementById("lineChart").getContext('2d');
+        var myLineChart = new Chart(ctxL, {
+            type: 'line',
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "My First dataset",
+                    backgroundColor: [
+                        'rgba(105, 0, 132, .2)',
+                    ],
+                    borderColor: [
+                        'rgba(200, 99, 132, .7)',
+                    ],
+                    borderWidth: 2,
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                    {
+                        label: "My Second dataset",
                         backgroundColor: [
-                            'rgba(105, 0, 132, .2)',
+                            'rgba(0, 137, 132, .2)',
                         ],
                         borderColor: [
-                            'rgba(200, 99, 132, .7)',
+                            'rgba(0, 10, 130, .7)',
                         ],
-                        borderWidth: 2,
-                        data: [65, 59, 80, 81, 56, 55, 40]
+                        data: [28, 48, 40, 19, 86, 27, 90]
                     },
-                        {
-                            label: "My Second dataset",
-                            backgroundColor: [
-                                'rgba(0, 137, 132, .2)',
-                            ],
-                            borderColor: [
-                                'rgba(0, 10, 130, .7)',
-                            ],
-                            data: [28, 48, 40, 19, 86, 27, 90]
-                        },
-                        {
-                            label: "My Second dataset",
-                            backgroundColor: [
-                                'rgba(0, 13, 132, .2)',
-                            ],
-                            borderColor: [
-                                'rgba(0, 10, 130, .7)',
-                            ],
-                            data: [28, 48, 0, 169, 86, 27, 50]
-                        },
+                    {
+                        label: "My Second dataset",
+                        backgroundColor: [
+                            'rgba(0, 13, 132, .2)',
+                        ],
+                        borderColor: [
+                            'rgba(0, 10, 130, .7)',
+                        ],
+                        data: [28, 48, 0, 169, 86, 27, 50]
+                    },
 
-                        // {
-                        //   label: "My Second dataset",
-                        //   backgroundColor: [
-                        //     'rgba(0, 137, 132, .2)',
-                        //   ],
-                        //   borderColor: [
-                        //     'rgba(0, 140, 10, .7)',
-                        //   ],
-                        //   data: [26, 28, 40, 129, 86, 27, 30]
-                        // }
-                    ]
-                },
-                options: {
-                    responsive: true
-                }
-            });
-        </script>
-    @endsection
-    </body>
+                    // {
+                    //   label: "My Second dataset",
+                    //   backgroundColor: [
+                    //     'rgba(0, 137, 132, .2)',
+                    //   ],
+                    //   borderColor: [
+                    //     'rgba(0, 140, 10, .7)',
+                    //   ],
+                    //   data: [26, 28, 40, 129, 86, 27, 30]
+                    // }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+@endsection
