@@ -22,8 +22,6 @@
     <!-- Material Design Bootstrap -->
     <link href="{{asset('frontend/css/mdb.min.css')}}" rel="stylesheet">
     <!-- Your custom styles (optional) -->
-    <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
-
     <link href="{{asset('dashboard/js/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet">
 
     <link href="{{asset('dashboard/DataTables/datatables.min.css')}}" rel="stylesheet">
@@ -37,12 +35,36 @@
 <!--Main Navigation-->
 @include('layouts.dashboard_navigation.layout')
 <!--Main Navigation-->
-
-{{--Content Starts--}}
-@yield("main")
-{{--Content Ends--}}
-
-@include('layouts.footer')
+<div class="content">
+    <!-- Sidebar -->
+    <div class="sidebar-fixed position-fixed">
+        <a href="{{route('welcome')}}" class="logo-wrapper waves-effect">
+            <img src="{{asset('frontend/img/Reapway Logo one (2).png')}}" class="img-fluid" alt="">
+        </a>
+        <div class="list-group list-group-flush">
+            <a href="{{route('home')}}" class="list-group-item list-group-item-action  waves-effect">
+                <i class="fas fa-chart-pie mr-2"></i>Dashboard
+            </a>
+            @include('layouts.dashboard_navigation.sidebar')
+            <a href="{{route('logout')}}" class="list-group-item list-group-item-action waves-effect"
+               style="color:#fff;"
+               onclick="event.preventDefault(); document.getElementById('logout-form-sidebar').submit();">
+                <i class="fas fa-sign-out-alt mr-2"></i>Log Out</a>
+            <form id="logout-form-sidebar" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </div>
+    </div>
+    <!-- Sidebar -->
+    <div class="main-content">
+        {{--Content Starts--}}
+        @yield("main")
+        {{--Content Ends--}}
+        <div class="footer-copyright py-3 text-center">
+            © {{\Carbon\Carbon::now()->year}} Copyright: ReapWay. All Right reserved
+        </div>
+    </div>
+</div>
 
 
 <script type="text/javascript" src="{{asset('frontend/js/jquery-3.4.1.min.js')}}"></script>
@@ -59,7 +81,7 @@
 <script type="text/javascript" src="{{asset('dashboard/DataTables/datatables.min.js')}}"></script>
 
 <script src="{{asset('dashboard/js/custom.js')}}"></script>
-<script src="{{asset('frontend/js/style.js')}}"></script>
+<script src="{{asset('frontend/js/dashboard_style.js')}}"></script>
 <!-- Initializations -->
 
 @yield('script')
@@ -76,6 +98,22 @@
     });
 </script>
 <!--Google Maps-->
+
+<!-- GetButton.io widget -->
+<script type="text/javascript">
+    (function () {
+        var options = {
+            whatsapp: "+2348100322400", // WhatsApp number
+            call_to_action: "Message us", // Call to action
+            position: "right", // Position may be 'right' or 'left'
+        };
+        var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+</script>
+<!-- /GetButton.io widget -->
 <script src="https://maps.google.com/maps/api/js"></script>
 </body>
 
