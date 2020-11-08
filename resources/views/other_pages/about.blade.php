@@ -12,6 +12,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <img src="{{asset('frontend/img/Group 6989.png')}}" class="d-block mx-auto img-top"/>
+
                 </div>
             </div>
         </div>

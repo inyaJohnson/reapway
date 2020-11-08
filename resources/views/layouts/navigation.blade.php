@@ -33,14 +33,13 @@
                     Plans</a>
             </li>
             <li class="nav-item mt-2">
+                <a class="nav-link waves-effect" href="{{route('login')}}">
+                    Login</a>
+            </li>
+            <li class="nav-item mt-2">
                 <a class="nav-link waves-effect" href="{{url('#faq')}}">
                     FAQ</a>
             </li>
-            <li class="nav-item mt-2">
-                <a class="nav-link waves-effect" href="{{route('login')}}">
-                    Log In</a>
-            </li>
-
             <li class="nav-item">
                 <a class="nav-link waves-effect bg-white btn reap-color hide-on-mobile"
                    style="color: green;" href="{{route('register')}}">
