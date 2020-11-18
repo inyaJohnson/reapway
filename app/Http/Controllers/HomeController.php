@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Deposit;
 use App\Investment;
+use App\Testimonial;
 use App\Traits\ShowInfo;
 use App\Withdrawal;
 use Illuminate\Support\Facades\Artisan;
@@ -11,10 +12,9 @@ use Illuminate\Support\Facades\Artisan;
 class HomeController extends Controller
 {
     use ShowInfo;
+
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * HomeController constructor.
      */
     public function __construct()
     {
@@ -35,7 +35,8 @@ class HomeController extends Controller
     }
 
     public function welcome(){
-        return view('welcome');
+        $testimonials = Testimonial::inRandomOrder()->limit(3)->get();
+        return view('welcome', compact('testimonials'));
     }
 
     public function about(){

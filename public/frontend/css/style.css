@@ -108,6 +108,7 @@ h1 {
     color: #ededed;
     font-weight: bold !important;
     font-family: 'Epilogue', sans-serif;
+    font-size: 0.9rem;
 }
 
 .home-header a:hover button {
@@ -212,45 +213,55 @@ h1 {
 /* Investment */
 
 
-#investment {
-    margin-top: 4em;
-    margin-bottom: 4em;
-    padding: 4em 0em;
+.investment {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding: 3em 0em;
 }
 
-#investment .container-fluid{
+.investment .head-section{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.investment .head-section div{
+    width: 60%;
+}
+
+.investment .container-fluid{
     display: flex;
     flex-flow: row;
 }
 
-#investment h2{
+.investment h2{
     margin-top: 50px;
     margin-bottom: 20px;
     text-align: left;
 }
 
-
-#investment p{
+.investment p{
     font-size: 0.9rem;
 }
-#investment .container-fluid .card, .investment-plan .card{
+
+
+.investment .container-fluid .card, .investment-plan .card{
     display: flex;
     padding: 20px;
     margin: 10px;
 }
 
-
-#investment h5{
+.investment h5{
     padding-top: 20px;
 }
 
-#investment p {
+.investment p {
     color: #0e0c0ebe;
 }
 
-#investment img {
+.investment img {
     width: 250px;
-    height: 200px;
+    height: 150px;
 }
 
 main #investor .title {
@@ -258,6 +269,11 @@ main #investor .title {
     text-align: center;
     margin: 2em auto 1em;
     font-weight: 900;
+}
+
+main #investor .container-fluid{
+    padding-right:150px ;
+    padding-left: 150px;
 }
 
 main #investor .investor{
@@ -277,7 +293,7 @@ main #investor .investor-story {
 
 main #investor img {
     height: 350px;
-    width: 500px;
+    width: 450px;
     margin: auto;
     border-radius: 10px;
 }
@@ -288,11 +304,10 @@ main #investor img {
     background-color: #408a0336;
 }
 
-#customers button {
-    width: 150px;
-    height: 40px;
-    border: none;
+#customers h3{
+    font-weight: 900;
 }
+
 
 #customers .customer-card {
     position: relative;
@@ -312,10 +327,12 @@ main #investor img {
 }
 
 #customers .customer-card img {
+    border-radius: 50% 50% 50% 50%;
     position: absolute;
     right: 2em;
     bottom: 25px;
     height: 80px;
+    width: 80px;
 }
 
 @media (min-width: 426px) {
@@ -325,8 +342,8 @@ main #investor img {
 }
 
 #faq {
-    margin-top: 2em;
-    margin-bottom: 4em;
+    margin-top: 3em;
+    margin-bottom: 3em;
     width: 70%;
     margin-right: auto;
     margin-left: auto;
@@ -344,6 +361,27 @@ main #faq .card .card-header span:first-child {
     /*color: rgba(0, 128, 43, 0.63);*/
     color: green;
 }
+
+
+.faq-btn-div{
+    margin-top: 30px;
+
+}
+
+.faq-btn{
+    outline: none !important;
+    border: none;
+    padding: 10px 20px;
+}
+
+.faq-btn:hover{
+    background-color: white;
+    color: green !important;
+    border: thin solid green;
+    outline: none !important;
+}
+
+
 
 /* MAIN SECTIONS END */
 nav .container-fluid{
@@ -373,19 +411,30 @@ nav .container-fluid{
 .nav-link {
     text-decoration: none;
     color: white;
-    font-weight: 800;
+    font-weight: 500;
+    font-size: 0.85em;
 }
 
 .nav-link:hover {
     text-decoration: none;
     color: white;
-    font-weight: 800;
     border-bottom: 4px solid #1a2c0a5b;
     border-radius: 0;
 }
 
 .custom-menu-btn{
     display: none;
+}
+
+
+
+/*TESTIMONIAL SECTION*/
+.testimonial-section{
+    padding: 50px;
+}
+
+.testimonial-section h5{
+    margin-bottom: 20px;
 }
 
 
@@ -438,7 +487,6 @@ nav .container-fluid{
     }
 
 
-
     /*INVESTOR DIV */
     main #investor .investor{
         display : flex;
@@ -454,7 +502,6 @@ nav .container-fluid{
     }
 
     main #investor img {
-        /*height: 350px;*/
         width: 100%;
         margin: auto;
         border-radius: 10px;
@@ -468,7 +515,12 @@ nav .container-fluid{
 
     /*Investment div*/
 
-    #investment .container-fluid{
+    .investment .head-section div{
+        width: 95%;
+    }
+
+
+    .investment .container-fluid{
         display: flex;
         flex-flow: row wrap;
     }
@@ -487,15 +539,40 @@ nav .container-fluid{
         width: 100%;
     }
 
+    /*Testimonial*/
+    .testimonial-section{
+        padding: 10px;
+    }
 
 }
 
 
 @media(max-width: 1024px) {
-    #investment img {
+
+    .investment img {
         width: 150px;
     }
+    main #investor .container-fluid{
+        padding-right:50px ;
+        padding-left: 50px;
+    }
 }
+
+
+@media(min-width:769px) and (max-width: 1024px){
+    .investment .head-section div{
+        width: 70%;
+    }
+}
+
+@media(min-width: 1024px) {
+    .investment .container-fluid .card{
+        width: 400px;
+    }
+}
+
+
+
 
 .nav-active{
     transform: translateX(0%);
@@ -535,7 +612,7 @@ nav .container-fluid{
 }
 
 footer {
-    padding-top: 1em;
+    padding-top: 3em;
     background-color: green;
     font-family: 'Rubik', sans-serif;
 }
@@ -627,7 +704,7 @@ footer .social-link-div .fab{
         font-size: 30px;
     }
 
-    #investment {
+    .investment {
         margin-top: 1em;
     }
 
@@ -641,6 +718,7 @@ footer .social-link-div .fab{
 
     #customers .customer-card img {
         height: 50px;
+        width: 50px;
     }
 }
 
@@ -684,7 +762,3 @@ footer .social-link-div .fab{
 .custom-text{
     color: green;
 }
-
-
-
-

@@ -49,10 +49,6 @@
     </li>
 @endcan
 
-
-
-
-
 @can('client-actions')
     <li class="nav-item mt-2">
         <a href="{{route('investment.invest')}}" class="nav-link waves-effect">

@@ -56,106 +56,105 @@
 
     <!--Main layout-->
     <main class="">
-        <div id="how-it-works" class="">
-            <div class="container-fluid">
-                <div class="col-md-12">
-                    <h4 class="reap-color font-weight-bold text-center mb-4">
-                        HOW IT WORKS FOUR EASY WAY TO START
-                    </h4>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div>
-                                <img src="{{asset('frontend/img/portfolio.png')}}" alt="">
-                            </div>
-                            <p class="text-center font-weight-bold mt-3">Register Account</p>
+        {{--<div id="how-it-works" class="">--}}
+        {{--<div class="container-fluid">--}}
+        {{--<div class="col-md-12">--}}
+        {{--<h4 class="reap-color font-weight-bold text-center mb-4">--}}
+        {{--HOW IT WORKS FOUR EASY WAY TO START--}}
+        {{--</h4>--}}
+        {{--<div class="row">--}}
+        {{--<div class="col-md-3">--}}
+        {{--<div>--}}
+        {{--<img src="{{asset('frontend/img/portfolio.png')}}" alt="">--}}
+        {{--</div>--}}
+        {{--<p class="text-center font-weight-bold mt-3">Register Account</p>--}}
 
-                        </div>
-                        <div class="col-md-3">
-                            <div>
-                                <img src="{{asset('frontend/img/invest.png')}}" alt="">
-                            </div>
-                            <p class="text-center font-weight-bold mt-3">Invest</p>
+        {{--</div>--}}
+        {{--<div class="col-md-3">--}}
+        {{--<div>--}}
+        {{--<img src="{{asset('frontend/img/invest.png')}}" alt="">--}}
+        {{--</div>--}}
+        {{--<p class="text-center font-weight-bold mt-3">Invest</p>--}}
 
-                        </div>
-                        <div class="col-md-3">
-                            <div>
-                                <img src="{{asset('frontend/img/time.png')}}" alt="">
-                            </div>
-                            <p class="text-center font-weight-bold mt-3">Wait for 25 working days</p>
+        {{--</div>--}}
+        {{--<div class="col-md-3">--}}
+        {{--<div>--}}
+        {{--<img src="{{asset('frontend/img/time.png')}}" alt="">--}}
+        {{--</div>--}}
+        {{--<p class="text-center font-weight-bold mt-3">Wait for 25 working days</p>--}}
 
-                        </div>
-                        <div class="col-md-3">
-                            <div>
-                                <img src="{{asset('frontend/img/analytics.png')}}" alt="">
-                            </div>
-                            <p class="text-center font-weight-bold mt-3">Reap your Investment</p>
+        {{--</div>--}}
+        {{--<div class="col-md-3">--}}
+        {{--<div>--}}
+        {{--<img src="{{asset('frontend/img/analytics.png')}}" alt="">--}}
+        {{--</div>--}}
+        {{--<p class="text-center font-weight-bold mt-3">Reap your Investment</p>--}}
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="best-investment-plan">
-            <div class="container-fluid">
-                <div class="justify-content-md-center mt-5">
-                    <div>
-                        <h3 class="reap-color font-weight-bold text-center mt-3">Best Investment Plan!
-                        </h3>
-                        <p class="text-center">Best Investment Plan!
-                            ReapWay helps you invest and grow your money with the any
-                            suitable investment plan that you choose.
-                        </p>
-                    </div>
-                </div>
-                <div class="text-center investment-plan">
-                    <div data-aos="fade-up"
-                         data-aos-anchor-placement="center-bottom">
-                        <div class="card">
-                            <div class="card-body">
-                                <h1 class="card-title font-weight-bolder mt-4">GOLD</h1>
-                                <p class="stroke"></p>
-                                <h1 class="card-title font-weight-bolder reap-orange-color">25%</h1>
-                                <p class="card-text font-weight-bold">N2,000,000 (2M) <br> - <br>N10,000,000 <br>(10M)</p>
-                                <a href="{{route('login')}}" class="btn reap-bg-orange-color text-white">Invest</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div data-aos="fade-up"
-                         data-aos-anchor-placement="center-bottom">
-                        <div class="card">
-                            <div class="card-body">
-                                <h1 class="card-title font-weight-bolder mt-4">SILVER</h1>
-                                <p class="stroke"></p>
-                                <h1 class="card-title font-weight-bolder reap-color">25%</h1>
-                                <p class="card-text font-weight-bold">N500,000 (500k) <br> - <br>N1,950,000 <br> (1.9M)</p>
-                                <a href="{{route('login')}}" class="btn reap-bg-color text-white">Invest</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div data-aos="fade-up"
-                         data-aos-anchor-placement="center-bottom">
-                        <div class="card">
-                            <div class="card-body">
-                                <h1 class="card-title font-weight-bolder mt-4">BRONZE</h1>
-                                <p class="stroke"></p>
-                                <h1 class="card-title font-weight-bolder">15%</h1>
-                                <p class="card-text font-weight-bold">N20,000 (20k) <br> - <br>N45,000 <br>(45k)</p>
-                                <a href="{{route('login')}}" class="btn text-white" style="background-color: #222;">Invest</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="investment">
-            <div class="justify-content-md-center mt-5">
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--<div id="best-investment-plan">--}}
+        {{--<div class="container-fluid">--}}
+        {{--<div class="justify-content-md-center mt-5">--}}
+        {{--<div>--}}
+        {{--<h3 class="reap-color font-weight-bold text-center mt-3">Best Investment Plan!--}}
+        {{--</h3>--}}
+        {{--<p class="text-center">Best Investment Plan!--}}
+        {{--ReapWay helps you invest and grow your money with the any--}}
+        {{--suitable investment plan that you choose.--}}
+        {{--</p>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="text-center investment-plan">--}}
+        {{--<div data-aos="fade-up"--}}
+        {{--data-aos-anchor-placement="center-bottom">--}}
+        {{--<div class="card">--}}
+        {{--<div class="card-body">--}}
+        {{--<h1 class="card-title font-weight-bolder mt-4">GOLD</h1>--}}
+        {{--<p class="stroke"></p>--}}
+        {{--<h1 class="card-title font-weight-bolder reap-orange-color">25%</h1>--}}
+        {{--<p class="card-text font-weight-bold">N2,000,000 (2M) <br> - <br>N10,000,000 <br>(10M)</p>--}}
+        {{--<a href="{{route('login')}}" class="btn reap-bg-orange-color text-white">Invest</a>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--<div data-aos="fade-up"--}}
+        {{--data-aos-anchor-placement="center-bottom">--}}
+        {{--<div class="card">--}}
+        {{--<div class="card-body">--}}
+        {{--<h1 class="card-title font-weight-bolder mt-4">SILVER</h1>--}}
+        {{--<p class="stroke"></p>--}}
+        {{--<h1 class="card-title font-weight-bolder reap-color">25%</h1>--}}
+        {{--<p class="card-text font-weight-bold">N500,000 (500k) <br> - <br>N1,950,000 <br> (1.9M)</p>--}}
+        {{--<a href="{{route('login')}}" class="btn reap-bg-color text-white">Invest</a>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--<div data-aos="fade-up"--}}
+        {{--data-aos-anchor-placement="center-bottom">--}}
+        {{--<div class="card">--}}
+        {{--<div class="card-body">--}}
+        {{--<h1 class="card-title font-weight-bolder mt-4">BRONZE</h1>--}}
+        {{--<p class="stroke"></p>--}}
+        {{--<h1 class="card-title font-weight-bolder">15%</h1>--}}
+        {{--<p class="card-text font-weight-bold">N20,000 (20k) <br> - <br>N45,000 <br>(45k)</p>--}}
+        {{--<a href="{{route('login')}}" class="btn text-white" style="background-color: #222;">Invest</a>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        <div class="investment">
+            <div class="justify-content-md-center mt-5 head-section">
                 <div>
-                    <h3 class="reap-color font-weight-bold text-center">Save smartly & responsibly!
-
+                    <h3 class="reap-color font-weight-bold text-center">Be Part Of Our Growing Community
                     </h3>
-                    <p class="text-center">Best Investment Plan!
-                        ReapWay helps you invest and grow your money with the any
-                        suitable investment plan that you choose.
+                    <p class="text-center">
+                        Join the expanding generation of financially independent people that we are gradually raising to
+                        take over Africa’s economic atmosphere.
                     </p>
                 </div>
             </div>
@@ -164,37 +163,81 @@
                     <img class="mx-auto mt-5 d-block"
                          src="{{asset('frontend/img/undraw_personal_finance_tqcd.png')}}"
                          alt="investment-ima"/>
-                    <h2 class="reap-color font-weight-bold">The smartest investment available
+                    <h2 class="reap-color font-weight-bold">Enjoy Unique Investment Cycles
                     </h2>
                     <p>
-                        ReapWay Investments helps you reach your Financial Goals within
-                        the shortest time possible with the Competitive ROI we offer for
-                        everyone of our Products and Services.
+                        Grow your wealth within the shortest time possible with our solid investment plans and
+                        competitive returns on investments.
                     </p>
                 </div>
                 <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
                     <img class="mx-auto mt-5 d-block"
                          src="{{asset('frontend/img/undraw_investment_xv9d.png')}}" alt="investment-ima"/>
-                    <h2 class="reap-color font-weight-bold">Invest according to your means
+                    <h2 class="reap-color font-weight-bold">Build According To Your Means
                     </h2>
                     <p>
-                        At ReapWay Investments, we believe in cutting coats according
-                        to the body’s size. This is why we offer Clients-Friendly Investment
-                        Plans for even the Minimum Wage Earner!
+                        Develop your finances from scratch with our client-friendly and affordable investment plans for
+                        everyone from all levels.
                     </p>
                 </div>
                 <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
                     <img class="mx-auto mt-5 d-block"
                          src="{{asset('frontend/img/undraw_Security_on_ff2u.png')}}" alt="investment-ima"/>
-                    <h2 class="reap-color font-weight-bold">Invest with assured security
+                    <h2 class="reap-color font-weight-bold">Invest With The Assured Security
                     </h2>
-                    <p>ReapWay Investments promises you an iron-clad assurance on the
-                        Security of your Investments. With us, you can invest and sleep soundly
-                        knowing your money is safe.
+                    <p>
+                        Enjoy iron-clad guarantee on the safety of your investments and relax, knowing we have your
+                        back.
                     </p>
                 </div>
             </div>
         </div>
+
+        <div class="investment">
+            <div class="justify-content-md-center mt-5 head-section">
+                <div>
+                    <h3 class="reap-color font-weight-bold text-center">Start A Plan From Wherever You Are!
+                    </h3>
+                    <p class="text-center">With ReapWay, you can invest and earn from the comfort of your location. Our
+                        investment process is tailored to match your convenience.
+                    </p>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
+                    <img class="mx-auto mt-5 d-block"
+                         src="{{asset('frontend/img/save1.jpeg')}}"
+                         alt="investment-ima"/>
+                    <h2 class="reap-color font-weight-bold">Choose Where You Invest
+                    </h2>
+                    <p>
+                        You get to choose which of the available investment plans suits your desires and your financial
+                        growth goals.
+                    </p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
+                    <img class="mx-auto mt-5 d-block"
+                         src="{{asset('frontend/img/save3.jpeg')}}" alt="investment-ima"/>
+                    <h2 class="reap-color font-weight-bold">Keep Track Of Your Investments
+                    </h2>
+                    <p>
+                        Effortlessly keep an eye on the growth of your investments from the ease of your unique
+                        dashboard.
+                    </p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
+                    <img class="mx-auto mt-5 d-block"
+                         src="{{asset('frontend/img/save3.jpeg')}}" alt="investment-ima"/>
+                    <h2 class="reap-color font-weight-bold">Decide How You Profit
+                    </h2>
+                    <p>With our distinct withdrawal options, you can decide how you want to process your returns on
+                        investments.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
         <div id="investor">
             <div class="container-fluid">
                 <h3 class="title reap-color">Investors of the month</h3>
@@ -219,57 +262,31 @@
         </div>
         <div id="customers">
             <div class="container-fluid">
-                <h3 class="reap-color text-center my-3 pt-5" style="font-weight:900">What our customers are saying about
-                    ReapWay</h3>
+                <h3 class="reap-color text-center my-3 pt-5">Our Clients Say... </h3>
                 <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="customer-card" data-aos="fade-up" data-aos-duration="3000">
-                            <div class="customer-card-content">
-                                <p>
-                                    It has been a gradual process. But little steps is the key. In
-                                    the aspect of finance, Piggyvest has made that possible. It's a
-                                    good feat to attain success in small strives. For me. It's great
-                                </p>
+                    <div class="col-md-8 col-lg-7">
+                        @foreach($testimonials as $testimonial)
+                            <div class="customer-card" data-aos="fade-up" data-aos-duration="3000">
+                                <div class="customer-card-content">
+                                    <p>
+                                        {{$testimonial->summary}}
+                                    </p>
+                                </div>
+                                <div class="customer-card-content">
+                                    <p class="reap-color">
+                                        <i>{{(isset($testimonial->user))? $testimonial->user->name : 'Unknown'}} </i>
+                                    </p>
+                                    <div class="spacer"></div>
+                                    <div><img src="{{asset('store/'.$testimonial->photo)}}" class="" alt=""></div>
+                                </div>
                             </div>
-                            <div class="customer-card-content">
-                                <p class="reap-color"><i>Kafayat Bolanle</i></p>
-                                <div class="spacer"></div>
-                                <div><img src="{{asset('frontend/img/Mask Group 5.png')}}" class="" alt=""></div>
-                            </div>
-                        </div>
-
-                        <div class="customer-card" data-aos="fade-up" data-aos-duration="3000">
-                            <div class="customer-card-content">
-                                <p>
-                                    It has been a gradual process. But little steps is the key. In
-                                    the aspect of finance, Piggyvest has made that possible. It's a
-                                    good feat to attain success in small strives. For me. It's great
-                                </p>
-                            </div>
-                            <div class="customer-card-content">
-                                <p class="reap-color"><i>Kafayat Bolanle</i></p>
-                                <div class="spacer"></div>
-                                <div><img src="{{asset('frontend/img/Mask Group 5.png')}}" class="" alt=""></div>
-                            </div>
-                        </div>
-
-                        <div class="customer-card" data-aos="fade-up" data-aos-duration="3000">
-                            <div class="customer-card-content">
-                                <p>
-                                    It has been a gradual process. But little steps is the key. In
-                                    the aspect of finance, Piggyvest has made that possible. It's a
-                                    good feat to attain success in small strives. For me. It's great
-                                </p>
-                            </div>
-                            <div class="customer-card-content">
-                                <p class="reap-color"><i>Kafayat Bolanle</i></p>
-                                <div class="spacer"></div>
-                                <div><img src="{{asset('frontend/img/Mask Group 5.png')}}" class="" alt=""></div>
-                            </div>
-                        </div>
+                        @endforeach
+                        <a href="{{route('testimonial.create')}}">
+                            <button class="text-white reap-bg-color rounded d-block mx-auto faq-btn">Tell Your Story
+                            </button>
+                        </a>
                     </div>
                 </div>
-                <button class="text-white reap-bg-color rounded d-block mx-auto">Read More</button>
             </div>
         </div>
         <div id="faq">
@@ -434,6 +451,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="faq-btn-div">
+                    <button class="text-white reap-bg-color rounded d-block mx-auto faq-btn">Read More</button>
                 </div>
             </div>
         </div>

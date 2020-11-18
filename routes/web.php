@@ -50,6 +50,10 @@ Route::group(['middleware' => ['auth', 'block.user', 'client'], ], function(){
     Route::get('withdrawal', 'WithdrawalController@index')->name('withdrawal');
     Route::post('withdrawal/request', 'WithdrawalController@withdrawalRequest')->name('withdrawal.request');
     Route::get('withdrawal/confirm-withdrawal', 'WithdrawalController@confirmWithdrawal')->name('confirm-withdrawal');
+
+    Route::get('testimonial/create', 'TestimonialController@create')->name('testimonial.create');
+    Route::post('testimonial', 'TestimonialController@store')->name('testimonial.store');
+
 });
 
 
