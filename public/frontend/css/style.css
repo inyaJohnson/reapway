@@ -23,6 +23,10 @@
     url("//db.onlinewebfonts.com/t/9475d6a0b79c164f9f605673714e75d9.svg#Circular Std Medium") format("svg");
 }
 
+.card{
+    padding: 10px 30px;
+    border-radius: 10px;
+}
 .reap-bg-color {
     background-color: var(--main-color);
 }
@@ -74,14 +78,36 @@ h1 {
     }
 }
 
-.home-header {
+.home-header1 {
     position: relative;
     min-height: 100vh;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
-    url("../img/Image 1.png");
+    url("../img/INVEST\ SMARTLY;\ PROFIT\ GENEROUSLY.jpg");
+    background-blend-mode: multiply;
+}
+
+.home-header2 {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
+    url("../img/LIVE\ FREE\ OF\ FINANCIAL\ WORRIES.jpg");
+    background-blend-mode: multiply;
+}
+
+.home-header3 {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
+    url("../img/LIVE\ IN\ THE\ PEAK\ AND\ EARN\ WITHOUT\ STRESS.jpg");
     background-blend-mode: multiply;
 }
 
@@ -245,10 +271,10 @@ h1 {
 }
 
 
-.investment .container-fluid .card, .investment-plan .card{
-    display: flex;
-    padding: 20px;
-    margin: 10px;
+.investment .card, .investment-plan .card{
+    /* /* display: flex; */
+    /* margin: 10px; */
+    min-height: 500px;
 }
 
 .investment h5{
