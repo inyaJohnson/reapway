@@ -3,7 +3,13 @@
 
     <body class="bg-white">
     <!--Main Navigation-->
-    <header class="home-header">
+ 
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <!-- <img src="..." class="d-block w-100" alt="..."> -->
+        <header class=" home-header home-header1">
         <!-- Navbar -->
     @include('layouts.navigation')
     <!-- Navbar -->
@@ -11,33 +17,76 @@
             <div class="row">
                 <div class="col-md-5  col-lg-5">
                     <h1 class="text-white" data-aos="zoom-in">
-                        The Best Way To
-                        Invest Securely And
-                        Profitably
+                    INVEST SMARTLY; PROFIT GENEROUSLY
                     </h1>
                     <p class="mt-4" data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500"
                        data-aos-duration="500">
-                        We are experts at studying the financial
-                        market and placing accurate profit laden
-                        trades.
+                       ReapWay offers you the easiest and most prudent ways to invest your capital and to 
                     </p>
 
                     <p class="mt-4" data-aos="fade-left"
                        data-aos-anchor="#example-anchor"
                        data-aos-offset="500"
                        data-aos-duration="75000">
-                        Earn 15% - 20% returns on investments
-                        on Bronze and Silver plans respectively.
+                       get it back with ample returns.
                     </p>
 
-                    <p class="mt-4" data-aos="fade-left"
+                    <!-- <p class="mt-4" data-aos="fade-left"
                        data-aos-anchor="#example-anchor"
                        data-aos-offset="500"
                        data-aos-duration="1000">
                         We are experts at studying the financial
                         market and placing accurate profit laden
                         trades.
+                    </p> -->
+                    <div class="call-register">
+                        <a href="{{route('register')}}">
+                            <button
+                                    class="btn reap-bg-orange-color text-white font-weight-bold btn-rounded mt-4 waves-effect px-5 mx-auto d-block">
+                                    Invest Now
+                            </button>
+                        </a>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </header>
+    </div>
+    <div class="carousel-item">
+      <!-- <img src="..." class="d-block w-100" alt="..."> -->
+      <header class=" home-header home-header2">
+        <!-- Navbar -->
+    @include('layouts.navigation')
+    <!-- Navbar -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5  col-lg-5">
+                    <h1 class="text-white" data-aos="zoom-in">
+                    LIVE FREE OF FINANCIAL WORRIES
+                    </h1>
+                    <p class="mt-4" data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500"
+                       data-aos-duration="500">
+                       Achieve lasting financial security by exploring the 
                     </p>
+
+                    <p class="mt-4" data-aos="fade-left"
+                       data-aos-anchor="#example-anchor"
+                       data-aos-offset="500"
+                       data-aos-duration="75000">
+                       optimum financial growth opportunities that we offer.
+                    </p>
+
+                    <!-- <p class="mt-4" data-aos="fade-left"
+                       data-aos-anchor="#example-anchor"
+                       data-aos-offset="500"
+                       data-aos-duration="1000">
+                        We are experts at studying the financial
+                        market and placing accurate profit laden
+                        trades.
+                    </p> -->
                     <div class="call-register">
                         <a href="{{route('register')}}">
                             <button
@@ -48,9 +97,71 @@
                     </div>
 
                 </div>
+
+
             </div>
         </div>
     </header>
+    </div>
+    <div class="carousel-item">
+      <!-- <img src="..." class="d-block w-100" alt="..."> -->
+      <header class=" home-header home-header3">
+        <!-- Navbar -->
+    @include('layouts.navigation')
+    <!-- Navbar -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5  col-lg-5">
+                    <h1 class="text-white" data-aos="zoom-in">
+                    LIVE IN THE PEAK AND EARN WITHOUT STRESS
+                    </h1>
+                    <p class="mt-4" data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500"
+                       data-aos-duration="500">
+                       With ReapWay, you can afford to have an optimal lifestyle
+                    </p>
+
+                    <p class="mt-4" data-aos="fade-left"
+                       data-aos-anchor="#example-anchor"
+                       data-aos-offset="500"
+                       data-aos-duration="75000">
+                       while your money goes to work for you.
+                    </p>
+
+                    <!-- <p class="mt-4" data-aos="fade-left"
+                       data-aos-anchor="#example-anchor"
+                       data-aos-offset="500"
+                       data-aos-duration="1000">
+                        We are experts at studying the financial
+                        market and placing accurate profit laden
+                        trades.
+                    </p> -->
+                    <div class="call-register">
+                        <a href="{{route('register')}}">
+                            <button
+                                    class="btn reap-bg-orange-color text-white font-weight-bold btn-rounded mt-4 waves-effect px-5 mx-auto d-block">
+                                    Begin Today
+                            </button>
+                        </a>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </header>
+    </div>
+  </div>
+
+  <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a> -->
+</div>
     <!--Main Navigation-->
 
 
@@ -158,19 +269,23 @@
                     </p>
                 </div>
             </div>
-            <div class="container-fluid">
-                <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                    <img class="mx-auto mt-5 d-block"
-                         src="{{asset('frontend/img/undraw_personal_finance_tqcd.png')}}"
-                         alt="investment-ima"/>
-                    <h2 class="reap-color font-weight-bold">Enjoy Unique Investment Cycles
-                    </h2>
-                    <p>
-                        Grow your wealth within the shortest time possible with our solid investment plans and
-                        competitive returns on investments.
-                    </p>
-                </div>
-                <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
+                        <img class="mx-auto mt-5 d-block"
+                            src="{{asset('frontend/img/undraw_personal_finance_tqcd.png')}}"
+                            alt="investment-ima"/>
+                        <h2 class="reap-color font-weight-bold">Enjoy Unique Investment Cycles
+                        </h2>
+                        <p>
+                            Grow your wealth within the shortest time possible with our solid investment plans and
+                            competitive returns on investments.
+                        </p>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                    <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
                     <img class="mx-auto mt-5 d-block"
                          src="{{asset('frontend/img/undraw_investment_xv9d.png')}}" alt="investment-ima"/>
                     <h2 class="reap-color font-weight-bold">Build According To Your Means
@@ -180,7 +295,9 @@
                         everyone from all levels.
                     </p>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
+                    </div>
+                    <div class="col-md-4">
+                    <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
                     <img class="mx-auto mt-5 d-block"
                          src="{{asset('frontend/img/undraw_Security_on_ff2u.png')}}" alt="investment-ima"/>
                     <h2 class="reap-color font-weight-bold">Invest With The Assured Security
@@ -190,6 +307,11 @@
                         back.
                     </p>
                 </div>
+                    </div>
+               
+               
+                </div>
+              
             </div>
         </div>
 
@@ -203,7 +325,9 @@
                     </p>
                 </div>
             </div>
-            <div class="container-fluid">
+            <div class="container">
+               <div class="row">
+                <div class="col-md-4">
                 <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
                     <img class="mx-auto mt-5 d-block"
                          src="{{asset('frontend/img/save1.jpeg')}}"
@@ -215,6 +339,8 @@
                         growth goals.
                     </p>
                 </div>
+                </div>
+                <div class="col-md-4">
                 <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
                     <img class="mx-auto mt-5 d-block"
                          src="{{asset('frontend/img/save3.jpeg')}}" alt="investment-ima"/>
@@ -225,6 +351,8 @@
                         dashboard.
                     </p>
                 </div>
+                </div>
+                <div class="col-md-4">
                 <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-center">
                     <img class="mx-auto mt-5 d-block"
                          src="{{asset('frontend/img/save3.jpeg')}}" alt="investment-ima"/>
@@ -234,6 +362,8 @@
                         investments.
                     </p>
                 </div>
+                </div>
+               </div>
             </div>
         </div>
 
@@ -260,7 +390,7 @@
                 </div>
             </div>
         </div>
-        <div id="customers">
+        <!-- <div id="customers">
             <div class="container-fluid">
                 <h3 class="reap-color text-center my-3 pt-5">Our Clients Say... </h3>
                 <div class="row justify-content-center">
@@ -288,7 +418,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div id="faq">
             <div class="container-fluid">
                 <h3 class="reap-color text-center my-5" style="font-weight:900">Frequently Asked Questions (FAQ)</h3>
