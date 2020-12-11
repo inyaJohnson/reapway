@@ -19,31 +19,31 @@
         <ul class="nav-menu">
             <li class="nav-item mt-2">
                 <a class="nav-link waves-effect" href="{{route('welcome')}}">
-                    Home
+                    HOME
                 </a>
             </li>
             <li class="nav-item mt-2">
                 <a class="nav-link waves-effect" href="{{route('about')}}">
-                    About
+                    ABOUT
                 </a>
             </li>
             <li class="nav-item mt-2">
                 <a class="nav-link waves-effect"
                    href="{{url('#best-investment-plan')}}">
-                    Plans</a>
+                    PLAN</a>
             </li>
             <li class="nav-item mt-2">
                 <a class="nav-link waves-effect" href="{{route('login')}}">
-                    Login</a>
+                    LOGIN</a>
             </li>
             <li class="nav-item mt-2">
                 <a class="nav-link waves-effect" href="{{url('#faq')}}">
                     FAQ</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link waves-effect bg-white btn reap-color hide-on-mobile"
-                   style="color: green;" href="{{route('register')}}">
-                    Create A Free Account</a>
+                <a class="nav-link waves-effect btn btn-dark  hide-on-mobile"
+                   style="color: white !important;" href="{{route('register')}}">
+                    CONTACT US</a>
             </li>
         </ul>
     </div>

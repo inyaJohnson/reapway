@@ -84,8 +84,9 @@ h1 {
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
-    url("../img/INVEST\ SMARTLY;\ PROFIT\ GENEROUSLY.jpg");
+    /* background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
+    url("../img/INVEST\ SMARTLY;\ PROFIT\ GENEROUSLY.jpg"); */
+    background-image:url("../img/INVEST\ SMARTLY;\ PROFIT\ GENEROUSLY.jpg");
     background-blend-mode: multiply;
 }
 
@@ -95,6 +96,7 @@ h1 {
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
+    /* background-image:url("../img/LIVE\ FREE\ OF\ FINANCIAL\ WORRIES.jpg"); */
     background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
     url("../img/LIVE\ FREE\ OF\ FINANCIAL\ WORRIES.jpg");
     background-blend-mode: multiply;
@@ -106,6 +108,8 @@ h1 {
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
+    /* background-image:url("../img/LIVE\ IN\ THE\ PEAK\ AND\ EARN\ WITHOUT\ STRESS.jpg"); */
+
     background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
     url("../img/LIVE\ IN\ THE\ PEAK\ AND\ EARN\ WITHOUT\ STRESS.jpg");
     background-blend-mode: multiply;
@@ -128,13 +132,22 @@ h1 {
 
 .home-header h1 {
     margin-top: 4em;
+    font-size: 50pt;
+    line-height: 1.3em;
 }
 
 .home-header p {
-    color: #ededed;
+    color: #edededda;
     font-weight: bold !important;
     font-family: 'Epilogue', sans-serif;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
+}
+
+.home-header a button {
+    background-color: #fff;
+    border-radius: 0px;
+    height: 60px;
+    color: #0e0c0e;
 }
 
 .home-header a:hover button {
@@ -144,7 +157,6 @@ h1 {
 .home-header .desktop-img {
     /*margin-left: 5%;*/
 }
-
 
 /* Setting the stroke to green using rgb values (0, 128, 0) */
 
@@ -267,7 +279,7 @@ h1 {
 }
 
 .investment p{
-    font-size: 0.9rem;
+    font-size: 1.5rem;
 }
 
 
@@ -286,8 +298,52 @@ h1 {
 }
 
 .investment img {
-    width: 250px;
-    height: 150px;
+    /* /* width: 250px; */
+    height: 300px;
+}
+
+.about-us-home{
+    padding: 6em 5em;
+}
+
+
+.about-us-home p{
+    font-size: 1.5em;
+}
+
+.about-us-home h1{
+    font-size: 3.5em;
+    font-weight: 200 !important;
+
+
+}
+.about-us-home h4{
+    font-size: 2em;
+    /* font-weight: 600; */
+}
+
+
+.about-us-home1 p{
+    font-size: 1.5em;
+    line-height: 60px;
+}
+.about-us-home1{
+    min-height: 65vh;
+    background-color: rgba(204, 209, 204, 0.267);
+
+
+}
+.about-us-home h4{
+    font-size: 2em;
+    /* font-weight: 600; */
+}
+.about-us-home1 h1{
+    font-size: 3.5em;
+    font-weight: 200 !important;
+}
+.about-us-home1 h4{
+    font-size: 2em;
+    /* font-weight: 600; */
 }
 
 main #investor .title {
@@ -410,6 +466,9 @@ main #faq .card .card-header span:first-child {
 
 
 /* MAIN SECTIONS END */
+.fixed-top{
+    background-color: white !important;
+}
 nav .container-fluid{
     min-height: 10vh;
     display:flex;
@@ -436,14 +495,14 @@ nav .container-fluid{
 
 .nav-link {
     text-decoration: none;
-    color: white;
+    color: rgba(128, 128, 128, 0.801) !important;
     font-weight: 500;
     font-size: 0.85em;
 }
 
 .nav-link:hover {
     text-decoration: none;
-    color: white;
+    color: green ;
     border-bottom: 4px solid #1a2c0a5b;
     border-radius: 0;
 }
@@ -575,9 +634,7 @@ nav .container-fluid{
 
 @media(max-width: 1024px) {
 
-    .investment img {
-        width: 150px;
-    }
+  
     main #investor .container-fluid{
         padding-right:50px ;
         padding-left: 50px;
@@ -700,6 +757,8 @@ footer .social-link-div .fab{
         background-repeat: no-repeat;
         background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
         url("../img/Image 1.png");
+        /* background-image: linear-gradient(to left, #141613b4 0%, #0e0c0e 100%),
+        url("../img/Image 1.png"); */
         background-blend-mode: multiply;
     }
 
@@ -773,7 +832,7 @@ footer .social-link-div .fab{
 
 .call-register{
     display: flex;
-    justify-content:flex-start;
+    justify-content:center;
     margin-bottom: 30px;
 }
 
