@@ -422,6 +422,8 @@ main #investor img {
     #customers .customer-card img {
         bottom: 10px;
     }
+
+  
 }
 
 #faq {
@@ -526,7 +528,9 @@ nav .container-fluid{
 
 
 @media(max-width: 768px) {
-
+    .about-us-home{
+        padding: 2em !important;
+    }
     header{
         overflow-x: hidden;
     }
@@ -840,6 +844,16 @@ footer .social-link-div .fab{
 @media(max-width: 425px){
     .call-register{
         justify-content: center;
+    }
+    .about-us-home h1{
+        font-size: 33px;
+    }
+    .about-us-home p{
+        font-size: 18px;
+    }
+    .about-us-home h4{
+        font-size: 24px;
+
     }
 }
 
