@@ -39,8 +39,8 @@ class InvestmentController extends Controller
 
 
     /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param InvestRequest $request
+     * @return $this
      */
     public function store(InvestRequest $request)
     {

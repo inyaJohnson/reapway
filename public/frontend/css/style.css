@@ -49,6 +49,7 @@ p {
     vertical-align: baseline;
     line-height: 1.7em;
     color: #545454b0;
+    font-size: 1.2em !important;
     /* letter-spacing: .5px; */
     /* font-family: 'Oswald', sans-serif; */
 }
