@@ -43,7 +43,7 @@
     background-color: var(--inverse-color);
 }
 
-p {
+p, .faq-list{
     font-weight: 300 !important;
     font-family: "Rubik", sans-serif;
     vertical-align: baseline;

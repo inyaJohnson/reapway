@@ -6,497 +6,497 @@
 
     <div>
         @include('layouts.navigation')
-
     </div>
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <!-- <img src="..." class="d-block w-100" alt="..."> -->
-
-                <header class=" home-header home-header1">
-                    <!-- Navbar -->
-                    <!-- Navbar -->
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-8  col-lg-8 mx-auto d-block">
-                                <h1 class="text-white text-center" data-aos="zoom-in">
-                                    INVEST SMARTLY;<br> PROFIT GENEROUSLY
-                                </h1>
-                                <p class="mt-4 text-center" data-aos="fade-left" data-aos-anchor="#example-anchor"
-                                   data-aos-offset="500"
-                                   data-aos-duration="500">
-                                    ReapWay offers you the easiest and most prudent ways to invest your capital and to
-                                    get it back with ample returns.
-
-                                </p>
-
-                            {{--<p class="mt-4 text-center" data-aos="fade-left"--}}
-                            {{--data-aos-anchor="#example-anchor"--}}
-                            {{--data-aos-offset="500"--}}
-                            {{--data-aos-duration="75000">--}}
-                            {{--get it back with ample returns.--}}
-                            {{--</p>--}}
-
-                            <!-- <p class="mt-4" data-aos="fade-left"
-                                   data-aos-anchor="#example-anchor"
-                                   data-aos-offset="500"
-                                   data-aos-duration="1000">
-                                    We are experts at studying the financial
-                                    market and placing accurate profit laden
-                                    trades.
-                                </p> -->
-                                <div class="call-register text-center">
-                                    <a href="{{route('register')}}">
-                                        <button
-                                                class="btn font-weight-bold btn-rounded mt-4 waves-effect px-5">
-                                            Invest Now
-                                        </button>
-                                    </a>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                </header>
-            </div>
-            <div class="carousel-item">
-                <!-- <img src="..." class="d-block w-100" alt="..."> -->
-                <header class=" home-header home-header2">
-                    <!-- Navbar -->
-                    <!-- Navbar -->
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-8  col-lg-8 mx-auto d-block">
-                                <h1 class="text-white text-center" data-aos="zoom-in">
-                                    LIVE FREE OF FINANCIAL WORRIES
-                                </h1>
-                                <p class="mt-4 text-center" data-aos="fade-left" data-aos-anchor="#example-anchor"
-                                   data-aos-offset="500"
-                                   data-aos-duration="500">
-                                    Achieve lasting financial security by exploring the
-                                </p>
-
-                                <p class="mt-4 text-center" data-aos="fade-left"
-                                   data-aos-anchor="#example-anchor"
-                                   data-aos-offset="500"
-                                   data-aos-duration="75000">
-                                    optimum financial growth opportunities that we offer.
-                                </p>
-
-                                <!-- <p class="mt-4" data-aos="fade-left"
-                                   data-aos-anchor="#example-anchor"
-                                   data-aos-offset="500"
-                                   data-aos-duration="1000">
-                                    We are experts at studying the financial
-                                    market and placing accurate profit laden
-                                    trades.
-                                </p> -->
-                                <div class="text-center call-register">
-                                    <a href="{{route('register')}}">
-                                        <button
-                                                class="btn font-weight-bold mt-4 waves-effect px-5">
-                                            Get Started
-                                        </button>
-                                    </a>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                </header>
-            </div>
-            <div class="carousel-item">
-                <!-- <img src="..." class="d-block w-100" alt="..."> -->
-                <header class=" home-header home-header3">
-                    <!-- Navbar -->
-                    <!-- Navbar -->
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-8 col-lg-8 mx-auto d-block">
-                                <h1 class="text-white text-center" data-aos="zoom-in">
-                                    LIVE IN THE PEAK AND EARN WITHOUT STRESS
-                                </h1>
-                                <p class="mt-4 text-center" data-aos="fade-left" data-aos-anchor="#example-anchor"
-                                   data-aos-offset="500"
-                                   data-aos-duration="500">
-                                    With ReapWay, you can afford to have an optimal lifestyle
-                                </p>
-
-                                <p class="mt-4 text-center" data-aos="fade-left"
-                                   data-aos-anchor="#example-anchor"
-                                   data-aos-offset="500"
-                                   data-aos-duration="75000">
-                                    while your money goes to work for you.
-                                </p>
-
-                                <!-- <p class="mt-4" data-aos="fade-left"
-                                   data-aos-anchor="#example-anchor"
-                                   data-aos-offset="500"
-                                   data-aos-duration="1000">
-                                    We are experts at studying the financial
-                                    market and placing accurate profit laden
-                                    trades.
-                                </p> -->
-                                <div class="call-register">
-                                    <a href="{{route('register')}}">
-                                        <button
-                                                class="btn font-weight-bold  mt-4 waves-effect px-5 mx-auto d-block">
-                                            Begin Today
-                                        </button>
-                                    </a>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                </header>
-            </div>
-        </div>
-
-        <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a> -->
-    </div>
-    <!--Main Navigation-->
 
 
     <!--Main layout-->
-    <main class="">
-        {{--<div id="how-it-works" class="">--}}
-        {{--<div class="container-fluid">--}}
-        {{--<div class="col-md-12">--}}
-        {{--<h4 class="reap-color font-weight-bold text-center mb-4">--}}
-        {{--HOW IT WORKS FOUR EASY WAY TO START--}}
-        {{--</h4>--}}
-        {{--<div class="row">--}}
-        {{--<div class="col-md-3">--}}
-        {{--<div>--}}
-        {{--<img src="{{asset('frontend/img/portfolio.png')}}" alt="">--}}
-        {{--</div>--}}
-        {{--<p class="text-center font-weight-bold mt-3">Register Account</p>--}}
+    <main class="" style="margin-top: 100px;">
+        <div id="faq">
+            <h3 class="reap-color text-center my-5" style="font-weight:900">Frequently Asked Questions (FAQ)</h3>
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <span class="font-weight-bold">What is ReapWay?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
 
-        {{--</div>--}}
-        {{--<div class="col-md-3">--}}
-        {{--<div>--}}
-        {{--<img src="{{asset('frontend/img/invest.png')}}" alt="">--}}
-        {{--</div>--}}
-        {{--<p class="text-center font-weight-bold mt-3">Invest</p>--}}
-
-        {{--</div>--}}
-        {{--<div class="col-md-3">--}}
-        {{--<div>--}}
-        {{--<img src="{{asset('frontend/img/time.png')}}" alt="">--}}
-        {{--</div>--}}
-        {{--<p class="text-center font-weight-bold mt-3">Wait for 25 working days</p>--}}
-
-        {{--</div>--}}
-        {{--<div class="col-md-3">--}}
-        {{--<div>--}}
-        {{--<img src="{{asset('frontend/img/analytics.png')}}" alt="">--}}
-        {{--</div>--}}
-        {{--<p class="text-center font-weight-bold mt-3">Reap your Investment</p>--}}
-
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--<div id="best-investment-plan">--}}
-        {{--<div class="container-fluid">--}}
-        {{--<div class="justify-content-md-center mt-5">--}}
-        {{--<div>--}}
-        {{--<h3 class="reap-color font-weight-bold text-center mt-3">Best Investment Plan!--}}
-        {{--</h3>--}}
-        {{--<p class="text-center">Best Investment Plan!--}}
-        {{--ReapWay helps you invest and grow your money with the any--}}
-        {{--suitable investment plan that you choose.--}}
-        {{--</p>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="text-center investment-plan">--}}
-        {{--<div data-aos="fade-up"--}}
-        {{--data-aos-anchor-placement="center-bottom">--}}
-        {{--<div class="card">--}}
-        {{--<div class="card-body">--}}
-        {{--<h1 class="card-title font-weight-bolder mt-4">GOLD</h1>--}}
-        {{--<p class="stroke"></p>--}}
-        {{--<h1 class="card-title font-weight-bolder reap-orange-color">25%</h1>--}}
-        {{--<p class="card-text font-weight-bold">N2,000,000 (2M) <br> - <br>N10,000,000 <br>(10M)</p>--}}
-        {{--<a href="{{route('login')}}" class="btn reap-bg-orange-color text-white">Invest</a>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--<div data-aos="fade-up"--}}
-        {{--data-aos-anchor-placement="center-bottom">--}}
-        {{--<div class="card">--}}
-        {{--<div class="card-body">--}}
-        {{--<h1 class="card-title font-weight-bolder mt-4">SILVER</h1>--}}
-        {{--<p class="stroke"></p>--}}
-        {{--<h1 class="card-title font-weight-bolder reap-color">25%</h1>--}}
-        {{--<p class="card-text font-weight-bold">N500,000 (500k) <br> - <br>N1,950,000 <br> (1.9M)</p>--}}
-        {{--<a href="{{route('login')}}" class="btn reap-bg-color text-white">Invest</a>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--<div data-aos="fade-up"--}}
-        {{--data-aos-anchor-placement="center-bottom">--}}
-        {{--<div class="card">--}}
-        {{--<div class="card-body">--}}
-        {{--<h1 class="card-title font-weight-bolder mt-4">BRONZE</h1>--}}
-        {{--<p class="stroke"></p>--}}
-        {{--<h1 class="card-title font-weight-bolder">15%</h1>--}}
-        {{--<p class="card-text font-weight-bold">N20,000 (20k) <br> - <br>N45,000 <br>(45k)</p>--}}
-        {{--<a href="{{route('login')}}" class="btn text-white" style="background-color: #222;">Invest</a>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        <div class="investment">
-            <div class="justify-content-md-center mt-5 head-section">
-                <div>
-                    <h3 class="font-weight-bold text-center">Be Part Of Our Growing Community
-                    </h3>
-                    <p class="text-center">
-                        Join the expanding generation of financially independent people that we are gradually raising to
-                        take over Africa’s economic atmosphere.
-                    </p>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                ReapWay is a premium financial hub that helps individuals and groups, Africans in
+                                particular, build lasting wealth with guaranteed results.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                            <img class="mx-auto my-5 d-block img-fluid"
-                                 src="{{asset('frontend/img/Enjoy Unique Investment Cycles.jpg')}}"
-                                 alt="investment-ima"/>
-                            <h4 class="text-center font-weight-bold mt-5">Enjoy Unique Investment Cycles
-                            </h4>
-                            <p class="text-center">
-                                Grow your wealth within the shortest time possible with our solid investment plans and
-                                competitive returns on investments.
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                <span class="font-weight-bold">What does ReapWay do?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                At ReapWay, we trade in the Financial Market and invest in Real Estate and Agriculture.
+                                As a result of this, we have gathered a wide variety of experience trading at many
+                                levels of the Foreign Exchange, managing an expansive array of investment portfolios and
+                                distributing wealth to our various clients.
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                            <img class="mx-auto my-5 d-block img-fluid"
-                                 src="{{asset('frontend/img/Build According To Your Means.png')}}"
-                                 alt="investment-ima"/>
-                            <h4 class="text-center font-weight-bold mt-5">Build According To Your Means
-                            </h4>
-                            <p class="text-center">
-                                Develop your finances from scratch with our client-friendly and affordable investment
-                                plans for
-                                everyone from all levels.
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                <span class="font-weight-bold">Is ReapWay Registered with any Government Agency?</span><span
+                                        class="float-right"><i
+                                            class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                Yes, ReapWay is registered with the CAC with the registration number - BN 3173871
+                                Also, ReapWay is certified by the EFCC Special Control Unit Against Money Laundering
+                                with the certification number - RN: SC 072993
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                            <img class="mx-auto my-5 d-block img-fluid"
-                                 src="{{asset('frontend/img/Invest With The Assurance Of Security.png')}}"
-                                 alt="investment-ima"/>
-                            <h4 class="text-center mt-5 font-weight-bold">Invest With The Assured Security
-                            </h4>
-                            <p class="text-center">
-                                Enjoy iron-clad guarantee on the safety of your investments and relax, knowing we have
-                                your
-                                back.
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+                                    aria-controls="collapseFour">
+                                <span class="font-weight-bold">Does ReapWay have a Corporate Account Number for transactions?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                Yes, we have an operational Corporate Account with Providus Bank. The account number is
+                                made available to our clients when necessary.
                             </p>
                         </div>
                     </div>
-
-
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFive">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseFive" aria-expanded="false"
+                                    aria-controls="collapseFive">
+                                <span class="font-weight-bold">How Competent and Reliable is ReapWay?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                ReapWay is managed by a Competent Team of Individuals who are Astute Professionals in
+                                Funds Management, Time-Proven Financial Market Analysts and Top-Notch Digital Marketers
+                                and Agents who have amassed a wide range of relevant experiences and are driven by a
+                                passion for Excellence that is only rivalled by their desire to help create a world of
+                                financially secure people.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
+                <div class="card">
+                    <div class="card-header" id="headingSix">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseSix" aria-expanded="false"
+                                    aria-controls="collapseSix">
+                                <span class="font-weight-bold">Is this a Ponzi Scheme?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                No, our investment plans at ReapWay are not a Ponzi Scheme. Our seasoned financial
+                                analysts analyze the financial market to discover the best opportunities for trade and
+                                our professional fund managers trade with the capital gathered from our “investors” and
+                                then share the profit made with these investors.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingSeven">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false"
+                                    aria-controls="collapseSeven">
+                                <span class="font-weight-bold">What is ReapWay’s Investment Process?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                At ReapWay, our Investment Process is simple and straightforward. We follow a four-step
+                                process: Advise - Fund - Wait - Reap. This means that we provide professional advice to
+                                our clients to help them determine the best investment plan that suits them. Afterwards,
+                                they are required to fund the plan. Then they wait for the investment circle to be
+                                completed after which they will be able to get back their original capital and the
+                                accrued returns on investment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header" id="headingEight">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseEight" aria-expanded="false"
+                                    aria-controls="collapseEight">
+                                <span class="font-weight-bold">What are the available Investment Options/Plans?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseEight" class="collapse" aria-labelledby="headingEight"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                Presently, we have only four standard Investment Plans (apart from our periodic
+                                Investment Promos). These four Investment Plans are:
+                            <ul class="faq-list">
+                                <li>Lite Plan - 20% ROI in 25 Working Days</li>
+                                <li>Classic Plan - 25% ROI in 30 Working Days</li>
+                                <li>Premium Plan - 40% ROI in 2 Months</li>
+                                <li>Elite Plan - 100% ROI in 4 Months</li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header" id="headingNine">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseNine" aria-expanded="false"
+                                    aria-controls="collapseNine">
+                                <span class="font-weight-bold">What are the Minimum and Maximum Capital I can Invest?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseNine" class="collapse" aria-labelledby="headingNine"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                This varies according to the investment plan selected. But on a general note, the
+                                Minimum Capital that can be invested with us for now is N50,000 and the Maximum Capital
+                                that can be invested with us for now is N20,000,000.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingTen">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseTen" aria-expanded="false"
+                                    aria-controls="collapseTen">
+                                <span class="font-weight-bold">Will I get my Returns On Investments?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTen" class="collapse" aria-labelledby="headingTen"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                Yes. You will definitely get back your Original Capital and the accrued ROI once the
+                                Investment Circle for the plan funded is complete.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingEleven">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false"
+                                    aria-controls="collapseEleven">
+                                <span class="font-weight-bold">How long do I wait before my Investment is ripe for Withdrawal?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                The wait period varies according to the Investment Plan selected. The range is between
+                                25 Working Days to 4 Months (for now), depending on the uniqueness of the plan funded
+                                and the size of the promised ROI.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingTwelve">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="false"
+                                    aria-controls="collapseTwelve">
+                                <span class="font-weight-bold">How do I Withdraw my Investment and ROI?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                Once your Funded Plan has completed its Circle, you can explore our Withdrawal Options,
+                                select the one that suits your present desire and process the option by Chatting LIVE
+                                with our Online Customer Support Desk - Click Here To Chat Live With Us. [insert chat
+                                link]
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header" id="headingThirteen">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseThirteen" aria-expanded="false"
+                                    aria-controls="collapseThirteen">
+                                <span class="font-weight-bold">Can I Reinvest my Capital and ROI?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                Yes, you can. As a matter of fact, this is one of our Withdrawal Options. You can select
+                                and process this option by Chatting LIVE with our Online Customer Support Desk - Click
+                                Here To Chat Live With Us. [insert chat link]
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header" id="headingFourteen">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseFourteen" aria-expanded="false"
+                                    aria-controls="collapseFourteen">
+                                <span class="font-weight-bold">How can I Open an Investment Profile with ReapWay?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFourteen" class="collapse" aria-labelledby="headingFourteen"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                By default, every active Investor on our database has an Investment Profile with us.
+                                However, any prospective client can open an Investment Profile with ReapWay either by
+                                Creating A Free Account through the website or by Chatting LIVE with our Online Customer
+                                Support Desk - Click Here To Chat Live With Us. [insert chat link]
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header" id="headingFifteen">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseFifteen" aria-expanded="false"
+                                    aria-controls="collapseFifteen">
+                                <span class="font-weight-bold">How long will these Investment Plans last?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFifteen" class="collapse" aria-labelledby="headingFifteen"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                Our Standard Investment Plans will last for as long as we believe they are relevant to
+                                the ever evolving dynamics of the Financial Market and the diversities of our
+                                prospective clients.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingSixteen">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseSixteen" aria-expanded="false"
+                                    aria-controls="collapseSixteen">
+                                <span class="font-weight-bold">Is my Investment Secure?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseSixteen" class="collapse" aria-labelledby="headingSixteen"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                Absolutely! Your investment(s) is/are secure. This is because they are protected by a
+                                Security Fund that allows us to minimise losses in the event of their happenstances. Our
+                                Memorandum Of Understanding also guarantees that in any case of loss borne by the
+                                company as a result of unforeseen circumstances, our clients will at least still be able
+                                to get back their original capital.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header" id="headingSeventeen">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseSeventeen" aria-expanded="false"
+                                    aria-controls="collapseSeventeen">
+                                <span class="font-weight-bold">What is ReapWay’s Vision for every Investor?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseSeventeen" class="collapse" aria-labelledby="headingSeventeen"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                Our Vision for every Investor is to help them achieve financial freedom by exposing them
+                                to various financial growth opportunities and guiding them in the explorations of these
+                                opportunities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingEighteen">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseEighteen" aria-expanded="false"
+                                    aria-controls="collapseEighteen">
+                                <span class="font-weight-bold">How long will these Investment Plans last?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseEighteen" class="collapse" aria-labelledby="headingEighteen"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                Our Standard Investment Plans will last for as long as we believe they are relevant to
+                                the ever evolving dynamics of the Financial Market and the diversities of our
+                                prospective clients.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header" id="headingNineteen">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseNineteen" aria-expanded="false"
+                                    aria-controls="collapseNineteen">
+                                <span class="font-weight-bold">How can I Partner with ReapWay?</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseNineteen" class="collapse" aria-labelledby="headingNineteen"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>
+                                You can partner with ReapWay by discussing the details of the partnership directly with
+                                our CEO. Our Online Customer Support Desk will give you directions on how to reach the
+                                CEO directly - <a href="https://api.whatsapp.com/send/?phone=2349132054210&text&app_absent=0">Click Here To Chat Live With Us.</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header" id="headingtwenty">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapsetwenty" aria-expanded="false"
+                                    aria-controls="collapsetwenty">
+                                <span class="font-weight-bold">Got More Questions? Ask Us:</span><span
+                                        class="float-right"><i class="fas fa-sort-down reap-color"></i></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapsetwenty" class="collapse" aria-labelledby="headingtwenty"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul class="faq-list">
+                                <li>Chat Live With Our Online Customer Support Desk.</li>
+                                <li>Or Place A Call To Us.</li>
+                                <li> Or Send An Email.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="investment">
-            <div class="justify-content-md-center mt-5 head-section">
-                <div>
-                    <h3 class="font-weight-bold text-center">Start A Plan From Wherever You Are!
-                    </h3>
-                    <p class="text-center">With ReapWay, you can invest and earn from the comfort of your location. Our
-                        investment process is tailored to match your convenience.
-                    </p>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                            <img class="mx-auto my-5 d-block img-fluid"
-                                 src="{{asset('frontend/img/save1.jpeg')}}"
-                                 alt="investment-ima"/>
-                            <h4 class="text-center font-weight-bold my-5">Choose Where You Invest
-                            </h4>
-                            <p class="text-center">
-                                You get to choose which of the available investment plans suits your desires and your
-                                financial
-                                growth goals.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                            <img class="mx-auto my-5 d-block img-fluid"
-                                 src="{{asset('frontend/img/save3.jpeg')}}" alt="investment-ima"/>
-                            <h4 class="text-center font-weight-bold my-5">Keep Track Of Your Investments
-                            </h4>
-                            <p class="text-center">
-                                Effortlessly keep an eye on the growth of your investments from the ease of your unique
-                                dashboard.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                            <img class="mx-auto my-5 d-block img-fluid"
-                                 src="{{asset('frontend/img/save2.jpeg')}}" alt="investment-ima"/>
-                            <h4 class="text-center font-weight-bold my-5">Decide How You Profit
-                            </h4>
-                            <p class="text-center">With our distinct withdrawal options, you can decide how you want to
-                                process your returns on
-                                investments.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="about-us-home">
-            <div class="justify-content-md-center mt-5 head-section">
-                <div>
-                    <h5 class="text-center">About Us</h5>
-                    <h1 class="font-weight-bold text-center">Company news
-                    </h1>
-                </div>
-            </div>
-            <div class="container-fluid mt-5">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                            <h4 class="">Choose Where You Invest
-                            </h4>
-                            <h5 class="my-5">Feb 5,2020</h5>
-                            <p class="">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Suspendisse varius enim
-                                in eros elementum tristique. Duis cursus,
-                                mi quis viverra ornare, eros dolor
-                                interdum nulla, ut commodo diam libero
-                                vitae erat. Aenean faucibus nibh et justo
-                                cursus id rutrum lorem imperdiet. Nunc
-                                ut sem vitae risus tristique posuere.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="" data-aos="fade-up" data-aos-anchor-placement="top-center">
-
-                            <h4 class="">Keep Track Of Your Investments
-                            </h4>
-                            <h5 class="my-5">Feb 5,2020</h5>
-
-                            <p class="">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Suspendisse varius enim
-                                in eros elementum tristique. Duis cursus,
-                                mi quis viverra ornare, eros dolor
-                                interdum nulla, ut commodo diam libero
-                                vitae erat. Aenean faucibus nibh et justo
-                                cursus id rutrum lorem imperdiet. Nunc
-                                ut sem vitae risus tristique posuere.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="" data-aos="fade-up" data-aos-anchor-placement="top-center">
-
-                            <h4 class="">Decide How You Profit
-                            </h4>
-                            <h5 class="my-5">Feb 5,2020</h5>
-
-                            <p class="">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Suspendisse varius enim
-                                in eros elementum tristique. Duis cursus,
-                                mi quis viverra ornare, eros dolor
-                                interdum nulla, ut commodo diam libero
-                                vitae erat. Aenean faucibus nibh et justo
-                                cursus id rutrum lorem imperdiet. Nunc
-                                ut sem vitae risus tristique posuere.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    <!-- <div id="investor">
-            <div class="container-fluid">
-                <h3 class="title reap-color">Investors of the month</h3>
-                <div class="investor">
-                    <div class="investor-img">
-                        <img src="{{asset('frontend/img/Mask Group 7.png')}}" alt=""/>
-                    </div>
-                    <div class="investor-story">
-                        <p>
-                            It has been an amazing journey investing
-                            with ReapWay I must say. Once upon a time,
-                            all I knew was to save in banks, got a lot of
-                            unreasonable deductions. ReapWay got me
-                            super enlightened, It curbed wasteful
-                            spending
-                        </p>
-                        <h2 class="reap-color font-weight-bold">Damola</h2>
-                        <h5 class="reap-color font-weight-bold">Artist</h5>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <div class="about-us-home1">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="text-center">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-10 mx-auto d-block pt-5">
-                                    <h1 class="text-center pt-5">Grow your business. </h1>
-                                    <p class="text-center">
-                                        Today is the day to build the business of your dreams. Share your mission
-                                        with the world — and blow your customers away.
-                                    </p>
-                                    <button class="btn bg-dark text-white " style="height: 60px;">
-                                        START NOW
-                                    </button>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
     </main>
     <!--Main layout-->
     @endsection

@@ -30,14 +30,14 @@
 
                                 </p>
 
-                                {{--<p class="mt-4 text-center" data-aos="fade-left"--}}
-                                   {{--data-aos-anchor="#example-anchor"--}}
-                                   {{--data-aos-offset="500"--}}
-                                   {{--data-aos-duration="75000">--}}
-                                    {{--get it back with ample returns.--}}
-                                {{--</p>--}}
+                            {{--<p class="mt-4 text-center" data-aos="fade-left"--}}
+                            {{--data-aos-anchor="#example-anchor"--}}
+                            {{--data-aos-offset="500"--}}
+                            {{--data-aos-duration="75000">--}}
+                            {{--get it back with ample returns.--}}
+                            {{--</p>--}}
 
-                                <!-- <p class="mt-4" data-aos="fade-left"
+                            <!-- <p class="mt-4" data-aos="fade-left"
                                    data-aos-anchor="#example-anchor"
                                    data-aos-offset="500"
                                    data-aos-duration="1000">
@@ -395,14 +395,11 @@
                             </h4>
                             <h5 class="my-5">Feb 5,2020</h5>
                             <p class="">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Suspendisse varius enim
-                                in eros elementum tristique. Duis cursus,
-                                mi quis viverra ornare, eros dolor
-                                interdum nulla, ut commodo diam libero
-                                vitae erat. Aenean faucibus nibh et justo
-                                cursus id rutrum lorem imperdiet. Nunc
-                                ut sem vitae risus tristique posuere.
+                                Yes, there are many investment companies with crazy ROI(s) and many of them will not
+                                last long because their Crazy ROI(s) is/are not sustainable. Instead of building their
+                                “security funds” in case the market did not go in their favour, they use highly
+                                attractive ROI(s) to attract investors. Also, many of them are managing more investors’
+                                accounts than they have the capacity to manage.
                             </p>
                         </div>
                     </div>
@@ -414,14 +411,10 @@
                             <h5 class="my-5">Feb 5,2020</h5>
 
                             <p class="">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Suspendisse varius enim
-                                in eros elementum tristique. Duis cursus,
-                                mi quis viverra ornare, eros dolor
-                                interdum nulla, ut commodo diam libero
-                                vitae erat. Aenean faucibus nibh et justo
-                                cursus id rutrum lorem imperdiet. Nunc
-                                ut sem vitae risus tristique posuere.
+                                Investments not only provide you with an alternate source of income, they also help you
+                                grow your wealth and expand your Financial Territories. It is never wise to consistently
+                                live from hand to mouth; it is better when expenses are taken care of from the
+                                surplusity of resources.
                             </p>
                         </div>
                     </div>
@@ -433,14 +426,12 @@
                             <h5 class="my-5">Feb 5,2020</h5>
 
                             <p class="">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Suspendisse varius enim
-                                in eros elementum tristique. Duis cursus,
-                                mi quis viverra ornare, eros dolor
-                                interdum nulla, ut commodo diam libero
-                                vitae erat. Aenean faucibus nibh et justo
-                                cursus id rutrum lorem imperdiet. Nunc
-                                ut sem vitae risus tristique posuere.
+                                First, you need to understand that Forex has no peculiar way of operating in
+                                certain times/periods of the year. The way it operates at the beginning of the year is
+                                the same way it will operate at the end of the year. You see, in Forex, "UPs" and
+                                "DOWNs" are as usual as the rising and setting of the sun. They occur every time. So, it
+                                is left to you to be smart enough to navigate in between the UP seasons and the DOWN
+                                seasons to, well, cash out.
                             </p>
                         </div>
                     </div>
@@ -479,13 +470,13 @@
                             <div class="row">
                                 <div class="col-md-10 mx-auto d-block pt-5">
                                     <h1 class="text-center pt-5">Grow your business. </h1>
-                                        <p class="text-center">
-                                            Today is the day to build the business of your dreams. Share your mission
-                                            with the world — and blow your customers away.
-                                        </p>
-                                        <button class="btn bg-dark text-white " style="height: 60px;">
-                                            START NOW
-                                        </button>
+                                    <p class="text-center">
+                                        Today is the day to build the business of your dreams. Share your mission
+                                        with the world — and blow your customers away.
+                                    </p>
+                                    <button class="btn bg-dark text-white " style="height: 60px;">
+                                        START NOW
+                                    </button>
                                 </div>
                             </div>
 
