@@ -30,14 +30,14 @@
 
                                 </p>
 
-                                {{--<p class="mt-4 text-center" data-aos="fade-left"--}}
-                                   {{--data-aos-anchor="#example-anchor"--}}
-                                   {{--data-aos-offset="500"--}}
-                                   {{--data-aos-duration="75000">--}}
-                                    {{--get it back with ample returns.--}}
-                                {{--</p>--}}
+                            {{--<p class="mt-4 text-center" data-aos="fade-left"--}}
+                            {{--data-aos-anchor="#example-anchor"--}}
+                            {{--data-aos-offset="500"--}}
+                            {{--data-aos-duration="75000">--}}
+                            {{--get it back with ample returns.--}}
+                            {{--</p>--}}
 
-                                <!-- <p class="mt-4" data-aos="fade-left"
+                            <!-- <p class="mt-4" data-aos="fade-left"
                                    data-aos-anchor="#example-anchor"
                                    data-aos-offset="500"
                                    data-aos-duration="1000">
@@ -354,7 +354,7 @@
                     <div class="col-md-4">
                         <div class="" data-aos="fade-up" data-aos-anchor-placement="top-center">
                             <img class="mx-auto my-5 d-block img-fluid"
-                                 src="{{asset('frontend/img/save3.png')}}" alt="investment-ima"/>
+                                 src="{{asset('frontend/img/save3.jpeg')}}" alt="investment-ima"/>
                             <h4 class="text-center font-weight-bold my-5">Keep Track Of Your Investments
                             </h4>
                             <p class="text-center">
@@ -479,13 +479,13 @@
                             <div class="row">
                                 <div class="col-md-10 mx-auto d-block pt-5">
                                     <h1 class="text-center pt-5">Grow your business. </h1>
-                                        <p class="text-center">
-                                            Today is the day to build the business of your dreams. Share your mission
-                                            with the world — and blow your customers away.
-                                        </p>
-                                        <button class="btn bg-dark text-white " style="height: 60px;">
-                                            START NOW
-                                        </button>
+                                    <p class="text-center">
+                                        Today is the day to build the business of your dreams. Share your mission
+                                        with the world — and blow your customers away.
+                                    </p>
+                                    <button class="btn bg-dark text-white " style="height: 60px;">
+                                        START NOW
+                                    </button>
                                 </div>
                             </div>
 

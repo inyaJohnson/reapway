@@ -1,4 +1,4 @@
-<footer class="page-footer font-small  mt-4 wow fadeIn">
+<footer class="page-footer font-small  mt-4 wow fadeIn" id="contact">
     <!--Call to action-->
     <div class="pt-4">
         <div class="container-fluid">
@@ -38,15 +38,20 @@
                     <div class="mb-5 social-link-div">
                         <!-- Social icons -->
                         <span class="font-weight-bold">FOLLOW US </span>
-                        <a href="https://www.facebook.com/" target="_blank" class="social-link">
+                        <a href="https://web.facebook.com/reapwayz" target="_blank" class="social-link">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="https://twitter.com/" target="_blank" class="social-link">
+                        <a href="https://www.instagram.com/reapway" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/mwlite/company/reapway-holdings" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.twitter.com/reapway" target="_blank" class="social-link">
                             <i class="fab fa-twitter"></i>
                         </a>
-
-                        <a href="https://twitter.com/" target="_blank" class="social-link">
-                            <i class="fab fa-instagram"></i>
+                        <a href="https://www.youtube.com/channel/UC1crlK2RdZHWzMHlw8v8BEQ" target="_blank" class="social-link">
+                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>

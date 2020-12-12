@@ -43,6 +43,15 @@ class HomeController extends Controller
         return view('other_pages.about');
     }
 
+    public function faq(){
+        return view('other_pages.faq');
+    }
+
+    public function plan(){
+        return view('other_pages.plan');
+    }
+
+
     public function setup(){
         Artisan::call('migrate');
         Artisan::call('db:seed');

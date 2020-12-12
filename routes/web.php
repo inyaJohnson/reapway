@@ -18,6 +18,8 @@ Auth::routes();
 Route::get('/setup', 'SetUpController@index')->name('setup');
 Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('/about', 'HomeController@about')->name('about');
+Route::get('/faq', 'HomeController@faq')->name('faq');
+Route::get('/plans', 'HomeController@plan')->name('plans');
 Route::get('/setup', 'HomeController@setup');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/blocked-user', 'BlockUserController@deny')->name('blocked');

@@ -29,7 +29,7 @@
             </li>
             <li class="nav-item mt-2">
                 <a class="nav-link waves-effect"
-                   href="{{url('#best-investment-plan')}}">
+                   href="{{route('plans')}}">
                     PLAN</a>
             </li>
             <li class="nav-item mt-2">
@@ -37,12 +37,12 @@
                     LOGIN</a>
             </li>
             <li class="nav-item mt-2">
-                <a class="nav-link waves-effect" href="{{url('#faq')}}">
+                <a class="nav-link waves-effect" href="{{route('faq')}}">
                     FAQ</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link waves-effect btn btn-dark  hide-on-mobile"
-                   style="color: white !important;" href="{{route('register')}}">
+                   style="color: white !important;" href="{{url('#contact')}}">
                     CONTACT US</a>
             </li>
         </ul>
