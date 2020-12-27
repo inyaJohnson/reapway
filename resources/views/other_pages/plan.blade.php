@@ -22,45 +22,87 @@
                         </p>
                     </div>
                 </div>
+                <div class="investment-plan-wrapper">
+                <h2 class="text-white text-center mb-5 mt-3">STANDARD INVESTMENT PLANS</h2>
+
                 <div class="text-center investment-plan">
                     <div data-aos="fade-up"
-                         data-aos-anchor-placement="center-bottom">
+                         data-aos-anchor-placement="center-bottom"
+                         class="mb-3">
                         <div class="card">
+                        <h3 class="lite card-title font-weight-bolder">LITE PLAN</h3>
                             <div class="card-body">
-                                <h1 class="card-title font-weight-bolder mt-4">GOLD</h1>
+                                <h3 class=" card-title text-white font-weight-bolder ">20% ROI</h3>
                                 <p class="stroke"></p>
-                                <h1 class="card-title font-weight-bolder reap-orange-color">25%</h1>
-                                <p class="card-text font-weight-bold">N2,000,000 (2M) <br> - <br>N10,000,000 <br>(10M)
+
+                                <p class="card-text">Min Capital <span class="font-weight-bolder text-white ">50K</span>
                                 </p>
-                                <a href="{{route('login')}}" class="btn reap-bg-orange-color text-white">Invest</a>
+                                <p class="card-text">Max Capital <span class="font-weight-bolder text-white">10M</span>
+                                </p>
+                                <p class="stroke"></p>
+                                <p>Duration <br> <span class="text-white">2Months</span></p>
+                                <!-- <a href="{{route('login')}}" class="btn reap-bg-orange-color text-white">Invest</a> -->
                             </div>
                         </div>
                     </div>
                     <div data-aos="fade-up"
-                         data-aos-anchor-placement="center-bottom">
+                         data-aos-anchor-placement="center-bottom"
+                         class="mb-3">
+
                         <div class="card">
-                            <div class="card-body">
-                                <h1 class="card-title font-weight-bolder mt-4">SILVER</h1>
+                        <h3 class=" classic font-weight-bolder" >CLASSIC PLAN</h3>
+
+                        <div class="card-body">
+                                <h3 class=" card-title font-weight-bolder text-white">30% ROI</h3>
                                 <p class="stroke"></p>
-                                <h1 class="card-title font-weight-bolder reap-color">25%</h1>
-                                <p class="card-text font-weight-bold">N500,000 (500k) <br> - <br>N1,950,000 <br> (1.9M)
+
+                                <p class="card-text">Min Capital <span class="font-weight-bolder text-white">100K</span>
                                 </p>
-                                <a href="{{route('login')}}" class="btn reap-bg-color text-white">Invest</a>
+                                <p class="card-text">Max Capital <span class="font-weight-bolder text-white">10M</span>
+                                </p>
+                                <p class="stroke"></p>
+                                <p>Duration <br> <span class="text-white">6 Weeks</span></p>
+                                <!-- <a href="{{route('login')}}" class="btn reap-bg-orange-color text-white">Invest</a> -->
                             </div>
                         </div>
                     </div>
                     <div data-aos="fade-up"
-                         data-aos-anchor-placement="center-bottom">
+                         data-aos-anchor-placement="center-bottom" class="mb-3">
                         <div class="card">
-                            <div class="card-body">
-                                <h1 class="card-title font-weight-bolder mt-4">BRONZE</h1>
+                        <h3 class="premium card-title font-weight-bolder">PREMIUM PLAN</h3>
+                        <div class="card-body">
+                                <h3 class=" card-title font-weight-bolder text-white">40% ROI</h3>
                                 <p class="stroke"></p>
-                                <h1 class="card-title font-weight-bolder">15%</h1>
-                                <p class="card-text font-weight-bold">N20,000 (20k) <br> - <br>N45,000 <br>(45k)</p>
-                                <a href="{{route('login')}}" class="btn text-white" style="background-color: #222;">Invest</a>
+
+                                <p class="card-text">Min Capital <span class="font-weight-bolder text-white">100K</span>
+                                </p>
+                                <p class="card-text">Max Capital <span class="font-weight-bolder text-white">10M</span>
+                                </p>
+                                <p class="stroke"></p>
+                                <p>Duration <br> <span class="text-white">2 Months</span></p>
+                                <!-- <a href="{{route('login')}}" class="btn reap-bg-orange-color text-white">Invest</a> -->
                             </div>
                         </div>
                     </div>
+                    <div data-aos="fade-up"
+                         data-aos-anchor-placement="center-bottom" class="mb-3">
+                        <div class="card">
+                        <h3 class="elite card-title font-weight-bolder">ELITE PLAN</h3>
+                        <div class="card-body">
+                                <h3 class=" card-title font-weight-bolder text-white">100% ROI</h3>
+                                <p class="stroke"></p>
+
+                                <p class="card-text">Min Capital <span class="font-weight-bolder text-white">200K</span>
+                                </p>
+                                <p class="card-text">Max Capital <span class="font-weight-bolder text-white">20M</span>
+                                </p>
+                                <p class="stroke"></p>
+                                <p>Duration <br> <span class="text-white">4 Months</span></p>
+                                <!-- <a href="{{route('login')}}" class="btn reap-bg-orange-color text-white">Invest</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
