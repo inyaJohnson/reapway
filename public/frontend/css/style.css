@@ -209,8 +209,15 @@ h1 {
     width: 70px;
 }
 
-
+.investment-plan-wrapper{
+    background-repeat: no-repeat;
+    padding: 4em;
+    background-color: green;
+    background: url(../img/INVEST\ SMARTLY;\ PROFIT\ GENEROUSLY.jpg);
+    background-size: cover;
+}
 .investment-plan{
+    color: white;
     display: flex;
     flex-flow: row;
 }
@@ -218,17 +225,51 @@ h1 {
 .investment-plan div{
     width: 95%;
 }
+.investment-plan .card{
+    background-color: rgba(0, 128, 0, 0.801);
+    padding: 0px;
+}
 
+.investment-plan .card p, .investment-plan .card h3,.investment-plan .card h2  {
+    color: rgba(241, 237, 237, 0.733);
+}
+
+.investment-plan .card h3.lite{
+    padding-top: 1em;
+    background-color: var(--inverse-color);
+    color: white;
+    height: 80px;
+}
+
+.investment-plan .card h3.classic{
+    padding-top: 1em;
+    background-color: black;
+    color: white;
+    height: 80px;
+}
+.investment-plan .card h3.premium{
+    padding-top: 1em;
+    background-color: darkred;
+    color: white;
+    height: 80px;
+}
+.investment-plan .card h3.elite{
+    padding-top: 1em;
+
+    background-color: red;
+    color: white;
+    height: 80px;
+}
 #best-investment-plan{
     margin-top: 4em;
 }
 
 #best-investment-plan .card-body > p.stroke {
     display: block;
-    height: 2px;
-    width: 50px;
-    background-color: rgb(144, 144, 165);
-    margin: auto;
+    height: 1px;
+    width: 80%;
+    background-color: rgba(241, 237, 237, 0.733);
+    margin: 1em auto;
 }
 
 #best-investment-plan .card-body > h1 {
@@ -239,6 +280,7 @@ h1 {
 
 #best-investment-plan .card-text {
     font-size: 1.5em;
+    color: rgba(241, 237, 237, 0.733);
 }
 
 #best-investment-plan .card-body a {
